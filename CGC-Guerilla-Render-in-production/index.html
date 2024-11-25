@@ -1,0 +1,729 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> Guerilla Render in production | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1732547427464">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=" Guerilla Render in production | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Guerilla Render in production - Chris Brejon
+https://chrisbrejon.com/articles/guerilla-render-in-production/
+Guerilla R..." />
+    <meta name="keywords" content="Lighting,CG Software" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1732547427464" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               Guerilla Render in production
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-24
+              </span>
+              <span>
+                57 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/zwKy4lMn1V/" class="post-tag">
+                  # Lighting
+                </a>
+              
+                <a href="https://zcfly1992.github.io/4gPGUCgLGNT/" class="post-tag">
+                  # CG Software
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/20241124231822.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>Guerilla Render in production - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/articles/guerilla-render-in-production/">https://chrisbrejon.com/articles/guerilla-render-in-production/</a></li>
+<li>Guerilla Render in production is about the amazing render engine that was used on Playmobil. Cutting-edge technology, Sequence lighting... Brute force !</li>
+</ul>
+<hr>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p>If you have read my book, you may have noticed that I am a <a href="http://guerillarender.com/">Guerilla Render</a> fan. I have only used this wonderful piece of software on one show, <em><a href="https://www.youtube.com/watch?v=Tb-E-WUJl44">Playmobil the movie</a></em> (Director: ​<strong>Lino Di Salvo</strong>​), but I almost instantly felt in love with it.</p>
+<p>如果你读过我的书，你可能已经注意到我是<a href="http://guerillarender.com/">Guerilla Render 的</a>粉丝。我只在一个节目中使用过这款出色的软件，即*<a href="https://www.youtube.com/watch?v=Tb-E-WUJl44">电影 Playmobil</a>*（导演：<strong>Lino Di Salvo</strong>），但我几乎立刻就爱上了它。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Playmobil- The Movie  Official Trailer HD  Now Playing in Theaters-20241115035152-z51ri3g.mp4" data-src="assets/Playmobil- The Movie  Official Trailer HD  Now Playing in Theaters-20241115035152-z51ri3g.mp4"></video></p>
+<p>Before we go deep into the description of Guerilla, I would like to state that <strong>I do not work for Mercenaries Engineering.</strong>  I am doing this post because I have been annoying many many colleagues with the cool features used on <em>Playmobil</em>… And thanks to my website I can even bug more people now. 😉</p>
+<p>在深入了解 Guerilla 之前，我想声明一下，<strong>我并不是为 Mercenaries Engineering 工作。</strong> <em>我之所以写这篇文章，是因为Playmobil</em>上的酷炫功能让我的很多同事都感到厌烦……而且多亏了我的网站，我现在甚至可以惹恼更多的人了。😉</p>
+<p>Joke aside I think there were some really powerful ideas on this show that are worth mentioning and sharing. Lighting workflows are currently such a hot topic in the industry that I thought it would be interesting to write a post about it. I also want to state that <strong>all the features presented here have been used in production.</strong>  No bullshit !</p>
+<p>玩笑归玩笑，我认为这个节目中有一些非常有力的想法值得提及和分享。照明工作流程目前是业内的一个热门话题，我认为写一篇关于它的文章会很有趣。我还想说，<strong>这里介绍的所有功能都已在生产中使用。</strong> 没有废话！</p>
+<h3 id="生产实例-production-examples">生产实例 Production examples</h3>
+<p>Furthermore I totally acknowledge the fact that *<a href="https://www.boxofficemojo.com/title/tt4199898/">Playmobil</a>*​<a href="https://www.boxofficemojo.com/title/tt4199898/"> was not a commercial success</a>. There is no point in hiding it neither the <a href="https://www.youtube.com/watch?v=8z8OJbrgZv8">harsh YouTube videos</a>. I also agree that there was room for improvement on this project in terms of lighting.</p>
+<p>此外，我完全承认*<a href="https://www.boxofficemojo.com/title/tt4199898/">Playmobil</a>*​<a href="https://www.boxofficemojo.com/title/tt4199898/">并未取得商业成功</a>。隐藏这一点毫无意义，<a href="https://www.youtube.com/watch?v=8z8OJbrgZv8">YouTube 视频也毫无意义</a>。我也同意这个项目在灯光方面还有改进的空间。</p>
+<p>Nonetheless we did our best and <strong>I am very proud of the work achieved by our lighting team.</strong>  And I believe that <em>Playmobil</em> did not get the success it deserved. Sometimes it’s just bad luck… I would like to thank my former colleagues from On Animation for letting me write this post and their support.</p>
+<p>尽管如此，我们还是尽了最大努力，<strong>我为我们的灯光团队所做的工作感到非常自豪。</strong> 我认为<em>Playmobil</em>没有获得应有的成功。有时只是运气不好……我要感谢我以前在 On Animation 的同事让我写这篇文章，并感谢他们的支持。</p>
+<p>I will also show some very cools renders from this wonderful movie called <em><a href="https://www.youtube.com/watch?v=5WD9m5MfAVw">Minuscule 2</a></em> to illustrate some of my ideas. Visual effects were done by a small but very talented studio called ​*<a href="https://theyard-vfx.com/">The Yard VFX</a>*​. I believe Guerilla was used in the most efficient way on this movie. Thanks to <strong><a href="https://www.imdb.com/name/nm1441298/">Laurens Ehrmann</a></strong> for his support on this post. Let’s start !</p>
+<p>我还将展示这部精彩电影*<a href="https://www.youtube.com/watch?v=5WD9m5MfAVw">《Minuscule 2》</a>* 中的一些非常酷的渲染图，以说明我的一些想法。视觉效果由一家名为*<a href="https://theyard-vfx.com/">The Yard VFX</a><em>的小型但非常有才华的工作室完成。我相信 Guerilla 在这部电影中得到了最有效的使用。感谢</em>*<a href="https://www.imdb.com/name/nm1441298/">Laurens Ehrmann</a>**对本文的支持。让我们开始吧！</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/THE FIRST IMAGES OF THE NEW FILM ARE ONLINE-20241115035234-o0nd959.mp4" data-src="assets/THE FIRST IMAGES OF THE NEW FILM ARE ONLINE-20241115035234-o0nd959.mp4"></video></p>
+<h2 id="什么是guerilla-what-is-guerilla">什么是Guerilla？ What is Guerilla ?</h2>
+<p>Guerilla Render is an assembly software and a <a href="http://guerillarender.com/?p=109">bi-directional path tracing render engine</a>. This wonderful piece of code is exactly what I expect from a modern render engine. It uses a nodal, procedural and non-destructive workflow with cutting-edge technology.</p>
+<p>Guerilla Render 是一款组装软件和<a href="http://guerillarender.com/?p=109">双向路径追踪渲染引擎</a>。这段精彩的代码完全符合我对现代渲染引擎的期望。它使用节点式、程序化和非破坏性工作流程以及尖端技术。</p>
+<p>How can I quickly describe <em>Guerilla</em> ? Maybe the best way to start would be to actually present a shot using some of the best features of Guerilla. Let the software speak for itself !</p>
+<p>我该如何快速描述​<em>Guerilla</em>​？也许最好的开始方式是实际展示使用 Guerilla 的一些最佳功能拍摄的照片。让软件自己说话！</p>
+<blockquote>
+<p>What is the difference between unidirectional (Uni) and bidirectional (VCM) ? Bidirectional shoot rays from the lights and from the camera. And then connect them together. By the way Arnold is unidirectional Path Tracing, like Glimpse (Animal Logic).</p>
+<p>单向 (Uni) 和双向 (VCM) 有什么区别？双向从灯光和相机发射光线。然后将它们连接在一起。顺便说一下，Arnold 是单向路径跟踪，就像 Glimpse (Animal Logic) 一样。</p>
+</blockquote>
+<h2 id="拍摄示例-shot-example">拍摄示例 Shot example</h2>
+<p>I still remember clearly the moment I felt in love with Guerilla. <strong>The shot below made me realize how powerful Guerilla is.</strong>  Everything that is normally forbidden to do in CG is available in this shot :</p>
+<p>我仍然清楚地记得我爱上 Guerilla 的那一刻。<strong>下面的镜头让我意识到Guerilla有多么强大。</strong> 在 CG 中通常被禁止做的一切都可以在这个镜头中找到：</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_010_playmo_sht_410000007_cmpren_copyright_FHD-20241115035423-gsb15gj.mp4" data-src="assets/120_guerillaRender_010_playmo_sht_410000007_cmpren_copyright_FHD-20241115035423-gsb15gj.mp4"></video></p>
+<p>The final shot from the movie.</p>
+<p>电影中的最后一个镜头。</p>
+<ul>
+<li>3D Motion-Blur : checked !</li>
+<li>3D 运动模糊：已检查！</li>
+<li><a href="http://guerillarender.com/doc/2.0/User%20Guide_Rendering_Camera.html">3D Depth-Of-Field (DOF)</a> : checked !</li>
+<li><a href="http://guerillarender.com/doc/2.0/User%20Guide_Rendering_Camera.html">3D 景深 (DOF)</a>：已检查！</li>
+<li><a href="http://guerillarender.com/doc/2.0/User%20Guide_Volumes_Rendering%20Volumes.html">Volumetrics GI Rendering</a> (super heavy VDB) : checked !</li>
+<li><a href="http://guerillarender.com/doc/2.0/User%20Guide_Volumes_Rendering%20Volumes.html">体积 GI 渲染</a>（超重 VDB）：已检查！</li>
+<li>Bi-Directional Path Tracing : checked !</li>
+<li>双向路径追踪：已检查！</li>
+<li>Russian Roulette and Adaptive Sampling : checked !</li>
+<li>俄罗斯轮盘赌和自适应采样：已检查！</li>
+<li>16 bounces everywhere : checked !</li>
+<li>16 次弹跳到处：已检查！</li>
+<li>One Beauty Pass : checked !</li>
+<li>一张美丽通行证：已检查！</li>
+<li><a href="http://guerillarender.com/doc/2.0/User%20Guide_Rendering_OpenEXR%20files.html">Deep Id</a> : checked !</li>
+<li><a href="http://guerillarender.com/doc/2.0/User%20Guide_Rendering_OpenEXR%20files.html">Deep Id</a>：已检查！</li>
+<li><a href="http://guerillarender.com/doc/2.0/User%20Guide_Lighting_Mesh%20lights.html">Mesh Lights</a> : checked !</li>
+<li><a href="http://guerillarender.com/doc/2.0/User%20Guide_Lighting_Mesh%20lights.html">网状灯</a>：已检查！</li>
+<li>Displacement, SSS and Procedural fur : checked !</li>
+<li>置换、SSS 和程序毛发：已检查！</li>
+<li>2048 AA samples : checked !</li>
+<li>2048 AA 样品：已检查！</li>
+<li>Light Path Expression : checked !</li>
+<li>光路表达式：已检查！</li>
+<li>Rendering <strong>the whole background through a Refracting Glass</strong> : checked !</li>
+<li><strong>通过折射玻璃</strong>渲染整个背景：已检查！</li>
+</ul>
+<blockquote>
+<p>I personally know only two render engines that can handle this amount of features : Guerilla and <a href="https://www.fxguide.com/fxfeatured/a-glimpse-at-animal-logic/">Glimpse</a>. They were strangely very similar in their behavior.</p>
+<p>我个人只知道两个渲染引擎可以处理这么多的功能：Guerilla 和<a href="https://www.fxguide.com/fxfeatured/a-glimpse-at-animal-logic/">Glimpse</a>。它们的行为出奇地相似。</p>
+<p>I guess <a href="http://guerillarender.com/?p=570">great</a> <a href="https://twitter.com/maxliani">minds</a> think alike.</p>
+<p>我想<a href="https://twitter.com/maxliani">英雄</a><a href="http://guerillarender.com/?p=570">所见</a> 略同。</p>
+</blockquote>
+<h3 id="镜头描述-shot-description">镜头描述 Shot description</h3>
+<p>This shot is part of a night sequence which is around two minutes long and about 40 shots. Under <a href="https://www.remisalmon.com/">Rémi’s</a> supervision, we did a day for night lighting to get this soft blue illumination which is so popular in animated features.</p>
+<p>这个镜头是夜景片段的一部分，大约两分钟长，大约有 40 个镜头。在<a href="https://www.remisalmon.com/">雷米的</a>监督下，我们花了一天时间拍摄夜景灯光，以获得这种在动画片中非常流行的柔和蓝色照明。</p>
+<p>On this particular shot, we wanted the volcano to be the center of interest. So we turned off the moon and sky to enhance the volcano’s dramatic effect. <strong>We were not afraid to break continuity to serve the story’s purpose.</strong>  There were more than forty lights in total. Not an issue for Guerilla !</p>
+<p>在这个镜头中，我们希望火山成为焦点。所以我们关掉了月亮和天空，以增强火山的戏剧效果。<strong>我们不怕打破连续性以达到故事的目的。</strong> 总共有四十多盏灯。对于游击队来说这不是什么问题！</p>
+<ul>
+<li>Natural lights : the volcano lights.</li>
+<li>自然光：火山光。</li>
+<li>Practical lights : the garlands, headlights, windows and windshield.</li>
+<li>实用灯：花环，前灯，窗户和挡风玻璃。</li>
+<li>Dramatic lights : some bounces, top lights with blockers and rims… The whole thing !</li>
+<li>戏剧性的灯光：一些反射光、带有阻挡器和边缘的顶灯......全部！</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_020_screenshot_411000007_FHD-20241105174047-0tqcvx7.jpg" alt="" title="From top to bottom : the perspective view, the sequence Render Graph and the shot Render Graph. We did turn off the Moon and Sky in this shot to emphasize the Volcano effect, to make it more dramatic. 从上到下：透视图、序列渲染图和镜头渲染图。我们确实关闭了此镜头中的月亮和天空，以强调火山效果，使其更具戏剧性。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_030_screenshot_411000007_FHD-20241105174047-t5f9jj7.jpg" alt="" title="On the right, our render settings for the whole movie from the template. We did remove the bi-directional after this sequence as it was expensive and not visually important. Bi-directional makes actually a difference with only a few lights in the scene. 右侧是模板中整部电影的渲染设置。我们确实删除了这个序列之后的双向效果，因为它成本高昂且在视觉上并不重要。双向效果实际上在场景中只有少量灯光时才有效果。" loading="lazy">​</p>
+<p>The UI and RenderGraphs in Guerilla Render.</p>
+<blockquote>
+<p>If you are wondering how many bounces we use in production, here are some examples : Animal Logic uses 12 bounces, Disney 10, On Animation 16 and Cinesite FA 1. From the tests I have seen, <strong>do not go below 6 bounces !</strong></p>
+<p>如果您想知道我们在制作中使用了多少次反弹，这里有一些例子：Animal Logic 使用 12 次反弹，Disney 使用 10 次，On Animation 使用 16 次，Cinesite FA 使用 1 次。从我所见的测试来看，<strong>反弹次数不要低于 6 次！</strong></p>
+<p>It is also pretty important to keep the same number of bounces for diffuse, reflection and refraction in my opinion.</p>
+<p>在我看来，保持相同的漫反射、反射和折射反射次数也非常重要。</p>
+</blockquote>
+<h3 id="照明和合成-lighting-and-compositing">照明和合成 Lighting and Compositing</h3>
+<p>We did output some AOVs as a safety net in case we wanted to tweak some renders in compositing.  <strong>It did not happen on this sequence.</strong>   We were pretty much happy with the CG result and as you can see there is not much difference between the Guerilla Render View and the final output from Nuke. They are pretty much similar.</p>
+<p>我们确实输出了一些 AOV 作为安全网，以防我们想在合成中调整一些渲染。但<strong>这个序列没有发生这种情况。</strong> 我们对 CG 结果非常满意，正如您所见，Guerilla Render View 和 Nuke 的最终输出之间没有太大区别。它们非常相似。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_010_playmo_sht_410000007_cmpren_FHD-20241105174047-hzcwef5.jpg" alt="" title="The final render used in the movie with a bit of comp. 电影中使用的最终渲染带有一点合成。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_040_playmo_sht_410000007_ren_FHD-20241105174047-5g7kbny.jpg" alt="" title="The brute-force render from Guerilla... Pretty close to final result, right ? Guerilla 的强力渲染...非常接近最终结果，对吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_050_playmo_sht_410000007_spec_FHD-20241105174047-aancm2l.jpg" alt="" title="We rendered some AOVs in case of we would need them. Here is the specular AOV... 我们渲染了一些 AOV，以备不时之需。这是镜面 AOV..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_060_playmo_sht_410000007_refl_FHD-20241105174047-rl0qegf.jpg" alt="" title="The reflection AOV... 反射 AOV......" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_070_playmo_sht_410000007_refr_FHD-20241105174047-mjy70hi.jpg" alt="" title="The refraction AOV with these massive VDB to render... 使用这些大量的 VDB 来渲染折射 AOV......" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_080_playmo_sht_410000007_albedo_FHD-20241105174047-e6ept5y.jpg" alt="" title="And the albedo AOV. Marla's hair was a bit dark in my opinion. 还有反照率 AOV。我认为 Marla 的头发有点黑。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_090_playmo_sht_410000007_sub_FHD-20241105174047-34nj1xo.jpg" alt="" title="Finally here is the mirror shot. I used deep ID to extract Marla from this render and put it on the window in the final shot. 最后是镜子镜头。我使用深度 ID 从渲染中提取 Marla，并将其放在最终镜头中的窗户上。" loading="lazy">​</p>
+<p>The final renders and AOVs of this shot.</p>
+<p>该镜头的最终渲染和 AOV。</p>
+<blockquote>
+<p>Could we have added some details ? Some scratches on the window and the door would have helped. Details in CG are expensive but it really makes the image richer.</p>
+<p>我们可以添加一些细节吗？窗户和门上的一些划痕会有所帮助。CG 中的细节很昂贵，但它确实使图像更加丰富。</p>
+<p>I agree some fine tuning compositing would have been a plus.</p>
+<p>我同意，进行一些精细的调整合成会是一个优点。</p>
+</blockquote>
+<p>There is a debate on how close a CG render should be to the final output. Many lighters argue that we should light in “Raw” (like a flat lighting) and then do the final look in compositing.</p>
+<p>关于 CG 渲染应该与最终输出有多接近，存在争议。许多灯光师认为我们应该以“原始”模式打光（如平面照明），然后在合成中完成最终效果。</p>
+<p>I used to think that as well. Until I went to <em>Animal Logic</em> and that was actually the same thing on ​<em>Playmobil</em>​. <strong>On both shows, we were able to light and render as close as we could to the final result.</strong>   Which was really awesome. Here is a quick list of arguments in favor of this method :</p>
+<p>我以前也是这么想的。直到我去了<em>Animal Logic ，才发现Playmobil</em>上也确实如此。<strong>在这两个节目中，我们都能够尽可能接近最终结果进行照明和渲染。</strong> 这真的很棒。以下是支持这种方法的论点的简要列表：</p>
+<ul>
+<li>I personally want to light as close as the final result, not to go through a detour. <strong>Go straight to the final image.</strong></li>
+<li>我个人希望灯光尽可能接近最终效果，而不是绕弯路。<strong>直接获得最终图像。</strong></li>
+<li>Guerilla and Glimpse handle sampling greatly, it was not a issue to get some contrast in our renders.</li>
+<li>Guerilla 和 Glimpse 很好地处理了采样，在我们的渲染中获得一些对比度并不是问题。</li>
+<li>In the end, what really matters, is to <strong>get enough range for DI in your final output.</strong>  I still remember Craig playing with exposure and gamma during Quality Check before final approval.</li>
+<li>最后，真正重要的是<strong>在最终输出中获得足够的 DI 范围。</strong> 我还记得 Craig 在最终批准之前的质量检查期间调整曝光和伽马。</li>
+</ul>
+<p>Anyway, back to the shot above… Can you imagine how many layers would have been necessary without 3D DOF ? And how would we have even composed them afterwards ? A real brain teaser ! It would not only have been very long and painful but also  <strong>more expensive.</strong>  Here is the reason why.</p>
+<p>不管怎样，回到上面的镜头……你能想象如果没有 3D DOF，需要多少层吗？之后我们如何合成它们？真是脑筋急转弯！这不仅会非常漫长和痛苦，而且<strong>成本也更高。</strong> 原因如下。</p>
+<h2 id="渲染时间-render-times">渲染时间 Render times</h2>
+<p>After reading <a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#16-the-no-layering-solution">the paragraph on layering</a>, many readers have asked me about render times when it comes to rendering only one beauty pass. <strong>I really want to state clearly that our render times were not an issue on Playmobil.</strong>  They actually were similar to the render times we had on Lego.</p>
+<p>在阅读<a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#16-the-no-layering-solution">有关分层的段落</a>后，许多读者问我，在只渲染一个美容通道时，渲染时间是多少。<strong>我真的想明确说明，我们的渲染时间在 Playmobil 上不是问题。</strong> 它们实际上与我们在 Lego 上的渲染时间相似。</p>
+<p>Funnily enough <a href="https://vimeo.com/224139194">Lego</a> and Playmobil were the only movies where I was able to render everything in one beauty pass. And it is no coincidence that <a href="https://www.fxguide.com/fxfeatured/a-glimpse-at-animal-logic/">Glimpse</a> and Guerilla have a lot of common in terms of sampling.  <strong>They are proper modern path tracers.</strong></p>
+<p>有趣的是，<a href="https://vimeo.com/224139194">乐高</a>和 Playmobil 是唯一能够在一个美化通道中渲染所有内容的电影。而且<a href="https://www.fxguide.com/fxfeatured/a-glimpse-at-animal-logic/">Glimpse</a>和 Guerilla 在采样方面有很多共同之处，这并非巧合。<strong>它们是真正的现代路径追踪器。</strong></p>
+<p>Anyway, even with all these crazy features, the average render time of this sequence was around 6 hours per frame <strong>for final quality</strong>, this shot being the most expensive with 11 hours per frame.</p>
+<p>无论如何，即使有这些疯狂的功能，这个序列的平均渲染时间仍然大约为每帧 6 小时<strong>才能达到最终质量</strong>，而这个镜头是最昂贵的，每帧 11 小时。</p>
+<blockquote>
+<p>I actually did a mistake on this sequence. I should have turned off the bi-directional. With so many lights in the scene, bi-directional does not bring much visually. Render times would have certainly been even lower.</p>
+<p>我实际上在这个序列上犯了一个错误。我应该关闭双向灯。场景中有这么多灯，双向灯在视觉上不会带来太多效果。渲染时间肯定会更低。</p>
+<p>Oops… We updated the Render Settings template right after this sequence without any bi-directional and 8 bounces for the whole film. It was more than enough.</p>
+<p>哎呀……我们在这个序列之后立即更新了渲染设置模板，整个影片没有任何双向和 8 次反弹。这已经足够了。</p>
+</blockquote>
+<h3 id="人类时间-vs-机器时间-human-time-vs-machine-time">人类时间 VS 机器时间 Human time VS Machine time</h3>
+<p>I would also like to point out a very important thing : <strong>what is expensive on a show ? Salaries.</strong>  It is not the electricity nor the render farm. So if we take the example above, yes we could have saved some render time by doing many optimizations such as :</p>
+<p>我还想指出一件非常重要的事情：<strong>在节目中什么是昂贵的？工资。</strong> 不是电费也不是渲染农场。因此，如果我们以上面的例子为例，是的，我们可以通过进行许多优化来节省一些渲染时间，例如：</p>
+<ul>
+<li>Remove displacement and SSS by layer (for non-visible elements).</li>
+<li>逐层消除位移和 SSS（对于不可见元素）。</li>
+<li>Remove any useless geometry.</li>
+<li>删除所有无用的几何图形。</li>
+<li>Reduce the number of bounces or even lights.</li>
+<li>减少反射次数甚至灯光次数。</li>
+<li>Split into many layers to save some memory.</li>
+<li>分成多层以节省一些内存。</li>
+</ul>
+<p>But how much time will you spend to achieve that ? And how much time will you need to compose the shot correctly in Nuke ? <strong>Optimization is not that cost efficient.</strong>   And all of this brings us to our first principle on <em>Playmobil</em> : <strong>Human time is much more expensive than machine time.</strong></p>
+<p>但是你要花多少时间才能实现这个目标？你需要多少时间才能在 Nuke 中正确构图？<strong>优化并不是那么划算。</strong> 所有这些都让我们想到了<em>Playmobil</em>的第一个原则：<strong>人力时间比机器时间要昂贵得多。</strong></p>
+<blockquote>
+<p>A couple of interesting videos to prove it : <a href="https://www.youtube.com/watch?v=MULmZYhvXik">one in French</a> by Jean-Marc Jancovici at the Senate and <a href="https://youtu.be/S4O5voOCqAQ">one with an Olympic cyclist</a>.</p>
+<p>有几个有趣的视频可以证明这一点：<a href="https://www.youtube.com/watch?v=MULmZYhvXik">一个</a>是让·马克·扬科维奇 (Jean-Marc Jancovici) 在参议院用法语拍摄的视频，<a href="https://youtu.be/S4O5voOCqAQ">另一个是与一位奥运自行车运动员拍摄的视频</a>。</p>
+<p>Thanks Philippe for the links !</p>
+<p>感谢 Philippe 提供的链接！</p>
+</blockquote>
+<p>I am not saying you should not care about render times on a feature film. Not at all ! But from recent studies, the render farm is only 3% of the budget on a movie. There is not much to save there. At least in a modern pipeline, which brings me to my next point.</p>
+<p>我并不是说你不应该关心故事片的渲染时间。一点也不！但从最近的研究来看，渲染农场只占电影预算的 3%。那里没什么可省的。至少在现代流程中是如此，这让我想到了下一个观点。</p>
+<h2 id="现代化管道-modern-pipeline">现代化管道 Modern pipeline</h2>
+<p>It seems to me that currently a hot topic in animation is about pipelines and how to increase quality and efficiency. It is certain that <strong>animation pipelines need to evolve.</strong>  Which is actually something very difficult to achieve for many reasons :</p>
+<p>在我看来，目前动画领域的一个热门话题是流程以及如何提高质量和效率。<strong>动画流程肯定需要改进。</strong> 这实际上很难实现，原因如下：</p>
+<ul>
+<li>If the studio is in production, you may have to wait for a gap between movies.</li>
+<li>如果该工作室正在制作，您可能需要等待电影之间的间隙。</li>
+<li>People’s culture. <em>Why would we change something that works and that we are used to ?</em></li>
+<li>人类的文化。<em>我们为什么要改变那些行之有效、我们习惯的东西呢？</em></li>
+<li>I have even heard some supervisors tell me :<em>it is sometimes easier to throw everything at the trash and start from scratch rather than trying to fix a defective pipeline.</em></li>
+<li>我甚至听到一些主管告诉我：<em>有时候把所有东西扔进垃圾桶并从头开始比试图修复有缺陷的管道更容易。</em></li>
+</ul>
+<p>So what is this big evolution everyone is talking about ? Which direction should we be heading ? The following screenshots have been extracted from the <a href="https://vimeo.com/353632662">Pixar presentation at Siggraph 2019</a>. I think they show quite well the direction to follow.</p>
+<p>那么，大家谈论的这个大变革到底是什么？我们应该朝哪个方向发展？以下截图摘自<a href="https://vimeo.com/353632662">Siggraph 2019 上的皮克斯演示</a>。我认为它们很好地展示了要遵循的方向。</p>
+<p><img src="assets/120_guerillaRender_100_old_pipeline_FHD-20241105174047-kpfy5jx.jpg" alt="" loading="lazy">​</p>
+<p><img src="assets/120_guerillaRender_110_new_pipeline_FHD-20241105174047-rblf7hp.jpg" alt="" loading="lazy">​</p>
+<p>What we should eventually try to achieve… Looks promising !</p>
+<p>我们最终应该努力实现的目标......看起来很有希望！</p>
+<p>I have never worked with USD but the closest workflow I have seen to a digital live set was on ​<em>Playmobil</em>​. Let me give you a couple of examples.</p>
+<p>我从未使用过 USD，但我见过最接近数字现场布景的工作流程是在<em>Playmobil</em>上。让我给你举几个例子。</p>
+<h3 id="playmobil上的数字套装-digital-set-on-playmobil">Playmobil上的数字套装 Digital Set on <em>Playmobil</em></h3>
+<p>What do these images tell us ? How can we apply this concretely ? A pretty good solution has been given to me by <strong>Pascal Bertrand</strong> and <strong>Rachid Chikh</strong> on​<em>Playmobil</em>​. I still remember clearly the moment they shared with me their vision.</p>
+<p><em>这些图像告诉了我们什么？我们该如何具体应用这些图像？ Playmobil</em>的<strong>Pascal Bertrand</strong>和<strong>Rachid Chikh</strong>给了我一个非常好的解决方案。我仍然清楚地记得他们与我分享他们愿景的那一刻。</p>
+<p>It was during my interview that they nonchalantly announced me : <strong>Why should lighting only be done during the final stage of production ?</strong>  Why couldn’t it be done before animation for example ? Like in a live-action movie ?</p>
+<p>在我面试的时候，他们若无其事地向我宣布：<strong>为什么灯光只能在制作的最后阶段完成？</strong> 为什么不能在动画之前完成？就像在真人电影中一样？</p>
+<p>There is a couple of moments in your career that one may define as game changing. When <strong>Pascal</strong> and <strong>Rachid</strong> shared with me this idea during my interview, I was shocked :</p>
+<p>您的职业生涯中有几个时刻可以定义为改变游戏规则的时刻。当<strong>Pascal</strong>和<strong>Rachid</strong>在采访中与我分享这个想法时，我感到震惊：</p>
+<blockquote>
+<p><em>Wait ? What ? Lighting before animation ?</em>  It can’t be !</p>
+<p><em>等等？什么？动画之前先有灯光？</em> 不可能！</p>
+</blockquote>
+<p>And then I realized (like a month later) that it made complete sense :  <strong>one should light Rough Layout.</strong></p>
+<p>然后我意识到（大约一个月后）它完全有意义：<strong>应该点亮粗略布局。</strong></p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_120_playmo_sht_410000007_ren_copyright_FHD-20241115035458-ypcxbrf.mp4" data-src="assets/120_guerillaRender_120_playmo_sht_410000007_ren_copyright_FHD-20241115035458-ypcxbrf.mp4"></video></p>
+<p>Same shot as above in its Rough Layout version. We actually did some adjustments when final assets came in.</p>
+<p>与上图相同的镜头，为粗略布局版本。当最终资产到账时，我们实际上做了一些调整。</p>
+<p>Great thinking out of the box ! Just brilliant ! This may not be the ultimate solution but it is definitely a big step in the right direction. <strong>Lighting during Rough Layout is key in a Digital Live Action Set.</strong>  What advantages does it bring ?</p>
+<p>非常有创意！太聪明了！这可能不是最终的解决方案，但绝对是朝着正确方向迈出的一大步。<strong>粗略布局期间的照明是数字实景拍摄的关键。</strong> 它带来了什么好处？</p>
+<h3 id="连贯性和灵活性-coherence-and-flexibility">连贯性和灵活性 Coherence and flexibility</h3>
+<ul>
+<li>Having lighting intentions during Rough Layout <strong>bring the director’s vision to life much earlier in the process.</strong></li>
+<li>在粗略布局期间确定灯光意图<strong>可以使导演的设想在流程的早期就变成现实。</strong></li>
+<li>3D Motion-Blur and Depth-Of-Field are set during this stage and maintained until final render with a few adjustments due to performance and set updates.</li>
+<li>在此阶段设置 3D 运动模糊和景深，并保持到最终渲染，并由于性能和设置更新而进行一些调整。</li>
+<li><strong>Gain of time in our production.</strong>  With Depth-of-field set that early in our process, it is much easier to <strong>put our money where it is worth it.</strong></li>
+<li><strong>节省制作时间。</strong> 通过在流程早期设置景深，我们可以更轻松地<strong>将资金花在最值得的地方。</strong></li>
+<li>The Animation Department can use our light rig to position their characters precisely and anticipate any staging or blend shape issue.</li>
+<li>动画部门可以使用我们的灯光装置精确定位他们的角色并预测任何分期或混合形状问题。</li>
+<li><strong>One render engine in the whole pipeline.</strong>   To maintain coherence through  departments, every movie presented to the director would have to be rendered with Guerilla Render.</li>
+<li><strong>整个流程只有一个渲染引擎。</strong> 为了保持各部门的一致性，导演收到的每一部电影都必须使用 Guerilla Render 进行渲染。</li>
+<li>Lighting Rough Layout also makes other departments work in a cleaner way : assets cannot be moved arbitrarily in the scene. <strong>It helps to maintain coherence and logic between departments.</strong></li>
+<li>灯光粗略布局也使其他部门的工作更加清晰：资产不能在场景中任意移动。<strong>它有助于保持部门之间的连贯性和逻辑性。</strong></li>
+</ul>
+<blockquote>
+<p>I don’ t know if I was lucky or not but this lighting process on Playmobil helped me to anticipate lots of issues like naming, constraints, split of geometries. It was also very interesting to play with the 3D DOF.</p>
+<p>我不知道自己是否幸运，但 Playmobil 上的这个照明过程帮助我预见了许多问题，例如命名、约束、几何图形分割。使用 3D DOF 也非常有趣。</p>
+<p>Moving to final assets and shot lighting was pretty straight-forward in most cases.</p>
+<p>在大多数情况下，转移到最终资产和拍摄灯光非常简单。</p>
+</blockquote>
+<h2 id="playmobil的工作流程-workflow-aspects-of-playmobil">Playmobil的工作流程 Workflow aspects of <em>Playmobil</em></h2>
+<p>Lighting Rough Layout is not the only aspect worth mentioning of ​<em>Playmo</em>​. I would also like to describe some philosophy aspects of this production. I had the chance to share 100% of​<strong>Pascal</strong>​‘s vision in that matter. <strong>Pascal Bertrand</strong> is CTO of On Animation and a great guy to work with.</p>
+<p>灯光粗略布局并不是<em>Playmo</em>唯一值得一提的方面。我还想描述一下这部作品的一些哲学方面。我有机会分享<strong>Pascal</strong>在这方面 100% 的看法。Pascal <strong>Bertrand</strong>是 On Animation 的首席技术官，是一位很棒的工作伙伴。</p>
+<ul>
+<li>We want to <strong>maintain as little code as possible.</strong>  Guerilla works natively and integrates most of the needed features. No need for an army of TDs !</li>
+<li>我们希望<strong>维护尽可能少的代码。</strong> <strong>Guerilla</strong>原生运行，并集成了大部分所需功能。无需大批 TD！</li>
+<li><strong>We don’t care about render times</strong>  aka human time is much more expensive that machine time.</li>
+<li><strong>我们不关心渲染时间</strong>，也就是说，人力时间比机器时间昂贵得多。</li>
+<li><strong>Brute force rendering.</strong>  We avoid cheap tricks and rely mostly on Path Tracing and PBR for our renders.</li>
+<li><strong>强力渲染。</strong> 我们避免使用廉价技巧，主要依靠路径追踪和 PBR 进行渲染。</li>
+<li><strong>Every process has to be replicable.</strong>  No manual hack, it’s all about building and publishing our work. Especially for rendering !</li>
+<li><strong>每个流程都必须可复制。</strong> 没有手动破解，一切都是为了构建和发布我们的作品。尤其是渲染！</li>
+<li><strong>No comp.</strong>  Yeah that’s a bit extreme but it forced us to push the assets and their look in Guerilla.</li>
+<li><strong>没有补偿。</strong> 是的，这有点极端，但它迫使我们在 Guerilla 中推广资产和它们的外观。</li>
+</ul>
+<blockquote>
+<p>‘Build’ and ‘Publish’ are the two main processes for any department. ‘Fire and Forget’ was our publishing policy on Playmobil. So efficient !</p>
+<p>“构建”和“发布”是任何部门的两个主要流程。“发布后不管”是我们对 Playmobil 的发布政策。非常高效！</p>
+</blockquote>
+<h3 id="具体的解决方案-concrete-solutions">具体的解决方案 Concrete solutions</h3>
+<p>These concepts may seem basic to you but I believe they are at the core of a modern workflow. What do they mean concretely ?</p>
+<p>这些概念对你来说可能看起来很基础，但我相信它们是现代工作流程的核心。它们具体是什么意思？</p>
+<ul>
+<li>
+<p><strong>One layering template for the WHOLE movie.</strong>  Yes, you have read well. No more layering issues ! The whole movie has been rendered in one Beauty Pass and if needed one Volumetric Pass.</p>
+<p><strong>整个电影都有一个分层模板。</strong> 是的，您读得很好。不再有分层问题！整个电影都在一个 Beauty Pass 中渲染，如果需要，还会在 Volumetric Pass 中渲染。</p>
+</li>
+<li>
+<p><strong>One rendering template for the WHOLE movie.</strong>  Same thing here, we used the same sampling values for the whole movie. No more testing or second-guessing. Same thing for bounces : 16 bounces everywhere. Yes !</p>
+<p><strong>整个电影使用一个渲染模板。</strong> 这里也一样，我们对整个电影使用相同的采样值。不再需要测试或猜测。反弹也一样：到处反弹 16 次。是的！</p>
+</li>
+<li>
+<p><strong>One lighting scene per sequence.</strong>  You may be already used to a Sequence Lighting workflow but this has been a revelation to me. Guerilla and its Render Graph are a perfect fit for this.</p>
+<p><strong>每个序列一个照明场景。</strong> 您可能已经习惯了序列照明工作流程，但这对我来说是一个启示。Guerilla 及其 Render Graph 非常适合此用途。</p>
+</li>
+<li>
+<p><strong>We don’t need to open every shot of the movie in Guerilla.</strong>  If you validate the master shot, all the child shots can be rendered directly.</p>
+<p><strong>我们不需要在 Guerilla 中打开影片的每一个镜头。</strong> 如果您验证了主镜头，则可以直接渲染所有子镜头。</p>
+</li>
+</ul>
+<blockquote>
+<p>The whole idea behind this was simple : we wanted lighting artists to take care of… lighting. Not sampling, nor debugging. It did not mean that our lighting artists should not be aware of the technical side of things but we did not want it to be their main focus.</p>
+<p>整个想法很简单：我们希望灯光艺术家负责……灯光。不是采样，也不是调试。这并不意味着我们的灯光艺术家不应该了解事物的技术方面，但我们不希望这是他们的主要关注点。</p>
+<p>It is all about proper training, really.</p>
+<p>事实上，这一切都与适当的训练有关。</p>
+</blockquote>
+<p>On ​<em>Playmobil</em>​, thanks to these great features, we would have one lighting artist per sequence and a very small lighting team overall : twelve persons in total ! I believe small teams embracing Sequence Lighting is the future of the industry.</p>
+<p><em>在Playmobil</em>上，得益于这些出色的功能，我们每个序列都有一位灯光艺术家，总体而言，灯光团队非常小：总共 12 个人！我相信，采用序列灯光的小团队是行业的未来。</p>
+<h2 id="序列照明-sequence-lighting">序列照明 Sequence Lighting</h2>
+<p>If you have read <a href="https://chrisbrejon.com/cg-cinematography/">my book about CG Cinematography</a>, you are probably familiar with the concept of <a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#Global">Global Lighting</a>. Sequence lighting is part of this philosophy, it allows you to work on a sequence within one file or archive.</p>
+<p>如果你读过<a href="https://chrisbrejon.com/cg-cinematography/">我关于 CG 电影摄影的书，你可能对</a>​<a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#Global">全局照明</a>的概念很熟悉。序列照明是这一理念的一部分，它允许你在同一个文件或档案中处理一个序列。</p>
+<p>During the phase of Master Lighting, to establish the mood on a sequence,  <strong>we generally want to control the whole sequence with one light rig.</strong>  Let me go back in time a bit to present you different versions of this wonderful technique.</p>
+<p>在主照明阶段，为了营造场景氛围，<strong>我们通常希望用一套灯光设备控制整个场景。</strong> 让我回顾一下过去，向您介绍这项绝妙技术的不同版本。</p>
+<h3 id="宠物的秘密生活-the-secret-life-of-pets"><em>宠物的秘密生活 The secret life of pets</em></h3>
+<p>I first discovered Sequence Lighting on ​<em>The Secret Life of Pets</em>​. Back then (2015) it was pretty much manual. I had to synchronize my shots every evening to test different camera angles in order to setup a strong light rig.</p>
+<p>我第一次发现序列照明是在 <em>《爱宠大机密》</em> 中。当时（2015 年）它几乎是手动的。我必须每天晚上同步我的镜头以测试不同的摄影机角度，以便设置强大的灯光装置。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_130_key_shot_pets_FHD-20241105174047-szmo0h7.jpg" alt="" loading="lazy">​</p>
+<p>We still had to manually open and check every single shot.</p>
+<p>我们仍然必须手动打开并检查每一个镜头。</p>
+<p>Any shot override had to be done in the shot itself and would be lost in case of re-synchronizing the shot. This process worked well but was very time consuming and could lead to many human errors.</p>
+<p>任何镜头覆盖都必须在镜头本身中进行，如果重新同步镜头，覆盖将会丢失。此过程效果很好，但非常耗时，并且可能导致许多人为错误。</p>
+<h3 id="乐高蝙蝠侠-lego-batman"><em>乐高蝙蝠侠 Lego Batman</em></h3>
+<p>I then moved to Animal Logic where Sequence Lighting was pushed to the next level. <strong>This was a cultural shock to me !</strong>   The whole sequence lighting process had be merged into <strong>one file</strong> where you could manage, if you wanted to, as many shots as you wanted.</p>
+<p>随后我转而加入 Animal Logic，在那里，序列照明被提升到了一个新的水平。<strong>这对我来说是一种文化冲击！</strong>   整个序列照明过程被合并到<strong>一个文件</strong>中，如果你愿意，你可以管理任意数量的镜头。</p>
+<p>We also could render a shot without even opening it. It really took me some time to accept the fact I could render massively and almost blindly. But think about it : if your key shot is approved and your child shots are very similar, why bother ?</p>
+<p>我们甚至可以在不打开镜头的情况下渲染镜头。我花了很长时间才接受我可以大规模且几乎盲目地渲染的事实。但想想看：如果你的关键镜头被批准，而你的儿童镜头非常相似，那又何必呢？</p>
+<p><img src="assets/120_guerillaRender_140_key_shot_lego_batman_FHD-20241105174047-c56f8lq.jpg" alt="" loading="lazy">​</p>
+<p>One file to drive nine shots. Yep that’s the way to go !</p>
+<p>一个文件可打出九个球。没错，就是这个方法！</p>
+<p>Basically, you could assign a light rig to x number of shots and by hitting ​<em>Render</em>​, shots would assemble on the fly (with latest publishes of every department) and render on the farm without even opening Maya. Same thing with Nuke scripts. Automatic compositing… Really powerful !</p>
+<p>基本上，您可以为 x 个镜头分配灯光装置，然后点击​ <em>“渲染”</em> ​，镜头就会即时组合（使用每个部门的最新发布）并在农场进行渲染，甚至无需打开 Maya。Nuke 脚本也是如此。自动合成……非常强大！</p>
+<p>I really want to emphasize this : <strong>no need to open your lighting software to render a shot on the farm.</strong>   We certainly do <strong>NOT</strong> want to render the scene of the artist. <strong>Why should we bother opening the child shots if the master has been approved ?</strong></p>
+<p>我真的想强调这一点：<strong>无需打开照明软件来渲染农场的镜头。</strong> 我们当然不想<strong>渲染</strong>艺术家的场景。<strong>如果主人已经获得批准，我们为什么要费心打开孩子的镜头？</strong></p>
+<p><img src="assets/120_guerillaRender_150_lux_rss_FHD-20241105174047-el0xj9j.jpg" alt="" loading="lazy">​</p>
+<p>These RSS scripts were really powerful. What a great way to manage a sequence !</p>
+<p>这些 RSS 脚本非常强大。真是管理序列的好方法！</p>
+<p>It is no coincidence Craig Welsh called his article <a href="https://www.expandedcinematography.com/industrialised-cinematography.html">Industrialized Cinematography</a>. This whole process based on the <em>Render Explorer</em> saved our lives when we delivered <em>Lego Batman</em> in a record time.</p>
+<p><a href="https://www.expandedcinematography.com/industrialised-cinematography.html">克雷格·威尔士将他的文章命名为“工业化电影摄影”</a>并非巧合。当我们以创纪录的时间交付<em>乐高蝙蝠侠</em> 时，基于<em>渲染浏览器的整个过程拯救了我们的生命。</em></p>
+<p>From what I can remember (it was back in 2016), the only downside to this workflow was that it was destructive. You had to execute the RSS file to check your scene with no possibility of modifying it after that.</p>
+<p>据我所记得（那是在 2016 年），这种工作流程的唯一缺点是它具有破坏性。您必须执行 RSS 文件才能检查场景，之后无法对其进行修改。</p>
+<p>It seems to me that companies are evolving towards smaller structures : less people with better technology. We did <em>Lego Batman</em> with less than thirty people.  <strong>Fewer costs, better management, happier artists.</strong></p>
+<p>在我看来，公司正在向小型化发展：人员更少，技术更先进。我们用不到 30 名员工制作了*乐高蝙蝠侠。*​<strong>成本更低，管理更好，艺术家更快乐。</strong></p>
+<h3 id="电影playmobil-playmobil-the-movie"><em>电影《Playmobil》 Playmobil the movie</em></h3>
+<p>Sequence Lighting on Playmobil is probably the only time that I worked with a <strong>completely non-destructive workflow</strong> thanks to the amazing <a href="http://guerillarender.com/doc/2.0/User%20Guide_Render%20Graph.html">Render Graphs</a>. We would have one Render Graph on sequence level and one Render Graph per shot for any overrides.</p>
+<p>由于出色的<a href="http://guerillarender.com/doc/2.0/User%20Guide_Render%20Graph.html">渲染图，</a> Playmobil 上的序列照明可能是我唯一一次使用<strong>完全非破坏性工作流程</strong>。我们将在序列级别上使用一个渲染图，并且每个镜头都有一个渲染图用于任何覆盖。</p>
+<p><img src="assets/120_guerillaRender_020_screenshot_411000007_FHD-20241105174047-0tqcvx7.jpg" alt="" loading="lazy">​</p>
+<p>The sequence Render Graph and the shot Render Graph. You can turn off any node very easily. Non-destructive workflow.</p>
+<p>序列渲染图和镜头渲染图。您可以非常轻松地关闭任何节点。非破坏性工作流程。</p>
+<p>Let’s say I had to change the moon temperature or exposure in my sequence. I did not have to open the 40 shots one by one. Not at all ! I just had to open <strong>one file to manage the whole sequence.</strong>   This looks like an healthy workflow to me.</p>
+<p>假设我必须更改序列中的月球温度或曝光度。我不必逐一打开 40 张照片。根本不需要！我只需打开<strong>一个文件即可管理整个序列。</strong> 在我看来，这似乎是一种健康的工作流程。</p>
+<h4 id="序列照明之争-the-sequence-lighting-debate">序列照明之争 The Sequence lighting debate</h4>
+<p>We had an interesting debate on <em>Playmo</em> about Sequence Lighting and its impact on the industry. Will <em>Sequence Lighting</em> destroy jobs ? I have often used the comparison with the typing pools from the 1950s.</p>
+<p><em>我们在Playmo</em>上就 Sequence Lighting 及其对行业的影响进行了一场有趣的辩论。Sequence <em>Lighting</em>会毁掉工作岗位吗？我经常拿它与 20 世纪 50 年代的打字池作比较。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_160_typing_pool_xerox_FHD-20241105174047-xxdzue8.jpg" alt="" title="After the widespread adoption of the typewriter but before the photocopier and personal computer, pools of typists were needed by large companies to produce documents. 在打字机广泛普及之后，但在复印机和个人电脑出现之前，大型公司需要大量打字员来制作文件。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_170_typing_pool_xerox_FHD-20241105174047-9oh8crp.jpg" alt="" title="From handwritten manuscripts, these secretarial pools had to re-type documents that had been edited, type documents from audio recordings or type copies of documents. Here is the Xerox 9700 printing system. 这些秘书团队必须根据手写稿件重新打印已编辑的文档、根据录音打印文档或打印文档副本。这是施乐 9700 打印系统。" loading="lazy">​</p>
+<p>This comparison is a bit far-fetched but hopefully you get my point.</p>
+<p>这种比较有点牵强，但希望你能明白我的意思。</p>
+<p>We were a hundred lighters on Happy Feet 2 (they even hired a lighter from France and made him come to Sydney to light a single shot). And we were only 12 lighting artists on​<em>Playmobil</em>​. So should we be worried about finding a job in the next few years ? I would say no for these three reasons :</p>
+<p>在拍摄《快乐的大脚 2》时，我们有 100 名灯光师（他们甚至从法国雇了一名灯光师，让他来到悉尼只点亮一盏灯）。而在拍摄 <em>《Playmobil》</em> 时，我们只有 12 名灯光师。那么，我们是否应该担心未来几年找不到工作呢？我会说不，原因有三：</p>
+<ul>
+<li>It will probably take ten years or so for studios to fully embrace the <em>Sequence Lighting</em> technique.</li>
+<li>工作室可能需要十年左右的时间才能完全接受<em>序列照明</em>技术。</li>
+<li>Big studios (like MPC, Framestore, Illumination…) will ALWAYS prefer hiring too many artists rather than the contrary.  <strong>Their biggest fear is not be not able to deliver. So their hiring policy is kind of a safety net.</strong></li>
+<li>大型工作室（如 MPC、Framestore、Illumination……）总是喜欢雇佣过多的艺术家，而不是相反。<strong>他们最大的担忧不是无法交付。所以他们的招聘政策是一种安全网。</strong></li>
+<li>When you deliver your movie in three months, like it is happening more and more often, you kinda need manpower. Like an army of lighters to finish the job.</li>
+<li>当你在三个月内完成一部电影时，这种情况越来越常见，你需要人力。比如一支打火机大军来完成这项工作。</li>
+</ul>
+<p>To be perfectly clear, I don’t want put anyone out of their job. But <em>Sequence Lighting</em> is happening and if the studio is organized (sequences delivered in time and with a good balance of shots), it will change the industry for good.</p>
+<p>明确地说，我并不想让任何人失业。但<em>序列照明</em>正在发生，如果工作室井然有序（序列按时交付，镜头平衡良好），它将彻底改变这个行业。</p>
+<p>Its biggest advantage (apart of saving money for the studio) is that <strong>one lighting artist can manage a whole sequence by himself.</strong>  Making him more motivated and involved than if he inherited the light rig from someone else. So <strong>his personal investment will be more important resulting in a more coherent and hopefully better result.</strong>  Like a virtuous circle. Who wants to copy/paste/render ? Nobody.</p>
+<p>它最大的优势（除了为工作室省钱之外）是<strong>一位灯光师可以独自管理整个序列。</strong> 这让他比从别人那里继承灯光设备更有动力、参与度更高。因此，<strong>他的个人投资将更为重要，从而产生更连贯、更理想的结果。</strong> 就像一个良性循环。谁想复制/粘贴/渲染？没有人。</p>
+<h2 id="其他炫酷功能-other-cool-features">其他炫酷功能 Other cool features</h2>
+<h3 id="实时视口-real-time-viewport">实时视口 Real-time Viewport</h3>
+<p><em>Playmobil</em> is also the only show in my whole career where I could use a perfect real-time IPR on production assets. <strong>It was not another demo from Siggraph.</strong>  The real time worked perfectly in final shots of the movie. The only thing we had to remove was the fur. That’s it ! We even had the volumetric in the viewport. Insane !</p>
+<p><em>Playmobil</em>也是我整个职业生涯中唯一一部可以在制作资产上使用完美实时 IPR 的影片。<strong>它不是 Siggraph 的另一个演示。</strong> 实时效果在电影的最终镜头中完美呈现。我们唯一需要去除的是毛发。就是这样！我们甚至在视口中实现了体积效果。太疯狂了！</p>
+<blockquote>
+<p>I completely agree with <strong><a href="https://www.3dvf.com/jean-michel-bihorel-joue-avec-le-pelage-dun-tigre/">Jean-Michel Bihorel</a></strong> (Lighting Supervisor of Minuscule 2) on this one : <strong>I find the interactive render from Guerilla much more reactive than any GPU render engine.</strong></p>
+<p>我完全同意**<a href="https://www.3dvf.com/jean-michel-bihorel-joue-avec-le-pelage-dun-tigre/">Jean-Michel Bihorel</a>**（《Minuscule 2》的灯光总监）的这一观点：<strong>我发现 Guerilla 的交互式渲染比任何 GPU 渲染引擎都更具反应性。</strong></p>
+<p>Word.</p>
+<p>单词。</p>
+</blockquote>
+<p>In this next video, I am using the Pixar Kitchen scene, surfaced, textured and lit by **<a href="https://www.artstation.com/floredechorgnat">Flore</a><strong>​</strong><a href="https://vimeo.com/floredechorgnat">Dechorgnat</a>**​. This complex scene using 15 shaders, around 250 textures (from 512x to 4k resolution), UDIMs, 14 lights and some translucency works very nicely in real-time.</p>
+<p>在下一个视频中，我将使用由  <strong><a href="https://www.artstation.com/floredechorgnat">FloreDechorgnat</a></strong>  制作的表面、纹理和灯光的皮克斯厨房场景。这个复杂的场景使用了 15 个着色器、大约 250 个纹理（从 512x 到 4k 分辨率）、UDIM、14 个灯光和一些半透明效果，在实时中效果非常好。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_160_pixar_kitchen_1080p-20241115035623-os43vmg.mp4" data-src="assets/120_guerillaRender_160_pixar_kitchen_1080p-20241115035623-os43vmg.mp4"></video></p>
+<p>I have tried to present my favorite things about Guerilla in less than three minutes.</p>
+<p>我尝试在不到三分钟的时间内介绍我最喜欢的 Guerilla 事物。</p>
+<p>I know some studios went for a GPU/CPU solution. In my experience, it was not interesting. Because the results are so different between a render engine and an other that I could not rely on theGPU. And it actually multiplies the job by two : two render engines to develop, two sets of shaders… I have not tried <a href="https://renderman.pixar.com/news/renderman-xpu-development-update">Renderman XPU</a> but right now I am a full CPU believer.</p>
+<p>我知道有些工作室选择了 GPU/CPU 解决方案。根据我的经验，这并不有趣。因为渲染引擎之间的结果差异很大，所以我不能依赖 GPU。这实际上使工作量增加了一倍：需要开发两个渲染引擎，两组着色器……我还没有尝试过<a href="https://renderman.pixar.com/news/renderman-xpu-development-update">Renderman XPU</a>，但现在我完全相信 CPU。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_190_gazebo_apes_FHD-20241105174047-582gmnp.jpg" alt="" title="I have nothing against GPU rendering... Some demos and video games out there look great. 我对 GPU 渲染没有任何意见...有些演示和视频游戏看起来很棒。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_200_gazebo_apes_FHD-20241105174047-5zeg2qi.jpg" alt="" title="But it is very difficult to light this way. If the final CPU render is so different from the previz. How can you anticipate anything ? 但用这种方式照明非常困难。如果最终的 CPU 渲染与预览有很大不同。你怎么能预测任何事情呢？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_210_gazebo_apes_FHD-20241105174047-6qamnwm.jpg" alt="" title="And it actually doubles the work for the r&amp;d team ! You would have to develop two render engines instead of one... 这实际上使研发团队的工作量增加了一倍！您必须开发两个渲染引擎，而不是一个……" loading="lazy">​</p>
+<p>With heavy VFX assets, GPU is mostly interesting for previsualization.</p>
+<p>对于大量 VFX 资产，GPU 主要用于预可视化。</p>
+<h3 id="一键渲染-one-button-render">一键渲染 One button render</h3>
+<p>We also had a launcher on <em>Playmo</em> (same concept as Animal). Concept was pretty simple : <strong>One button render.</strong>   What if your producer asks you to see the movie in its current state on the 15th of August ? Are you going to manually open every shot ? Nope. On ​<em>Playmo</em>​, we were able to render a full sequence with just one click or a single command line.</p>
+<p><em>我们在Playmo</em>上也有一个启动器（与 Animal 的概念相同）。概念非常简单：<strong>一键渲染。</strong> 如果你的制片人要求你在 8 月 15 日查看电影的当前状态，你会怎么做？你会手动打开每个镜头吗？不。在<em>Playmo</em>上，我们只需单击一次或使用单个命令行即可渲染整个序列。</p>
+<p>Of course, this launcher would give us some options in terms of anti-aliasing and frame stepping (First-Middle-Last being our most current choice). The whole idea behind it was pretty genius : we don’t want to render the movie only once. We render several iterations and  <strong>improve the quality every time where it matters.</strong></p>
+<p>当然，这个启动器会为我们提供一些抗锯齿和帧步进方面的选项（我们目前最常用的是 First-Middle-Last）。它背后的整个想法非常天才：我们不想只渲染一次电影。我们会渲染几次迭代，并<strong>在每次重要时刻提高质量。</strong></p>
+<h2 id="playmobil-趣闻-playmobil-fun-facts">Playmobil 趣闻 Playmobil fun facts</h2>
+<h3 id="我的采访-my-interview">我的采访 My interview</h3>
+<p>My interview at On Animation was pretty much unique. Yes we did watch my demo and discuss workflow, pipeline and render engines. But the main thing I remember from <strong>Pascal</strong> and <strong>Rachid</strong> is this beautiful sentence : ​<em>we don’t hire trolls</em>​.</p>
+<p>我在 On Animation 的面试非常独特。是的，我们确实观看了我的演示并讨论了工作流程、管道和渲染引擎。但我从<strong>Pascal</strong>和<strong>Rachid</strong>那里记住的主要内容是这句漂亮的话：​<em>我们不雇佣巨魔</em>​。</p>
+<p>I really think it was clever to pay attention to this. <strong>Most studios do not care about the psychological side of a production.</strong>   But if someone, especially in an open space, sighs a lot or criticizes the work, it can really bring the whole department down. So I found it very unusual but also very refreshing that they paid attention to that.</p>
+<p>我真的认为关注这一点很聪明。<strong>大多数工作室并不关心制作的心理方面。</strong> 但如果有人，特别是在开放空间里，叹气或批评工作，这真的会让整个部门都陷入困境。所以我觉得他们关注这一点很不寻常，但也令人耳目一新。</p>
+<p>You want to keep the spirit of your team high, especially during crunch time and sometimes it can come from only one person to bring the whole team down.</p>
+<p>您希望保持团队的高昂士气，尤其是在关键时刻，但有时仅仅一个人就可能让整个团队士气低落。</p>
+<h3 id="与-anya-会面-meeting-with-anya">与 Anya 会面 Meeting with Anya</h3>
+<p><em>Playmobil</em> is the only time where I met with an actress. In thirteen years of career, it was on <em>Playmo</em> that I had the privilege to meet​**<a href="https://www.imdb.com/name/nm5896355/">Anya Taylor-Joy</a>**​. As you probably know, I am a huge fan of <em>The Witch</em> so I was really thrilled to listen to her talking about her role and ask a couple of questions.</p>
+<p><em>Playmobil</em>是我唯一一次与女演员见面。在十三年的职业生涯中，正是在<em>Playmobil</em>我有幸见到了**<a href="https://www.imdb.com/name/nm5896355/">安雅·泰勒-乔伊</a>**​ <em>。你可能知道，我是《女巫》</em> 的超级粉丝，所以我很高兴听她谈论她的角色并问了几个问题。</p>
+<p>This may seem trivial to you but I think it was really cool to meet someone from the cast. We also had the opportunity to visit the live set from Playmo. All of these interactions bring life to the studio and really help to keep the spirit high.</p>
+<p>这对你可能来说似乎微不足道，但我认为见到演员真的很酷。我们还有机会参观了 Playmo 的现场布景。所有这些互动都给工作室带来了活力，并真正有助于保持高昂的精神。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_220_playmo_mels-20241105174047-uupgrzq.jpg" alt="" title="It was pretty cool to see for real the sets we had lit in Guerilla. 亲眼看到我们在 Guerilla 中布置的布景，感觉非常酷。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_230_playmo_mels-20241105174047-fqz1dr8.jpg" alt="" title="The set was located at MELS in Montreal. 该场景位于蒙特利尔的 MELS。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_240_playmo_mels-20241105174047-kqnwmlv.jpg" alt="" title="All the different worlds from the movie were present. Yay ! 电影中的所有不同世界都存在。耶！" loading="lazy">​</p>
+<p>Lots of cool things happened on the show to make us feel part of a team.</p>
+<p>节目中发生了很多很酷的事情，让我们感觉自己是团队的一员。</p>
+<h3 id="andré-turpin-大师班-master-class-with-andré-turpin">André Turpin 大师班 Master class with André Turpin</h3>
+<p><em>Playmobil</em> is also the only time where I had a master class with a DP. <strong>André Turpin</strong> came to the studio and gave us an amazing Master class. Without any notes, he talked during more than an hour about lenses, shooting on set and his experience. This was so interesting ! Meeting a real DP !</p>
+<p><em>Playmobil</em>也是我唯一一次与摄影指导一起上大师课。André <strong>Turpin</strong>来到工作室，给我们上了一堂精彩的大师课。没有任何笔记，他花了一个多小时讲解镜头、现场拍摄和他的经验。这太有趣了！见到了一位真正的摄影指导！</p>
+<iframe src="https://player.bilibili.com/player.html?isOutside=true&amp;aid=113484125771309&amp;bvid=BV1uKm9YxEgz&amp;cid=26764250577&amp;p=1" data-src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113484125771309&amp;bvid=BV1uKm9YxEgz&amp;cid=26764250577&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 1133px; height: 616px;"></iframe>
+<p>原始视频：<a href="https://vimeo.com/161490598">#RVCQ16 | Leçon de cinéma : André Turpin</a></p>
+<h3 id="与-lino-共进早餐-breakfast-with-lino">与 Lino 共进早餐 Breakfast with Lino</h3>
+<p>Finally <em>Playmobil</em> is the only time I had breakfast with my director. All of this may seem useless to you but believe me, it makes a big difference when a director explains his ideas and share some footage with you.</p>
+<p>最后，<em>Playmobil</em>是我唯一一次和导演一起吃早餐。所有这些对你来说可能都没什么用，但相信我，当导演向你解释他的想法并分享一些镜头时，这会产生很大的不同。</p>
+<p><strong>It makes you feel you are part of something greater than you</strong> and that everybody tries to reach the same goal : make the best possible movie. We also had cheese &amp; wine in the evening. That was cool !</p>
+<p><strong>它让你感觉自己是某个比你更伟大的事物的一部分</strong>，每个人都在努力实现同一个目标：制作出最好的电影。晚上我们还吃了奶酪和葡萄酒。太棒了！</p>
+<h2 id="guerilla未来就在眼前-guerilla-the-future-is-here">Guerilla，未来就在眼前 Guerilla, the future is here</h2>
+<h3 id="去噪-denoising">去噪 Denoising</h3>
+<p>One thing we need to take in account with path tracing is the noise in the renders. Denoising can be done in Nuke or even better as a post-process in the render. Guerilla Render includes the latest <a href="https://software.intel.com/en-us/articles/intel-open-image-denoise-library-saves-time-boosts-quality">Open Image Denoise from Intel</a>.</p>
+<p>在进行路径追踪时，我们需要考虑的一件事是渲染中的噪声。降噪可以在 Nuke 中完成，或者更好的方法是在渲染中作为后期处理。Guerilla Render 包含<a href="https://software.intel.com/en-us/articles/intel-open-image-denoise-library-saves-time-boosts-quality">英特尔最新的 Open Image Denoise</a>。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/compare-20241115040540-2qri7of.mp4" data-src="assets/compare-20241115040540-2qri7of.mp4"></video></p>
+<blockquote>
+<p><a href="https://rmanwiki.pixar.com/display/REN/Denoise+Workflow">Renderman</a> and <a href="http://zurich.disneyresearch.com/~fabricer/">Disney</a> also have done some research on a Denoiser.</p>
+<p><a href="https://rmanwiki.pixar.com/display/REN/Denoise+Workflow">Renderman</a>和<a href="http://zurich.disneyresearch.com/~fabricer/">Disney</a>也对 Denoiser 做了一些研究。</p>
+</blockquote>
+<h3 id="强力头发-brute-force-hair">强力头发 Brute-Force Hair</h3>
+<p>Yes, the Hair2 shader from Guerilla is based on the <a href="https://studios.disneyresearch.com/wp-content/uploads/2019/04/An-Artist-Friendly-Hair-Shading-System-Paper.pdf">latest paper</a> from Disney. You can even play with all the settings interactively without even opening Guerilla. Just click <a href="http://guerillarender.com/doc/2.2/Library_Materials_Hair2.html">here</a>.</p>
+<p>是的，Guerilla 的 Hair2 着色器基于迪士尼的<a href="https://studios.disneyresearch.com/wp-content/uploads/2019/04/An-Artist-Friendly-Hair-Shading-System-Paper.pdf">最新论文</a>。您甚至可以在不打开 Guerilla 的情况下以交互方式使用所有设置。只需单击<a href="http://guerillarender.com/doc/2.2/Library_Materials_Hair2.html">此处</a>。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Rorschach Stripes-20241115040621-pt73py5.webm" data-src="assets/Rorschach Stripes-20241115040621-pt73py5.webm"></video></p>
+<p>From what I can tell Guerilla Render uses the latest technology in terms of CG rendering. <strong>All the features I have mentioned in this post have been used in production.</strong>   This is not a demo that would only work in a certain context. Nope. It is 100% Production Proof and these features have been thoroughly tested.</p>
+<p>据我所知，Guerilla Render 在 CG 渲染方面采用了最新技术。<strong>我在这篇文章中提到的所有功能都已在生产中使用。</strong> 这不是仅在特定环境下工作的演示。不是。它是 100% 生产验证，这些功能已经过彻底测试。</p>
+<h3 id="体积-sss-volumetric-sss">体积 SSS Volumetric SSS</h3>
+<p>Could you tell me how many movies with a budget of 13 million EUR (approximately 14 million USD) used the same SSS technique as <em>Moana</em> ? I did not work on this wonderful movie called <a href="https://www.youtube.com/watch?v=a6KoXkqmm5I">Minuscule – Mandibles from far away</a> but I believe it is a pretty much unique experience in the history of VFX.</p>
+<p>您能告诉我，有多少部预算为 1300 万欧元（约 1400 万美元）的电影使用了与 *《*​<a href="https://www.youtube.com/watch?v=a6KoXkqmm5I">海洋奇缘</a>》相同的 SSS 技术？我并没有参与制作这部名为《Minuscule – Mandibles》的精彩电影，但我相信这是 VFX 历史上相当独特的经历。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_250_minuscule_yard_FHD-20241105174047-gbhnd9x.jpg" alt="" title="I don't know about you but I think this just looks great. 我不知道您怎么想，但我认为这看起来很棒。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_260_minuscule_yard_FHD-20241105174047-6fwcb7m.jpg" alt="" title="I would love to test the Hair2 Shader on this one. It was not available at the time. 我很想测试一下 Hair2 Shader。当时还没有。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_270_minuscule_yard_FHD-20241105174047-qs8zuk2.jpg" alt="" title="Feast your eyes with this beautiful mantis ! Volumetric subsurface was used for better look. 这只美丽的螳螂让你大饱眼福！为了获得更好的外观，使用了体积次表面。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_280_minuscule_yard_FHD-20241105174047-8t015nj.jpg" alt="" title="Thirty minutes of Full CG were delivered by The Yard VFX for this movie. This one's so cute ! The Yard VFX 为这部电影提供了 30 分钟的全 CG。这个太可爱了！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_290_minuscule_yard_FHD-20241105174047-hnqv53u.jpg" alt="" title="Beautiful and very impressive storm sequence inside the clouds. Volumetrics rendering at its best ! 云层内部的风暴序列美丽而令人印象深刻。体积渲染效果最佳！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_300_minuscule_yard_FHD-20241105174047-lc6vw8q.jpg" alt="" title="Check the amount of details and how soft everything looks. Amazing look development. 检查细节的数量以及一切看起来有多柔和。令人惊叹的外观开发。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_310_minuscule_yard_FHD-20241105174047-2lsz3ac.jpg" alt="" title="Another Full CG shot. Just love the boat and the amount of detail. Lots of procedurals were used as a time saver. 另一张全 CG 镜头。很喜欢这艘船和大量细节。使用了很多程序来节省时间。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/120_guerillaRender_320_minuscule_yard_FHD-20241105174047-2o7mopq.jpg" alt="" title="My favorite shot of all. By the way this is NOT a matte-painting. This is Full CG ! The nest was done in Houdini with a baked lighting. The whole thing is just perfect ! 我最喜欢的镜头。顺便说一句，这不是遮罩绘画。这是全 CG！鸟巢是在 Houdini 中用烘焙灯光制作的。整个东西简直完美！" loading="lazy">​</p>
+<blockquote>
+<p>Beautiful shots and great story too. Loved it !</p>
+<p>镜头很美，故事也很精彩。很喜欢！</p>
+</blockquote>
+<p>Check out the quality of the assets, the beauty of the lighting and shaders. How big was the team do you believe ? <strong>They were 25 artists to deliver more than a thousand shots !</strong>  I cannot remember another movie done in these particular conditions with such a high level of quality.</p>
+<p>看看资产的质量、灯光和着色器的美感。你认为团队有多大？<strong>他们有 25 名艺术家，制作了超过一千个镜头！</strong> 我不记得在这种特殊条件下还有哪部电影能拍出如此高质量的作品。</p>
+<p>Congratulations to The Yard VFX team for this beautiful achievement. Check out the movie if you haven’t seen it : there’s no dialogue (a bit like the fist part of ​<em>Wall-e</em>​) and all the humor is based on body language. A gem ! All the creatures from Guadeloupe were new assets, beautifully achieved by <strong><a href="https://www.artstation.com/jmbihorel">Jean-Michel Bihorel</a></strong> and his team. Well done guys !</p>
+<p>恭喜 The Yard VFX 团队取得这一辉煌成就。如果您还没看过这部电影，请看一下：没有对话（有点像《<em>机器人总动员》</em> 的第一部分），所有幽默都基于肢体语言。真是个珍宝！所有来自瓜德罗普岛的生物都是新资产，由**<a href="https://www.artstation.com/jmbihorel">Jean-Michel Bihorel</a>**和他的团队完美呈现。干得好！</p>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p>I have tried to share with you my love for Guerilla based on my experience on ​<em>Playmobil</em>​. As you probably have guessed, I have used many other render engines (seven in total I think) and I would only stick to Guerilla if I could.  <strong>It is currently my favorite piece of software to render.</strong></p>
+<p>我试图根据我在<em>Playmobil</em>上的经验与你分享我对 Guerilla 的热爱。你可能已经猜到了，我使用过许多其他渲染引擎（我想总共有七个），如果可以的话，我只会坚持使用 Guerilla。<strong>它目前是我最喜欢的渲染软件。</strong></p>
+<p>I agree that the most important thing is how you use the software and not necessarily the software in itself. But I would also say that Guerilla’s modern architecture makes you probably work faster and with less mistakes than any other software.</p>
+<p>我同意最重要的是你如何使用软件，而不一定是软件本身。但我还想说，Guerilla 的现代架构可能比任何其他软件都让你工作得更快、错误更少。</p>
+<p>I also use Guerilla when I teach at <a href="https://nouvellesimages.xyz/">ENSI</a> in the south of France, where this beautiful short film <em>Sous la glace</em> (directed by ​<strong>Milan Baulard</strong>​, ​<strong>Ismaïl Berrahma</strong>​, ​<strong>Flore Dupont</strong>​, ​<strong>Laurie Estampes</strong>​, <strong>Quentin Nory</strong> &amp; ​<strong>Hugo Potin</strong>​) has been made. <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">ACES</a> was also used as a Color Management solution.</p>
+<p>我在法国南部的<a href="https://nouvellesimages.xyz/">ENSI教书时也使用</a>​<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">Guerilla</a>，这部美丽的短片​<em>Sous la glace</em>​（由​<strong>Milan Baulard</strong>​、​<strong>Ismaïl Berrahma</strong>​、​<strong>Flore Dupont</strong>​、​<strong>Laurie Estampes</strong>​、<strong>Quentin Nory</strong>和<strong>Hugo Potin</strong>执导）就是在这里制作的。ACES也被用作色彩管理解决方案。</p>
+<p>Oh ! I almost forgot ! You can actually own Guerilla <a href="http://guerillarender.com/#section-251">for free</a> ! You are allowed to download <strong>one free connected license</strong> for everyone, <strong>including commercial usage.</strong>   Yep I kept the best part for the end. Have fun !</p>
+<p><a href="http://guerillarender.com/#section-251">哦！我差点忘了！你实际上可以免费</a>拥有 Guerilla ！你可以为每个人下载<strong>一个免费的连接许可证，包括商业用途。</strong> 是的，我把最好的部分留到了最后。玩得开心！</p>
+<blockquote>
+<p>If you are a teacher or responsible for a school, Guerilla is free as well, including licenses and support. Give it a try !</p>
+<p>如果您是老师或负责学校，Guerilla 也是免费的，包括许可证和支持。试试看吧！</p>
+<p>Yeah that’s awesome !</p>
+<p>是的，太棒了！</p>
+</blockquote>
+<h2 id="来源-sources">来源 Sources</h2>
+<ul>
+<li><a href="http://guerillarender.com/">Guerilla Render website</a>.</li>
+<li><a href="http://guerillarender.com/">Guerilla Render 网站</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=Tb-E-WUJl44">Trailer of </a>​*<a href="https://www.youtube.com/watch?v=Tb-E-WUJl44">Playmobil</a>*.</li>
+<li>*<a href="https://www.youtube.com/watch?v=Tb-E-WUJl44">Playmobil</a>*​<a href="https://www.youtube.com/watch?v=Tb-E-WUJl44">的预告片</a>。</li>
+<li><a href="https://www.boxofficemojo.com/title/tt4199898/">Box office of </a>​*<a href="https://www.boxofficemojo.com/title/tt4199898/">Playmobil</a>*.</li>
+<li>*<a href="https://www.boxofficemojo.com/title/tt4199898/">Playmobil</a>*​<a href="https://www.boxofficemojo.com/title/tt4199898/">的票房</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=5WD9m5MfAVw">Trailer of </a>​*<a href="https://www.youtube.com/watch?v=5WD9m5MfAVw">Minuscule 2</a>*.</li>
+<li>*<a href="https://www.youtube.com/watch?v=5WD9m5MfAVw">《Minuscule 2》</a>*​<a href="https://www.youtube.com/watch?v=5WD9m5MfAVw">预告片</a>。</li>
+<li><a href="https://theyard-vfx.com/">The Yard VFX website</a>.</li>
+<li><a href="https://theyard-vfx.com/">Yard VFX 网站</a>。</li>
+<li>If you want to know more about Path Tracing, you can check this <a href="https://renderman.pixar.com/resources/RenderMan_20/risOverview.html">explanation from RenderMan</a>, <a href="https://www.disneyanimation.com/technology/innovations/hyperion">Hyperion</a> and from <a href="https://www.fxguide.com/featured/rendermanris-and-the-start-of-next-25-years/">FX Guide</a>. A couple of technical papers that explain precisely the Monte Carlo approach to Path Tracing : <a href="https://jo.dreggn.org/path-tracing-in-production/part1.pdf">Path tracing in production</a> and <a href="https://graphics.pixar.com/library/PathTracedMovies/paper.pdf">Pixar’s Path Traced Movies</a>.</li>
+<li>如果你想了解更多关于路径追踪的知识，你可以查看<a href="https://renderman.pixar.com/resources/RenderMan_20/risOverview.html">RenderMan</a>、<a href="https://www.disneyanimation.com/technology/innovations/hyperion">Hyperion</a>和<a href="https://www.fxguide.com/featured/rendermanris-and-the-start-of-next-25-years/">FX Guide</a>的解释。几篇技术论文精确解释了蒙特卡罗路径追踪方法：<a href="https://jo.dreggn.org/path-tracing-in-production/part1.pdf">制作中的路径追踪</a>和<a href="https://graphics.pixar.com/library/PathTracedMovies/paper.pdf">皮克斯的路径追踪电影</a>。</li>
+<li><strong><a href="https://www.remisalmon.com/">Rémi Salmon</a></strong>, Production Designer of ​<em>Playmobil</em>​.</li>
+<li><strong><a href="https://www.remisalmon.com/">Rémi Salmon</a></strong>  <em>， Playmobil</em>的生产设计师。</li>
+<li>Article about <a href="https://www.fxguide.com/fxfeatured/a-glimpse-at-animal-logic/">Glimpse at Animal Logic</a>.</li>
+<li><a href="https://www.fxguide.com/fxfeatured/a-glimpse-at-animal-logic/">关于“动物逻辑一瞥”</a>的文章。</li>
+<li>A couple of videos about energy cost : <a href="https://www.youtube.com/watch?v=MULmZYhvXik">one in French</a> by <strong>Jean-Marc Jancovici</strong> at the Senate and <a href="https://youtu.be/S4O5voOCqAQ">one with an Olympic cyclist</a>.</li>
+<li>一些关于能源成本的视频：一个是参议院的<strong>Jean-Marc Jancovici</strong>制作的<a href="https://www.youtube.com/watch?v=MULmZYhvXik">法语视频，</a>​<a href="https://youtu.be/S4O5voOCqAQ">另一个是奥运会自行车运动员制作的视频</a>。</li>
+<li>The <a href="https://vimeo.com/353632662">Pixar presentation at Siggraph 2019</a>.</li>
+<li><a href="https://vimeo.com/353632662">皮克斯在 Siggraph 2019 上的</a>演示。</li>
+<li><a href="https://www.expandedcinematography.com/industrialised-cinematography.html">Lego Batman article</a> by ​<strong>Craig Welsh</strong>​.</li>
+<li><strong>克雷格·威尔士 (Craig Welsh)</strong> 撰写的<a href="https://www.expandedcinematography.com/industrialised-cinematography.html">乐高蝙蝠侠文章</a>。</li>
+<li>**<a href="https://www.3dvf.com/jean-michel-bihorel-joue-avec-le-pelage-dun-tigre/">Jean-Michel Bihorel</a>**​<a href="https://www.3dvf.com/jean-michel-bihorel-joue-avec-le-pelage-dun-tigre/">‘s article</a> about the Hair2 Shader.</li>
+<li>**<a href="https://www.3dvf.com/jean-michel-bihorel-joue-avec-le-pelage-dun-tigre/">Jean-Michel Bihorel</a>**关于 Hair2 Shader<a href="https://www.3dvf.com/jean-michel-bihorel-joue-avec-le-pelage-dun-tigre/">的文章。</a></li>
+<li><strong>Flore Dechorgnat</strong>​‘s <a href="https://www.artstation.com/floredechorgnat">Art Station</a> and <a href="https://vimeo.com/floredechorgnat">Vimeo channel</a>.</li>
+<li><strong>Flore Dechorgnat</strong>的<a href="https://www.artstation.com/floredechorgnat">艺术站</a>和<a href="https://vimeo.com/floredechorgnat">Vimeo 频道</a>。</li>
+<li><a href="https://renderman.pixar.com/news/renderman-xpu-development-update">Renderman XPU</a> news article.</li>
+<li><a href="https://renderman.pixar.com/news/renderman-xpu-development-update">Renderman XPU</a>新闻文章。</li>
+<li>**<a href="https://vimeo.com/161490598">André Turpin</a>**​<a href="https://vimeo.com/161490598">‘s Master Class</a>.</li>
+<li>**<a href="https://vimeo.com/161490598">安德烈图尔平 ( André Turpin</a>**​<a href="https://vimeo.com/161490598"> ) 大师班</a>。</li>
+<li>Denoiser articles : <a href="https://software.intel.com/en-us/articles/intel-open-image-denoise-library-saves-time-boosts-quality">Intel</a>,  <a href="https://rmanwiki.pixar.com/display/REN/Denoise+Workflow">Renderman</a> and <a href="http://zurich.disneyresearch.com/~fabricer/">Disney</a>.</li>
+<li>降噪器文章：<a href="https://software.intel.com/en-us/articles/intel-open-image-denoise-library-saves-time-boosts-quality">英特尔</a>、   <a href="https://rmanwiki.pixar.com/display/REN/Denoise+Workflow">Renderman</a>和<a href="http://zurich.disneyresearch.com/~fabricer/">迪士尼</a>。</li>
+<li><a href="https://studios.disneyresearch.com/wp-content/uploads/2019/04/An-Artist-Friendly-Hair-Shading-System-Paper.pdf">Brute-force Hair</a> by Disney.</li>
+<li><a href="https://studios.disneyresearch.com/wp-content/uploads/2019/04/An-Artist-Friendly-Hair-Shading-System-Paper.pdf">迪士尼的“Brute-force Hair”</a>。</li>
+<li><a href="https://nouvellesimages.xyz/">ENSI’s website</a>, *<a href="https://vimeo.com/360801147">Sous la glace</a>*​<a href="https://vimeo.com/360801147"> trailer</a>.</li>
+<li><a href="https://nouvellesimages.xyz/">ENSI 的网站</a>，*<a href="https://vimeo.com/360801147">Sous la Glace</a>*​<a href="https://vimeo.com/360801147">预告片</a>。</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a>
+<ul>
+<li><a href="#%E7%94%9F%E4%BA%A7%E5%AE%9E%E4%BE%8B-production-examples">生产实例 Production examples</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFguerilla-what-is-guerilla">什么是Guerilla？ What is Guerilla ?</a></li>
+<li><a href="#%E6%8B%8D%E6%91%84%E7%A4%BA%E4%BE%8B-shot-example">拍摄示例 Shot example</a>
+<ul>
+<li><a href="#%E9%95%9C%E5%A4%B4%E6%8F%8F%E8%BF%B0-shot-description">镜头描述 Shot description</a></li>
+<li><a href="#%E7%85%A7%E6%98%8E%E5%92%8C%E5%90%88%E6%88%90-lighting-and-compositing">照明和合成 Lighting and Compositing</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B8%B2%E6%9F%93%E6%97%B6%E9%97%B4-render-times">渲染时间 Render times</a>
+<ul>
+<li><a href="#%E4%BA%BA%E7%B1%BB%E6%97%B6%E9%97%B4-vs-%E6%9C%BA%E5%99%A8%E6%97%B6%E9%97%B4-human-time-vs-machine-time">人类时间 VS 机器时间 Human time VS Machine time</a></li>
+</ul>
+</li>
+<li><a href="#%E7%8E%B0%E4%BB%A3%E5%8C%96%E7%AE%A1%E9%81%93-modern-pipeline">现代化管道 Modern pipeline</a>
+<ul>
+<li><a href="#playmobil%E4%B8%8A%E7%9A%84%E6%95%B0%E5%AD%97%E5%A5%97%E8%A3%85-digital-set-on-playmobil">Playmobil上的数字套装 Digital Set on <em>Playmobil</em></a></li>
+<li><a href="#%E8%BF%9E%E8%B4%AF%E6%80%A7%E5%92%8C%E7%81%B5%E6%B4%BB%E6%80%A7-coherence-and-flexibility">连贯性和灵活性 Coherence and flexibility</a></li>
+</ul>
+</li>
+<li><a href="#playmobil%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-workflow-aspects-of-playmobil">Playmobil的工作流程 Workflow aspects of <em>Playmobil</em></a>
+<ul>
+<li><a href="#%E5%85%B7%E4%BD%93%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-concrete-solutions">具体的解决方案 Concrete solutions</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BA%8F%E5%88%97%E7%85%A7%E6%98%8E-sequence-lighting">序列照明 Sequence Lighting</a>
+<ul>
+<li><a href="#%E5%AE%A0%E7%89%A9%E7%9A%84%E7%A7%98%E5%AF%86%E7%94%9F%E6%B4%BB-the-secret-life-of-pets"><em>宠物的秘密生活 The secret life of pets</em></a></li>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0-lego-batman"><em>乐高蝙蝠侠 Lego Batman</em></a></li>
+<li><a href="#%E7%94%B5%E5%BD%B1playmobil-playmobil-the-movie"><em>电影《Playmobil》 Playmobil the movie</em></a>
+<ul>
+<li><a href="#%E5%BA%8F%E5%88%97%E7%85%A7%E6%98%8E%E4%B9%8B%E4%BA%89-the-sequence-lighting-debate">序列照明之争 The Sequence lighting debate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96%E7%82%AB%E9%85%B7%E5%8A%9F%E8%83%BD-other-cool-features">其他炫酷功能 Other cool features</a>
+<ul>
+<li><a href="#%E5%AE%9E%E6%97%B6%E8%A7%86%E5%8F%A3-real-time-viewport">实时视口 Real-time Viewport</a></li>
+<li><a href="#%E4%B8%80%E9%94%AE%E6%B8%B2%E6%9F%93-one-button-render">一键渲染 One button render</a></li>
+</ul>
+</li>
+<li><a href="#playmobil-%E8%B6%A3%E9%97%BB-playmobil-fun-facts">Playmobil 趣闻 Playmobil fun facts</a>
+<ul>
+<li><a href="#%E6%88%91%E7%9A%84%E9%87%87%E8%AE%BF-my-interview">我的采访 My interview</a></li>
+<li><a href="#%E4%B8%8E-anya-%E4%BC%9A%E9%9D%A2-meeting-with-anya">与 Anya 会面 Meeting with Anya</a></li>
+<li><a href="#andr%C3%A9-turpin-%E5%A4%A7%E5%B8%88%E7%8F%AD-master-class-with-andr%C3%A9-turpin">André Turpin 大师班 Master class with André Turpin</a></li>
+<li><a href="#%E4%B8%8E-lino-%E5%85%B1%E8%BF%9B%E6%97%A9%E9%A4%90-breakfast-with-lino">与 Lino 共进早餐 Breakfast with Lino</a></li>
+</ul>
+</li>
+<li><a href="#guerilla%E6%9C%AA%E6%9D%A5%E5%B0%B1%E5%9C%A8%E7%9C%BC%E5%89%8D-guerilla-the-future-is-here">Guerilla，未来就在眼前 Guerilla, the future is here</a>
+<ul>
+<li><a href="#%E5%8E%BB%E5%99%AA-denoising">去噪 Denoising</a></li>
+<li><a href="#%E5%BC%BA%E5%8A%9B%E5%A4%B4%E5%8F%91-brute-force-hair">强力头发 Brute-Force Hair</a></li>
+<li><a href="#%E4%BD%93%E7%A7%AF-sss-volumetric-sss">体积 SSS Volumetric SSS</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+<li><a href="#%E6%9D%A5%E6%BA%90-sources">来源 Sources</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-Conclusion/">
+              <h3 class="post-title">
+                 CG Cinematography 结论
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
