@@ -1,0 +1,800 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> OCIO 胡言乱语和颜色选择噩梦 | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=" OCIO 胡言乱语和颜色选择噩梦 | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+OCIO ramblings and Color Picking nightmare - Chris Brejon - Chris Brejon
+https://chrisbrejon.com/articles/ocio-rambling..." />
+    <meta name="keywords" content="Color,ACES,OCIO" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               OCIO 胡言乱语和颜色选择噩梦
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-24
+              </span>
+              <span>
+                33 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/ospYPv23vW/" class="post-tag">
+                  # Color
+                </a>
+              
+                <a href="https://zcfly1992.github.io/_GcDUwqFHG/" class="post-tag">
+                  # ACES
+                </a>
+              
+                <a href="https://zcfly1992.github.io/NcPgcQE9Gqz/" class="post-tag">
+                  # OCIO
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0610_playmobil_peah_boat_concept_FHD-20241105174143-0jaxo65.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>OCIO ramblings and Color Picking nightmare - Chris Brejon - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/articles/ocio-ramblings-and-color-picking-nightmare/">https://chrisbrejon.com/articles/ocio-ramblings-and-color-picking-nightmare/</a></li>
+<li>Introduction This page used to be part of the ACES chapter but it is so specific that I thought it would make more sense to have it a separated article. Please take with a pinch of salt since it has not been updates with my latest ACES findings. Thanks ! ACES implementation ACES, OCIO and […]</li>
+</ul>
+<hr>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p>This page used to be part of the ACES chapter but it is so specific that I thought it would make more sense to have it a separated article. Please take with a pinch of salt since it has not been updates with my latest ACES findings. Thanks !</p>
+<p>此页面曾是 ACES 章节的一部分，但它非常具体，所以我认为将其作为单独的文章更有意义。请谨慎对待，因为它尚未更新我最新的 ACES 发现。谢谢！</p>
+<h2 id="aces-实施-aces-implementation">ACES 实施 ACES implementation</h2>
+<h3 id="aces-ocio-和-ctl">ACES, OCIO 和 CTL</h3>
+<p>Most color pipelines nowadays are set through <em>OCIO</em> which is great because of its compatibility with many softwares : ​<em>Maya</em>​, ​<em>Guerilla</em>​, ​<em>Nuke</em>​, ​<em>Mari</em>​, ​<em>Rv</em>​… But there is one downside using <em>OCIOv1</em> and LUTs : you loose precision. It is really well explained in <a href="https://acescentral.com/t/colour-artefacts-or-breakup-using-aces/520/60">this post</a> and also <a href="https://acescentral.com/t/aces-1-1-discussion-tell-us-what-you-think/1421/11">here</a>.</p>
+<p><em>如今，大多数色彩管道都是通过OCIO</em>设置的，OCIO 非常棒，因为它与许多软件兼容：​<em>Maya</em>​、​<em>Guerilla</em>​、​<em>Nuke</em>​、​<em>Mari</em>​、<em>Rv ……但使用OCIOv1</em>和 LUT有一个缺点：你会损失精度。<a href="https://acescentral.com/t/colour-artefacts-or-breakup-using-aces/520/60">这篇文章</a>和<a href="https://acescentral.com/t/aces-1-1-discussion-tell-us-what-you-think/1421/11">这里</a>对此进行了很好的解释。</p>
+<blockquote>
+<p>The reason the CTF works better is because it is more of an “exact math”  implementation of the ACES CTL code rather than baking down into a  LUT-based representation.</p>
+<p>CTF 效果更好的原因在于它更像是 ACES CTL 代码的“精确数学”实现，而不是基于 LUT 的表示。</p>
+<p>From ​<strong>Doug Walker</strong>​, ACES mentor.</p>
+<p>来自ACES 导师<strong>Doug Walker 。</strong></p>
+</blockquote>
+<h4 id="离散变换和连续变换-discrete-and-continuous-transforms">离散变换和连续变换 Discrete and Continuous transforms</h4>
+<p>What is happening here ? The answer has been given to me by my colleague, <strong>Christophe Verspieren.</strong>  He has showed me the concept of <em>Continuous and Discrete</em> that is happening with the baked LUTS from OCIO. It is actually pretty easy to understand. Check this image from <a href="http://mrguesto.weebly.com/11-sequences.html">this site</a> :</p>
+<p><strong>这是怎么回事？我的同事Christophe Verspieren</strong>给了我答案。他向我展示了 OCIO 烘焙的 LUTS 中出现的<em>连续和离散</em>概念。这实际上很容易理解。查看<a href="http://mrguesto.weebly.com/11-sequences.html">此网站</a>上的这张图片：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0390_continuous_discrete_FHD-20241105174143-iq7t2go.jpg" alt="" title="Discrete and Continuous are two paradigms of calculation. On the left our baked LUTs. On the right the equations, which are more accurate as there are no gaps to fill. 离散和连续是两种计算范式。左侧是我们烘焙的 LUT。右侧是方程式，由于没有空白需要填补，因此更准确。" loading="lazy">​</p>
+<p>When we go from Scene Referred to Display Referred, it implies to cover a high dynamic range (ACES deals with something like 15 stops). The discrete transform actually covers huge zones.</p>
+<p>当我们从场景参考转换到显示参考时，这意味着要覆盖高动态范围（ACES 处理大约 15 个停止点）。离散变换实际上覆盖了巨大的区域。</p>
+<p>We do not split the dynamic range into equal zones as we prefer to split in detail most current values at the expense of highlights. Therefore the display tone mapping (ODT) makes these false chromaticities really visible by increasing the exposure.</p>
+<p>我们没有将动态范围划分为相等的区域，因为我们更愿意以牺牲高光为代价来详细划分最新的值。因此，显示色调映射 (ODT) 通过增加曝光度使这些假色度变得清晰可见。</p>
+<blockquote>
+<p>Also even if the transformation is mathematically defined in OCIO, the fact that it runs on GPU rather than on CPU leads to a discretization of the formula : <strong>the graphic card actually creates a LUT !</strong></p>
+<p>另外，即使转换在 OCIO 中以数学方式定义，但它在 GPU 而不是 CPU 上运行的事实导致了公式的离散化：<strong>显卡实际上创建了一个 LUT！</strong></p>
+<p>Really these issues are endless…</p>
+<p>确实这些问题无穷无尽……</p>
+</blockquote>
+<h4 id="颜色插值差距-color-interpolation-gaps">颜色插值差距 Color interpolation gaps</h4>
+<p>Furthermore, these gaps (from the discretization) are filled linearly which is not necessarily the most natural way. Even if we change gamut, we still work in RGB and linear interpolations are done on a line going from A to B. Sometimes it would be better to manage color <a href="https://www.alanzucconi.com/2016/01/06/colour-interpolation/">interpolation</a> in the Lab colorspace.</p>
+<p>此外，这些间隙（来自离散化）是线性填充的，这不一定是最自然的方式。即使我们改变色域，我们仍然在 RGB 中工作，并且在从 A 到 B 的线上进行线性插值。有时在 Lab 颜色空间中管理颜色<a href="https://www.alanzucconi.com/2016/01/06/colour-interpolation/">插值会更好。</a></p>
+<blockquote>
+<p>Not every mathematical formula is available in OCIO 1.1.1, only OCIO v2 will allow to represent accurately the necessary calculation of ACES.</p>
+<p>OCIO 1.1.1 中并非所有数学公式都可用，只有 OCIO v2 才允许准确表示 ACES 的必要计算。</p>
+</blockquote>
+<p>To sum it up :</p>
+<p>总结一下：</p>
+<ul>
+<li>Between each slice we have linear interpolations.</li>
+<li>每个切片之间都有线性插值。</li>
+<li>In very large areas these interpolations lack accuracy.</li>
+<li>在非常大的区域，这些插值缺乏准确性。</li>
+<li>This results in errors of chromaticites in highlights due to the discretisation.</li>
+<li>由于离散化，这会导致高光部分出现色度误差。</li>
+</ul>
+<p>How does this translate visually ? Let’s have a look at some renders with extreme saturation to compare different solutions.</p>
+<p>这在视觉上如何体现？让我们看一些饱和度极高的渲染图来比较不同的解决方案。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0400_maya_arnold_ACES_configs_comparison-20241105174143-grlh2qx.jpg" alt="" title="Here is an ACEScg render displayed with sRGB (ACES). I have used primary values and removed any specular to get the most extreme example. 这是使用 sRGB (ACES) 显示的 ACEScg 渲染图。我使用了主值并删除了所有镜面反射以获得最极端的示例。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0410_maya_arnold_ACES_configs_comparison-20241105174143-2goz7mi.jpg" alt="" title="This is is the same render with a four stops increase. I am using here the ACES1.0.3 config. Please pay attention to the red getting yellow and the blue getting this harsh line. 这是相同的渲染，但增加了四档。我在这里使用 ACES1.0.3 配置。请注意红色变成黄色，蓝色变成这条刺眼的线条。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0420_maya_arnold_ACES_configs_comparison-20241105174143-q1rhrg8.jpg" alt="" title="This is is the same render using the ACES 1.1 config. Red doesn't shift to yellow and the blue sphere has lost its harsh line. 这是使用 ACES 1.1 配置的相同渲染。红色没有变为黄色，蓝色球体失去了其锐利的线条。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0430_maya_arnold_ACES_configs_comparison-20241105174143-mi5xmdr.jpg" alt="" title="And this is the same render using the native implementation of ACES in Maya. Yes, that's quite different because it is using Color Transform Language (CTL). 这是使用 Maya 中 ACES 的原生实现进行的相同渲染。是的，这完全不同，因为它使用的是颜色变换语言 (CTL)。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0440_maya_arnold_ACES_configs_comparison-20241105174143-7a6sj7y.jpg" alt="" title="Let's now push to seven stops... Over-exposed red and green look yellow with ACES 1.0.3. 现在让我们推到七档...使用 ACES 1.0.3，过度曝光的红色和绿色看起来是黄色。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0450_maya_arnold_ACES_configs_comparison-20241105174143-nzlnttp.jpg" alt="" title="This is the same render displayed with ACES 1.1. 这是使用 ACES 1.1 显示的相同渲染。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0460_maya_arnold_ACES_configs_comparison-20241105174143-i21w0kb.jpg" alt="" title="And this is the CTL implementation from Autodesk. The differences are quite noticeable. 这是 Autodesk 的 CTL 实现。差异非常明显。" loading="lazy">​</p>
+<p>Because of Arnold default settings, the base color weight is at 0.8 in these renders.</p>
+<p>由于 Arnold 默认设置，这些渲染中基础颜色权重为 0.8。</p>
+<h4 id="nuke-中的-ctl-节点-ctl-nodes-in-nuke">Nuke 中的 CTL 节点 CTL nodes in Nuke</h4>
+<p>How important is this ? Should we stick to OCIO or look into this CTL implementation ? I guess the best answer I have read on this topic comes (once again !) from <strong><a href="http://www.alexfry.com/blog/2016/11/30/pure-nuke-aces-rrt-odt">Alex Fry</a></strong> :</p>
+<p><strong><a href="http://www.alexfry.com/blog/2016/11/30/pure-nuke-aces-rrt-odt">这有多重要？我们应该坚持使用 OCIO 还是研究这个 CTL 实现？我想我读过的关于这个话题的最佳答案来自Alex Fry</a></strong>（再次！）：</p>
+<blockquote>
+<p>With normally exposed images, especially from live action cameras, you’re unlikely to see any values that render differently to the OCIO config, but with CG images containing extreme intensity and saturation you will see more pleasing roll off and desaturation.</p>
+<p>对于正常曝光的图像，尤其是实景摄影机拍摄的图像，您不太可能看到与 OCIO 配置不同的任何值，但对于包含极端强度和饱和度的 CG 图像，您会看到更令人愉悦的滚动和去饱和度。</p>
+<p>December 2016 and <strong>Alex Fry</strong> had already understood so much stuff…</p>
+<p>2016 年 12 月，<strong>Alex Fry</strong>已经了解了很多东西……</p>
+</blockquote>
+<p>So it looks like CTL would be worth using especially if you are working on saturated animated feature films ! <strong>Alex Fry</strong> was kind enough to share with us this <a href="https://github.com/alexfry/PureNukeACES">Pure Nuke ACES</a> <a href="https://acescentral.com/t/pure-nuke-aces-with-basic-parametric-odt-prototype/1313/6">RRT &amp; ODT</a>. Jed Smith has also done <a href="https://github.com/jedypod/nuke-colortools/tree/master/toolsets/ACES">a Nuke implementation of the ACES Output Transforms</a>.</p>
+<p>因此，看起来 CTL 值得使用，特别是如果您正在制作饱和动画长片！<strong>Alex Fry</strong>非常友善地与我们分享了<a href="https://github.com/alexfry/PureNukeACES">Pure Nuke ACES </a> <a href="https://acescentral.com/t/pure-nuke-aces-with-basic-parametric-odt-prototype/1313/6">RRT &amp; ODT。Jed</a> Smith 还完成了<a href="https://github.com/jedypod/nuke-colortools/tree/master/toolsets/ACES">ACES 输出变换的 Nuke 实现</a>。</p>
+<blockquote>
+<p>Please be aware that CTL is pretty much a dead language. It has not been maintained nor updated properly, as it is quite a rabbit hole.</p>
+<p>请注意，CTL 几乎已经是一种过时的语言。它既没有得到妥善维护，也没有得到适当更新，因为它是一个相当棘手的问题。</p>
+<p>This is <a href="https://community.acescentral.com/t/future-of-ctl/3056/22">the last thread about CTL</a> that I know of. You may try it on Windows like <a href="https://community.acescentral.com/t/using-ctl-render-on-windows-with-ubuntu/3494">this</a>.</p>
+<p>这是我所知道的<a href="https://community.acescentral.com/t/future-of-ctl/3056/22">关于 CTL 的最后一个帖子。您可以在 Windows 上尝试</a><a href="https://community.acescentral.com/t/using-ctl-render-on-windows-with-ubuntu/3494">此</a>操作。</p>
+</blockquote>
+<p>These Nuke nodes have a 100% match to a pure CTL implementation but are way faster. <strong>Please note that these nodes work withACES2065-1footage.</strong>  Since we render in ​<em>ACEScg</em>​, you will need to convert your footage with an “​<em>OCIOColorSpace</em>​” node before plugging your footage.</p>
+<p>这些 Nuke 节点与纯 CTL 实现 100% 匹配，但速度更快。<strong>请注意，这些节点适用于ACES2065-1素材。</strong> <em>由于我们在ACEScg</em>中渲染，因此您需要在插入素材之前使用“ <em>OCIOColorSpace ”节点转换素材。</em></p>
+<p>You can also check <a href="https://youtu.be/vKtF2S7WEv0?t=458">different examples</a> from Alex Fry’s presentation. I don’t know if these images were generated in CTL or OCIO though. Or even using <a href="https://www.digitalmediaworld.tv/post/1459-the-lego-batman-movie-packs-a-punch-with-filmlight-s-baselight">FilmLight’s</a> <a href="https://www.filmlight.ltd.uk/customers/meet-the-colourist/sam_chynoweth.php">Baselight</a>… With OCIOv2, the ACES OCIO config should not present any discrepancies anymore.</p>
+<p>您还可以查看Alex Fry 演示文稿中的<a href="https://youtu.be/vKtF2S7WEv0?t=458">不同示例</a>。我不知道这些图像是在 CTL 还是 OCIO 中生成的。或者甚至使用<a href="https://www.digitalmediaworld.tv/post/1459-the-lego-batman-movie-packs-a-punch-with-filmlight-s-baselight">FilmLight 的</a> <a href="https://www.filmlight.ltd.uk/customers/meet-the-colourist/sam_chynoweth.php">Baselight</a> ……使用 OCIOv2，ACES OCIO 配置应该不会再出现任何差异。</p>
+<blockquote>
+<p>The release notes for the ACES OCIO configs are available <a href="https://github.com/colour-science/OpenColorIO-Configs/releases">here</a>.</p>
+<p>ACES OCIO 配置的发布说明可<a href="https://github.com/colour-science/OpenColorIO-Configs/releases">在此处</a>获得。</p>
+</blockquote>
+<h3 id="渲染引擎中的-aces-aces-in-render-engines">渲染引擎中的 ACES ACES in render engines</h3>
+<p>Most render engines have integrated OCIO which give us access to ACES. Autodesk has even come up with <a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2018/ENU/Maya-Rendering/files/GUID-460BA05D-3AB7-4BE2-AD30-01F9D3440CD8-htm.html">a CTL integration of ACES in Maya</a>. But as surprising as it may sound, there are different levels of integration for OCIO/ACES. And for most render engines, calculations based on light spectra are still done with sRGB/Rec.709 primaries, such as :</p>
+<p>大多数渲染引擎都集成了 OCIO，这使我们能够访问 ACES。Autodesk 甚至在 Maya 中提出了<a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2018/ENU/Maya-Rendering/files/GUID-460BA05D-3AB7-4BE2-AD30-01F9D3440CD8-htm.html">ACES 的 CTL 集成</a>。但尽管听起来令人惊讶，OCIO/ACES 的集成程度却不同。对于大多数渲染引擎，基于光谱的计算仍然使用 sRGB/Rec.709 原色完成，例如：</p>
+<ul>
+<li>Kelvin temperatures (for lights, black-body radiation and camera white balance).</li>
+<li>开尔文温度（用于灯光、黑体辐射和相机白平衡）。</li>
+<li>Physical sun &amp; sky (or ​<em>Skylight</em>​).</li>
+<li>物理太阳和天空（或​<em>天光</em>​）。</li>
+<li>Melanin in the Hair Shader (see <a href="https://help.autodesk.com/view/ARNOL/ENU/?guid=arnold_core_7140_html">this Arnold release note</a> for instance).</li>
+<li>头发着色器中的黑色素（例如，参见<a href="https://help.autodesk.com/view/ARNOL/ENU/?guid=arnold_core_7140_html">此 Arnold 发行说明）。</a></li>
+</ul>
+<p>For example, in most render engines, the <em>Skylight</em> is a spectral representation converted to sRGB/Rec.709 primaries. I am quoting here the example of V-Ray :</p>
+<p>例如，在大多数渲染引擎中，<em>天光</em>是转换为 sRGB/Rec.709 原色的光谱表示。我在这里引用 V-Ray 的例子：</p>
+<blockquote>
+<p>V-Ray uses sRGB primaries by default, but this is really only relevant if you use any V-Ray features that deal with spectra – like light temperature, camera white balance as temperature, physical sun and sky. […] Normally, V-Ray treats all colors as triplets of floating point values; for the most part V-Ray doesn’t really care what the three numbers actually mean. However some calculations in V-Ray are based on light spectra; the conversion of these spectra to floating-point color triplets assumes that the three numbers mean something specific – a color in some predefined internal renderer color space. This means that when converting from Kelvin temperature to RGB colors, V-Ray must know what that internal renderer color space is.</p>
+<p>V-Ray 默认使用 sRGB 原色，但这实际上仅在您使用任何处理光谱的 V-Ray 功能时才有意义 - 例如光温、相机白平衡作为温度、物理太阳和天空。[…] 通常，V-Ray 将所有颜色视为浮点值的三元组；在大多数情况下，V-Ray 并不真正关心这三个数字的实际含义。然而，V-Ray 中的一些计算是基于光谱的；将这些光谱转换为浮点颜色三元组假设这三个数字具有特定的含义 - 某些预定义的内部渲染器颜色空间中的颜色。这意味着当从开尔文温度转换为 RGB 颜色时，V-Ray 必须知道该内部渲染器颜色空间是什么。</p>
+<p>From this <a href="https://forums.chaosgroup.com/forum/v-ray-for-maya-forums/v-ray-for-maya-general/72630-render-colour-primaries">post</a> in 2016.</p>
+<p>源自 2016 年的这篇<a href="https://forums.chaosgroup.com/forum/v-ray-for-maya-forums/v-ray-for-maya-general/72630-render-colour-primaries">文章</a>。</p>
+</blockquote>
+<p>I am pretty sure that developers will catch up at some point. Otherwise you may simply <a href="https://community.acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/7">use a 3×3 transform from </a>​*<a href="https://community.acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/7">sRGB</a><em>​<a href="https://community.acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/7"> to </a>​</em><a href="https://community.acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/7">ACEScg</a>* to convert. But it is true that this final implementation step is missing in most DCC softwares.</p>
+<p>我非常肯定开发人员会在某个时候赶上来。否则，您可能只需<a href="https://community.acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/7">使用 3×3 转换从</a>​*<a href="https://community.acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/7">sRGB</a><em>​<a href="https://community.acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/7">到</a>​</em><a href="https://community.acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/7">ACEScg</a>*即可进行转换。但大多数 DCC 软件确实缺少这个最终实现步骤。</p>
+<h3 id="修改-aces-ocio-配置-modifying-the-aces-ocio-config">修改 ACES OCIO 配置 Modifying the ACES OCIO config</h3>
+<p>I have thought for quite some time that the ACES OCIO config should be used as it is. Not at all ! There is <a href="https://community.acescentral.com/t/manual-editing-of-config-ocio/3524">a thread on ACESCentral</a> that explains it really well :</p>
+<p>我已经想了很长时间，应该按原样使用 ACES OCIO 配置。根本不是！<a href="https://community.acescentral.com/t/manual-editing-of-config-ocio/3524">ACESCentral 上有一个帖子</a>对此进行了很好的解释：</p>
+<blockquote>
+<p>It’s very common practice to make a custom config by editing the standard ACES config in a text editor. […] Not only that but recommended ! One of the goals of the ACES config has always been to be  <strong>a starting point</strong> for people to tailor it to their needs.</p>
+<p>通过在文本编辑器中编辑标准 ACES 配置来创建自定义配置是一种非常常见的做法。[…] 不仅如此，而且值得推荐！ACES 配置的目标之一一直是成为人们根据自己的需求进行定制的<strong>起点</strong>。</p>
+<p><strong>Nick Shaw</strong> and ​<strong>Thomas Mansencal</strong>​.</p>
+<p><strong>尼克·肖</strong>和​<strong>托马斯·曼森卡尔</strong>​。</p>
+</blockquote>
+<p>The simplest approach is to edit the “​<em>config.ocio</em>​” file in a text editor, such as ​<em>notepad</em>​. You should do a backup of the original config file, then do simple edits based on your needs and requirements. Here are my personal preferences :</p>
+<p>最简单的方法是使用文本编辑器（例如<em>记事本）编辑“config.ocio</em> ”文件。您应该备份原始配置文件，然后根据您的需求和要求进行简单的编辑。以下是我的个人偏好：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ACES 1.2 OCIO Config</th>
+<th>Custom ACES  OCIO Config</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color_picking</td>
+<td>Output – sRGB</td>
+<td>lin_srgb</td>
+</tr>
+<tr>
+<td>color_timing</td>
+<td>ACES – ACEScc</td>
+<td>acescct</td>
+</tr>
+<tr>
+<td>compositing_linear</td>
+<td>ACES – ACEScg</td>
+<td>acescg</td>
+</tr>
+<tr>
+<td>compositing_log</td>
+<td>Input – ADX – ADX10</td>
+<td>acescct</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Utility – Raw</td>
+<td>raw</td>
+</tr>
+<tr>
+<td>default</td>
+<td>ACES – ACES2065-1</td>
+<td>lin_ap0</td>
+</tr>
+<tr>
+<td>matte_paint</td>
+<td>Utility – sRGB – Texture</td>
+<td>acescct</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Utility – Raw</td>
+<td>raw</td>
+</tr>
+<tr>
+<td>rendering</td>
+<td>ACES – ACEScg</td>
+<td>acescg</td>
+</tr>
+<tr>
+<td>scene_linear</td>
+<td>ACES – ACEScg</td>
+<td>acescg</td>
+</tr>
+<tr>
+<td>texture_paint</td>
+<td>ACES – ACEScc</td>
+<td>lin_srgb</td>
+</tr>
+<tr>
+<td>active views</td>
+<td>[sRGB, DCDM, DCDM P3D60 Limited, DCDM P3D65 Limited, P3-D60, P3-D65 ST2084 1000 nits, P3-D65 ST2084 2000 nits, P3-D65 ST2084 4000 nits, P3-DCI D60 simulation, P3-DCI D65 simulation, P3D65, P3D65 D60 simulation, P3D65 Rec.709 Limited, P3D65 ST2084 108 nits, Rec.2020, Rec.2020 P3D65 Limited, Rec.2020 Rec.709 Limited, Rec.2020 HLG 1000 nits, Rec.2020 ST2084 1000 nits, Rec.2020 ST2084 2000 nits, Rec.2020 ST2084 4000 nits, Rec.709, Rec.709 D60 sim., sRGB D60 sim., Raw, Log]</td>
+<td>[sRGB, Raw, Log]</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ACES 1.2 OCIO 配置</th>
+<th>自定义 ACES OCIO 配置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>颜色选择</td>
+<td>输出 – sRGB</td>
+<td>lin_srgb</td>
+</tr>
+<tr>
+<td>颜色定时</td>
+<td>ACES – ACEScc</td>
+<td>負責</td>
+</tr>
+<tr>
+<td>合成_线性</td>
+<td>ACES – ACEScg</td>
+<td>愛斯卡</td>
+</tr>
+<tr>
+<td>合成日志</td>
+<td>输入–ADX–ADX10</td>
+<td>負責</td>
+</tr>
+<tr>
+<td>数据</td>
+<td>实用程序 – 原始</td>
+<td>生的</td>
+</tr>
+<tr>
+<td>默认</td>
+<td>ACES – ACES2065-1</td>
+<td>lin_ap0</td>
+</tr>
+<tr>
+<td>matte_paint</td>
+<td>实用程序 – sRGB – 纹理</td>
+<td>負責</td>
+</tr>
+<tr>
+<td>参考</td>
+<td>实用程序 – 原始</td>
+<td>生的</td>
+</tr>
+<tr>
+<td>渲染</td>
+<td>ACES – ACEScg</td>
+<td>愛斯卡</td>
+</tr>
+<tr>
+<td>scene_linear</td>
+<td>ACES – ACEScg</td>
+<td>愛斯卡</td>
+</tr>
+<tr>
+<td>纹理绘制</td>
+<td>ACES – ACEScc</td>
+<td>lin_srgb</td>
+</tr>
+<tr>
+<td>活跃视图</td>
+<td>[sRGB、DCDM、DCDM P3D60 Limited、DCDM P3D65 Limited、P3-D60、P3-D65 ST2084 1000 尼特、P3-D65 ST2084 2000 尼特、P3-D65 ST2084 4000 尼特、P3-DCI D60 模拟、P3-DCI D65 模拟、P3D65、P3D65 D60 模拟、P3D65 Rec.709 Limited、P3D65 ST2084 108 尼特、Rec.2020、Rec.2020 P3D65 Limited、Rec.2020 Rec.709 Limited、Rec.2020 HLG 1000 尼特、Rec.2020 ST2084 1000 尼特、Rec.2020 ST2084 2000尼特、Rec.2020 ST2084 4000 尼特、Rec.709、Rec.709 D60 模拟、sRGB D60 模拟、原始、对数]</td>
+<td>[sRGB、原始、对数]</td>
+</tr>
+</tbody>
+</table>
+<h4 id="修改-aces-ocio-配置的原因-reasons-for-modifying-the-aces-ocio-config">修改 ACES OCIO 配置的原因 Reasons for modifying the ACES OCIO config</h4>
+<p>Here are a few explanations on my choices :</p>
+<p>以下是我对我的选择的一些解释：</p>
+<ul>
+<li>I use <em>Aliases</em> instead of the ​<em>ColorSpace’s names</em>​. I find them shorter and quite useful.</li>
+<li>我使用<em>别名</em>代替​<em>ColorSpace 的名称</em>​。我发现它们更简短而且非常有用。</li>
+<li>The <em>color_picking</em> role is limited to the sRGB gamut, in order to avoid any gamut clipping from the Output Transform. As far as I know, this feature will only work in Autodesk Maya though.</li>
+<li><em>color_picking</em>角色仅限于 sRGB 色域，以避免输出变换中出现任何色域剪切。据我所知，此功能仅适用于 Autodesk Maya。</li>
+<li>The <em>color_timing</em> and <em>compositing_log</em> roles both use ​<em>acescct</em>​. It can be useful for operations such as <em>Saturation</em> or ​<em>Sharpen</em>​.</li>
+<li>color_timing和<em>compositing_log角色都</em>使用<em>acecct 。它对于诸如饱和度</em>或<em>锐化</em>之类的操作很有用。</li>
+<li>The <em>matte_paint</em> role is in <em>acescct</em> due to a Photoshop workaround.</li>
+<li>由于 Photoshop 的解决方法，<em>matte_paint</em>角色处于<em>acescct状态。</em></li>
+<li>The <em>texture_paint</em> role is in <em>lin_srgb</em> since all my inputs/textures have a linear transfer function (by convention).</li>
+<li><em>由于我的所有输入/纹理都有线性</em>传递函数（按照惯例），因此Texture_paint角色在<em>lin_srgb中。</em></li>
+<li>I have also limited the number of active views to shorten the drop-down menus (like Nuke’s viewer).</li>
+<li>我还限制了活动视图的数量以缩短下拉菜单（如 Nuke 的查看器）。</li>
+</ul>
+<h2 id="反转输出转换工作流程-inverted-output-transform-workflow">反转输出转换工作流程 Inverted Output transform Workflow</h2>
+<h3 id="保留徽标和图形-preserving-logos-and-graphics">保留徽标和图形 Preserving Logos and Graphics</h3>
+<p>This topic has been addressed <a href="https://acescentral.com/t/srgb-jpeg-use-in-acescg/1162">many</a> <a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/8">many</a> <a href="https://acescentral.com/t/nuke-srgb-aces-srgb-not-the-same/2292">many</a> <a href="https://acescentral.com/t/path-acescg-to-regular-srgb-nuke-10-5v1-aces-1-0-3/858/8">many</a> <a href="https://acescentral.com/t/handle-srgb-rec709-footage-in-aces/2060/2">many</a> <a href="https://community.acescentral.com/t/preserving-logos-and-graphics-in-aces/2861">many</a> <a href="https://community.acescentral.com/t/production-logos-into-aces/3156/3">many</a> <a href="https://community.acescentral.com/t/output-srgb-or-utility-srgb-texture/4187">many</a> times on <a href="https://community.acescentral.com/">the ACEScentral forum</a>. How do we preserve the look of an image from internet into an ACES workflow ? <strong>The ODT can be used as an IDT to do so.</strong>  This process is simply called <em><strong>Inverted LUT.</strong></em></p>
+<p>这个话题在<a href="https://community.acescentral.com/">ACEScentral 论坛</a>上已经被讨论过<a href="https://acescentral.com/t/handle-srgb-rec709-footage-in-aces/2060/2">很多</a>​<a href="https://acescentral.com/t/path-acescg-to-regular-srgb-nuke-10-5v1-aces-1-0-3/858/8">次</a>​<a href="https://acescentral.com/t/srgb-jpeg-use-in-acescg/1162">了</a> <a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/8">。</a> <a href="https://acescentral.com/t/nuke-srgb-aces-srgb-not-the-same/2292">我们</a> <a href="https://community.acescentral.com/t/preserving-logos-and-graphics-in-aces/2861">如何</a>​<a href="https://community.acescentral.com/t/output-srgb-or-utility-srgb-texture/4187">将</a>互联网上的图片保留到 ACES 工作流程中？<strong>ODT 可以用作 IDT 来实现这一点。</strong> <a href="https://community.acescentral.com/t/production-logos-into-aces/3156/3">这个</a>过程简称为<em><strong>反向 LUT。</strong></em></p>
+<p>Importing an image using the <em>RRT/ODT</em> is just a way to tell ACES : <em><strong>this image, wherever it comes from, is my final result and I want to convert it back to my working space.</strong></em>  Unfortunately the <em>RRT/ODT</em> is not perfectly invertible. So what happens is (almost but not quite) a transparent round trip :</p>
+<p><em>使用RRT/ODT</em>导入图像只是告诉 ACES 的一种方式：<em><strong>无论该图像来自何处，它都是我的最终结果，我想将其转换回我的工作空间。</strong></em> 不幸的是，<em>RRT/ODT</em>并非完全可逆。因此，发生的是（几乎但不完全）透明的往返：</p>
+<ul>
+<li>IDT : <em>Output – sRGB -&gt;ACEScg</em></li>
+<li>Working/Rendering space : <em>ACEScg</em></li>
+<li>ODT : <em>ACEScg -&gt;Output-sRGB</em></li>
+</ul>
+<blockquote>
+<p>A friendly reminder : <em><strong>you should never ever use this technique to load a texture into a shader.</strong></em>  It has been <a href="https://community.acescentral.com/t/linear-srgb-not-behaving-as-expected/2355">explained</a> <a href="https://community.acescentral.com/t/proper-texturing-workflow-for-unreal-engine/3145/2">several</a> <a href="https://community.acescentral.com/t/utility-srgb-texture-too-dark/2726">times</a> on <a href="https://community.acescentral.com/">the ACEScentral forum</a>.</p>
+<p>温馨提醒：<em><strong>您永远不应该使用此技术将纹理加载到着色器中。</strong></em> ACEScentral<a href="https://community.acescentral.com/t/utility-srgb-texture-too-dark/2726">论坛</a>​<a href="https://community.acescentral.com/">上</a>已多次<a href="https://community.acescentral.com/t/proper-texturing-workflow-for-unreal-engine/3145/2">解释</a>​<a href="https://community.acescentral.com/t/linear-srgb-not-behaving-as-expected/2355">过</a> 此问题。</p>
+</blockquote>
+<h3 id="恒定颜色-constant-color">恒定颜色 Constant color</h3>
+<p>One of the most frequent questions I have been asked is about converting asset :  <strong>how should we deal with assets created in linear – sRGB to convert them to ACEScg ?</strong></p>
+<p>我被问到最多的问题之一是关于转换资产：<strong>我们应该如何处理以线性 sRGB创建的资产以将它们转换为ACEScg？</strong></p>
+<p>Here is an example I had to face recently. Let’s say you work on a movie with a famous character dressed in red. Generally,  <strong>the client will be very picky about this red value.</strong>  It has to match !</p>
+<p>这是我最近遇到的一个例子。假设你正在制作一部电影，其中有一个著名角色身着红色服装。通常，<strong>客户会对这个红色值非常挑剔。</strong> 它必须匹配！</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0470_manual_conversion_workflow-20241105174143-3ay2htg.jpg" alt="" title="Let's say that this is my famous character. Its look has been approved using the spi-anim config with a Film (sRGB) display. This is the target to match. 假设这是我的著名角色。其外观已通过 spi-anim 配置和 Film (sRGB) 显示器的验证。这是要匹配的目标。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0480_manual_conversion_workflow-20241105174143-293ztgl.jpg" alt="" title="If I look at the same render in Raw (sRGB), this is what I see. No Display Transform is applied here in the Render View. The linear red value is 0.779,0.1389,0.1389. 如果我查看 Raw (sRGB) 中的相同渲染，就会看到以下结果。渲染视图中未应用任何显示变换。线性红色值为 0.779,0.1389,0.1389。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0490_manual_conversion_workflow-20241105174143-4dndz9d.jpg" alt="" title="I now put the same red value, render in ACEScg and see it in Raw (ACES). No Display Transform is applied here in the Render View. Wow, it seems to match ! Is it that easy ? 我现在输入相同的红色值，在 ACEScg 中渲染并在 Raw (ACES) 中看到它。渲染视图中未应用显示变换。哇，它似乎匹配！就这么简单吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0500_manual_conversion_workflow-20241105174143-c5ohqx2.jpg" alt="" title="Let's go back to my target : a linear render seen with a Film (sRGB) display from the spi-anim config... 让我们回到我的目标：从 spi-anim 配置中使用胶片 (sRGB) 显示器看到的线性渲染..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0510_manual_conversion_workflow-20241105174143-usfmbos.jpg" alt="" title="And compare with the ACEScg render displayed in sRGB (ACES)... The red color is completely wrong ! What happened ? Change of Gamut and the ACES ODT gives me something completely different ! 并与 sRGB (ACES) 中显示的 ACEScg 渲染进行比较...红色完全错误！发生了什么？更改色域和 ACES ODT 给我带来了完全不同的东西！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0520_manual_conversion_workflow-20241105174143-9rh7jvk.jpg" alt="" title="Hum... Let's see if I convert my color, the infamous red (0.779, 0.1389, 0.1389), from Linear - sRGB to ACEScg in Nuke. Will I land on my feet ? 嗯...让我们看看我是否能在 Nuke 中将我的颜色（臭名昭著的红色 (0.779, 0.1389, 0.1389)）从 Linear - sRGB 转换为 ACEScg。我能成功吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0530_manual_conversion_workflow-20241105174143-z8hla8o.jpg" alt="" title="Once again, this is my target : a linear render seen with a Film (sRGB) display from the spi-anim config... 再一次，这是我的目标：从 spi-anim 配置中使用胶片 (sRGB) 显示器看到的线性渲染..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0540_manual_conversion_workflow-20241105174143-5o6lb2q.jpg" alt="" title="The new ACEScg render, with the converted value, displayed as sRGB (ACES)... It gets closer but it's still not there. Why doesn't it match already ? Because even if we converted the value, the tone mapping (RRT+ODT) processes are not the same between the two config files. 新的 ACEScg 渲染，转换后的值显示为 sRGB (ACES)... 它越来越接近了，但仍然没有达到。为什么它还不匹配？因为即使我们转换了值，两个配置文件之间的色调映射 (RRT+ODT) 过程也不相同。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0550_manual_conversion_workflow-20241105174143-6u9saek.jpg" alt="" title="Here is the solution I have come with. Buckle up ! This is my target albedo. The value I want in my display sRGB (ACES). 这是我找到的解决方案。系好安全带！这是我的目标反照率。我希望我的显示器 sRGB (ACES) 中的值。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0560_odt_conversion_workflow-20241105174143-0gji7q4.jpg" alt="" title="I am using an OCIOColorSpace node to bring the values in display-referred. It gives (0.82494, 0.37940, 0.37940). 我正在使用 OCIOColorSpace 节点来获取显示引用的值。它给出 (0.82494, 0.37940, 0.37940)。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0570_manual_conversion_workflow-20241105174143-au63n56.jpg" alt="" title="And here is the trick : since I know what color I want for my target, I apply my ODT (Output - sRGB) as an IDT to know the scene-referred value (ACEScg). This process is called : to apply an inversed LUT. I now got the final value for my red character : (0.70182, 0.22447, 0.19683). 这里有诀窍：因为我知道我想要的目标颜色，所以我将 ODT（输出 - sRGB）应用为 IDT 来了解场景引用值（ACEScg）。这个过程称为：应用反转 LUT。我现在得到了我的红色角色的最终值：（0.70182、0.22447、0.19683）。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0580_manual_conversion_workflow-20241105174143-df9ht3o.jpg" alt="" title="Let's go back for comparison to my target : a linear render seen with a Film (sRGB) display from the spi-anim config... 让我们回过头来与我的目标进行比较：从 spi-anim 配置中使用胶片 (sRGB) 显示器看到的线性渲染..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0590_manual_conversion_workflow-20241105174143-vlupqss.jpg" alt="" title="Perfect match with an ACEScg render displayed in sRGB (ACES). And since we rendered in ACEScg, the basis vectors are different and are producing a different Global Illumination. 与在 sRGB (ACES) 中显示的 ACEScg 渲染完美匹配。由于我们在 ACEScg 中渲染，因此基础向量不同，并产生不同的全局照明。" loading="lazy">​</p>
+<p>This workflow works because Nuke and Guerilla color select in ACEScg.</p>
+<p>此工作流程有效是因为 Nuke 和 Guerilla 在 ACEScg 中选择了颜色。</p>
+<p>I have written this tutorial for a constant color because I was able to check that the converted values did not break the energy conservation. <strong>And this is why you should never do it for a texture.</strong></p>
+<p>我为恒定颜色编写了本教程，因为我能够检查转换后的值是否破坏能量守恒。<strong>这就是为什么你永远不应该对纹理这样做的原因。</strong></p>
+<h3 id="颜色键-color-key">颜色键 Color key</h3>
+<p>I have used the “​<em>inverted ODT technique</em>​” for our next example. The challenge was to maintain the same colors from a boat concept painted in Photoshop into an ACEScg render. I know that <strong>fidelity to color keys and concepts is critical for many studios.</strong></p>
+<p>我将“​<em>反转 ODT 技术</em>​”用于我们的下一个示例。挑战在于将 Photoshop 中绘制的船舶概念的颜色保留到 ACEScg 渲染中。我知道<strong>对许多工作室来说，对颜色键和概念的保真度至关重要。</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0600_playmobil_peah_boat_concept_FHD-20241105174143-r0c3fq8.jpg" alt="" title="This is a concept from Péah for Playmobil the movie. An image painted in Photoshop most probably in sRGB. 这是 Péah 为电影 Playmobil 创作的概念图。该图像用 Photoshop 绘制，很可能是 sRGB 格式。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0610_playmobil_peah_boat_concept_FHD-20241105174143-0jaxo65.jpg" alt="" title="Many users have asked on the ACESforum : why loading in Utility - sRGB - Texture makes the image darker ? It is completely normal. 许多用户在 ACESforum 上询问：为什么在 Utility - sRGB - Texture 中加载会使图像变暗？这是完全正常的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0620_playmobil_peah_boat_concept_FHD-20241105174143-655kgbv.jpg" alt="" title="If you want to preserve the look, you need to use your ODT as an IDT basically. It is a &quot;good-enough&quot; match. 如果要保留外观，则基本上需要将 ODT 用作 IDT。这是“足够好”的匹配。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0630_playmobil_peah_boat_concept_FHD-20241105174143-1iunhrf.jpg" alt="" title="Here is the technique in Nuke for example. I am using a picking zone to get an average value in the yellow part of the boat. It seems more legitimate than a single pixel. The given values are in ACEScg. 以下是 Nuke 中的技术示例。我使用拾取区域来获取船的黄色部分的平均值。这似乎比单个像素更合理。给定的值在 ACEScg 中。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0640_playmobil_peah_boat_concept_FHD-20241105174143-vqiio01.jpg" alt="" title="Since the Color Selection is done in ACEScg, the colors match perfectly from Nuke to Guerilla. It will not be the case in Maya with the default OCIO config. 由于颜色选择是在 ACEScg 中完成的，因此 Nuke 和 Guerilla 的颜色完全匹配。在采用默认 OCIO 配置的 Maya 中则不会出现这种情况。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0650_playmobil_peah_boat_concept_FHD-20241105174143-e3ysed2.jpg" alt="" title="Here is the beauty render with an EnvLight and a Distant. A pretty good match with the concept. Please forgive me my modeling skills. 这是使用 EnvLight 和 Distant 的美丽渲染。与概念非常匹配。请原谅我的建模技巧。" loading="lazy">​</p>
+<p>This workflow works because Nuke and Guerilla color select in ACEScg.</p>
+<p>此工作流程有效是因为 Nuke 和 Guerilla 在 ACEScg 中选择了颜色。</p>
+<blockquote>
+<p>I totally accept the fact that this concept has some lighting information. So it can become arbitrary to pick a color in one place or an other.</p>
+<p>我完全接受这个概念包含一些照明信息的事实。因此，在某个地方选择颜色变得任意。</p>
+<p>Hence the use of a large picking zone in Nuke.</p>
+<p>因此在 Nuke 中使用了大型挑选区域。</p>
+</blockquote>
+<p>This process has a couple of limitations :</p>
+<p>这个过程有几个限制：</p>
+<ul>
+<li>First if all, if you work in ACES, <strong>you should only color pick in an ACES environment.</strong></li>
+<li>首先，如果您在 ACES 中工作，<strong>您应该只在 ACES 环境中选择颜色。</strong></li>
+<li>It struggles a bit <strong>with very saturated and extreme values, especially the</strong>  ****  **<a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/9">yellow ones</a>**​ <strong>.</strong>  You could possibly end up with some negative values.</li>
+<li>它在处理<strong>非常饱和和极端的值</strong>时会有些吃力，<strong>尤其</strong>是**<a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/9">黄色值</a>**​ <strong>。</strong> 最终可能会得到一些负值。</li>
+<li>If you are color picking an albedo value, <strong>you should be extremely careful that this value is within the PBR range.</strong></li>
+<li>如果您正在选择颜色反照率值，<strong>则应格外小心，确保该值在 PBR 范围内。</strong></li>
+<li>It is not suitable for grading and motion graphics, especially with SDR imagery as explained <a href="https://community.foundry.com/discuss/topic/152851/importing-srgb-texture-with-aces-workflow?mode=Post&amp;postID=1202126">in this post</a>.</li>
+<li>它不适合分级和动态图形，尤其是<a href="https://community.foundry.com/discuss/topic/152851/importing-srgb-texture-with-aces-workflow?mode=Post&amp;postID=1202126">本文中</a>解释的 SDR 图像。</li>
+</ul>
+<p>We can now move to more in-depth information about the <em>Color Picking</em> role. By default, the <em>Color Picking</em> role is set to <em>Output – sRGB</em> in the <em>ACES 1.2 OCIO config</em> to match the default Output Transform. This is why the <em>Color Picking</em> role is “<em>contextually</em> ​<em>related</em>​” to the inverted ODT workflow.</p>
+<p>现在，我们可以更深入地了解<em>颜色选择</em>角色。默认情况下，<em>颜色选择</em>角色在<em>ACES 1.2 OCIO 配置</em>中设置为<em>输出 - sRGB，</em> 以匹配默认的输出变换。这就是为什么<em>颜色选择</em>角色与反转 ODT 工作流程“<em>上下文相关</em>​”的原因。</p>
+<h2 id="色彩挑选角色-color-picking-role">色彩挑选角色 Color Picking role</h2>
+<h3 id="不同的实现-different-implementations">不同的实现 Different implementations</h3>
+<p>When it comes to the <em>Color Picking</em> role, the first thing to know is that all softwares are not equals regarding this feature. When a developer implements OCIO in its software, he/she can choose to integrate things to a certain level. Let’s take Guerilla and Maya as an example :</p>
+<p>说到<em>颜色选择</em>功能，首先要知道的是，并非所有软件都具备此功能。当开发人员在其软件中实现 OCIO 时，他/她可以选择将事物集成到一定程度。让我们以 Guerilla 和 Maya 为例：</p>
+<ul>
+<li>The <em>Color Picking</em> role in Guerilla only drives the color picker hue board (for display).</li>
+<li><em>Guerilla 中的颜色选择</em>角色仅驱动颜色选择器色调板（用于显示）。</li>
+<li>The <em>Color Picking</em> role in Maya drives the whole color selection process.</li>
+<li>Maya 中的颜色<em>选择</em>角色驱动整个颜色选择过程。</li>
+</ul>
+<p>It only took me six months to understand the <em>Color Picking</em> role in Maya. But I think I have finally cracked it. First things first : <strong>what is theColor Pickingrole for ?</strong>  From the OCIO documentation :</p>
+<p>我只花了六个月就理解了Maya 中的<em>颜色拾取</em>角色。但我想我终于破解了它。首先要说的是：<strong>颜色拾取角色是干什么的</strong> <strong>？</strong> 摘自 OCIO 文档：</p>
+<blockquote>
+<p><code>color_picking</code>​ – colors in a color-selection UI can be displayed in this space, while selecting colors in a different working space (e.g. <code>scene_linear</code>​ or <code>texture_paint</code>​).</p>
+<p><code>color_picking</code>​– 可以在此空间中显示颜色选择 UI 中的颜色，同时在不同的工作空间中选择颜色（例如<code>scene_linear</code>​或<code>texture_paint</code>​）。</p>
+<p>This is what Guerilla has implemented basically.</p>
+<p>这就是 Guerilla 基本实现的。</p>
+</blockquote>
+<p>But <em>Maya</em> has a different use of the ​<em>Color Picking role</em>​. It actually <strong>uses this role to select any RGB color</strong> in a shader or a light. In this context, <em>Color Picking</em> could also be called ​<em>Color Selection</em>​.</p>
+<p>但是<em>Maya对颜色拾取角色</em>的使用有所不同。它实际上使用此角色来选择着色器或灯光中的<strong>任意 RGB 颜色</strong> <em>。在这种情况下，颜色拾取</em>也可以称为​<em>颜色选择</em>​。</p>
+<blockquote>
+<p>RGB triplets by themselves do not make really sense. You need a context to interpret them correctly. Maya lets you choose the context, when Guerilla or Nuke do not.</p>
+<p>RGB 三元组本身并没有什么实际意义。您需要一个上下文才能正确解释它们。Maya 允许您选择上下文，而 Guerilla 或 Nuke 则不允许。</p>
+</blockquote>
+<p>This is why you have to be extra careful when it comes to <em>Color Picking</em> or <em>Color Selection</em> depending on the DCC software you use.</p>
+<p>这就是为什么您在根据所使用的 DCC 软件<em>进行颜色选择</em>时必须格外小心的原因。</p>
+<blockquote>
+<p>If your ODT is different from Output – sRGB, I suggest that you modify the color_picking role in the OCIO config file to match the ODT your are using.</p>
+<p>如果您的 ODT 与输出 - sRGB 不同，我建议您修改 OCIO 配置文件中的 color_picking 角色以匹配您正在使用的 ODT。</p>
+<p>Your ODT and color picking role should be the same, at least in Guerilla Render.</p>
+<p>您的 ODT 和颜色选择角色应该相同，至少在 Guerilla Render 中。</p>
+</blockquote>
+<h3 id="maya-中的颜色拾取-color-picking-in-maya">Maya 中的颜色拾取 Color Picking in Maya</h3>
+<blockquote>
+<p>Please be aware that in this section I will focus on Maya, since its integration of the color_picking role is quite unique.</p>
+<p>请注意，在本节中我将重点介绍 Maya，因为它对 color_picking 角色的集成非常独特。</p>
+</blockquote>
+<p>When it comes to choosing a <em>Color Picking</em> role for Maya, I have seen three different philosophies :</p>
+<p>在为 Maya 选择<em>颜色选择</em>角色时，我看到了三种不同的理念：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Output – sRGB</td>
+<td>Color selection is display-referred. It is “artist-friendly”.</td>
+<td>You do not know what it is the exact value used for rendering (unless you constantly check the​<em>Channel Editor</em>​). This could break the PBR of your scene.</td>
+</tr>
+<tr>
+<td>Utility – Linear – sRGB</td>
+<td>“Legacy” Mode. Artists may select colors they are used to.</td>
+<td>You do not take advantage of the wide gamut in the color selection.</td>
+</tr>
+<tr>
+<td>ACES – ACEScg</td>
+<td>You know exactly which value is used for rendering and can reach very saturated values (like a laser).</td>
+<td>You have access to crazy saturated values, unsuitable for albedo, that may eventually break energy conservation (and clip !).</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输出 – sRGB</td>
+<td>颜色选择以显示为参考。它“对艺术家友好”。</td>
+<td>您不知道渲染时使用的确切值是什么（除非您不断检查​<em>通道编辑器</em>​）。这可能会破坏场景的 PBR。</td>
+</tr>
+<tr>
+<td>实用 – 线性 – sRGB</td>
+<td>“传统”模式。艺术家可以选择他们习惯的颜色。</td>
+<td>您没有在色彩选择中充分利用宽色域。</td>
+</tr>
+<tr>
+<td>ACES – ACEScg</td>
+<td>您确切地知道哪个值用于渲染，并且可以达到非常饱和的值（如激光）。</td>
+<td>您可以访问不适合反照率的疯狂饱和值，这最终可能会破坏能量守恒（和剪辑！）。</td>
+</tr>
+</tbody>
+</table>
+<p>If you use (​<em>1, 1, 1</em>​) with a <em>Color Picking</em> role set to <em>Output – sRGB</em> in ​<em>Maya</em>​, you actually use a value of (<em>18.91, 18.91, 18.9</em>1) in your render. <strong>And that is very wrong if it is set in theBase Colorfor example !</strong></p>
+<p>如果您在<em>Maya</em>中使用 ( <em>1, 1, 1</em> ) 并将<em>颜色拾取</em>角色设置为<em>输出 - sRGB</em> ，那么您在渲染中实际使用的值为 ( *18.91, 18.91, 18.9 1)。*​<strong>例如，如果在基础颜色中设置该值，则这是非常错误的！</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0660_color_picking_maya_FHD-20241105174143-supbvkc.jpg" alt="" loading="lazy">​</p>
+<p><img src="assets/015_ACES_0670_color_picking_maya_FHD-20241105174143-btz69ip.jpg" alt="" loading="lazy">​</p>
+<p><img src="assets/015_ACES_0680_color_picking_maya_FHD-20241105174143-w1y34lk.jpg" alt="" loading="lazy">​</p>
+<p>It is true that when you use “Output – sRGB”, you are never really sure of what color is being used during rendering. And this is why some studios have set their <em>Color Picking</em> role to <em>ACEScg</em> to know what values are used by the render engine.</p>
+<p>确实，当您使用“输出 - sRGB”时，您永远无法真正确定渲染过程中使用的颜色。这就是为什么一些工作室将其<em>颜色选择</em>角色设置为<em>ACEScg</em>以了解渲染引擎使用的值。</p>
+<p>I cannot honestly say that one system is better than the other.  <strong>You just have to be aware of what you are doing.</strong>  If you’re interested by this specific topic, I would suggest the read of <a href="https://community.acescentral.com/t/cg-render-sanity-check-mtoa-nuke/3509">these</a> <a href="https://community.acescentral.com/t/aces-ocio-doesnt-seem-to-affect-render-results/3588">three</a> <a href="https://community.acescentral.com/t/ocio-vs-maya-built-in-aces-configuration-color-picker-rendering-and-display-spaces-question/3769">threads</a> on ACESCentral.</p>
+<p>我不能诚实地说一个系统比另一个更好。<strong>你只需要知道你在做什么。</strong> 如果你对这个特定主题感兴趣，我建议你阅读ACESCentral 上的<a href="https://community.acescentral.com/t/cg-render-sanity-check-mtoa-nuke/3509">这</a> <a href="https://community.acescentral.com/t/aces-ocio-doesnt-seem-to-affect-render-results/3588">三个</a> <a href="https://community.acescentral.com/t/ocio-vs-maya-built-in-aces-configuration-color-picker-rendering-and-display-spaces-question/3769">帖子</a>。</p>
+<h3 id="acescg-中的颜色选择-color-picking-in-acescg">ACEScg 中的颜色选择 Color Picking in ACEScg</h3>
+<p>If you use <em>ACEScg</em> as a <em>Color Picking</em> role, you should be aware of this : <strong>there is no non-emissive surface that has such saturated colors.</strong>  Only lasers (an emissive source) can reach BT.2020 primaries.</p>
+<p>如果您使用<em>ACEScg</em>作为<em>颜色拾取</em>角色，您应该注意这一点：<strong>没有非发射表面具有如此饱和的颜色。</strong> 只有激光（发射源）才能达到 BT.2020 原色。</p>
+<p>This particular example really made things clearer for me. When you study color science, you may sometimes get lost in abstract stuff. Knowing this made all of these concepts more grounded and more real in a way.</p>
+<p>这个例子确实让我更清楚了。当你学习色彩科学时，你有时会迷失在抽象的东西中。了解这一点让所有这些概念在某种程度上更加扎实和真实。</p>
+<p>If you want to <em>Color Select</em> in ACEScg, you just need to edit the OCIO Config and modify the <em>color_picking</em> role :</p>
+<p>如果您想在 ACEScg 中进行​<em>颜色选择</em>​，您只需要编辑 OCIO 配置并修改<em>color_picking</em>角色：</p>
+<pre><code>roles:
+  color_picking: ACES - ACEScg
+</code></pre>
+<blockquote>
+<p>If you are working in a realistic context, all of this concerns you. And if you are working in cartoon… Well it concerns you as well ! Some producers out there just like the most outrageous saturation.  <strong>But most cartoon movies want to be believable in their look.</strong>  So my advice is to do your look development in a realistic way and you will still be able to <a href="https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/#saturation-and-log">push saturation with a grade</a> afterwards.</p>
+<p>如果你在现实环境中工作，所有这些都与你有关。如果你在制作卡通片……那么这也与你有关！一些制片人喜欢最夸张的饱和度。<strong>但大多数卡通电影都希望其外观令人信服。</strong> 所以我的建议是以现实的方式进行外观开发，这样你仍然可以在之后<a href="https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/#saturation-and-log">通过分级来提高饱和度</a>。</p>
+<p>All of this only stands for a PBR cartoon movie of course.</p>
+<p>当然，所有这些都只代表一部 PBR 卡通电影。</p>
+</blockquote>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p>We have mostly seen three topics in this article :</p>
+<p>在本文中我们主要看到了三个主题：</p>
+<ul>
+<li>OCIO and precision issues : this should be most likely fixed with OCIO v2, even if it hasn’t been implemented in all softwares yet (yes, I am looking at you Rv !)</li>
+<li>OCIO 和精度问题：这很可能通过 OCIO v2 修复，即使它还没有在所有软件中实现（是的，我正在看你 Rv！）</li>
+<li>ACES in render engines : I would not recommend to developers hardcoding colorspaces in their softwares. This should be OCIO based.</li>
+<li>渲染引擎中的 ACES：我不建议开发人员在软件中对色彩空间进行硬编码。这应该基于 OCIO。</li>
+<li>Color Picking and Inverted LUTs : we have seen that this is a very confusing topic (hopefully a bit less now) and that is mainly for two reasons. First, lack of guidance from OCIO in their docs and second, poor implementation by the softwares’ developers.</li>
+<li>颜色选择和反转 LUT：我们已经看到这是一个非常令人困惑的话题（希望现在不那么令人困惑了），这主要是出于两个原因。首先，OCIO 文档中缺乏指导；其次，软件开发人员的实施不佳。</li>
+</ul>
+<p>In <a href="https://github.com/AcademySoftwareFoundation/OpenColorIO-Config-ACES/releases/tag/v1.0.0">the latest ACES configs</a>, there was lots of debates about <a href="https://github.com/AcademySoftwareFoundation/OpenColorIO-Config-ACES/issues/61">roles</a>.  And hopefully in the near future we could invite developers to align their implementations. Because otherwise roles would become pretty much useless ! One may dream eventually…</p>
+<p><a href="https://github.com/AcademySoftwareFoundation/OpenColorIO-Config-ACES/releases/tag/v1.0.0">在最新的 ACES 配置</a>中，关于<a href="https://github.com/AcademySoftwareFoundation/OpenColorIO-Config-ACES/issues/61">角色</a>有很多争论。希望在不久的将来，我们可以邀请开发人员协调他们的实现。否则，角色将变得毫无用处！最终，我们可能会梦想……</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a></li>
+<li><a href="#aces-%E5%AE%9E%E6%96%BD-aces-implementation">ACES 实施 ACES implementation</a>
+<ul>
+<li><a href="#aces-ocio-%E5%92%8C-ctl">ACES, OCIO 和 CTL</a>
+<ul>
+<li><a href="#%E7%A6%BB%E6%95%A3%E5%8F%98%E6%8D%A2%E5%92%8C%E8%BF%9E%E7%BB%AD%E5%8F%98%E6%8D%A2-discrete-and-continuous-transforms">离散变换和连续变换 Discrete and Continuous transforms</a></li>
+<li><a href="#%E9%A2%9C%E8%89%B2%E6%8F%92%E5%80%BC%E5%B7%AE%E8%B7%9D-color-interpolation-gaps">颜色插值差距 Color interpolation gaps</a></li>
+<li><a href="#nuke-%E4%B8%AD%E7%9A%84-ctl-%E8%8A%82%E7%82%B9-ctl-nodes-in-nuke">Nuke 中的 CTL 节点 CTL nodes in Nuke</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84-aces-aces-in-render-engines">渲染引擎中的 ACES ACES in render engines</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9-aces-ocio-%E9%85%8D%E7%BD%AE-modifying-the-aces-ocio-config">修改 ACES OCIO 配置 Modifying the ACES OCIO config</a>
+<ul>
+<li><a href="#%E4%BF%AE%E6%94%B9-aces-ocio-%E9%85%8D%E7%BD%AE%E7%9A%84%E5%8E%9F%E5%9B%A0-reasons-for-modifying-the-aces-ocio-config">修改 ACES OCIO 配置的原因 Reasons for modifying the ACES OCIO config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%8F%8D%E8%BD%AC%E8%BE%93%E5%87%BA%E8%BD%AC%E6%8D%A2%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-inverted-output-transform-workflow">反转输出转换工作流程 Inverted Output transform Workflow</a>
+<ul>
+<li><a href="#%E4%BF%9D%E7%95%99%E5%BE%BD%E6%A0%87%E5%92%8C%E5%9B%BE%E5%BD%A2-preserving-logos-and-graphics">保留徽标和图形 Preserving Logos and Graphics</a></li>
+<li><a href="#%E6%81%92%E5%AE%9A%E9%A2%9C%E8%89%B2-constant-color">恒定颜色 Constant color</a></li>
+<li><a href="#%E9%A2%9C%E8%89%B2%E9%94%AE-color-key">颜色键 Color key</a></li>
+</ul>
+</li>
+<li><a href="#%E8%89%B2%E5%BD%A9%E6%8C%91%E9%80%89%E8%A7%92%E8%89%B2-color-picking-role">色彩挑选角色 Color Picking role</a>
+<ul>
+<li><a href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AE%9E%E7%8E%B0-different-implementations">不同的实现 Different implementations</a></li>
+<li><a href="#maya-%E4%B8%AD%E7%9A%84%E9%A2%9C%E8%89%B2%E6%8B%BE%E5%8F%96-color-picking-in-maya">Maya 中的颜色拾取 Color Picking in Maya</a></li>
+<li><a href="#acescg-%E4%B8%AD%E7%9A%84%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9-color-picking-in-acescg">ACEScg 中的颜色选择 Color Picking in ACEScg</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-OCIO-Display-Transforms-Misconceptions/">
+              <h3 class="post-title">
+                OCIO、显示转换和误解
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

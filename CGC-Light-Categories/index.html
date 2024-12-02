@@ -1,0 +1,1096 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CG Cinematography 第 4 章：光的类型 | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="CG Cinematography 第 4 章：光的类型 | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Chapter 4: Light Categories - Chris Brejon
+https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/
+CG Cin..." />
+    <meta name="keywords" content="Lighting,CG Cinematography" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              CG Cinematography 第 4 章：光的类型
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-24
+              </span>
+              <span>
+                79 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/zwKy4lMn1V/" class="post-tag">
+                  # Lighting
+                </a>
+              
+                <a href="https://zcfly1992.github.io/UC8oB5Mlnn/" class="post-tag">
+                  # CG Cinematography
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_470_naturalist_last_of_us_FHD-20241105171249-hkgef8j.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>Chapter 4: Light Categories - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/">https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/</a></li>
+<li>CG Cinematography Light Categories is my personal epiphany. Every lighting artist during his career has one moment where everything feels connected.</li>
+</ul>
+<hr>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p>I would like to present you my universal method to design a light rig. It actually took me several years and a lot of studios to come up with. <strong>It will hopefully cover ALL of your needs</strong> and help you build your light rigs.</p>
+<p>我想向你介绍我设计灯光设备的通用方法。实际上，我花了好几年时间，在很多工作室里才想出这个方法。​<strong>希望它能满足你的所有需求</strong>​，并帮助你构建你的灯光设备。</p>
+<p><strong>The day I understood the differentcategories of lights I was having a religious epiphany.</strong>  It was like I was finally connecting all the dots together.</p>
+<p><strong>在我理解了不同种类的光的 那一天，我顿悟了。</strong>  感觉就像我终于把所有的点都连在了一起。</p>
+<p>This proper methodology mainly comes from Animal Logic : our lightrig in the outliner was organized this way.  But it is only thanks to <strong>Sandip Kalsy</strong> and <strong>Matthias Menz</strong> that I was able to write it down. <strong>It changed me as an artist and has never left me since.</strong></p>
+<p>这种正确的方法主要来自 Animal Logic：我们在大纲中的灯光装置就是以这种方式组织的。但多亏了<strong>Sandip Kalsy</strong>和<strong>Matthias Menz</strong>，我才得以将其写下来。<strong>它改变了我作为一名艺术家的形象，从此以后就再也没有离开过我。</strong></p>
+<p>There are three categories :</p>
+<p>有三个类别：</p>
+<ul>
+<li><strong><a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Natural">Natural lights</a></strong> : Lights that are not manufactured.</li>
+<li>**<a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Natural">自然光</a>**​：非人造光。</li>
+<li><strong><a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Practical">Practical lights</a></strong> : Lights present on set and possibly visible to camera.</li>
+<li>**<a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Practical">实用灯光</a>**​：场景中存在的并且可能被摄像机看到的灯光。</li>
+<li><strong><a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Dramatic">Dramatic lights</a></strong> : Lights that are unjustified which main purpose is storytelling (also called​<em>studio lights</em>​).</li>
+<li>**<a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Dramatic">戏剧灯光</a>**​：不合理的灯光，其主要目的是讲述故事（也称为​<em>工作室灯光</em>​）。</li>
+</ul>
+<h2 id="自然光-natural-lights">自然光 Natural lights</h2>
+<p>Natural lights are not manufactured. There are three main ones :</p>
+<p>自然光不是人造的。主要有三种：</p>
+<ul>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Sun">Sun</a> <a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Sun">太阳</a></li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Sky">Sky</a> <a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Sky">天空</a></li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Moon">Moon</a> <a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Moon">月亮</a></li>
+</ul>
+<blockquote>
+<p>Actually most of <a href="https://en.wikipedia.org/wiki/Black_body">black bodies</a>, like lava, lightning and fireflies, can also be considered natural lights.</p>
+<p>实际上大多数<a href="https://en.wikipedia.org/wiki/Black_body">黑体</a>，例如熔岩、闪电和萤火虫，也可以被视为自然光。</p>
+</blockquote>
+<p>In computer graphics, we will generally use an <strong>Env Light</strong>and a<strong>Directional (or Distant) Light.</strong>  Some softwares have merged them into one <a href="http://guerillarender.com/doc/2.2/Library_Lights_SkyLight.html">Physical Sun and Sky Light</a>. It allows you to tweak the elevation, turbidity and the radius easily. These natural lights have one thing in common : they are both infinite.</p>
+<p>在计算机图形学中，我们通常会使用<strong>环境光和</strong>定向光 <strong>（或远距光）。</strong> 有些软件将它们合并为一个<a href="http://guerillarender.com/doc/2.2/Library_Lights_SkyLight.html">物理太阳光和天空光</a>。它允许您轻松调整高度、浑浊度和半径。这些自然光有一个共同点：它们都是无限的。</p>
+<blockquote>
+<p>Most advanced models are analytical which take in account the sun emission spectrum, spectral absorption in the atmosphere (ozone) and atmospheric scattering. Also fine particles (Raleygh) and large particles (Mie) are evaluated.</p>
+<p>最先进的模型都是分析模型，其中考虑了太阳发射光谱、大气（臭氧）中的光谱吸收和大气散射。此外，还评估了细颗粒（Raleygh）和大颗粒（Mie）。</p>
+<p><a href="https://www.youtube.com/watch?v=T9Sz0J8FdG0">Corona</a>, <a href="https://www.indigorenderer.com/planet-scale-atmospheric-simulation">Indigo</a>, <a href="http://www.aoktar.com/octane/OCTANE%20HELP%20MANUAL.html?OctaneDaylight.html">Octane</a>, <a href="https://media.contentapi.ea.com/content/dam/eacom/frostbite/files/s2016-pbs-frostbite-sky-clouds-new.pdf">Frostbite</a> and <a href="https://docs.unrealengine.com/en-US/Engine/Actors/FogEffects/SkyAtmosphere/index.html">Unreal</a> Skylights are quite advanced.</p>
+<p><a href="https://www.youtube.com/watch?v=T9Sz0J8FdG0">Corona</a>、<a href="https://www.indigorenderer.com/planet-scale-atmospheric-simulation">Indigo</a>、<a href="http://www.aoktar.com/octane/OCTANE%20HELP%20MANUAL.html?OctaneDaylight.html">Octane</a>、<a href="https://media.contentapi.ea.com/content/dam/eacom/frostbite/files/s2016-pbs-frostbite-sky-clouds-new.pdf">Frostbite</a>和<a href="https://docs.unrealengine.com/en-US/Engine/Actors/FogEffects/SkyAtmosphere/index.html">Unreal</a> Skylights 相当先进。</p>
+</blockquote>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/The Master - A LEGO Ninjago Animated Short Film HD-20241115011351-xujbevu.mp4" data-src="assets/The Master - A LEGO Ninjago Animated Short Film HD-20241115011351-xujbevu.mp4"></video></p>
+<p>In this video (I worked on the last eight shots), you have two main lights :</p>
+<p>在这个视频中（我拍摄了最后八个镜头），有两个主灯：</p>
+<ul>
+<li>An <em>Env Light</em> with an HDRI for the sky.</li>
+<li><em>带有 HDRI 的环境光</em>​，用于照亮天空。</li>
+<li>A warm <em>Distant Light</em> for the sun.</li>
+<li>太阳发出的温暖<em>远光。</em></li>
+</ul>
+<blockquote>
+<p>We have also added a couple of Area Lights to fill the characters. But we’ll come back to this later.</p>
+<p>我们还添加了一些区域光来填充角色。但我们稍后再讨论这一点。</p>
+<p>Let’s focus on Natural Lights first.</p>
+<p>我们首先关注自然光。</p>
+</blockquote>
+<h2 id="太阳-sun">太阳 Sun</h2>
+<h3 id="指南-guidelines">指南 Guidelines</h3>
+<p>I generally start with the Sun :</p>
+<p>我通常从太阳开始：</p>
+<ul>
+<li>Work your sun <strong>individually</strong> to know what it is exactly doing. It is really important to spend time on it. A nice sun will  <strong>give shape</strong> to your shot. It is really about  <strong>modelling your frame.</strong></li>
+<li><strong>单独</strong>处理太阳，了解它到底在做什么。花时间处理它真的很重要。漂亮的太阳会给你的照片<strong>增添形状</strong>。这实际上是在<strong>塑造你的框架。</strong></li>
+<li><strong>Is it cloudy ?</strong>     ******    Playing with some clouds will definitely help for the composition and give depth.</li>
+<li><strong>有云吗？</strong> 添加一些云彩肯定有助于构图并增加深度。</li>
+<li><strong>What time of the day is it ?</strong>   This is one of the most important factor in the sun look.</li>
+<li><strong>一天中现在是几点？</strong> 这是太阳光最重要的因素之一。</li>
+</ul>
+<blockquote>
+<p>In the real world the sun actually never changes color : its temperature is 5800k <strong>.</strong></p>
+<p>在现实世界中，太阳实际上从不改变颜色：其温度为 5800k 。</p>
+</blockquote>
+<p>During sunrise and sunset, the sun is more saturated and has softer shadows. Why is that ?</p>
+<p>日出和日落时，太阳更加饱和，阴影也更加柔和。这是为什么呢？</p>
+<ul>
+<li><strong>Change of color :</strong>     ******    As the sun gets lower in the sky, its light is passing through more of the atmosphere to reach you. Even more of the blue light is scattered, allowing the reds and yellows to pass straight through to your eyes.</li>
+<li><strong>颜色变化：</strong>  随着太阳在天空中的位置越来越低，它的光线穿过更多的大气层到达你。更多的蓝光被散射，让红光和黄光直接穿过大气层到达你的眼睛。</li>
+<li><strong>Change of shadow softness :</strong>   The amount of particles of air makes the source bigger, resulting in softer shadows.</li>
+<li><strong>阴影柔和度的变化：</strong>  空气粒子的数量使源变大，从而产生更柔和的阴影。</li>
+<li>Sun goes even <a href="https://en.wikipedia.org/wiki/Green_flash">green</a> right before disappearing at sunset !</li>
+<li>日落时分，太阳在消失之前甚至会变成<a href="https://en.wikipedia.org/wiki/Green_flash">绿色！</a></li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_010_midnight_sun_arctic_circle_FHD-20241105171249-r76zhpn.jpg" alt="" loading="lazy">​</p>
+<blockquote>
+<p>If you work in <a href="https://docs.unrealengine.com/en-US/Engine/Rendering/LightingAndShadows/PhysicalLightUnits/index.html">Unreal Engine</a> or <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@5.7/manual/Physical-Light-Units.html">Unity</a>, you probably work in Lumen which is great since you can find some <a href="https://en.wikipedia.org/wiki/Sunlight#Measurement">real measures</a>. Most of the time lighting artists do not put enough energy in the Sun. Do not hesitate to put values such as 6 stops or 64 in intensity for interior scenes to get a nice bounce in ACES.</p>
+<p>如果您使用<a href="https://docs.unrealengine.com/en-US/Engine/Rendering/LightingAndShadows/PhysicalLightUnits/index.html">Unreal Engine</a>或<a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@5.7/manual/Physical-Light-Units.html">Unity</a>工作，那么您可能使用 Lumen，这很棒，因为您可以找到一些<a href="https://en.wikipedia.org/wiki/Sunlight#Measurement">实际的测量值</a>。大多数时候，灯光艺术家不会在太阳上投入足够的能量。对于室内场景，请毫不犹豫地在强度中输入诸如 6 档或 64 之类的值，以便在 ACES 中获得良好的反弹。</p>
+<p>I have even heard about 300 in intensity (more than 8 stops) using an Arri Alexa config with a dynamic range at 55 !</p>
+<p>我甚至听说过，使用动态范围为 55 的 Arri Alexa 配置，强度可达 300（超过 8 档）！</p>
+</blockquote>
+<h3 id="日出和日落有什么不同吗-are-sunrise-and-sunset-different">日出和日落有什么不同吗？ Are Sunrise and Sunset different ?</h3>
+<p>Nice <a href="https://www.livescience.com/34065-sunrise-sunset.html">article</a> about this topic. It says that there is no natural cause of a major optical difference between them. However, two human factors break their symmetry :</p>
+<p>关于这个主题的一篇好<a href="https://www.livescience.com/34065-sunrise-sunset.html">文章</a>。文章说，它们之间主要的光学差异不是由自然原因造成的。然而，有两个人为因素破坏了它们的对称性：</p>
+<ul>
+<li><strong>Our eyes.</strong>   We perceive more colors at dawn than at dusk because the night’s darkness has left us with very acute night vision. Remember the rods we talked about earlier ?</li>
+<li><strong>我们的眼睛。</strong> 黎明时我们能感知到的颜色比黄昏时多，因为夜晚的黑暗让我们的夜视能力非常强。还记得我们之前谈到的视杆细胞吗？</li>
+<li><strong>Pollution.</strong>   The sunset’s atmosphere is full of car and factories’ particles. <em>The dawn is clearer than any other time of day.</em></li>
+<li><strong>污染。</strong> 日落时分的空气中充满着汽车和工厂的颗粒物。<em>黎明比一天中的任何其他时间都更加清澈。</em></li>
+</ul>
+<blockquote>
+<p>At dawn, clearer skies enable more brilliant reds and oranges […], whereas thicker atmospheres at dusk tend to dull these colors, leading to more washed-out sunsets. […], more dust and smog (at sunset) can have the effect of scattering light across a greater region of the sky, […], whereas sunrise colors tend to be more focused around the sun.</p>
+<p>黎明时分，更晴朗的天空使得红色和橙色更加鲜艳 […]，而黄昏时分更厚的大气层往往会使这些颜色变得暗淡，导致日落更加褪色。 […]，更多的灰尘和烟雾（日落时）会使光线散射到天空的更大区域， […]，而日出时的色彩往往更集中在太阳周围。</p>
+</blockquote>
+<h3 id="太阳定向光还是聚光光-sun-directional-or-spotlight">太阳：定向光还是聚光光？ Sun : Directional or Spotlight ?</h3>
+<p>I like directional lights because they are easy to manipulate. You only have to rotate them.  <strong>BUT they light everything equally.</strong>   I would never use them without a <a href="https://en.wikipedia.org/wiki/Gobo_(lighting)">GOBO</a> (Goes Before Optics) or blocker.</p>
+<p>我喜欢定向灯，因为它们很容易操作。你只需要旋转它们。<strong>但它们会均匀地照亮所有东西。</strong> <a href="https://en.wikipedia.org/wiki/Gobo_(lighting)">如果没有遮光板 ( GOBO</a> ) 或遮光器，我永远不会使用它们。</p>
+<p>In the next shots from <em>The Secret Life of Pets</em> (Director : ​<strong>Chris Renaud</strong>​), we used a directional light and added blockers and fake clouds to alternate light and shadow areas.</p>
+<p><em>在《宠物的秘密生活》</em> （导演：<strong>克里斯雷诺</strong>）的下一个镜头中，我们使用了定向光，并添加了遮挡物和假云来交替光影区域。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_120_sun_distant_pets_HD-20241115011444-7wzjjzy.mp4" data-src="assets/040_lightCategories_120_sun_distant_pets_HD-20241115011444-7wzjjzy.mp4"></video></p>
+<p>Using a physical SkyLight and a couple of clouds should be enough to start on an exterior scene. You can play with the density/transparency of the clouds and their animation as well to bring life.  <strong>You should alternate areas of shadow and light to create more depth.</strong></p>
+<p>使用物理 SkyLight 和几朵云就足以开始制作外部场景。您可以调整云的密度/透明度及其动画，让场景更生动。<strong>您应该交替使用阴影和光线区域来创造更多深度。</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_030_clouds_gobos_FHD-20241105171249-qfl4jo7.jpg" alt="" title="A test in Guerilla : instancing buildings on a plane, put a skylight and some depth-of-field. Viewport on the left is real-time. 在 Guerilla 中进行测试：在平面上实例化建筑物，放置天窗和一些景深。左侧的视口是实时的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_040_clouds_gobos_FHD-20241105171249-p3y4wbp.jpg" alt="" title="I added two planes mapped in opacity. It helps to create depth in the image and to focus more on the second row of buildings. 我添加了两个映射不透明度的平面。这有助于在图像中创建深度，并将焦点更多地集中在第二排建筑物上。" loading="lazy">​</p>
+<blockquote>
+<p>Guerilla also has some procedural features like scattering and fur.</p>
+<p>Guerilla 还具有一些程序功能，例如散射和毛发。</p>
+</blockquote>
+<h3 id="planet-51-中的聚光灯-spotlight-on-planet-51">Planet 51 中的聚光灯 Spotlight on Planet 51</h3>
+<p><strong>We did NOT use a single directional light onPlanet 51</strong>(Director : ​<strong>Jorge Blanco</strong>​). We used spotlights all the time. Back then, it was not clear for me why we would do such a thing. Of course, biggest difference between a distant and a spot light is the deformation of perspective. We did put our spot lights quite far so no one notices the trick. There was no decay back then.</p>
+<p><strong>在《Planet 51 (导演：Jorge Blanco )》中，我们没有使用单向光。</strong> 我们一直使用聚光灯。当时，我并不清楚为什么要这样做。当然，远光灯和聚光灯之间最大的区别在于透视变形。我们确实把聚光灯放得相当远，所以没有人注意到这个技巧。当时没有衰减。</p>
+<p>It is only ten years later that it struck me : <strong>using spot lights allowed us to focus more on certain areas very easily.</strong>   I remember that I used the cone angle on every single shot of this movie. It became an automatism.  <strong>You don’t want to light everything equally. Even if it is the sun.</strong>   Otherwise, what’s the point ?</p>
+<p>直到十年后我才意识到：<strong>使用聚光灯可以让我们非常轻松地将注意力集中在某些区域。</strong> 我记得我在这部电影的每一个镜头中都使用了锥角。这已经成为一种习惯。<strong>你不想均匀地照亮一切。即使是太阳。</strong> 否则，有什么意义呢？</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_140_sun_spot_planet_51_HD-20241115011541-3hr769r.mp4" data-src="assets/040_lightCategories_140_sun_spot_planet_51_HD-20241115011541-3hr769r.mp4"></video></p>
+<h3 id="星星上的遥远的光芒-distant-light-on-the-star">星星上的遥远的光芒 Distant light on The Star</h3>
+<h4 id="对比度问题-contrast-issue">对比度问题 Contrast issue</h4>
+<p><strong>You want to direct the eye</strong> and light certain areas more than others. If you use a directional, put some clouds or use a blocker. It will make your image much more interesting. Here is an example where the image is not clearly readable. At the end of the shot, where is your eye going ? The hunter or the yellow dude ?</p>
+<p><strong>您需要引导视线</strong>，使某些区域比其他区域更明亮。如果您使用定向灯，请放一些云或使用遮挡物。这将使您的图像更加有趣。以下是图像不清晰的示例。在拍摄结束时，您的视线会看向哪里？猎人还是黄色人物？</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_170_sun_the_star_HD-20241115011622-hee7247.mp4" data-src="assets/040_lightCategories_170_sun_the_star_HD-20241115011622-hee7247.mp4"></video></p>
+<p>I actually lit the shot above. The highest contrast point is not on the hunter. That’s clearly a mistake. Every time I look at it, my eye goes to the yellow dude.</p>
+<p>上面的照片其实是我打光的。对比度最高的点不在猎人身上。这显然是个错误。每次我看它，我的目光都会转向那个黄色的人。</p>
+<blockquote>
+<p><strong>Sharon Calahan</strong> : What you do not see is as important as what you do see.<strong>The light is there to direct the viewer’s attention, the darkness to stimulate his imagination.</strong></p>
+<p><strong>Sharon Calahan</strong>：你看不到的东西和你看到的东西一样重要。<strong>光是为了引导观众的注意力，黑暗是为了激发他们的想象力。</strong></p>
+</blockquote>
+<h3 id="聚焦星报-spotlight-on-the-star">聚焦星报 Spotlight on The Star</h3>
+<h4 id="两个太阳-two-suns">两个太阳 Two suns</h4>
+<p>It is on the movie ‘The Star’ that I started to think about Spotlights for Exterior Daylight Scenes. I did a sequence on a market where the main character, Bo the donkey, was confused, lost and desperately looking for his owner, Mary. The Color Key was done by <a href="https://www.imdb.com/name/nm2513625/?ref_=ttfc_fc_cr11">Sean</a> <a href="https://www.eckols.net/">Eckols</a>. Here is the establishing shot. <strong>Can you spot the cheat ?</strong></p>
+<p>正是在电影《明星》中，我开始考虑在室外日光场景中使用聚光灯。我拍摄了一个市场场景，主角驴子博迷茫、迷路，拼命寻找主人玛丽。色彩键由<a href="https://www.imdb.com/name/nm2513625/?ref_=ttfc_fc_cr11">肖恩</a> <a href="https://www.eckols.net/">·埃克斯</a>完成。这是定场镜头。<strong>你能发现其中的奥秘吗？</strong></p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_180_sun_spot_the_star_HD-20241115011712-jwvo4c1.mp4" data-src="assets/040_lightCategories_180_sun_spot_the_star_HD-20241115011712-jwvo4c1.mp4"></video></p>
+<p>We started the sequence with an establishing shot where you could clearly see that ​<strong>two suns were present, in almost opposite directions</strong>​. With a couple of blockers, we could fade them in without anyone noticing the trick. We needed to have  <strong>several shots against the sun to confuse the spectator</strong> as well. It was an interesting challenge to do !</p>
+<p>我们以一个定场镜头开始这个序列，在这个镜头中，你可以清楚地看到​<strong>两个太阳，几乎在相反的方向</strong>​。用几个遮挡物，我们可以让它们淡入淡出，而不会有人注意到这个技巧。我们需要拍摄<strong>几个背对太阳的镜头来迷惑观众</strong>。这是一个有趣的挑战！</p>
+<blockquote>
+<p>I am using this example to show you how far we can go even with natural lights. Two different sun directions are not mistake, it is an artistic choice.</p>
+<p>我使用这个例子来向你展示，即使使用自然光，我们也能走多远。两个不同的太阳方向不是错误，而是一种艺术选择。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_070_sun_spot_the_star_FHD-20241105171249-ggcmhse.jpg" alt="" title="Can you spot the big cheat ? There are two suns ! 你能发现这个大骗子吗？有两个太阳！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_080_sun_spot_the_star_FHD-20241105171249-mwd1lg7.jpg" alt="" title="When you look at the color key, nothing makes really sense. But your eye goes straight to the story point. 当你看颜色键时，什么都看不懂。但你的目光会直接看到故事的重点。" loading="lazy">​</p>
+<p>Concept was done by <strong><a href="https://www.pgtaylorart.com/">George Taylor</a></strong></p>
+<p>**<a href="https://www.pgtaylorart.com/">概念由George Taylor</a>**提出</p>
+<blockquote>
+<p><strong><a href="https://www.eckols.net/">Sean Eckols :</a></strong>  The intention was to create tension through the raking light and shadow play and the dust/haze as this was a tense moment in the story. Creating tension and confusion as Bo looked into the light and can only see silhouettes against the harsh light. We were just cheating the light to fit the story.</p>
+<p><strong><a href="https://www.eckols.net/">肖恩·埃克斯：</a></strong> 我们的目的是通过斜射光和阴影以及灰尘/烟雾营造紧张气氛，因为这是故事中紧张的时刻。当博看着灯光时，只能看到刺眼灯光下的轮廓，这营造了紧张和混乱的氛围。我们只是在欺骗灯光以适应故事情节。</p>
+</blockquote>
+<p><strong>It was a difficult choice to be approved by the supervisor and other artists.</strong>  One of the reactions I got was : “<em>Isn’t it going to confuse the artists to have two spotlights for the suns ?</em> ” Yes ! That is the whole point of the sequence !  <strong>We want to confuse the viewer with two suns to fully identify with</strong>  <strong>the main character.</strong></p>
+<p><strong>这是一个很难的选择，需要得到主管和其他艺术家的认可。</strong> 我收到的反应之一是：“<em>用两个聚光灯来表示太阳，难道不会让艺术家感到困惑吗？</em>  ”是的！这就是整个序列的重点！<strong>我们想用两个太阳来迷惑观众，让他们完全认同主角。</strong></p>
+<p>Finally I want to state clearly that there was  <strong>no crossed shadows on the floor.</strong>   It would have killed the sequence. I worked hard to get this naturalist look so no one could notice the “double sun” trick. So except if your are lighting a football stadium, you should never render hard crossed shadows.</p>
+<p>最后，我想明确说明一下，<strong>地板上没有交叉阴影。</strong> 否则，整个序列就毁了。我努力营造这种自然主义风格，所以没人能注意到“双太阳”技巧。所以，除非你照亮的是足球场，否则你永远都不应该渲染硬交叉阴影。</p>
+<h3 id="spotlight-定义-spotlight-definition">Spotlight 定义 Spotlight definition</h3>
+<blockquote>
+<p>What is a spotlight? It is the association of a point light with a cone. The spot in itself is not a type of light, like an area light. The cone is basically a light filter and we should be able to use on any lights, like in Guerilla Render.</p>
+<p>什么是聚光灯？它是点光源与圆锥体的结合。聚光灯本身并不是一种光，就像区域光一样。圆锥体基本上是一种光过滤器，我们应该能够在任何灯光上使用，就像在 Guerilla Render 中一样。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_090_guerilla_light_cone_FHD-20241105171249-ertzgp6.jpg" alt="" loading="lazy">​</p>
+<p>You can mix a cone (light filter) with a distant light in Guerilla to get the best of each element.</p>
+<p>您可以在 Guerilla 中将锥体（光过滤器）与远光混合，以获得每个元素的最佳效果。</p>
+<p>Another advantage of using a spotlight is for interiors. It will create a bigger impact since the source is closer, due to the deformation of perspective.</p>
+<p>使用聚光灯的另一个好处是用于室内。由于透视变形，光源更近，因此会产生更大的影响。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_100_window_impact_distant_FHD-20241105171249-5v8n017.jpg" alt="" title="A directional light in the attic scene (from Alex Mateo and Jeremy Vickery). Its light rays are parallel to each other, as if emitted perpendicular to an infinitely large plane. 阁楼场景中的定向光（来自 Alex Mateo 和 Jeremy Vickery）。它的光线彼此平行，就像垂直于无限大的平面发射一样。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_110_window_impact_spot_FHD-20241105171249-9iiv0v4.jpg" alt="" title="In this example, I used a spot light. I made the impact very obvious and big. But my point is that you can design your shadows and make them more graphic if you want to. 在这个例子中，我使用了聚光灯。我让效果非常明显和巨大。但我的观点是，如果你愿意，你可以设计你的阴影并让它们更具图形效果。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_120_window_impact_planet_51_FHD-20241105171249-b2pcits.jpg" alt="" title="Many spot lights were used in this shot. We even have two distinct sun impacts on the floor ! 这张照片中使用了许多聚光灯。我们甚至在地板上看到了两种截然不同的阳光效果！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_130_sun_spot_revolutionary_road_FHD-20241105171249-ol7uii6.jpg" alt="" title="Do you think the sun was used for this shot from Revolutionary Road ? (Director : Sam Mendes, DP: Roger Deakins) 你认为《革命之路》中的这个镜头是用太阳拍摄的吗？（导演：萨姆·门德斯，摄影指导：罗杰·狄金斯）" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_140_sun_spot_revolutionary_road_FHD-20241105171249-h9rfj67.jpg" alt="" title="Absolutely not ! The kitchen was lit mainly using an 18K HMI and Ultrabounce material outside the windows. 绝对不是！厨房主要使用 18K HMI 和窗外的 Ultrabounce 材料照明。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_150_sun_spot_revolutionary_road_FHD-20241105171249-6pruq0e.jpg" alt="" title="“Locations like that only look good for about a half-hour or an hour at a certain time of day on a good day, but you can’t allow for that.&quot; “这样的地点只有在一天中的某个时间，大概有半小时或一个小时的时间看起来不错，但你不能允许这种情况发生。”" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_160_sun_spot_revolutionary_road_FHD-20241105171249-n200jd2.jpg" alt="" title="&quot;It takes an enormous amount of light to maintain a naturalistic, consistent daytime feel inside, and the house was backed up against a hill, so getting light into the upper rooms and into the kitchen around back was tricky.” “需要大量的光线才能在室内保持自然、一致的白天感觉，而且房子背靠着一座小山，因此让光线照进楼上的房间和后面的厨房很棘手。”" loading="lazy">​</p>
+<p>Really, both options are available for the sun : spot or distant.</p>
+<p>事实上，对于太阳来说，有两种选择：点状或远状。</p>
+<p>It would be stupid to say that spot lights are better than distant lights. We use distant most of the time, but spot can be interesting as well. It really depends on the look you want to achieve : whatever makes it more interesting. It could be a blocker, a <a href="https://en.wikipedia.org/wiki/Gobo_(lighting)">GOBO</a> or even a plane with a cloud mapped on it.</p>
+<p>说聚光灯比远光灯好是愚蠢的。我们大多数时候都使用远光灯，但聚光灯也可以很有趣。这真的取决于你想要实现的外观：无论什么都能让它更有趣。它可以是一个遮光板、一个遮光片，<a href="https://en.wikipedia.org/wiki/Gobo_(lighting)">甚至</a>是一架上面映射了云的飞机。</p>
+<h2 id="天空-sky">天空 Sky</h2>
+<h3 id="指南-guidelines-2">指南 Guidelines</h3>
+<p>Follow with your ​<strong>SKY</strong>​. Three things to pay attention to :</p>
+<p>跟随你的​<strong>SKY</strong>​。要注意三件事：</p>
+<ul>
+<li><strong>Rotate it properly to match your key direction.</strong>   Otherwise you could get some weird mismatch. I’ll show a proper example in <a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#33-follow-with-the-sky">the next chapter</a>.</li>
+<li><strong>正确旋转它以匹配您的关键方向。</strong> <a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#33-follow-with-the-sky">否则，您可能会得到一些奇怪的不匹配。我将在下一章</a>中展示一个正确的示例。</li>
+<li>Which map are you using ? A good solution is to use a HDRI published by matte-painting.  <strong>Be careful with its resolution and its exposure.</strong>  2k and a range of 10 stops should be good.Otherwise, you renders could be expensive and noisy.</li>
+<li>你使用的是哪张地图？一个好的解决方案是使用 matte-painting 发布的 HDRI。<strong>注意其分辨率和曝光度。</strong> 2k 和 10 档范围应该不错。否则，你的渲染可能会很昂贵且嘈杂。</li>
+</ul>
+<blockquote>
+<p>It is at Animal Logic that I realized this. The matte-painting department would work on these beautiful panoramic HDRIs in 16k or even 32k. And we would have to create a smaller version in Nuke (2k or 4k) of these files for our Env Lights. Otherwise mipmapping process and sampling would be very long. The exposure of about ten stops is similar to the Clamp Pre Filter we have discussed <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#range">in Chapter 1</a>.</p>
+<p>我在 Animal Logic 意识到了这一点。matte-painting 部门会用 16k 甚至 32k 处理这些漂亮的全景 HDRI。而我们必须在 Nuke 中为我们的 Env Lights 创建这些文件的较小版本（2k 或 4k）。否则 mipmapping 过程和采样会非常长。大约十档的曝光类似于我们<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#range">在第 1 章中</a>讨论过的 Clamp Pre Filter 。</p>
+</blockquote>
+<ul>
+<li><strong>I generally try to have my Sky visible in Primary Visibility.</strong>  So there is a coherency between the Sky rendered and the Sky illuminating the scene. That’s a personal choice though. I like when they both match</li>
+<li><strong>我通常会尝试让天空在主可见性中可见。</strong> 因此，渲染的天空和照亮场景的天空之间具有一致性。不过，这是个人选择。我喜欢它们都匹配</li>
+</ul>
+<blockquote>
+<p>In a series of <a href="https://www.artofvfx.com/the-lion-king-elliot-newman-vfx-supervisor-mpc/">articles</a> on the <em>Lion King</em> (Director : ​<strong>Jon Favreau</strong>​, DP : ​<strong>Caleb Deschanel</strong>​), you clearly see that MPC chose a different path on the sky. Same thing on <em><a href="https://www.technology.disneyanimation.com/islandscene">Moana</a></em> (Director : <strong>Ron Clements</strong> and ​<strong>John Musker</strong>​, Cinematography :  ​<strong>Adolph Lusinsky</strong>​).</p>
+<p>在关于《​<em>狮子王》</em> ​（导演：<strong>乔恩·费</strong>儒，摄影指导：​<strong>加莱布·丹斯切尔</strong>​）的一系列<a href="https://www.artofvfx.com/the-lion-king-elliot-newman-vfx-supervisor-mpc/">文章中，你可以清楚地看到 MPC 在天空上选择了一条不同的道路。 </a>​*<a href="https://www.technology.disneyanimation.com/islandscene">《海洋</a>*奇缘》 （导演：<strong>罗恩·克莱门茨</strong>和​<strong>约翰·马斯克</strong>​，摄影：  ​<strong>阿道夫·鲁辛斯基</strong>​）也是如此。</p>
+<p>It is totally possible to separate both skies if you want to.</p>
+<p>如果您愿意的话，完全可以将两片天空分开。</p>
+</blockquote>
+<h3 id="物理天空还是-hdri-physical-sky-or-hdri">物理天空还是 HDRI？ Physical Sky or HDRI ?</h3>
+<h4 id="普莱摩比-playmobil">普莱摩比 Playmobil</h4>
+<p>In some cases, you can use a physical sky. The Solid Angle website explains the concept very clearly : <a href="https://support.solidangle.com/display/AFMUG/Physical+Sky">Arnold Physical Sky</a>. <strong>SkyLight is a good starting point but it is generally not enough to give depth and interest to a shot.</strong>   Clouds and haze would definitely help in that case.</p>
+<p>在某些情况下，您可以使用物理天空。 Solid Angle 网站非常清楚地解释了这个概念：<a href="https://support.solidangle.com/display/AFMUG/Physical+Sky">Arnold Physical Sky</a>。<strong>SkyLight 是一个很好的起点，但通常不足以给镜头带来深度和趣味性。</strong> 在这种情况下，云和雾霾肯定会有所帮助。</p>
+<p>On <em>Playmobil</em> (Director : ​<strong>Lino DiSalvo</strong>​, PD : ​<strong>Rémi Salmon</strong>​) we rendered many sequences with the <a href="http://guerillarender.com/doc/2.2/Library_Lights_SkyLight.html">SkyLight from Guerilla</a>. It was more than enough for the look we wanted. And there is no risk to have a mismatch between the Sun Direction and the Sky since they are linked.</p>
+<p>在​<em>Playmobil</em>​（导演：​<strong>Lino DiSalvo</strong>​，导演：​<strong>Rémi Salmon</strong>​）中，我们用 <a href="http://guerillarender.com/doc/2.2/Library_Lights_SkyLight.html">Guerilla 的 SkyLight</a> 渲染了许多序列。它足以达到我们想要的效果。而且，由于太阳方向和天空是相连的，因此不存在不匹配的风险。</p>
+<blockquote>
+<p>In Arnold and Guerilla Render, the shadow softness is (unfortunately) not driven by the elevation. Skylights are not 100% automatic and you’ll still have to play with the <em>Sun Radius</em> to get a convincing look for your shadows.</p>
+<p>在 Arnold 和 Guerilla Render 中，阴影柔和度（不幸的是）不受海拔影响。天窗并非 100% 自动，您仍需要调整<em>太阳半径</em>以获得令人信服的阴影效果。</p>
+<p>That is really important, especially for sunset/sunrise setups.</p>
+<p>这真的很重要，尤其是对于日落/日出设置。</p>
+</blockquote>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_195_skyLight_playmobil_HD-20241115011851-qbvvr3j.mp4" data-src="assets/040_lightCategories_195_skyLight_playmobil_HD-20241115011851-qbvvr3j.mp4"></video></p>
+<p>We used the <a href="http://guerillarender.com/doc/1.4/Library_Lights_SkyLight.html">SkyLight</a> from Guerilla Render in this sequence. Clouds were added in 2D.</p>
+<p>我们在这个序列中使用了 Guerilla Render 的 <a href="http://guerillarender.com/doc/1.4/Library_Lights_SkyLight.html">SkyLight</a>。云是在 2D 中添加的。</p>
+<blockquote>
+<p>Why is the <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/blusky.html">sky blue</a> ? Sunlight reaches Earth’s atmosphere and is scattered in all directions by all the particles in the air.  <strong>Blue is scattered more than other colors because it travels as shorter, smaller waves.</strong></p>
+<p>天空为什么是<a href="http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/blusky.html">蓝色的</a>？阳光到达地球大气层后，被空气中的所有粒子散射到各个方向。<strong>蓝色散射得比其他颜色多，因为它传播的波更短、更小。</strong></p>
+<p>This is why we see a <a href="https://spaceplace.nasa.gov/blue-sky/en/">blue sky</a> most of the time.</p>
+<p>这就是为什么我们大多数时候看到的都是<a href="https://spaceplace.nasa.gov/blue-sky/en/">蓝天。</a></p>
+</blockquote>
+<h4 id="乐高蝙蝠侠-lego-batman">乐高蝙蝠侠 Lego Batman</h4>
+<p>In the following example from <em>Lego Batman</em> (Director : ​<strong>Chris McKay</strong>​, PD : ​<strong>Grant Freckelton</strong>​), the Joker has taken over Gotham City. Check the sky out : It is very cloudy, with some hints of green, orange an purple. There is no way a SkyLight could match that.</p>
+<p><em>在以下《乐高蝙蝠侠》</em> （导演：<strong>克里斯·麦凯</strong>，导演：<strong>格兰特·弗雷克尔顿</strong>）的例子中，小丑已经占领了哥谭市。看看天空：云层很厚，带有一些绿色、橙色和紫色。SkyLight 绝对无法与之匹敌。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_200_skyLight_lego_batman_HD-20241115011926-lhn2d3r.mp4" data-src="assets/040_lightCategories_200_skyLight_lego_batman_HD-20241115011926-lhn2d3r.mp4"></video></p>
+<p>I could not have used a Physical Sky for this shot. Sky is way too insane ! Instead I used the HDRI provided by the Matte-Painting Department.</p>
+<p>我无法为这张照片使用物理天空。天空太疯狂了！相反，我使用了 Matte-Painting 部门提供的 HDRI。</p>
+<p><strong>Should we have the Sun in the HDRI or not ?</strong>   I have seen both setups. Some artists actually remove the Sun from the environment map to  <strong>avoid any double sun issue.</strong></p>
+<p><strong>我们是否应该在 HDRI 中加入太阳？</strong> 我见过这两种设置。一些艺术家实际上会从环境贴图中移除太阳，<strong>以避免出现双重太阳问题。</strong></p>
+<p>I personally think that having the Sun in the HDRI can add some shaping and some extra reflections to the characters. You have to pay attention to its orientation though : just make sure your <strong>Sky is aligned with the Sun.</strong></p>
+<p>我个人认为，在 HDRI 中添加太阳可以为角色添加一些造型和一些额外的反射。不过，你必须注意它的方向：只要确保你的<strong>天空与太阳对齐即可。</strong></p>
+<blockquote>
+<p>From <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a> : When scene textures […] contain emissive specular areas that substantially contribute to the scene illumination (RGB&gt;&gt;1.0), care must be taken in terms of sampling or noise is likely. […] Even still, it is common to paint out very compact and/or bright sources (such as the sun) from skydomes, and then add them back into the scene as native renderer lights to allow for both lower-noise sampling and often greater artistic control.</p>
+<p>来自<a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">电影色彩</a>：当场景纹理 […] 包含对场景照明有重大贡献的发射镜面反射区域（RGB&gt;&gt;1.0）时，必须小心采样，否则可能会产生噪音。[…] 即便如此，通常还是会从天空穹顶上画出非常紧凑和/或明亮的光源（例如太阳），然后将它们作为原生渲染器灯光添加回场景中，以实现低噪音采样和通常更好的艺术控制。</p>
+</blockquote>
+<h4 id="人猿星球之战-war-for-the-planet-of-the-apes">人猿星球之战 War for the planet of the apes</h4>
+<p>With an exterior cloudy day, I would personally try to use only one Env Light with an HDR. It is a good way to test the solidity of a proper PBR workflow. Not very challenging in terms of lighting but damn accurate !</p>
+<p>如果是室外阴天，我个人会尝试只使用一个带有 HDR 的 Env Light。这是测试正确 PBR 工作流程的可靠性的好方法。在照明方面不是很有挑战性，但非常准确！</p>
+<p><em>War for the planet of the Apes</em> (Director : ​<strong>Matt Reeves</strong>​, DP : <strong><a href="https://en.wikipedia.org/wiki/Michael_Seresin">Michael Seresin</a></strong>)  <strong>is very good example of</strong>**<a href="https://www.fxguide.com/fxfeatured/physlight-innovation-at-weta-digital/">doing things right</a>**​ <strong>.</strong></p>
+<p><em>《猩球崛起 3：终极之战》</em> （导演：<strong>马特·里夫斯</strong>，摄影指导：<strong><a href="https://en.wikipedia.org/wiki/Michael_Seresin">迈克尔·塞瑞辛</a></strong>）就是**<a href="https://www.fxguide.com/fxfeatured/physlight-innovation-at-weta-digital/">正确行事</a><strong>​</strong>的<strong>​</strong>很好例子** <strong>。</strong></p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_230_skyLight_apes_HD-20241115012028-hpzn3k3.mp4" data-src="assets/040_lightCategories_230_skyLight_apes_HD-20241115012028-hpzn3k3.mp4"></video></p>
+<h3 id="天空限制-sky-limitation">天空限制 Sky limitation</h3>
+<p>One issue we face quite often in CG is that the sky flattens everything. Like it lacks directionality. But it does not always have to be the case ! Let’s have a look at this amazing cloudy lighting from <em><a href="https://www.youtube.com/watch?v=iQXmlf3Sefg">The Witch</a></em> (Director : ​<strong>Robert Eggers</strong>​, DP : ​<strong>Jarin Blaschke</strong>​). I am a huge fan of this movie and I think the photography is as good as <em><a href="https://www.youtube.com/watch?v=LoebZZ8K5N0">The Revenant</a></em>.</p>
+<p>我们在 CG 中经常遇到的一个问题是天空压平了一切。就像它缺乏方向性一样。但情况并不总是如此！让我们来看看*<a href="https://www.youtube.com/watch?v=iQXmlf3Sefg">《女巫》</a>* （导演：<strong>罗伯特·艾格斯</strong>，摄影指导：<strong>贾林·布拉施克</strong>）中令人惊叹的云光。我是这部电影的忠实粉丝，我认为摄影和*<a href="https://www.youtube.com/watch?v=LoebZZ8K5N0">《荒野猎人》</a>* 一样好。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_220_sky_the_witch_HD-20241115012108-odbgeif.mp4" data-src="assets/040_lightCategories_220_sky_the_witch_HD-20241115012108-odbgeif.mp4"></video></p>
+<blockquote>
+<p><strong><a href="https://www.indiewire.com/2016/03/how-director-robert-eggers-and-dp-jarin-blaschke-created-the-look-of-the-witch-61934/">Jarin Blaschke</a></strong> : “Once we waited for the gloom, the grip department would just give it a little shape. <strong>The light tends to come from one direction and I’d just further take down from the other direction.</strong>  The base light had to be real overcast weather and we’d just put some nets and solids on the side to strengthen what the light was already doing.”</p>
+<p>**<a href="https://www.indiewire.com/2016/03/how-director-robert-eggers-and-dp-jarin-blaschke-created-the-look-of-the-witch-61934/">Jarin Blaschke</a>**​：“一旦我们等到阴天，幕布部门就会给它一点形状。<strong>光线往往来自一个方向，我会从另一个方向进一步减弱。</strong> 基础光线必须是真正的阴天，我们会在侧面放一些网和固体来增强光线的效果。”</p>
+</blockquote>
+<p>They also used some <em><a href="https://nofilmschool.com/2015/03/add-dimension-contrast-scenes-using-negative-fill-lighting">Negative fill</a></em> on set, it is like a blocker to us. So there are definitely several possibilities of shaping the characters like <strong><a href="https://variety.com/2016/artisans/in-contention/the-witch-cinematographer-jarin-blaschke-natural-light-1201716424/">Jarin Blaschke</a></strong> did.</p>
+<p>他们还在片场使用了一些*<a href="https://nofilmschool.com/2015/03/add-dimension-contrast-scenes-using-negative-fill-lighting">负填充，这对我们来说就像是一个障碍。所以，像</a><em>​</em>*<a href="https://variety.com/2016/artisans/in-contention/the-witch-cinematographer-jarin-blaschke-natural-light-1201716424/">Jarin Blaschke</a>** 那样塑造角色肯定有几种可能性。</p>
+<blockquote>
+<p>You can even support your sky with a top light with soft shadows. It can help to give more shape. We will come back to that <a href="https://chrisbrejon.com/cg-cinematography/chapter-7-lighting-techniques/#4-top-light">later</a>.</p>
+<p>您甚至可以使用带有柔和阴影的顶灯来支撑天空。它有助于塑造更多形状。我们<a href="https://chrisbrejon.com/cg-cinematography/chapter-7-lighting-techniques/#4-top-light">稍后</a>会再讨论这一点。</p>
+</blockquote>
+<h2 id="月亮-moon">月亮 Moon</h2>
+<p>I do NOT want to <a href="https://www.expandedcinematography.com/the-cinematography-of-legend-of-the-guardians.html#cinematic">paraphrase </a>​**<a href="https://www.expandedcinematography.com/the-cinematography-of-legend-of-the-guardians.html#cinematic">Craig Welsh</a>** but  <strong>the moon does not light in blue !</strong>  It is NOT cold ! The moon is a reflector of the Sun. <strong>It is actually warmer than the Sun since It is temperature is 4000K.</strong></p>
+<p>我不想<a href="https://www.expandedcinematography.com/the-cinematography-of-legend-of-the-guardians.html#cinematic">套用</a>​**<a href="https://www.expandedcinematography.com/the-cinematography-of-legend-of-the-guardians.html#cinematic">克雷格·韦尔什的</a><strong>话，但</strong>月亮并不发蓝光！** 它并不冷！月亮是太阳的反射体。<strong>它实际上比太阳更温暖，因为它的温度是 4000K。</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_250_art_of_night_moon_FHD-20241105171249-8y91c07.jpg" alt="" loading="lazy">​</p>
+<p><strong><a href="https://theartofnight.com/">Mark Gee</a></strong> is an amazing night photographer.</p>
+<p><strong><a href="https://theartofnight.com/">马克·吉 (Mark Gee)</a></strong> 是一位出色的夜间摄影师。</p>
+<h3 id="兰戈-rango">兰戈 Rango</h3>
+<p>Here is a quite unique example of a warm moon in a full CG feature film. It is my personal favorite and probably  <strong>the most beautiful night in CG History.</strong>   Emotion, storytelling and framing at their best levels ! Please take a couple of minutes to enjoy this clip from <em><a href="https://www.youtube.com/watch?v=tH8xW8mF-AI">Rango</a></em> (Director : ​<strong>Gore Verbinski</strong>​, DP : ​<strong>Roger Deakins</strong>​) :</p>
+<p>这是一部全 CG 故事片中温暖月亮的一个非常独特的例子。这是我个人最喜欢的，也可能是  <strong>CG 历史上最美丽的夜晚。</strong> 情感、故事叙述和构图都达到了最佳水平！请花几分钟欣赏*<a href="https://www.youtube.com/watch?v=tH8xW8mF-AI">Rango</a>*（导演：<strong>Gore Verbinski</strong>，摄影指导：<strong>Roger Deakins</strong>）的这段剪辑：</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/End of the Road-20241115012218-vnko2gk.webm" data-src="assets/End of the Road-20241115012218-vnko2gk.webm"></video></p>
+<p>​<strong>Roger Deakins</strong>​, one of the <a href="https://www.youtube.com/watch?v=jzganSspJps">most famous</a> cinematographer, has been hired as a DP on ​<em>Rango</em>​, <em>Wall-e</em> and ​<em>How to train your dragon</em>​. It is the proof that cinematography between live-action and PBR cartoon have things in common. I’ll use many examples from him in my book.</p>
+<p><a href="https://www.youtube.com/watch?v=jzganSspJps">最著名的</a>电影摄影师之一<strong>罗杰·迪金斯</strong>曾被聘为​ <em>《兰戈》</em> ​、 <em>《机器人总动员》</em> 和 <em>《驯龙高手》</em> 的摄影指导。这证明了真人电影和 PBR 卡通片的摄影有共同之处。我将在我的书中引用他的许多例子。</p>
+<h3 id="日以继夜-day-for-night">日以继夜 Day for night</h3>
+<p>If the Moon is warmer than the Sun in the real world, then <strong>why most nights in movies are blue ?</strong>    One possible reason would be purely scientific : humans have poor night vision. We have seen in the first chapter about the retina, which is composed of rods and cones :</p>
+<p>如果在现实世界中月亮比太阳温暖，那么<strong>为什么电影中的大多数夜晚都是蓝色的？</strong>   一个可能的原因纯粹是科学的：人类的夜视能力很差。我们在第一章中已经了解了视网膜，它由视杆细胞和视锥细胞组成：</p>
+<ul>
+<li><strong>Cones</strong> are active at higher light levels, are capable of color vision and are responsible for high spatial acuity.</li>
+<li><strong>视锥细胞</strong>在较高光照水平下活跃，具有彩色视觉能力，并具有较高的空间敏锐度。</li>
+<li><strong>Rods</strong> are only active when light is low. <strong>At night we use them for our vision. However, they are not sensitive to color.</strong>  This is why <strong>we are colorblind at night.</strong>  The rod sensitivity is shifted toward shorter wavelengths (the bluer ones) compared to daylight vision, as explained in this <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/vision/rodcone.html">article</a>.</li>
+<li><strong>视杆细胞</strong>仅在光线较弱时才会活跃。<strong>在夜间，我们利用它们来观察。然而，它们对颜色不敏感。</strong> 这就是<strong>我们在夜间会色盲的原因。</strong> 与日光视觉相比，视杆细胞的敏感度会向较短的波长（较蓝的波长）转移，如本文<a href="http://hyperphysics.phy-astr.gsu.edu/hbase/vision/rodcone.html">所述</a>。</li>
+</ul>
+<p>This phenomena is called the <em><a href="https://en.wikipedia.org/wiki/Purkinje_effect">Purkinje Effect</a></em>. How cinematographers have approached this issue ? It is called <em><a href="https://en.wikipedia.org/wiki/Day_for_night">Day for night</a></em> or “​<em>Nuit américaine</em>​” in French. Wikipedia explains it much better that I do ! Basically it is a technique where  <strong>the scene would be shot underexposed with a blue tint added in post.</strong>  It has been done with more or less success over the years.</p>
+<p>这种现象被称为 <em><a href="https://en.wikipedia.org/wiki/Purkinje_effect">Purkinje 效应</a></em>。电影摄影师如何处理这个问题？它被称为*<a href="https://en.wikipedia.org/wiki/Day_for_night">“日以继夜</a>*”或法语中的“ <em>Nuit américaine</em> ”。维基百科对此的解释比我好得多！基本上，这是一种在<strong>拍摄场景时曝光不足并在后期添加蓝色色调</strong>的技术。多年来，这种技术或多或少取得了成功。</p>
+<h3 id="实景拍摄中的夜间灯光-night-lighting-in-live-action">实景拍摄中的夜间灯光 Night lighting in live-action</h3>
+<h4 id="疯狂的麦克斯狂暴之路-mad-max-fury-road">疯狂的麦克斯:狂暴之路 Mad Max : Fury Road</h4>
+<p>One of my less favorite example would be from <em><a href="https://www.youtube.com/watch?v=hEJnMQG9ev8">Mad Max : Fury Road</a></em> (Director : ​<strong>George Miller</strong>​, DP : ​<strong>John Seale</strong>​).</p>
+<p>我不太喜欢的例子之一是*<a href="https://www.youtube.com/watch?v=hEJnMQG9ev8">《疯狂的麦克斯：狂暴之路》</a>* （导演：<strong>乔治·米勒</strong>，摄影指导：<strong>约翰·西尔</strong>）。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_310_night_mad_max_HD-20241115012254-ttsmb8r.mp4" data-src="assets/040_lightCategories_310_night_mad_max_HD-20241115012254-ttsmb8r.mp4"></video></p>
+<p>The image has been twisted so much in post-production that it breaks any plausibility of the light. Especially when you get close to the characters : skin tones just look like ​<em>The Smurfs</em>​.</p>
+<p>图像在后期制作中被扭曲了太多，以至于破坏了光线的任何可信度。尤其是当你靠近人物时：肤色看起来就像<em>蓝精灵</em>一样。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_270_night_mad_max_FHD-20241105171249-gsuqaed.jpg" alt="" title="They apparently shot two stops overexposed for the night sequences on Mad Max : Fury Road. 他们显然为了拍摄《疯狂的麦克斯：狂暴之路》的夜景而拍摄了两档过度曝光的镜头。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_260_night_mad_max_FHD-20241105171249-9tkzmdg.jpg" alt="" title="In my opinion, it is very difficult to make a shot look good (CG or not) when there is such a big difference between what you shoot and your final result. 在我看来，当拍摄的内容和最终结果之间存在如此大的差异时，很难让镜头看起来很好看（无论是否是 CG）。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_280_night_mad_max_FHD-20241105171249-esgtpkl.jpg" alt="" title="Heavy looks in post-production. It has probably been graded through a shape (you can see its soft border). 后期制作中看起来很重。它可能已通过形状进行分级（您可以看到它的柔和边框）。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_290_night_mad_max_FHD-20241105171249-igfhfgf.jpg" alt="" title="I know it is graphic. But Tom Hardy just looks like a smurf. 我知道这很生动。但汤姆·哈迪看起来就像个蓝精灵。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_300_night_mad_max_FHD-20241105171249-fwdspha.jpg" alt="" title="This shot works fine. I miss the head lights of the truck though. 这张照片拍得不错。不过我怀念卡车的前灯。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_310_night_mad_max_FHD-20241105171249-m7cw60w.jpg" alt="" title="Shots with the explosion look good. Nice complementary scheme. 爆炸镜头看起来不错。很好的互补方案。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_320_night_mad_max_FHD-20241105171249-4en5tjt.jpg" alt="" title="Same thing here. It looks okay. 我也是一样。看起来还不错。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_330_night_mad_max_FHD-20241105171249-e1g40r1.jpg" alt="" title="This is probably my personal limit. Look at the guitar player : he seems to have some spotlights on him, right ? 这大概就是我的个人极限了。看看这个吉他手：他好像被聚光灯照着了，对吧？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_340_night_mad_max_FHD-20241105171249-yk8813q.jpg" alt="" title="This is actually the sun ! I don't buy this image. It is not believable. 这实际上是太阳！我不相信这张图片。这简直令人难以置信。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_350_night_mad_max_FHD-20241105171249-7q2krf1.jpg" alt="" title="Day for night is too obvious here. I would have loved to see this sequence with plenty of headlights from the vehicles. 这里的白天和黑夜太明显了。我真希望看到这个场景中有很多车辆前灯。" loading="lazy">​</p>
+<p>Some shots work better than others.</p>
+<p>有些镜头比其他镜头效果更好。</p>
+<p>Here is <a href="https://ascmag.com/videos/lighting-tech-tips-household-lightbulb-russell-carpenter-asc-1/john-seale-asc-acs-the-look-of-mad-max-fury-road">what </a>​**<a href="https://ascmag.com/videos/lighting-tech-tips-household-lightbulb-russell-carpenter-asc-1/john-seale-asc-acs-the-look-of-mad-max-fury-road">John Seale</a>**​<a href="https://ascmag.com/videos/lighting-tech-tips-household-lightbulb-russell-carpenter-asc-1/john-seale-asc-acs-the-look-of-mad-max-fury-road"> says</a> about the look of the movie  <strong>:</strong></p>
+<p>以下是约翰<a href="https://ascmag.com/videos/lighting-tech-tips-household-lightbulb-russell-carpenter-asc-1/john-seale-asc-acs-the-look-of-mad-max-fury-road">·</a>​**<a href="https://ascmag.com/videos/lighting-tech-tips-household-lightbulb-russell-carpenter-asc-1/john-seale-asc-acs-the-look-of-mad-max-fury-road">西尔</a>**对这部电影的<a href="https://ascmag.com/videos/lighting-tech-tips-household-lightbulb-russell-carpenter-asc-1/john-seale-asc-acs-the-look-of-mad-max-fury-road">看法</a>​ <strong>：</strong></p>
+<blockquote>
+<p><em>George did not want a standard post-apocalyptic film to be gray, blue, black colors. He didn’t want to follow that pattern. Because we don’t really know what the apocalyptic event might have been. […] George is used to the computer at the end of the film. He knew what he could do in post.[…]</em>  <em>Don’t worry John, I’ll fix it in post.</em>  <strong>It wasn’t until post that he started to lock down what he felt was good.</strong>  <em>It took eight months.</em></p>
+<p><em>乔治不想让一部标准的末日后电影充满灰色、蓝色和黑色。他不想遵循那种模式。因为我们真的不知道末日事件可能是什么。[…] 乔治习惯了电影结尾的电脑。他知道他在后期能做什么。[…]</em>  *别担心约翰，我会在后期修复它。*​<strong>直到后期，他才开始确定他认为好的东西。</strong> <em>花了八个月的时间。</em></p>
+</blockquote>
+<p><em>“We do not know where the apocalypse came from. End of oil ? Global warming ?”</em> I found weirdly interesting to justify the look by some scientific explanation. Does the end of the world has a consequence on the saturation of the movie ?</p>
+<p><em>“我们不知道世界末日从何而来。石油耗尽？全球变暖？”</em>   我发现用一些科学解释来证明这种看法很有意思。世界末日对电影的饱和度有影响吗？</p>
+<p>I thought that the extreme color was actually used to get some graphic and punchy images. Here is an interview with <strong><a href="https://postperspective.com/mad-max-fury-road-colorist-eric-whipp/">Eric Whipp</a></strong> which gives some explanation on the matter. <a href="https://cinematography.com/index.php?/topic/71499-day-for-night-madmax/">A great post</a> and <a href="https://timeinpixels.com/2015/10/shooting-day-for-night/">this article</a> give some insight as well.</p>
+<p>**<a href="https://postperspective.com/mad-max-fury-road-colorist-eric-whipp/">我认为极端色彩实际上是为了获得一些生动而有力的图像而使用的。这是对 Eric Whipp 的</a>**采访，对此事做了一些解释。<a href="https://cinematography.com/index.php?/topic/71499-day-for-night-madmax/">一篇很棒的帖子</a>和<a href="https://timeinpixels.com/2015/10/shooting-day-for-night/">这篇文章</a>也提供了一些见解。</p>
+<blockquote>
+<p>It looks like that a still photographer on set, <strong><a href="https://www.imdb.com/name/nm0092672/">Jasin Boland</a></strong>, tried to go for a desaturated look and <strong>George Miller</strong> did not want to go down this road.</p>
+<p>看起来，现场的摄影师 <strong><a href="https://www.imdb.com/name/nm0092672/">Jasin Boland</a></strong> 试图追求去饱和的感觉，但 <strong>George Miller</strong> 不想走这条路。</p>
+<p>I can confirm it was kinda the same on <em><a href="https://www.imdb.com/title/tt1402488/">Happy Feet 2</a></em>.</p>
+<p><em><a href="https://www.imdb.com/title/tt1402488/">我可以确认《快乐的大脚 2》</a></em> 也有类似的情况。</p>
+</blockquote>
+<h4 id="抛弃-cast-away">抛弃 Cast away</h4>
+<p>This <em>Day for night</em> is much more subtle (Director : ​<strong>Robert Zemeckis</strong>​, DP : ​<strong>Don Burgess</strong>​).</p>
+<p>这部 <em>《日以作夜》</em> 更加微妙（导演：<strong>罗伯特·泽米吉斯</strong>，摄影指导：<strong>唐·伯吉斯</strong>）。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_330_night_cast_away_HD-20241115012325-gbdo07s.mp4" data-src="assets/040_lightCategories_330_night_cast_away_HD-20241115012325-gbdo07s.mp4"></video></p>
+<p>There is still something fundamentally wrong in terms of exposure. But I think they get away with it as this sequence looks like our ​*<a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#the-mental-image">mental image</a>*​.</p>
+<p>从曝光角度来看，仍然存在根本性错误。但我认为他们侥幸逃脱了惩罚，因为这个序列看起来就像我们​*<a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#the-mental-image">脑海中的图像</a>*​。</p>
+<h3 id="cg-中的夜间灯光-night-lighting-in-cg">CG 中的夜间灯光 Night lighting in CG</h3>
+<p>But what about full CG feature films ? I have done blue nights  <strong>on every single movie</strong> I have worked. Except ​<em>Lego Batman</em>​. This is why this movie holds a special place for me.</p>
+<p>但全 CG 故事片呢？我参与制作的<strong>每一部电影</strong>都<em>让我度过了漫长的蓝色夜晚。除了《乐高蝙蝠侠》</em> ​。这就是为什么这部电影对我来说具有特殊的地位。</p>
+<p><strong>I am not against blue nights</strong> but I think it has <strong>become a cliché in feature animation.</strong>  We just got used to the equation <strong>blue equals night</strong> when there are <strong>other possibilities</strong> to explore in animation.</p>
+<p><strong>我并不反对蓝色夜晚</strong>，但我认为这已经<strong>成为动画片的陈词滥调。</strong> 我们只是习惯了<strong>蓝色等于夜晚的</strong>公式，而<strong>动画中还有其他可能性</strong>可以探索。</p>
+<h4 id="怪兽大学-monsters-university">怪兽大学 Monsters University</h4>
+<p>Probably the movie that has pushed the <em><a href="https://en.wikipedia.org/wiki/Purkinje_effect">Purkinje Effect</a></em> to its maximum. So bold ! (Director : ​<strong>Dan Scanlon</strong>​, DP : ​**<a href="https://www.imdb.com/name/nm0435457/?ref_=ttfc_fc_cr749">Jean-Claude Kalache</a>**​)</p>
+<p><em>这可能是将</em> <em><a href="https://en.wikipedia.org/wiki/Purkinje_effect">Purkinje 效应</a></em> 发挥到极致的电影。太大胆了！（导演： <strong>Dan Scanlon</strong>，摄影指导：<strong><a href="https://www.imdb.com/name/nm0435457/?ref_=ttfc_fc_cr749">Jean-Claude Kalache</a></strong>）</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_340_night_monsters_university_HD-20241115012401-ls2oryo.mp4" data-src="assets/040_lightCategories_340_night_monsters_university_HD-20241115012401-ls2oryo.mp4"></video></p>
+<p>I am fascinated by the desaturated look of this sequence. But this is actually very clever as it makes the headlights from the police and the characters (especially the monsters) pop more easily.</p>
+<p>我对这个序列的去饱和效果非常着迷。但这实际上非常巧妙，因为它使警察的车头灯和人物（尤其是怪物）更容易突出。</p>
+<h4 id="好恐龙-the-good-dinosaur">好恐龙 The good dinosaur</h4>
+<p>This is an interesting example as well : the moon is warm but the image is overall cold and desaturated (Director : ​<strong>Peter Sohn</strong>​, DP : ​<strong>Sharon Calahan</strong>​). Not as bold as <em>Monsters University</em> but still very effective.</p>
+<p>这也是一个有趣的例子：月亮是温暖的，但图像整体上是冷的和不饱和的（导演：<strong>Peter Sohn</strong>，摄影指导：<strong>Sharon Calahan ）。没有</strong>​ <em>《怪兽大学》</em> 那么大胆，但仍然非常有效。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_350_night_good_dinosaur_HD-20241115012857-i8rlco8.mp4" data-src="assets/040_lightCategories_350_night_good_dinosaur_HD-20241115012857-i8rlco8.mp4"></video></p>
+<h4 id="卑鄙的我-2-despicable-me-2">卑鄙的我 2 Despicable Me 2</h4>
+<p>This is quite a good example of a cartoon ​<em>Day for night</em>​. Just push the saturation ! (Director : ​<strong>Pierre Coffin</strong>​/​<strong>ChrisRenaud</strong>​, DA : ​**<a href="https://www.imdb.com/name/nm0155528/?ref_=ttfc_fc_cr8">Yarrow Cheney</a>**​)</p>
+<p><em>这是一部以日为夜的</em>动画片的一个很好的例子。只需增加饱和度！（导演：<strong>Pierre Coffin</strong> / <strong>ChrisRenaud</strong>，DA：<strong><a href="https://www.imdb.com/name/nm0155528/?ref_=ttfc_fc_cr8">Yarrow Cheney</a></strong>）</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_360_night_despicable_me_2_HD-20241115012918-owf8tf9.mp4" data-src="assets/040_lightCategories_360_night_despicable_me_2_HD-20241115012918-owf8tf9.mp4"></video></p>
+<h4 id="小兵-minions">小兵 Minions</h4>
+<p>Night has turned greener and is overexposed in ​<em>Minions the movie</em>​. Volumetric brings a perfect read on the characters (Director : ​<strong>Pierre Coffin</strong>​, DA : ​**<a href="https://www.imdb.com/name/nm1103007/?ref_=ttfc_fc_cr10">Olivier Adam</a>**​).</p>
+<p><em>在电影《小黄人》</em> 中，夜晚变得更绿，曝光过度。Volumetric 完美地诠释了人物形象（导演：<strong>皮埃尔·柯芬</strong>，摄影指导：<strong><a href="https://www.imdb.com/name/nm1103007/?ref_=ttfc_fc_cr10">奥利维尔·亚当</a></strong>）。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_390_night_minions_HD-20241115012939-pbafv51.mp4" data-src="assets/040_lightCategories_390_night_minions_HD-20241115012939-pbafv51.mp4"></video></p>
+<p>So how we should approach Night Lighting ? I would say that it depends on your story and the emotion you want to convey. Obviously the look of the movie (realistic/illustrative) will influence a great deal.</p>
+<p>那么我们应该如何处理夜间照明？我认为这取决于你的故事和你想传达的情感。显然，电影的外观（逼真/说明性）将产生很大影响。</p>
+<blockquote>
+<p>I have asked my friend <strong>Alfonso Caparrini</strong> about night lighting at Pixar : each shot can be handled differently but I can assure you there is no night version nor day version of  the shaders.  <strong>It is the same shader for both lighting conditions.</strong>   We generally desaturate in compositing or directly on the light itself. It depends on the artist, there is no general rule.</p>
+<p>我曾向我的朋友 <strong>Alfonso Caparrini</strong> 咨询过皮克斯的夜间照明问题：每个镜头的处理方式都不同，但我可以向你保证，着色器没有夜间版本，也没有白天版本。<strong>两种照明条件下的着色器都是相同的。</strong> 我们通常在合成时或直接在灯光上去饱和。这取决于艺术家，没有一般规则。</p>
+</blockquote>
+<p>Don’t get me wrong : blue nights are a nice and soft type of illumination. <strong>But it has been done so much that it has become kind of boring.</strong>  For cartoon and comedies, it is the easiest way to light for the audience though. There is no risk at all in a blue night : it is safe, colorful and not scary. There is a <a href="http://gurneyjourney.blogspot.com/2008/01/is-moonlight-blue.html">great article</a> from <strong>James Gurney</strong> on the subject.</p>
+<p>别误会我的意思：蓝色夜晚是一种漂亮而柔和的照明方式。<strong>但这种照明方式已经用得太多了，以至于有点无聊。</strong> 不过，对于卡通片和喜剧片来说，这是观众最容易接受的照明方式。蓝色夜晚没有任何风险：它安全、色彩缤纷，而且不吓人。<strong>詹姆斯·古尼 (James Gurney)</strong> 写了一篇关于这个主题的精彩<a href="http://gurneyjourney.blogspot.com/2008/01/is-moonlight-blue.html">文章。</a></p>
+<h2 id="自然照明-naturalist-lighting">自然照明 Naturalist lighting</h2>
+<p>Can we only stick to natural lights ? Is it possible to only render with a Sky and a Sun for example ? Well, yes and no. We have seen earlier about my shots from <em>War for the planet of the Apes</em> but <strong>that is quite an exception in my career.</strong></p>
+<p>我们只能使用自然光吗？例如，是否可以只使用天空和太阳进行渲染？嗯，既可以又不行。我们之前看过我为《<em>猩球崛起：终极之战》</em> 拍摄的镜头，但这<strong>在我的职业生涯中是个例外。</strong></p>
+<p>I thought a great example of this would be <em>The Last of Us</em> (Director : ​<strong>Neil Druckmann</strong>​, Concept : ​**<a href="https://www.artstation.com/artwork/l2ba">John Sweeney</a>**​). In this example I am really only talking about daylight scenes.</p>
+<p>​<em>我认为《最后生还者》</em> ​（导演：​<strong>尼尔·德鲁克曼</strong>​，概念：​**<a href="https://www.artstation.com/artwork/l2ba">约翰·斯威尼</a>**​）就是一个很好的例子。在这个例子中，我实际上只谈论了白天的场景。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_430_naturalist_last_of_us_FHD-20241105171249-5e39mmt.jpg" alt="" title="Great concepts by John Sweeney for The Last of Us. Yes, I am a big fan of the game ! 约翰·斯威尼为《最后生还者》设计的构思很棒。是的，我是这款游戏的忠实粉丝！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_440_naturalist_last_of_us_FHD-20241105171249-oduygi8.jpg" alt="" title="What I found really interesting is that the lighting is motivated by the story. Due to the zombie apocalypse, there is an electricity shortage. 我觉得非常有趣的是灯光的设计灵感来源于故事。由于僵尸大灾难，这里出现了电力短缺。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_450_naturalist_last_of_us_FHD-20241105171249-h84w4yi.jpg" alt="" title="So for most of the daylight scenes, you can actually rely on only two sources : the Sky and the Sun. As a lighting artist, this is a great challenge ! 因此，对于大多数日光场景，您实际上只能依赖两个光源：天空和太阳。对于灯光艺术家来说，这是一个巨大的挑战！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_460_naturalist_last_of_us_FHD-20241105171249-7el890k.jpg" alt="" title="Some may think that sticking to natural lights may be boring. But it is clearly not ! And in terms of lighting, it does not mean that they were only two lights in each scene. The look has to be naturalist, as IF there were only natural sources. That's a big difference ! 有些人可能认为坚持使用自然光可能会很无聊。但显然不是！就照明而言，这并不意味着每个场景只有两盏灯。外观必须是自然的，就像只有自然光源一样。这是一个很大的区别！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_470_naturalist_last_of_us_FHD-20241105171249-hkgef8j.jpg" alt="" title="Anyway, what I really liked was the narrative motivation behind this choice. It was not just a technical challenge. 无论如何，我真正喜欢的是这个选择背后的叙事动机。这不仅仅是一个技术挑战。" loading="lazy">​</p>
+<p>Funny how this non-PBR video game still looks good.</p>
+<p>有趣的是，这款非 PBR 视频游戏仍然看起来不错。</p>
+<p>What I really want to emphasize here is this : <strong>it visually looks like there are only two natural light sources</strong> (Sky and Sun) but there are probably lots of extra lights to support the action, give clarity to the shots and shape to the characters. <strong>This is at the heart of naturalist lighting : the art of making several sources appear as one.</strong></p>
+<p>我真正想强调的是：<strong>视觉上看起来只有两个自然光源</strong>（天空和太阳），但可能还有很多额外的灯光来支持动作，使镜头清晰，塑造人物。<strong>这是自然主义照明的核心：让多个光源看起来像一个光源的艺术。</strong></p>
+<h2 id="实用灯-practical-lights">实用灯 Practical lights</h2>
+<h3 id="指南-guidelines-3">指南 Guidelines</h3>
+<p>Light sources that are <strong>physically present in the scene and are part of the set :</strong>  lamps, screens, candles, street lights, neon lamps…</p>
+<p><strong>场景中实际存在且作为布景一部分</strong>的光源 <strong>：</strong> 灯、屏幕、蜡烛、路灯、霓虹灯……</p>
+<blockquote>
+<p>Why are candles and fire not considered natural lights ? Because they have been placed on purpose ! They are practical lights.</p>
+<p>为什么蜡烛和火不被认为是自然光？因为它们是故意放置的！它们是实用光。</p>
+</blockquote>
+<h3 id="cg-中的实用灯光-practical-lights-in-cg">CG 中的实用灯光 Practical lights in CG</h3>
+<h4 id="如何训练你的龙-how-to-train-your-dragon">如何训练你的龙 How to train your dragon</h4>
+<p>Here is an example from <em>How to train your dragon</em> (Directors : <strong><a href="https://en.wikipedia.org/wiki/Chris_Sanders">Chris Sanders</a></strong> and <strong><a href="https://en.wikipedia.org/wiki/Dean_DeBlois">Dean DeBlois</a></strong>, DP : ​<strong>Roger Deakins</strong>​).</p>
+<p>以下是 <em>《驯龙高手》</em> （导演：<strong><a href="https://en.wikipedia.org/wiki/Chris_Sanders">克里斯·桑德斯</a><strong>和</strong><a href="https://en.wikipedia.org/wiki/Dean_DeBlois">迪恩·德布洛斯</a></strong>，摄影指导：<strong>罗杰·迪金斯</strong>）中的一个例子。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/HTTYD 1 conversation with Stoick-20241115013216-hauxvoy.mp4" data-src="assets/HTTYD 1 conversation with Stoick-20241115013216-hauxvoy.mp4"></video></p>
+<p>It is really interesting to read ​**<a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons">Roger Deakins‘</a>**​<a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons"> opinion</a> about lighting in feature animation and especially on this scene :</p>
+<p>阅读**<a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons">罗杰·狄金斯</a><strong>关于动画长片灯光</strong><a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons">的</a>**​<a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons">观点真的很有趣，尤其是对于这个场景：</a></p>
+<blockquote>
+<p>“<em>The scene is lit by just a couple of candles and so much of the frame is cast into shadow. And […] for animation in general, the feeling is that if you’re creating all these props, you want to see them.</em>  <strong>As a result, animated films are notoriously over lit and Roger’s approach is to actually take away lights.</strong>  <em>So we ended up with just a couple of local light sources and deep rich shadows on screen.</em> “</p>
+<p>“*场景仅由几根蜡烛照亮，画面的大部分都投在阴影中。而 […] 对于动画来说，感觉就像如果你制作了所有这些道具，你就想看到它们。*​<strong>因此，动画电影以过度照明而闻名，而罗杰的方法是真正去除灯光。</strong> <em>所以我们最终在屏幕上只留下几个局部光源和深而丰富的阴影。</em>  “</p>
+</blockquote>
+<p>Most animation feature films are comedies for children and their parents. This is why our movies are filled with light : not to scare children and to read properly the action and the characters.</p>
+<p>大多数动画长片都是为孩子和家长拍摄的喜剧。这就是为什么我们的电影充满光明：不吓唬孩子，让孩子正确理解动作和角色。</p>
+<p>Candle lighting has been studied a lot through Art History. <em>La Madeleine au miroir</em> by <strong>Georges de la Tour</strong> is one of its most famous examples. In a way I feel like <strong>Roger Deakins</strong> is perpetuating this long tradition.</p>
+<p>艺术史中对烛光照明的研究很多。<strong>乔治·德·拉·图尔</strong>的 <em>《镜子里的玛德琳》</em> 就是其中最著名的例子之一。在某种程度上，我觉得<strong>罗杰·迪金斯</strong>正在延续这一悠久的传统。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_480_practical_candle_paintings_FHD-20241105171249-ygymws5.jpg" alt="" title="The Repentant Magdalen (La Madeleine au miroir) by Georges de la Tour. Beautiful. 乔治·德拉图尔的《忏悔的抹大拉》（La Madeleine au miroir）。美丽的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_490_practical_candle_paintings_FHD-20241105171249-kx8l3nd.jpg" alt="" title="The denial of Saint Peter (c.1650) is another great example by Georges de la Tour. 《圣彼得的否认》（约 1650 年）是乔治·德·拉图尔的另一个伟大例子。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_500_practical_candle_paintings_FHD-20241105171249-irbyl0b.jpg" alt="" title="Candle lighting has actually been invented by Gerard van Honthorst. The denial of St Peter, c.1612-1620. 蜡烛照明实际上是由 Gerard van Honthorst 发明的。《圣彼得的否认》，约 1612-1620 年。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_510_practical_candle_paintings_FHD-20241105171249-pdt8986.jpg" alt="" title="Very stylized light and composition in The dream of St Joseph. (c. 1640) 《圣约瑟夫之梦》中的光线和构图非常风格化。（约 1640 年）" loading="lazy">​</p>
+<p>We’ll also see some amazing candle lighting in the next examples.</p>
+<p>在下一个例子中，我们还将看到一些令人惊叹的蜡烛照明。</p>
+<h3 id="实景拍摄中的实用灯光-practical-lights-in-live-action">实景拍摄中的实用灯光 Practical lights in live-action</h3>
+<h4 id="巴里林登-barry-lindon">巴里·林登 Barry Lindon</h4>
+<p><strong>Practicals are not often the main source of light. But they can be.</strong>  It is an artistic choice. The most famous example being from <em>Barry Lyndon</em> (Director : ​<strong>Stanley Kubrick</strong>​, DP : ​<strong>John Alcott</strong>​). It was shot in 1973. Back then it was a technical tour-de-force to light only with candles. Kubrick used Zeiss super-fast 50mm lenses from <strong>NASA</strong> to achieve this result ! <a href="https://en.wikipedia.org/wiki/Barry_Lyndon">Wikipedia</a> explains it very well !</p>
+<p><strong>实用灯通常不是主要光源。但它们可以成为主要光源。</strong> 这是一种艺术选择。最著名的例子是《<em>巴里·林登》</em> （导演：<strong>斯坦利·库布里克</strong>，摄影指导：<strong>约翰·奥尔科特</strong>）。这部电影拍摄于 1973 年。当时，仅用蜡烛照明是一项技术壮举。库布里克使用了<strong>美国宇航局</strong>的蔡司超快 50 毫米镜头来实现这一效果！<a href="https://zh.wikipedia.org/wiki/%E4%BA%82%E4%B8%96%E5%85%92%E5%A5%B3_(1975%E5%B9%B4%E9%9B%BB%E5%BD%B1)">维基百科</a>对此解释得很好！</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Barry Lyndon - Living the life of a gentleman Scene 9-20241115013458-f98qxze.mp4" data-src="assets/Barry Lyndon - Living the life of a gentleman Scene 9-20241115013458-f98qxze.mp4"></video></p>
+<p>Kubrick is a director who used practical lighting a lot :  <strong>lights that are justified and present on set where it is easy to identify the source.</strong>   He really liked to explore things and push the boundaries. <a href="https://www.youtube.com/watch?v=inZ_p-sTV9I">This video</a> explains it pretty well.</p>
+<p>库布里克是一位经常使用实用灯光的导演：<strong>灯光合理，并且出现在片场，很容易识别光源。</strong> 他非常喜欢探索事物并突破界限。<a href="https://www.youtube.com/watch?v=inZ_p-sTV9I">这个视频</a>很好地解释了这一点。</p>
+<p>Wait a second… Why did Kubrick need NASA lenses to shoot a candle sequence ? Can’t you just use a normal lens ? Well, back in 1973, it was not possible. The technology was not there. For this reason, practicals are a bit of a special case.</p>
+<p>等一下……库布里克为什么需要 NASA 镜头来拍摄烛光场景？难道不能用普通镜头吗？嗯，在 1973 年，这是不可能的。当时还没有技术。因此，实拍镜头有点特殊。</p>
+<p>Before we move on to our next example, I thought I would give you a bit of context. Two lighting TDs, <strong>Sandip Kalsy</strong> and ​<strong>Matthias Menz</strong>​, have done a three hours master class on cinematography. <strong>It is probably the best course I have ever seen !</strong>  And they have realized something pretty unusual about practicals. Let’s have a look !</p>
+<p>在我们继续讨论下一个示例之前，我想先介绍一下背景。两位灯光技术总监 <strong>Sandip Kalsy</strong> 和 <strong>Matthias Menz</strong> 已经完成了一个三小时的电影摄影大师班。<strong>这可能是我见过的最好的课程！</strong> 他们已经意识到实践中一些非常不寻常的事情。让我们来看看吧！</p>
+<h4 id="慕尼黑-munich">慕尼黑 Munich</h4>
+<p>The shots below from <em>Munich</em> (Director : ​<strong>Steven Spielberg</strong>​, DP : ​<strong>Janusz Kaminski</strong>​) is one of the frames that really astounded them. The practical light does <strong>NOT</strong> affect the characters. <strong>There is no rim.</strong>   But without this lamp, it would just be black behind them. It also justifies, unconsciously and illogically, the light coming from the right.</p>
+<p><em>下面来自慕尼黑</em>的镜头（导演：<strong>史蒂文·斯皮尔伯格</strong>，摄影指导：<strong>贾努什·卡明斯基</strong>）是真正让他们震惊的画面之一。实际光线<strong>不会</strong>影响角色。<strong>没有边框。</strong>  但如果没有这盏灯，他们身后就会一片漆黑。它还无意识地、不合逻辑地证明了光线来自右侧。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_460_munich_practical_HD-20241115013524-2200ppg.mp4" data-src="assets/040_lightCategories_460_munich_practical_HD-20241115013524-2200ppg.mp4"></video></p>
+<p>In CG, I can assure you 100%, <strong>we would have a rim on these characters.</strong>  That’s the obvious choice. But in most cases, <strong>practical lights only illuminate the set.</strong>  They are not strong enough to light actors. Therefore their main purpose is to break background homogeneity and ​<strong>to justify other lights</strong>​. Indeed, <strong>a visible source on screen like a lamp, helps the brain to accept the lighting more easily.</strong>  Practical lights can help for composition, create depth, improve the set dressing, even in daylight.</p>
+<p>在 CG 中，我可以 100% 地向你保证，<strong>我们会给这些角色加一个边框。</strong> 这是显而易见的选择。但在大多数情况下，<strong>实用灯光只会照亮场景。</strong> 它们的强度不足以照亮演员。因此，它们的主要目的是打破背景的同质性并​<strong>证明其他灯光的合理性</strong>​。事实上，<strong>屏幕上可见的光源（如灯）有助于大脑更容易接受照明。</strong> 实用灯光可以帮助构图、创造深度、改善布景，即使在日光下也是如此。</p>
+<blockquote>
+<p>Please pay attention to the light between the characters. It ties the characters together, but we will come back to that <a href="https://chrisbrejon.com/cg-cinematography/chapter-6-lighting-principles/#8-bright-object-between-two-characters-">later</a>.</p>
+<p>请注意角色之间的光线。它将角色联系在一起，但我们<a href="https://chrisbrejon.com/cg-cinematography/chapter-6-lighting-principles/#8-bright-object-between-two-characters-">稍后</a>会再讨论这一点。</p>
+</blockquote>
+<h4 id="七宗罪-se7en">七宗罪 Se7en</h4>
+<p>An other example to illustrate the role of practical lights : ​*<a href="https://www.youtube.com/watch?v=znmZoVkCjpI">Se7en</a>*​(DP : ​<strong>Darius Khondji</strong>​).</p>
+<p>另一个例子可以说明实用灯光的作用：​*<a href="https://www.youtube.com/watch?v=znmZoVkCjpI">《七宗罪》</a>* ​（摄影指导：​<strong>达利斯·康吉</strong>​）。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_530_practical_se7en_FHD-20241105171249-6xt6c4k.jpg" alt="" title="This lamp is not lighting Morgan Freeman ! 这盏灯不照亮摩根弗里曼！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_540_practical_se7en_FHD-20241105171249-xutplwl.jpg" alt="" title="But it creates depth and help to guide the viewer’s attention. 但它创造了深度并有助于引导观众的注意力。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_550_practical_se7en_FHD-20241105171249-uf5tkv1.jpg" alt="" title="This is what is actually happening on set. They must feel hot. 这就是片场真实发生的事。他们一定感觉很热。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_560_practical_se7en_FHD-20241105171249-klyvrzb.jpg" alt="" title="Yep, they are just flooded with light. 是的，它们充满了光。" loading="lazy">​</p>
+<p>Thanks to <strong>Aymeric Montouchet</strong> for the pictures.</p>
+<p>感谢 <strong>Aymeric Montouchet</strong> 提供的照片。</p>
+<p>In 2013, when <strong>Jarin Blaschke</strong> wants to shoot a “candle sequence” for ​<em>The Witch</em>​, he does not need NASA lenses. He’ll just use an Arri Alexa. What has happened between <em>Barry Lindon</em> and <em>The Witch</em> ?  The digital revolution.</p>
+<p>2013 年，当 <strong>Jarin Blaschke</strong> 想要为 <em>《女巫》</em> 拍摄“蜡烛场景”时，他不需要 NASA 镜头。他只需使用 Arri Alexa。Barry <em>Lindon</em> 和 <em>《女巫》</em> 之间发生了什么？数字革命。</p>
+<blockquote>
+<p><a href="https://nofilmschool.com/2015/07/practical-light-primer-how-practical-lighting-bring-cinematography-to-life">Interesting quote</a> from <strong>Roger Deakins</strong> about practicals : “<em>I find myself lighting more and more with practical light sources and very few ‘film’ lights. […]</em>  <strong>Choice of and the placement of practical light sources is an increasingly important aspect of lighting.</strong>  <em>Digital capture and the increased dynamic range that it offers makes lighting this way even more exciting.</em> ”</p>
+<p><strong>罗杰·迪金斯 (Roger Deakins)</strong> 曾对实用照明有过<a href="https://nofilmschool.com/2015/07/practical-light-primer-how-practical-lighting-bring-cinematography-to-life">一段有趣的引述</a>：“*我发现自己越来越多地使用实用光源，很少使用‘电影’灯。[…]*​<strong>实用光源的选择和放置是照明中越来越重要的一个方面。</strong> <em>数字捕捉及其提供的更大动态范围使这种照明方式更加令人兴奋。</em>  ”</p>
+</blockquote>
+<h4 id="女巫-the-witch">女巫 The Witch</h4>
+<p>To mimic a fire is one of the hardest things you can do. Nowadays <strong>thanks to digital cameras</strong> and their increase exposure range, <strong>it is much easier to capture this data.</strong>  If you have not watched ​<em>The Witch</em>​, just do it.</p>
+<p>模拟火灾是最难的事情之一。如今，<strong>得益于数码相机</strong>及其增加的曝光范围，<strong>捕捉这些数据变得容易得多。</strong> 如果你还没有看过 <em>《女巫》</em> ，那就去看看吧。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_520_practical_the_witch_HD-20241115013555-ce4o7pr.mp4" data-src="assets/040_lightCategories_520_practical_the_witch_HD-20241115013555-ce4o7pr.mp4"></video></p>
+<blockquote>
+<p><strong>Jarin Blaschke</strong> :  <em>“As far as the interiors and all the candlelit stuff, I don’t know. In a way it’s kind of freeing, actually, because</em> <strong>you don’t have to emulate anything.</strong>   <em>It’s like, “Well, they have candles so let’s use candles.” It gets to the point and then</em> <strong>you’re just concerned with the basics of lighting,</strong>   <em>of how to build the shot in depth and how to use these different tools. I mean the candles burn down quickly and you have to replace them but other than that, you know,</em>  <strong>you’re not worried about how to make something try to look like something else. You’re just going for the real thing.</strong>  <em>”</em></p>
+<p><strong>Jarin Blaschke</strong>​： <em>“至于室内和烛光，我不知道。实际上，在某种程度上，这是一种自由，因为</em>​<strong>你不必模仿任何东西。</strong> <em>就像是，“好吧，他们有蜡烛，那我们就用蜡烛吧。”它直奔主题，然后</em>​<strong>你只需要关心照明的基本知识，</strong> *如何深度构建镜头以及如何使用这些不同的工具。我的意思是蜡烛很快就会烧完，你必须更换它们，但除此之外，你知道，*​<strong>你不必担心如何让某样东西看起来像其他东西。你只是追求真实的东西。</strong>  <em>”</em></p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_580_references_the_witch_FHD-20241105171249-s8oo0ow.jpg" alt="" title="Witches’ Sabbath by Goya was a source of inspiration for The Witch. 戈雅的《女巫安息日》是《女巫》的灵感来源。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_590_references_the_witch_FHD-20241105171249-ayzg6gr.jpg" alt="" title="Odd Nerdrum's paintings were also one. 奇怪的纳德鲁姆画作也是其中之一。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_600_references_the_witch_FHD-20241105171249-agxwscx.jpg" alt="" title="You really the get the mood of the movie by looking at these paintings. 通过观察这些画，你真的可以感受到电影的氛围。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_610_references_the_witch_FHD-20241105171249-ghp0qru.jpg" alt="" title="This painting reminds me of the twin sister from The Witch. 这幅画让我想起了《女巫》里的双胞胎姐妹。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_620_references_the_witch_FHD-20241105171249-gahmi6h.jpg" alt="" title="I am really impressed on how they succeeded into translating these paintings into their photography. 他们成功地将这些画作转化为摄影作品，令我印象深刻。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_630_references_the_witch_FHD-20241105171249-rctf3vd.jpg" alt="" title="Great directors of photography often refer to paintings as inspiration for their work. 伟大的摄影导演经常参考绘画来作为他们作品的灵感。" loading="lazy">​</p>
+<p>So many great references. It is overwhelming.</p>
+<p>有这么多出色的参考资料。真是让人应接不暇。</p>
+<h4 id="罗杰狄金斯-roger-deakins">罗杰·狄金斯 Roger Deakins</h4>
+<p><strong>Thanks to the digital revolution we see more practical lighting nowadays.</strong>  I actually think that is a good thing because it is a lot easier to shoot a movie today than in 1960. But the main risk would be if the lighting relies <strong>ONLY</strong> on practical. Cinematography looks more real and natural but it misses out on a huge part of lighting !</p>
+<p><strong>得益于数字革命，我们现在看到了更多实用照明。</strong> 我实际上认为这是一件好事，因为现在拍电影比 1960 年容易得多。但主要的风险在于照明是否<strong>仅</strong>依赖于实用照明。电影摄影看起来更真实、更自然，但它错过了很大一部分照明！</p>
+<p><a href="https://www.rogerdeakins.com/lighting-2/digital-film-change-of-lighting-methods/">I actually wrote</a> to <strong>Roger Deakins</strong> to ask him if the digital camera had  changed his way of working. His answer is pretty interesting :</p>
+<p><a href="https://www.rogerdeakins.com/lighting-2/digital-film-change-of-lighting-methods/">我实际上写信</a>给<strong>罗杰·迪金斯，</strong> 问他数码相机是否改变了他的工作方式。他的回答非常有趣：</p>
+<blockquote>
+<p>“Yes, I do find I use practical lights as the main source more often than I did when I was shooting film but I wouldn’t say that necessarily related to digital imaging rather than to the speed of capture. I mean, if there was an 800 ASA film stock the same would apply. There is a scene in ‘Prisoners’ that I think demonstrates what I am saying and that is when I was shooting with a key fob light as the only source. I would not have been able to do this had I been shooting on any available film stock but there is nothing to say that it couldn’t be done. […] I also think that the practice of shooting by the light of practical sources is, in a more general way, just a natural development of my work  although, I must say, I shot a few films early on with little or no  ‘film’ lighting.”</p>
+<p>“是的，我确实发现我使用实物灯光作为主要光源的频率比我拍摄电影时更高，但我不会说这一定与数字成像有关，而是与拍摄速度有关。我的意思是，如果有 800 ASA 胶片，情况也会一样。我认为《囚徒》中有一个场景证明了我所说的，那就是我使用钥匙扣灯作为唯一光源进行拍摄。如果我使用任何可用的胶片拍摄，我就无法做到这一点，但没有什么可以说它无法做到。[…] 我还认为，更普遍地说，使用实物光源进行拍摄只是我工作的一个自然发展，尽管我必须说，我早期拍摄了几部电影时几乎没有或根本没有使用“胶片”灯光。”</p>
+</blockquote>
+<p>Spielberg actually relies mainly on another category of light : <strong>Dramatic (or studio) lights.</strong>  It is probably because he is so used to shoot on film. Before digital cameras, you had to become very inventive in terms of lighting and how to force light on film.</p>
+<p>实际上，斯皮尔伯格主要依靠的是另一种类型的灯光：<strong>戏剧灯光（或工作室灯光）。</strong> 这可能是因为他太习惯用胶片拍摄了。在数码相机出现之前，你必须在灯光以及如何在胶片上施放光线方面非常有创造力。</p>
+<p>This is actually a very tough challenge and it is at the heart of cinematography : <strong>How to enhance a shot to serve a story without making it look fake.</strong></p>
+<p>这实际上是一个非常艰巨的挑战，它是电影摄影的核心：<strong>如何增强镜头以服务于故事而不使其看起来很虚假。</strong></p>
+<h4 id="邀请-the-invitation">邀请 The invitation</h4>
+<p>Next example is from one of my favorite movie : <em>The invitation</em> (Director : <strong><a href="https://www.google.com/search?client=firefox-b-d&amp;q=Karyn+Kusama&amp;stick=H4sIAAAAAAAAAOPgE-LVT9c3NEwyT6mszMswUOLUz9U3MKmyKErXEstOttJPy8zJBRNWKZlFqckl-UWLWHm8E4sq8xS8S4sTcxMBdST9hkMAAAA&amp;sa=X&amp;ved=2ahUKEwiAu-DfhuzkAhXYDmMBHXDBDzIQmxMoATApegQIDBAu">Karyn Kusama</a></strong>, DP :  ​<strong>Bobby Shore</strong>​). I have chosen a couple of shots where you can ​<strong>clearly see practical and dramatic lights separately</strong>​. So you can clearly see the difference between the two.</p>
+<p>下一个例子来自我最喜欢的电影之一： <em>《邀请函》</em> （导演：<strong><a href="https://www.google.com/search?client=firefox-b-d&amp;q=Karyn+Kusama&amp;stick=H4sIAAAAAAAAAOPgE-LVT9c3NEwyT6mszMswUOLUz9U3MKmyKErXEstOttJPy8zJBRNWKZlFqckl-UWLWHm8E4sq8xS8S4sTcxMBdST9hkMAAAA&amp;sa=X&amp;ved=2ahUKEwiAu-DfhuzkAhXYDmMBHXDBDzIQmxMoATApegQIDBAu">Karyn Kusama</a></strong>，摄影指导：   <strong>Bobby Shore</strong>）。我选择了一些镜头，你可以<strong>清楚地分别看到实用灯光和戏剧灯光</strong>。所以你可以清楚地看到两者之间的区别。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_560_dramatic_the_invitation_HD-20241115013632-04ca4xx.mp4" data-src="assets/040_lightCategories_560_dramatic_the_invitation_HD-20241115013632-04ca4xx.mp4"></video></p>
+<p>Check also <a href="http://herbertheinsche.com/cinematography/">Herbert Heinsche’s website</a>, from Animal Logic, it is very interesting : <a href="http://herbertheinsche.com/cinematography/practial-lights/">practical lights</a>. <strong>Practical lights can be a motivation for dramatic.</strong>   Often, practical lights are not suitable for lighting a subject. You have to use another light category (dramatic) to mimic it.</p>
+<p>还可以查看 <a href="http://herbertheinsche.com/cinematography/">Herbert Heinsche 的网站</a>，来自 Animal Logic，它非常有趣：<a href="http://herbertheinsche.com/cinematography/practial-lights/">实用灯光</a>。<strong>实用灯光可以成为戏剧性的灵感。</strong> 通常，实用灯光不适合照亮主题。您必须使用另一种灯光类别（戏剧性）来模仿它。</p>
+<blockquote>
+<p>Of course I have to mention the talk from Siggraph 2019 about <a href="https://dl.acm.org/citation.cfm?id=3328198">Practical Lighting on Toy Story 4</a>. It is just brilliant ! Setting some values directly in the asset and then playing with exposure in rendering. That’s bold.</p>
+<p><a href="https://dl.acm.org/citation.cfm?id=3328198">当然，我必须提到 Siggraph 2019 上关于《玩具总动员 4》实用照明</a>的演讲。真是太棒了！直接在资产中设置一些值，然后在渲染中玩曝光。这很大胆。</p>
+<p>We kinda had a similar approach with our <a href="https://www.expandedcinematography.com/industrialised-cinematography.html#how">Lights In Assets (LIA)</a> on <em>Lego Batman.</em></p>
+<p>我们对乐高蝙蝠侠的 <a href="https://www.expandedcinematography.com/industrialised-cinematography.html#how">Lights In Assets (LIA)</a>也采取了类似的方法 <em>。</em></p>
+</blockquote>
+<h2 id="戏剧灯光-dramatic-lights">戏剧灯光 Dramatic lights</h2>
+<h3 id="指南-guidelines-4">指南 Guidelines</h3>
+<p><strong>They are unjustified lights to enhance the shot</strong> and are 100% in service of storytelling. They do not necessarily have any coherence with the other lights from the scene.</p>
+<p><strong>这些灯光不合理，只是为了增强画面效果</strong>，100% 是为了讲故事。它们与场景中的其他灯光并不一定具有连贯性。</p>
+<blockquote>
+<p><strong>“If you only stick to natural and practical lights, you’ll get a documentary look, not a good-looking movie.”</strong></p>
+<p><strong>“如果你只使用自然光和实用灯光，你得到的将会是一部纪录片的效果，而不是一部好看的电影。”</strong></p>
+<p>Steven Spielberg</p>
+<p>史蒂文·斯皮尔伯格</p>
+</blockquote>
+<p>This sentence blew me away.  <strong>Just stop for two minutes and think about it.</strong>   You can follow all the rules and do everything technically correct. <strong>But if there is not a strong art direction, there is no point :</strong></p>
+<p>这句话让我震惊。<strong>停下来两分钟想一想。</strong> 你可以遵循所有规则，做所有技术上正确的事情。<strong>但如果没有强大的艺术指导，那就没有意义了：</strong></p>
+<ul>
+<li>We are here to serve the story <strong>.</strong></li>
+<li>我们来这里是为了讲述这个故事 <strong>。</strong></li>
+<li><strong>Everything is valid</strong> as long as it is looking good, sampling friendly and easy to share.</li>
+<li>只要看起来好看、适合采样并且易于分享，<strong>一切都是有效的。</strong></li>
+<li><strong>Art direction and storytelling prevail.</strong></li>
+<li><strong>艺术指导和故事叙述占主导地位。</strong></li>
+<li>Directors do not care about PBR and they are definitely right to do so !</li>
+<li>董事们并不关心 PBR，他们这样做绝对是对的！</li>
+</ul>
+<blockquote>
+<p><strong><a href="https://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Sharon Calahan :</a></strong>  Purely natural or physically correct lighting is often not interesting enough to create drama and captivate the audience.</p>
+<p><strong><a href="https://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Sharon Calahan：</a></strong> 纯自然的或物理上正确的灯光通常不够有趣，无法营造戏剧效果或吸引观众。</p>
+<p>From Siggraph 1996. Impressive.</p>
+<p>源自 1996 年 Siggraph。令人印象深刻。</p>
+</blockquote>
+<h3 id="实景演出中的戏剧灯光-dramatic-lights-in-live-action">实景演出中的戏剧灯光 Dramatic lights in live-action</h3>
+<h4 id="慕尼黑-munich-2">慕尼黑 Munich</h4>
+<p>Check out this sequence from <em>Munich</em> (Director : ​<strong>Steven Spielberg</strong>​, DP : ​<strong>Janusz Kaminski</strong>​) :</p>
+<p>看看 <em>《慕尼黑》</em> 的这个片段（导演：<strong>史蒂文·斯皮尔伯格</strong>，摄影指导：<strong>贾努什·卡明斯基</strong>）：</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_610_dramatic_munich_HD-20241115013703-aawzj41.mp4" data-src="assets/040_lightCategories_610_dramatic_munich_HD-20241115013703-aawzj41.mp4"></video></p>
+<p>Spielberg wanted a <strong>mysterious lighting for this sequence.</strong>  How do you translate that visually ? The foreground practical lamp would have flattened everything and made it less interesting. Once again practical lighting is not used.  <strong>Where’s the green bounce light coming from ?</strong>  No one knows nor cares. But it’s dramatic.  <strong>It creates visual tension.</strong>  We do not need to justify it !</p>
+<p>斯皮尔伯格想为这个片段添加一种<strong>神秘的灯光。</strong> 你如何在视觉上体现这一点？前景的实用灯会让一切变得单调，变得不那么有趣。再一次，没有使用实用照明。<strong>绿色反射光是从哪里来的？</strong> 没人知道也没人关心。但它很戏剧化。<strong>它创造了视觉张力。</strong> 我们不需要证明它！</p>
+<blockquote>
+<p>Why ​<em>The Witch</em>​, only shot in natural lighting, does not look like a documentary ? Because there is an artistic bias. It is beautifully stylized in many ways : lenses, camera movement, grain, LUT…</p>
+<p>为什么​ <em>《女巫</em>​》只在自然光下拍摄，看起来不像纪录片？因为有艺术偏见。它在许多方面都风格优美：镜头、摄像机运动、颗粒、LUT……</p>
+</blockquote>
+<h4 id="霍比特人-2-the-hobbit-2">霍比特人 2 The Hobbit 2</h4>
+<p>Interesting story for Smaug as well on <em>The Hobbit 2</em> (Director :<strong>Peter Jackson</strong>​, DP : ​<strong>Andrew Lesnie</strong>​). The brief was : ​<em>Smaug should look like the devil</em>​. <strong>Without any color key, how do you accomplish that ?</strong>   The lighter used bounce lighting (monster lighting) as main source.</p>
+<p><em>史矛革在《霍比特人 2》</em> （导演：<strong>彼得·杰克逊</strong>，摄影指导：<strong>安德鲁·莱斯尼</strong>）中的故事也很有趣。简介：<em>史矛革应该看起来像魔鬼</em>。<strong>没有任何颜色键，你如何做到这一点？</strong> 灯光师使用反射光（怪物光）作为主要光源。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_640_dramatic_the_hobbit_2_HD-20241115013727-obv5sz8.mp4" data-src="assets/040_lightCategories_640_dramatic_the_hobbit_2_HD-20241115013727-obv5sz8.mp4"></video></p>
+<p>In every day’s life we are NOT used to see light coming from the floor. <strong>It just looks unnatural.</strong>  Perfect for any mysterious or devilish lighting.  <strong>If the practical lights are logical, the dramatic lights are purely artistic.</strong></p>
+<p>在日常生活中，我们并不习惯看到从地板发出的光。<strong>它看起来不自然。</strong>  非常适合任何神秘或魔鬼般的照明。<strong>如果实用灯光是合乎逻辑的，那么戏剧灯光就是纯粹的艺术。</strong></p>
+<h4 id="巴斯特斯克鲁格斯的歌谣-the-ballad-of-buster-scruggs">巴斯特·斯克鲁格斯的歌谣 The Ballad of Buster Scruggs</h4>
+<p>There is a night sequence in <em>The Ballad of Buster Scruggs</em> (Director : ​<strong>Coen Brothers</strong>​, DP :  ​**<a href="https://www.imdb.com/name/nm0216632/?ref_=ttfc_fc_cr10">Bruno Delbonnel</a>**​) that caught my attention. It is a scene with three characters around a fire. Unlike the Witch, it has been shot with dramatic lights.</p>
+<p>​ <em>《巴斯特·斯克鲁格斯的歌谣》</em> ​（导演：​<strong>科恩兄弟</strong>​，摄影指导：  ​**<a href="https://www.imdb.com/name/nm0216632/?ref_=ttfc_fc_cr10">布鲁诺·德尔邦内尔</a>**​）中有一个夜晚的场景引起了我的注意。这是一个三个角色围着火堆的场景。与《女巫》不同，这个场景是用戏剧性的灯光拍摄的。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_670_dramatic_ballad_buster_scruggs_FHD-20241105171249-q53jb3e.jpg" alt="" title="Two cowboys sitting around a fire. 两个牛仔围坐在火堆旁。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_680_dramatic_ballad_buster_scruggs_FHD-20241105171249-i2twwly.jpg" alt="" title="Alice Longabaugh (Zoe Kazan) comes in. You can see the fire (practical light) and you almost see the dramatic light to enhance it. 爱丽丝·朗加博 (佐伊·卡赞饰) 走了进来。你可以看到火焰 (实用光)，几乎还可以看到增强火焰的戏剧光。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_690_dramatic_ballad_buster_scruggs_FHD-20241105171249-y6893mm.jpg" alt="" title="You can also tell by the reflection in the metal cup. Reflection is quite strong. In CG that would be an issue. 你也可以通过金属杯的反射来判断。反射非常强烈。在 CG 中，这将是一个问题。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_700_dramatic_ballad_buster_scruggs_FHD-20241105171249-fnivxig.jpg" alt="" title="I personally do not find this lighting very natural. It is hard to believe that a fire would produce so much light. 我个人认为这种照明不太自然。很难相信火能产生如此多的光。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_710_dramatic_ballad_buster_scruggs_FHD-20241105171249-x70gdkt.jpg" alt="" title="In this scene, it is even more obvious. Look at her dress. 在这个场景中，这一点更加明显。看看她的穿着。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_720_dramatic_ballad_buster_scruggs_FHD-20241105171249-i3zvcff.jpg" alt="" title="She is getting so much light on her. And the fake moon lighting does not help neither. 她身上的光照太多了。假月光也帮不上什么忙。" loading="lazy">​</p>
+<p>I loved this short film ! So moving ! I’m just being picky on lighting.</p>
+<p>我很喜欢这部短片！太感人了！我只是对灯光有点挑剔。</p>
+<p>It is apparently a nightmare to hide light sources on set, especially if they are in the camera frustum. Even <strong>Roger Deakins</strong> <a href="https://www.premiumbeat.com/blog/blade-runner-2049-lighting-cinematography/">mentions this issue</a> for <em>Blade Runner 2049</em> (Director : ​<strong>Denis Villeneuve</strong>​, DP : ​<strong>Roger Deakins</strong>​) :</p>
+<p>在片场隐藏光源显然是一场噩梦，尤其是当它们位于摄影机视锥体中时。甚至<strong>罗杰·迪金斯 (Roger Deakins)也</strong> <a href="https://www.premiumbeat.com/blog/blade-runner-2049-lighting-cinematography/">提到了</a>​ <em>《银翼杀手 2049》</em> ​（导演：​<strong>丹尼斯·维伦纽瓦</strong>​，摄影指导：​<strong>罗杰·迪金斯</strong>​）中的这个问题：</p>
+<blockquote>
+<p>“The water was lit with 10K Fresnel lamps. There were two per side making  eight in all. It was a very tricky rig because it had to be quite high, so as to not be in shot, and the lamps had to have the right angle to  reflect and spill across the wall as they do. I was originally expecting  that I could do this effect without lighting the water so much.”</p>
+<p>“水面用 10K 菲涅尔灯照亮。每侧有两盏，总共八盏。这是一个非常棘手的设备，因为它必须相当高，以免进入镜头，而且灯必须有正确的角度才能反射并洒在墙上。我原本以为不用给水面打太多光就能达到这种效果。”</p>
+</blockquote>
+<p><strong>This is one of the big advantage of CG : you do not have to put an object between the camera and the light to hide a source.</strong>   However this technical constraint forces DPs to think differently, very often for the best.</p>
+<p><strong>这是 CG 的一大优势：你不必在摄像机和光源之间放置物体来隐藏光源。</strong> 然而，这种技术限制迫使摄影指导以不同的方式思考，而这往往是为了获得最佳效果。</p>
+<h4 id="罗杰狄金斯-roger-deakins-2">罗杰·狄金斯 Roger Deakins</h4>
+<p>There is an interesting post on his forum about <a href="https://www.rogerdeakins.com/lighting-2/unmotivated-lighting/">unmotivated lighting</a>. Here are the examples used in the post (I have put Roger’s explanations in the descriptions) :</p>
+<p>他的论坛上有一篇关于<a href="https://www.rogerdeakins.com/lighting-2/unmotivated-lighting/">无动机照明的</a>有趣帖子。以下是帖子中使用的例子（我在描述中加入了 Roger 的解释）：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_730_dramatic_shawshank_redemption_FHD-20241105171249-txitxq3.jpg" alt="" title="That low light under the guards face is motivated by daylight hitting the floor and bed before reflecting up. Yes, the effect is enhanced but I still feel the light feels like it is natural effect rather than not. 警卫脸部下方的低光是由日光照射到地板和床上后反射而产生的。是的，效果增强了，但我仍然觉得光线感觉像是自然效果，而不是没有。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_740_dramatic_shawshank_redemption_FHD-20241105171249-yat94cd.jpg" alt="" title="That second frame is simply lit by soft light from the window. Again, the effect might be enhanced but the motivation is a natural source. 第二幅画只是用窗户的柔和光线照亮。同样，效果可能会增强，但动机是自然的。" loading="lazy">​</p>
+<p>Is there such thing as unmotivated lighting ?</p>
+<p>是否存在无动机照明？</p>
+<p>Roger Deakins seems to acknowledge the fact that in his lighting style, there is no pure unmotivated light. Very interesting !</p>
+<p>罗杰·迪金斯似乎承认，在他的灯光风格中，没有纯粹无目的的灯光。非常有趣！</p>
+<blockquote>
+<p>I am trying to think when I have used an entirely unmotivated source. It  is true that most of my work could be considered as always motivated by the way natural light works but the divide between the altogether natural and completely stylized is pretty vague.</p>
+<p>我在想我什么时候用过完全没有灵感的光源。确实，我的大部分作品都可以被认为是受到自然光的影响，但完全自然和完全风格化之间的界限相当模糊。</p>
+</blockquote>
+<h3 id="cg-中的戏剧灯光-dramatic-lights-in-cg">CG 中的戏剧灯光 Dramatic lights in CG</h3>
+<h4 id="功夫熊猫-kung-fu-panda">功夫熊猫 Kung-Fu Panda</h4>
+<p>I love this sequence in <em>Kung-Fu Panda</em> (Director : <strong><a href="https://www.imdb.com/name/nm0651706/?ref_=ttfc_fc_dr1">Mark Osborne</a></strong> and <strong><a href="https://www.imdb.com/name/nm0828970/?ref_=ttfc_fc_dr2">John Stevenson</a></strong>, Cinematography : <strong><a href="https://www.imdb.com/name/nm1572239/?ref_=ttfc_fc_cr10">Yong Duk Jhun</a></strong>) where Tai Lung escapes from the Chorh-Gom prison. Some red torches are located next to the doors at the beginning of the sequence : Practical Lighting. The use of red is then exaggerated to serve the story : Dramatic Lighting.</p>
+<p>我喜欢 <em>《功夫熊猫》</em> （导演：<strong><a href="https://www.imdb.com/name/nm0651706/?ref_=ttfc_fc_dr1">马克·奥斯本</a><strong>和</strong><a href="https://www.imdb.com/name/nm0828970/?ref_=ttfc_fc_dr2">约翰·史蒂文森</a></strong>，摄影师：<strong><a href="https://www.imdb.com/name/nm1572239/?ref_=ttfc_fc_cr10">杨德俊</a></strong>）中的这个片段，太郎从 Chorh-Gom 监狱逃脱。片段开头的门旁边有一些红色火把：实用照明。然后夸大红色的使用以服务于故事：戏剧照明。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Kung Fu Panda 2008 - Tai Lungs Escape Scene 3-10  Movieclips-20241115013831-e5y63n1.mp4" data-src="assets/Kung Fu Panda 2008 - Tai Lungs Escape Scene 3-10  Movieclips-20241115013831-e5y63n1.mp4"></video></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_750_dramatic_kungfu_panda_FHD-20241105171249-yx4ml2f.jpg" alt="" title="Sequence starts with this great traveling that indicates us where the red lights are located. 序列从这次伟大的旅行开始，它向我们指出了红灯的位置。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_760_dramatic_kungfu_panda_FHD-20241105171249-i8a9fni.jpg" alt="" title="These red torches allow to justify some nice rims on the characters. 这些红色火炬可以为角色增添一些漂亮的边缘。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_770_dramatic_kungfu_panda_FHD-20241105171249-04fvmwx.jpg" alt="" title="They also help on a nice foreground/background separation between blue and red. 它们还有助于在蓝色和红色之间形成良好的前景/背景分离。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_780_dramatic_kungfu_panda_FHD-20241105171249-nqtpxe6.jpg" alt="" title="Once again, in this shot we clearly see that the red influence is limited to small areas. 再次，在这张照片中我们清楚地看到红色的影响仅限于小区域。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_790_dramatic_kungfu_panda_FHD-20241105171249-9y5309z.jpg" alt="" title="At the beginning of this shot, red torches are practical lights. 在这个镜头的开始，红色火炬是实用灯光。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_800_dramatic_kungfu_panda_FHD-20241105171249-pj3541v.jpg" alt="" title="And they totally justify the dramatic lighting in the traveling. In the same shot, we have practical and dramatic red lighting ! 它们完全证明了旅行中戏剧性的灯光是合理的。在同一个镜头中，我们有实用而又戏剧性的红色灯光！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_810_dramatic_kungfu_panda_FHD-20241105171249-d0239jx.jpg" alt="" title="Red lighting is not limited to small areas anymore. It went totally dramatic and graphic. 红色灯光不再局限于小区域。它变得十分戏剧化和生动。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_820_dramatic_kungfu_panda_FHD-20241105171249-mso3r1f.jpg" alt="" title="Yep. That's a lot of red ! Pure dramatic. 是的。红色太多了！纯粹是戏剧性的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_830_dramatic_kungfu_panda_FHD-20241105171249-l6y3scb.jpg" alt="" title="This scheme is almost a complementary one. But red serves a better story purpose. 这种方案几乎是一种互补方案。但红色更能体现故事情节。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_840_dramatic_kungfu_panda_FHD-20241105171249-nfm7510.jpg" alt="" title="Funny how this shot does not have any red in it. Monochromatic scheme. 有趣的是，这张照片中没有任何红色。单色方案。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_850_dramatic_kungfu_panda_FHD-20241105171249-h9thkux.jpg" alt="" title="This sequence is one of my favorites. Every department working at their best level : layout, animation, lighting... 这是我最喜欢的片段之一。每个部门都尽最大努力：布局、动画、灯光……" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_860_dramatic_kungfu_panda_FHD-20241105171249-9paszv8.jpg" alt="" title="In this fantasy world, flames can be red. We do not have to match a realistic look and it serves the storytelling by enhancing drama. 在这个奇幻世界中，火焰可以是红色的。我们不必匹配现实的外观，它有助于增强戏剧性，从而有助于叙事。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_870_dramatic_kungfu_panda_FHD-20241105171249-4uptufi.jpg" alt="" title="Interesting how this sequence is a bit outdated in terms of technology but still look very good. 有趣的是，这个序列在技术方面有点过时但仍然看起来非常好。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_880_dramatic_kungfu_panda_FHD-20241105171249-dn2w5od.jpg" alt="" title="It has really aged well. Thanks to a great art direction. A simple and strong bias : two colors that serve the story. 它确实经久不衰。这要归功于出色的艺术指导。简单而强烈的倾向：两种颜色服务于故事。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_890_dramatic_kungfu_panda_FHD-20241105171249-kghev1n.jpg" alt="" title="I love how they use this simple color scheme, red and blue, even in an outside shot. 我喜欢他们使用这种简单的配色方案，红色和蓝色，即使是在外景拍摄中。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_900_dramatic_kungfu_panda_FHD-20241105171249-s1xks1j.jpg" alt="" title="It give a nice sense of closure and coherence until the very last shot of the sequence. 直到序列的最后一个镜头，它都给人一种良好的结束感和连贯性。" loading="lazy">​</p>
+<p>Sequence still holds pretty well more than ten years later.</p>
+<p>十多年后，该序列仍然保持良好。</p>
+<p>It seems like in animation, for some reason, that we need to over-justify our lighting. Is it due to the medium ? Or the youth of our industry ? Why can’t we light like the <em>Munich</em> shot ? Part of the answer has been given to me by a lighting artist :</p>
+<p>似乎在动画中，出于某种原因，我们需要过度强调灯光。是因为媒介吗？还是我们这个行业还很年轻？为什么我们不能像<em>慕尼黑</em>镜头那样布光？一位灯光艺术家给了我部分答案：</p>
+<blockquote>
+<p>In CG we are always worried that it may look fake. And CG by nature is kinda ugly.</p>
+<p>在 CG 中我们总是担心它看起来很假。而且 CG 本质上有点丑。</p>
+</blockquote>
+<p><strong>I definitely encourage anyone working in the industry to use dramatic lights !</strong>   Thanks to digital cameras, it is easier to light movies nowadays than forty years ago. But I am afraid that dramatic lighting could disappear. If we do not need to cheat anymore, some very important knowledge may be lost to the next generation of cinematographers.</p>
+<p><strong>我绝对鼓励业内人士使用戏剧灯光</strong> <strong>！</strong> 多亏了数码相机，如今为电影打光比四十年前容易多了。但我担心戏剧灯光可能会消失。如果我们不再需要作弊，下一代电影摄影师可能会失去一些非常重要的知识。</p>
+<blockquote>
+<p><em>Animation</em> is not a genre ! There is a confusion on what Animation is. It is a medium. We should be able to do animated action movies, animated horror movies and animated dramas. There are a <a href="https://www.imdb.com/title/tt1185616/">few</a> <a href="https://www.imdb.com/title/tt0094625/">movies</a> out there. But the majority of cartoons from Hollywood are comedies.</p>
+<p><em>动画</em>不是一种类型！动画到底是什么，人们对此感到困惑。它是一种媒介。我们应该能够制作动画动作片、动画恐怖片和动画戏剧。目前有几部这样的<a href="https://www.imdb.com/title/tt1185616/">电影</a> <a href="https://www.imdb.com/title/tt0094625/">。</a>但好莱坞的大多数动画片都是喜剧片。</p>
+</blockquote>
+<h4 id="乐高蝙蝠侠-lego-batman-2">乐高蝙蝠侠 Lego Batman</h4>
+<p>We used plenty of Dramatic Lights on <em>Lego Batman</em> (Director : ​<strong>Chris McKay</strong>​, PD : ​<strong>Grant Freckelton</strong>​). Let’s have a look and try to guess which light is dramatic in the sequence below.</p>
+<p><em>我们在《乐高蝙蝠侠》</em> （导演：<strong>Chris McKay</strong>，导演：<strong>Grant Freckelton</strong> ）中使用了大量戏剧灯光。让我们看看并试着猜猜下面序列中哪种灯光是戏剧性的。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/The LEGO Batman Movie CLIP - Batman Will Stop You 2017 - Zach Galifianakis Movie-20241115013909-qpm641g.mp4" data-src="assets/The LEGO Batman Movie CLIP - Batman Will Stop You 2017 - Zach Galifianakis Movie-20241115013909-qpm641g.mp4"></video></p>
+<p>Look at the Joker. See how he is lit by a white light that comes from nowhere ? <strong>That’s the dramatic light.</strong>   It makes the joker’s face very readable. He really pops ! This movie is one of the project I am most proud of. Grant’s vision is just unique.</p>
+<p>看看小丑。看看他是如何被一道不知从何而来的白光照亮的？<strong>那是戏剧性的灯光。</strong>  它让小丑的脸变得非常清晰。他真的很棒！这部电影是我最自豪的项目之一。格兰特的眼光真是独一无二。</p>
+<h4 id="超人特攻队-2-the-incredibles-2">超人特攻队 2 The incredibles 2</h4>
+<p>My next example comes from <a href="https://youtu.be/vnDk2E4G1sg">the Khan Academy</a> where we get a proper breakdown of lights from <em>Incredibles 2</em> (Director : ​<strong>Brad Bird</strong>​, Cinematography : ​<strong>Erik Smitt</strong>​).</p>
+<p>我的下一个例子来自<a href="https://youtu.be/vnDk2E4G1sg">可汗学院，我们从中获得了</a>​ <em>《超人总动员 2》</em> ​（导演：​<strong>布拉德·伯德</strong>​，摄影：​<strong>埃里克·斯密特</strong>​）的灯光的正确分解。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_910_light_roles_incredibles_2_FHD-20241105171249-e8kgtjk.jpg" alt="" loading="lazy">​</p>
+<p>It’s really cool to analyze light roles at Pixar.</p>
+<p>在皮克斯分析灯光角色真的很酷。</p>
+<p>In most articles about lighting, <em>light role</em>s is generally the first topic to be addressed. We all have seen lists or examples with the famous light names : Key, Fill, Rim, Bounce… But something  <strong>I have never read</strong>  in any of these articles is that <strong>these light roles are purely dramatic.</strong>  Except in the following document :</p>
+<p>在大多数关于照明的文章中，<em>灯光角色</em>通常是第一个要讨论的主题。我们都见过带有著名灯光名称的列表或示例：Key、Fill、Rim、Bounce……但<strong>我从未</strong>在任何一篇文章中读到过<strong>这些灯光角色纯粹是戏剧性的。</strong> 除了以下文档：</p>
+<blockquote>
+<p><strong><a href="https://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Sharon Calahan :</a></strong>  Lighting vocabulary is based on studio lighting.</p>
+<p><strong><a href="https://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Sharon Calahan：</a></strong> 照明词汇基于工作室照明。</p>
+</blockquote>
+<p>I think it is pretty important to mention it. <strong>A good use of vocabulary can bring a lot of clarity.</strong>   Here is my personal analysis :</p>
+<p>我认为提到这一点非常重要。<strong>正确使用词汇可以带来很多清晰度。</strong> 以下是我个人的分析：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_920_light_roles_incredibles_2_FHD-20241105171249-7i7l2yb.jpg" alt="" title="Here is the final render for this Incredibles 2 shot. Let's have a look at the breakdown. 这是《超人总动员 2》镜头的最终渲染图。让我们来看看细节。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_930_light_roles_incredibles_2_FHD-20241105171249-3svzv40.jpg" alt="" title="The Key light is the main shaping light. In this render, there is something &quot;off&quot; between the set and the character that makes me think : there is more than 1 key light. Strangely enough, I don't find the light very shaping in this example. 主光是主要的塑形光。在此渲染中，场景和角色之间有些“不协调”，这让我想到：主光不止 1 个。奇怪的是，我发现此示例中的灯光塑形效果不佳。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_940_light_roles_incredibles_2_FHD-20241105171249-n793eyo.jpg" alt="" title="The Bounce light comes from a surface, generally the floor. I only use Area lights for this, sometimes with a disk shape. 反射光来自表面，通常是地板。我仅使用区域光，有时使用圆盘形状。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_950_light_roles_incredibles_2_FHD-20241105171249-veqbd3k.jpg" alt="" title="The Rim light gives shape by outlining and generally faces the camera. This is true ! But when I look at this render, I wonder if this is actually a practical light, such as a window. I'll probably call this light &quot;lgt_window_all_01&quot;. 边缘光通过勾勒轮廓来塑造形状，通常面向相机。这是真的！但是当我看到这个渲染图时，我想知道这是否真的是一种实用的光源，例如窗户。我可能会将这种光源称为“lgt_window_all_01”。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_960_light_roles_incredibles_2_FHD-20241105171249-rxqqziv.jpg" alt="" title="The Fill light avoids any black areas and reduces contrast. Usually a big area light would do the trick, like a reflector on a set. It has to be very low in exposure, otherwise your render will just get flat. 补光灯可避免任何黑色区域并降低对比度。通常，大面积的灯光就可以达到目的，例如布景上的反光板。补光灯的曝光度必须非常低，否则渲染效果会变得平淡无奇。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/040_lightCategories_970_light_roles_incredibles_2_FHD-20241105171249-orqrz16.jpg" alt="" title="A kick light separates subject from background. In this shot, the kick and rim look pretty similar, at least on the character. For clarity purpose, I generally avoid to have kick and rim on the same side. It is very personal though. 踢脚光将主体与背景分开。在这张照片中，踢脚光和边缘光看起来非常相似，至少在角色身上是如此。为了清晰起见，我通常避免将踢脚光和边缘光放在同一侧。不过这非常个人化。" loading="lazy">​</p>
+<p>I don’t agree with every light role description. It’s really personal.</p>
+<p>我并不认同每一个关于轻松角色的描述。这真的很个人化。</p>
+<p>Here is a list of the most famous <strong>Dramatic Light Roles</strong> (or Light Functions according to ​<strong>Sharon Calahan</strong>​) :</p>
+<p>以下是最著名的<strong>戏剧灯光角色</strong>（或根据 Sharon Calahan 的说法为灯光功能）的列表：</p>
+<ul>
+<li><strong>Key :</strong>  Main shaping light in the scene.</li>
+<li><strong>主光：</strong> 场景中的主要塑造光。</li>
+<li><strong>Fill :</strong>  Avoids any black areas and reduces contrast. Soft source.</li>
+<li><strong>填充：</strong> 避免任何黑色区域并降低对比度。柔和光源。</li>
+<li><strong>Rim :</strong>  Gives shape by outlining and generally faces the camera.</li>
+<li><strong>边缘：</strong> 通过勾勒出形状，通常面向相机。</li>
+<li><strong>Kicker :</strong>  Helps separate subject from background.</li>
+<li><strong>踢脚线：</strong> 帮助将主体与背景分开。</li>
+<li><strong>Top :</strong>  Comes from above the scene, to give more directionality to the sky.</li>
+<li><strong>顶部：</strong> 来自场景上方，为天空提供更多的方向性。</li>
+<li><strong>Bounce</strong>  <strong>:</strong>  Comes from a surface, generally the floor or a wall.</li>
+<li><strong>弹跳</strong>  <strong>：</strong> 来自表面，通常是地板或墙壁。</li>
+<li>**<a href="https://www.expandedcinematography.com/the-cinematography-of-legend-of-the-guardians.html#rim">Shatner</a>**​ <strong>:</strong>   A bar of light across the face or eyes of a character.</li>
+<li>**<a href="https://www.expandedcinematography.com/the-cinematography-of-legend-of-the-guardians.html#rim">夏特纳 (Shatner)</a>**​ <strong>：</strong>   一道光带穿过人物的脸部或眼睛。</li>
+</ul>
+<blockquote>
+<p><strong><a href="https://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Sharon Calahan :</a></strong>  A light’s function is particularly meaningful for describing how it is used on a subject.</p>
+<p><strong><a href="https://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Sharon Calahan：</a></strong> 光的功能对于描述它如何作用于某个物体特别有意义。</p>
+</blockquote>
+<p>We will come back to these roles in <a href="https://chrisbrejon.com/cg-cinematography/chapter-8-5-character-lighting/#character-light-roles">Chapter 8.5 : Character Lighting</a>.</p>
+<p><a href="https://chrisbrejon.com/cg-cinematography/chapter-8-5-character-lighting/#character-light-roles">我们将在第 8.5 章“角色照明”</a>中回顾这些角色。</p>
+<blockquote>
+<p>There is actually a fourth category : Technical. The surfacing light rigs used for turntables would fit in this category.</p>
+<p>其实还有第四类：技术。用于转盘的表面灯光设备属于这一类。</p>
+</blockquote>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p><strong>Each category of lights has its utility.</strong>  It is the ultimate method to analyze and plan a sequence. It changed my way of working. The idea as well is to develop  <strong>a common vocabulary.</strong>   So we can communicate better between each other.</p>
+<p><strong>每种灯光都有其用途。</strong> 这是分析和规划序列的终极方法。它改变了我的工作方式。这个想法也是为了开发<strong>一个共同的词汇。</strong> 这样我们就可以更好地相互交流。</p>
+<h2 id="来源-sources">来源 Sources</h2>
+<ul>
+<li>The <a href="http://guerillarender.com/doc/1.4/Library_Lights_SkyLight.html">Skylight from Guerilla</a> is easy to use and offers good results quickly.</li>
+<li><a href="http://guerillarender.com/doc/1.4/Library_Lights_SkyLight.html">Guerilla 的 Skylight</a> 使用方便，并且能快速提供良好的结果。</li>
+<li><a href="https://en.wikipedia.org/wiki/Black_body">Black body definition</a> on Wikipedia.</li>
+<li><a href="https://en.wikipedia.org/wiki/Black_body">维基百科上的黑体定义</a>。</li>
+<li><a href="https://en.wikipedia.org/wiki/Green_flash">Green flash</a> before the sun disappears. Thanks <strong>Rachid</strong> for the tip !</li>
+<li>太阳消失前出现<a href="https://en.wikipedia.org/wiki/Green_flash">绿光。感谢</a>​<strong>Rachid</strong> 提供的提示！</li>
+<li>Some <a href="https://en.wikipedia.org/wiki/Sunlight#Measurement">real measures</a> for Lumen that you can find in <a href="https://docs.unrealengine.com/en-US/Engine/Rendering/LightingAndShadows/PhysicalLightUnits/index.html">Unreal Engine</a> or <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@5.7/manual/Physical-Light-Units.html">Unity</a>.</li>
+<li><a href="https://docs.unrealengine.com/en-US/Engine/Rendering/LightingAndShadows/PhysicalLightUnits/index.html">您可以在 Unreal Engine</a> 或 <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@5.7/manual/Physical-Light-Units.html">Unity</a> 中找到一些流明的<a href="https://en.wikipedia.org/wiki/Sunlight#Measurement">实际测量值</a>。</li>
+<li>What are the <a href="https://www.livescience.com/34065-sunrise-sunset.html">differences between sunrise and sunset</a> ?</li>
+<li><a href="https://www.livescience.com/34065-sunrise-sunset.html">日出和日落</a>有什么区别？</li>
+<li><a href="https://petapixel.com/2015/02/09/coelux-artificial-sunlight-thats-good-enough-fool-cameras-brain/">CoeLux : Artificial Sunlight</a></li>
+<li><a href="https://petapixel.com/2015/02/09/coelux-artificial-sunlight-thats-good-enough-fool-cameras-brain/">CoeLux : 人造阳光</a></li>
+<li>What is a <a href="https://en.wikipedia.org/wiki/Gobo_(lighting)">GOBO</a> ?</li>
+<li>什么是 <a href="https://en.wikipedia.org/wiki/Gobo_(lighting)">GOBO</a>？</li>
+<li><strong><a href="https://www.imdb.com/name/nm2513625/?ref_=ttfc_fc_cr11">Sean</a><strong>​</strong><a href="https://www.eckols.net/">Eckols</a></strong> was the Art Director on ​<em>The Star</em>​.</li>
+<li><strong><a href="https://www.imdb.com/name/nm2513625/?ref_=ttfc_fc_cr11">肖恩·埃克斯(Sean</a><strong>​</strong><a href="https://www.eckols.net/">Eckols)</a></strong> ​<em>是《星报》 (The Star)</em> 的艺术总监。</li>
+<li><a href="https://www.artofvfx.com/the-lion-king-elliot-newman-vfx-supervisor-mpc/">Interesting article</a> about ​<em>The Lion King</em>​.</li>
+<li>关于<em>狮子王的</em>​<a href="https://www.artofvfx.com/the-lion-king-elliot-newman-vfx-supervisor-mpc/">有趣文章</a>。</li>
+<li><em>The Moana Island</em> is <a href="https://www.technology.disneyanimation.com/islandscene">available for free</a> if you dare render it.</li>
+<li>如果您敢渲染​<em>莫阿纳岛</em>​，则<a href="https://www.technology.disneyanimation.com/islandscene">可以免费获得它。</a></li>
+<li>Documentation about <a href="https://support.solidangle.com/display/AFMUG/Physical+Sky">the Physical Sky</a> from Arnold.</li>
+<li><a href="https://support.solidangle.com/display/AFMUG/Physical+Sky">有关 Arnold 的物理天空的</a>文档。</li>
+<li>Why is the <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/blusky.html">sky</a> <a href="https://spaceplace.nasa.gov/blue-sky/en/">blue</a> ?</li>
+<li><a href="http://hyperphysics.phy-astr.gsu.edu/hbase/atmos/blusky.html">天空</a> 为什么是<a href="https://spaceplace.nasa.gov/blue-sky/en/">蓝色的</a>？</li>
+<li><a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a> is a great reference for CG rendering.</li>
+<li><a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">电影色彩</a>是 CG 渲染的绝佳参考。</li>
+<li>A couple of <a href="https://variety.com/2016/artisans/in-contention/the-witch-cinematographer-jarin-blaschke-natural-light-1201716424/">interesting</a> <a href="https://www.indiewire.com/2016/03/how-director-robert-eggers-and-dp-jarin-blaschke-created-the-look-of-the-witch-61934/">interviews</a> about ​<em>The Witch</em>​.</li>
+<li>关于 <em>《女巫》的</em>几次<a href="https://variety.com/2016/artisans/in-contention/the-witch-cinematographer-jarin-blaschke-natural-light-1201716424/">有趣的</a> <a href="https://www.indiewire.com/2016/03/how-director-robert-eggers-and-dp-jarin-blaschke-created-the-look-of-the-witch-61934/">采访</a>。</li>
+<li>Explanation of  <em><a href="https://nofilmschool.com/2015/03/add-dimension-contrast-scenes-using-negative-fill-lighting">the negative fill</a></em>.</li>
+<li>*<a href="https://nofilmschool.com/2015/03/add-dimension-contrast-scenes-using-negative-fill-lighting">负填充</a>*的解释  。</li>
+<li>The amazing blog from Craig Welsh about <a href="https://www.expandedcinematography.com/the-cinematography-of-legend-of-the-guardians.html#cinematic">Moon lighting and Shatner light</a>.</li>
+<li>克雷格·威尔士 (Craig Welsh) 的博客，内容有关<a href="https://www.expandedcinematography.com/the-cinematography-of-legend-of-the-guardians.html#cinematic">月光和夏特纳之光，</a>非常精彩。</li>
+<li><a href="https://theartofnight.com/">Mark Gee’s website</a> about night photography.</li>
+<li><a href="https://theartofnight.com/">Mark Gee 的</a>有关夜间摄影的网站。</li>
+<li>Interesting articles about <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/vision/rodcone.html">night vision</a>, *<a href="https://en.wikipedia.org/wiki/Purkinje_effect">Purkinje Effect</a>*and <em><a href="https://en.wikipedia.org/wiki/Day_for_night">Day for night</a></em>.</li>
+<li><a href="http://hyperphysics.phy-astr.gsu.edu/hbase/vision/rodcone.html">有关夜视</a>、*<a href="https://en.wikipedia.org/wiki/Purkinje_effect">浦肯野效应</a><em>和</em><a href="https://en.wikipedia.org/wiki/Day_for_night">日以继夜</a>*的有趣文章。</li>
+<li><strong><a href="https://ascmag.com/videos/lighting-tech-tips-household-lightbulb-russell-carpenter-asc-1/john-seale-asc-acs-the-look-of-mad-max-fury-road">John Seale’s</a></strong> and  **<a href="https://postperspective.com/mad-max-fury-road-colorist-eric-whipp/">Eric Whipp’s</a>**​<a href="https://postperspective.com/mad-max-fury-road-colorist-eric-whipp/"> interviews</a>  about ​<em>Mad Max : Fury Road</em>​. <a href="https://cinematography.com/index.php?/topic/71499-day-for-night-madmax/">A great post</a> and <a href="https://timeinpixels.com/2015/10/shooting-day-for-night/">this article</a> give some insight as well.</li>
+<li>**<a href="https://ascmag.com/videos/lighting-tech-tips-household-lightbulb-russell-carpenter-asc-1/john-seale-asc-acs-the-look-of-mad-max-fury-road">约翰·西尔</a>**和  <strong><a href="https://postperspective.com/mad-max-fury-road-colorist-eric-whipp/">埃里克·惠普</a></strong>  对 <em>《疯狂的麦克斯：狂暴之路》的</em>​<a href="https://postperspective.com/mad-max-fury-road-colorist-eric-whipp/">采访</a>。<a href="https://cinematography.com/index.php?/topic/71499-day-for-night-madmax/">这是一篇很棒的文章</a>，<a href="https://timeinpixels.com/2015/10/shooting-day-for-night/">这篇文章</a>也提供了一些见解。</li>
+<li>A <a href="http://gurneyjourney.blogspot.com/2008/01/is-moonlight-blue.html">great article</a> from <strong>James Gurney</strong> on Moon lighting.</li>
+<li><strong>詹姆斯·格尼 (James Gurney)</strong> 发表了一篇关于月光的<a href="http://gurneyjourney.blogspot.com/2008/01/is-moonlight-blue.html">精彩文章。</a></li>
+<li><strong><a href="https://www.artstation.com/artwork/l2ba">John Sweeney’s</a></strong> Art Station. It just looks great.</li>
+<li>**<a href="https://www.artstation.com/artwork/l2ba">约翰·斯威尼的</a>**艺术站。看起来棒极了。</li>
+<li>**<a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons">Roger Deakins‘</a>**​<a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons"> opinion</a> about lighting in feature animation.</li>
+<li><strong><a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons">罗杰·迪金斯 (Roger Deakins</a></strong> )对于动画片灯光**<a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons">的</a>**​<a href="https://www.awn.com/animationworld/dreamworks-unleashes-dragons">看法。</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Barry_Lyndon">Wikipedia article</a> about ​<em>Barry Lindon</em>​.</li>
+<li>维基百科关于<em>巴里·林登的</em>​<a href="https://en.wikipedia.org/wiki/Barry_Lyndon">文章</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=inZ_p-sTV9I">This video</a> explains the use of <em>Practical Lighting</em> by <strong>Stanley Kubrick</strong> pretty well.</li>
+<li><a href="https://www.youtube.com/watch?v=inZ_p-sTV9I">该视频</a>很好地解释了<strong>斯坦利·库布里克</strong>对<em>实用照明</em>的使用。</li>
+<li><a href="https://nofilmschool.com/2015/07/practical-light-primer-how-practical-lighting-bring-cinematography-to-life">Interesting quote</a> from <strong>Roger Deakins</strong> about practicals.</li>
+<li><strong>罗杰·迪金斯 (Roger Deakins)</strong> 关于实践的<a href="https://nofilmschool.com/2015/07/practical-light-primer-how-practical-lighting-bring-cinematography-to-life">有趣引言</a>。</li>
+<li>A great <a href="http://mattscottvisuals.com/blog/2014/1/10/-what-are-you-looking-at-disecting-the-work-of-a-master">article</a> about​<em>Prisoners</em>​.</li>
+<li>一篇有关<em>囚犯的很棒的</em>​<a href="http://mattscottvisuals.com/blog/2014/1/10/-what-are-you-looking-at-disecting-the-work-of-a-master">文章</a>。</li>
+<li><a href="http://herbertheinsche.com/cinematography/">Herbert Heinsche’s website</a>, from Animal Logic.</li>
+<li><a href="http://herbertheinsche.com/cinematography/">Herbert Heinsche 的网站</a>，来自 Animal Logic。</li>
+<li><a href="https://dl.acm.org/citation.cfm?id=3328198">Practical Lighting on Toy Story 4</a> and <a href="https://www.expandedcinematography.com/industrialised-cinematography.html#how">Lights In Assets (LIA)</a> on <em>Lego Batman.</em></li>
+<li><a href="https://dl.acm.org/citation.cfm?id=3328198">《玩具总动员 4》中的实用照明</a>和《乐高蝙蝠侠》中<a href="https://www.expandedcinematography.com/industrialised-cinematography.html#how">的资产灯光 (LIA) </a>​ <em>。</em></li>
+<li>The <a href="http://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">excellent paper from Siggraph 1996</a> talks about light functions.</li>
+<li><a href="http://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Siggraph 1996 的优秀论文</a>讨论了光函数。</li>
+<li><strong>Roger Deakins</strong> <a href="https://www.premiumbeat.com/blog/blade-runner-2049-lighting-cinematography/">speaks about</a> ​<em>Blade Runner 2049</em>​. A post in his forum about <a href="https://www.rogerdeakins.com/lighting-2/unmotivated-lighting/">unmotivated lighting</a>.</li>
+<li><strong>罗杰·狄金斯</strong> <a href="https://www.premiumbeat.com/blog/blade-runner-2049-lighting-cinematography/">谈论</a> ​ <em>《银翼杀手 2049》</em> ​。他在论坛上发表了一篇关于<a href="https://www.rogerdeakins.com/lighting-2/unmotivated-lighting/">无动机灯光</a>的帖子。</li>
+<li>Pixar and <a href="https://youtu.be/vnDk2E4G1sg">the Khan Academy</a> have set some interesting videos. I don’t agree with everything but it is a good place to start.</li>
+<li>皮克斯和<a href="https://youtu.be/vnDk2E4G1sg">可汗学院</a>制作了一些有趣的视频。我并不赞同所有内容，但这是一个很好的起点。</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a></li>
+<li><a href="#%E8%87%AA%E7%84%B6%E5%85%89-natural-lights">自然光 Natural lights</a></li>
+<li><a href="#%E5%A4%AA%E9%98%B3-sun">太阳 Sun</a>
+<ul>
+<li><a href="#%E6%8C%87%E5%8D%97-guidelines">指南 Guidelines</a></li>
+<li><a href="#%E6%97%A5%E5%87%BA%E5%92%8C%E6%97%A5%E8%90%BD%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%E5%90%97-are-sunrise-and-sunset-different">日出和日落有什么不同吗？ Are Sunrise and Sunset different ?</a></li>
+<li><a href="#%E5%A4%AA%E9%98%B3%E5%AE%9A%E5%90%91%E5%85%89%E8%BF%98%E6%98%AF%E8%81%9A%E5%85%89%E5%85%89-sun-directional-or-spotlight">太阳：定向光还是聚光光？ Sun : Directional or Spotlight ?</a></li>
+<li><a href="#planet-51-%E4%B8%AD%E7%9A%84%E8%81%9A%E5%85%89%E7%81%AF-spotlight-on-planet-51">Planet 51 中的聚光灯 Spotlight on Planet 51</a></li>
+<li><a href="#%E6%98%9F%E6%98%9F%E4%B8%8A%E7%9A%84%E9%81%A5%E8%BF%9C%E7%9A%84%E5%85%89%E8%8A%92-distant-light-on-the-star">星星上的遥远的光芒 Distant light on The Star</a>
+<ul>
+<li><a href="#%E5%AF%B9%E6%AF%94%E5%BA%A6%E9%97%AE%E9%A2%98-contrast-issue">对比度问题 Contrast issue</a></li>
+</ul>
+</li>
+<li><a href="#%E8%81%9A%E7%84%A6%E6%98%9F%E6%8A%A5-spotlight-on-the-star">聚焦星报 Spotlight on The Star</a>
+<ul>
+<li><a href="#%E4%B8%A4%E4%B8%AA%E5%A4%AA%E9%98%B3-two-suns">两个太阳 Two suns</a></li>
+</ul>
+</li>
+<li><a href="#spotlight-%E5%AE%9A%E4%B9%89-spotlight-definition">Spotlight 定义 Spotlight definition</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%A9%E7%A9%BA-sky">天空 Sky</a>
+<ul>
+<li><a href="#%E6%8C%87%E5%8D%97-guidelines-2">指南 Guidelines</a></li>
+<li><a href="#%E7%89%A9%E7%90%86%E5%A4%A9%E7%A9%BA%E8%BF%98%E6%98%AF-hdri-physical-sky-or-hdri">物理天空还是 HDRI？ Physical Sky or HDRI ?</a>
+<ul>
+<li><a href="#%E6%99%AE%E8%8E%B1%E6%91%A9%E6%AF%94-playmobil">普莱摩比 Playmobil</a></li>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0-lego-batman">乐高蝙蝠侠 Lego Batman</a></li>
+<li><a href="#%E4%BA%BA%E7%8C%BF%E6%98%9F%E7%90%83%E4%B9%8B%E6%88%98-war-for-the-planet-of-the-apes">人猿星球之战 War for the planet of the apes</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%A9%E7%A9%BA%E9%99%90%E5%88%B6-sky-limitation">天空限制 Sky limitation</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%88%E4%BA%AE-moon">月亮 Moon</a>
+<ul>
+<li><a href="#%E5%85%B0%E6%88%88-rango">兰戈 Rango</a></li>
+<li><a href="#%E6%97%A5%E4%BB%A5%E7%BB%A7%E5%A4%9C-day-for-night">日以继夜 Day for night</a></li>
+<li><a href="#%E5%AE%9E%E6%99%AF%E6%8B%8D%E6%91%84%E4%B8%AD%E7%9A%84%E5%A4%9C%E9%97%B4%E7%81%AF%E5%85%89-night-lighting-in-live-action">实景拍摄中的夜间灯光 Night lighting in live-action</a>
+<ul>
+<li><a href="#%E7%96%AF%E7%8B%82%E7%9A%84%E9%BA%A6%E5%85%8B%E6%96%AF%E7%8B%82%E6%9A%B4%E4%B9%8B%E8%B7%AF-mad-max-fury-road">疯狂的麦克斯:狂暴之路 Mad Max : Fury Road</a></li>
+<li><a href="#%E6%8A%9B%E5%BC%83-cast-away">抛弃 Cast away</a></li>
+</ul>
+</li>
+<li><a href="#cg-%E4%B8%AD%E7%9A%84%E5%A4%9C%E9%97%B4%E7%81%AF%E5%85%89-night-lighting-in-cg">CG 中的夜间灯光 Night lighting in CG</a>
+<ul>
+<li><a href="#%E6%80%AA%E5%85%BD%E5%A4%A7%E5%AD%A6-monsters-university">怪兽大学 Monsters University</a></li>
+<li><a href="#%E5%A5%BD%E6%81%90%E9%BE%99-the-good-dinosaur">好恐龙 The good dinosaur</a></li>
+<li><a href="#%E5%8D%91%E9%84%99%E7%9A%84%E6%88%91-2-despicable-me-2">卑鄙的我 2 Despicable Me 2</a></li>
+<li><a href="#%E5%B0%8F%E5%85%B5-minions">小兵 Minions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%87%AA%E7%84%B6%E7%85%A7%E6%98%8E-naturalist-lighting">自然照明 Naturalist lighting</a></li>
+<li><a href="#%E5%AE%9E%E7%94%A8%E7%81%AF-practical-lights">实用灯 Practical lights</a>
+<ul>
+<li><a href="#%E6%8C%87%E5%8D%97-guidelines-3">指南 Guidelines</a></li>
+<li><a href="#cg-%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%94%A8%E7%81%AF%E5%85%89-practical-lights-in-cg">CG 中的实用灯光 Practical lights in CG</a>
+<ul>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E4%BD%A0%E7%9A%84%E9%BE%99-how-to-train-your-dragon">如何训练你的龙 How to train your dragon</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9E%E6%99%AF%E6%8B%8D%E6%91%84%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%94%A8%E7%81%AF%E5%85%89-practical-lights-in-live-action">实景拍摄中的实用灯光 Practical lights in live-action</a>
+<ul>
+<li><a href="#%E5%B7%B4%E9%87%8C%E6%9E%97%E7%99%BB-barry-lindon">巴里·林登 Barry Lindon</a></li>
+<li><a href="#%E6%85%95%E5%B0%BC%E9%BB%91-munich">慕尼黑 Munich</a></li>
+<li><a href="#%E4%B8%83%E5%AE%97%E7%BD%AA-se7en">七宗罪 Se7en</a></li>
+<li><a href="#%E5%A5%B3%E5%B7%AB-the-witch">女巫 The Witch</a></li>
+<li><a href="#%E7%BD%97%E6%9D%B0%E7%8B%84%E9%87%91%E6%96%AF-roger-deakins">罗杰·狄金斯 Roger Deakins</a></li>
+<li><a href="#%E9%82%80%E8%AF%B7-the-invitation">邀请 The invitation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%88%8F%E5%89%A7%E7%81%AF%E5%85%89-dramatic-lights">戏剧灯光 Dramatic lights</a>
+<ul>
+<li><a href="#%E6%8C%87%E5%8D%97-guidelines-4">指南 Guidelines</a></li>
+<li><a href="#%E5%AE%9E%E6%99%AF%E6%BC%94%E5%87%BA%E4%B8%AD%E7%9A%84%E6%88%8F%E5%89%A7%E7%81%AF%E5%85%89-dramatic-lights-in-live-action">实景演出中的戏剧灯光 Dramatic lights in live-action</a>
+<ul>
+<li><a href="#%E6%85%95%E5%B0%BC%E9%BB%91-munich-2">慕尼黑 Munich</a></li>
+<li><a href="#%E9%9C%8D%E6%AF%94%E7%89%B9%E4%BA%BA-2-the-hobbit-2">霍比特人 2 The Hobbit 2</a></li>
+<li><a href="#%E5%B7%B4%E6%96%AF%E7%89%B9%E6%96%AF%E5%85%8B%E9%B2%81%E6%A0%BC%E6%96%AF%E7%9A%84%E6%AD%8C%E8%B0%A3-the-ballad-of-buster-scruggs">巴斯特·斯克鲁格斯的歌谣 The Ballad of Buster Scruggs</a></li>
+<li><a href="#%E7%BD%97%E6%9D%B0%E7%8B%84%E9%87%91%E6%96%AF-roger-deakins-2">罗杰·狄金斯 Roger Deakins</a></li>
+</ul>
+</li>
+<li><a href="#cg-%E4%B8%AD%E7%9A%84%E6%88%8F%E5%89%A7%E7%81%AF%E5%85%89-dramatic-lights-in-cg">CG 中的戏剧灯光 Dramatic lights in CG</a>
+<ul>
+<li><a href="#%E5%8A%9F%E5%A4%AB%E7%86%8A%E7%8C%AB-kung-fu-panda">功夫熊猫 Kung-Fu Panda</a></li>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0-lego-batman-2">乐高蝙蝠侠 Lego Batman</a></li>
+<li><a href="#%E8%B6%85%E4%BA%BA%E7%89%B9%E6%94%BB%E9%98%9F-2-the-incredibles-2">超人特攻队 2 The incredibles 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+<li><a href="#%E6%9D%A5%E6%BA%90-sources">来源 Sources</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-Gestalt-Theory/">
+              <h3 class="post-title">
+                CG Cinematography 第 3 章：格式塔理论
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

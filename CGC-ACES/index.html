@@ -1,0 +1,1302 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CG Cinematography 第 1.5 章：学院色彩编码系统 (ACES) | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="CG Cinematography 第 1.5 章：学院色彩编码系统 (ACES) | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Chapter 1.5: Academy Color Encoding System (ACES) - Chris Brejon - Chris Brejon
+https://chrisbrejon.com/cg-cinematograp..." />
+    <meta name="keywords" content="Color,ACES,OCIO,CG Cinematography" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              CG Cinematography 第 1.5 章：学院色彩编码系统 (ACES)
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-22
+              </span>
+              <span>
+                82 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/ospYPv23vW/" class="post-tag">
+                  # Color
+                </a>
+              
+                <a href="https://zcfly1992.github.io/_GcDUwqFHG/" class="post-tag">
+                  # ACES
+                </a>
+              
+                <a href="https://zcfly1992.github.io/NcPgcQE9Gqz/" class="post-tag">
+                  # OCIO
+                </a>
+              
+                <a href="https://zcfly1992.github.io/UC8oB5Mlnn/" class="post-tag">
+                  # CG Cinematography
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/d3cdf4cfe62422854a39897d1b3c0c4f.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>Chapter 1.5: Academy Color Encoding System (ACES) - Chris Brejon - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/</a></li>
+<li>CG Cinematography ACES is an in-depth study of the Academy Color Encoding System relased in 2014. We will see its use in a Full CG context and its shortcomings.</li>
+</ul>
+<hr>
+<h2 id="前言-foreword">前言 Foreword</h2>
+<p>The careful reader will have noticed that over the two years of existence of my website, my analysis on ACES has changed quite a bit and went from “​<em>ACES is awesome</em>​” to “​<em>ACES has issues and limitations</em>​“. Don’t get me wrong : the idea of ACES (an actual framework to help professionals in color management) is great and ACES has been my entry point to color management. Over the past two years (since September 2018, <a href="https://community.acescentral.com/t/acescg-for-animation-feature-and-further-questions/1545">my first post</a>), I have learned so much and met amazing color-obsessed people <a href="https://community.acescentral.com/latest">partly thanks to ACES</a>.</p>
+<p>细心的读者会注意到，在我的网站存在的两年里，我对 ACES 的分析发生了很大变化，从“ ​<em>ACES 很棒</em>​”变成了“ ​<em>ACES 有问题和局限性</em>​”。别误会我的意思：ACES（一个帮助专业人士进行色彩管理的实际框架）的想法很棒，ACES 是我进入色彩管理的切入点。在过去的两年里（自 2018 年 9 月<a href="https://community.acescentral.com/t/acescg-for-animation-feature-and-further-questions/1545">我的第一篇文章</a>以来），我学到了很多东西，并结识了许多对色彩着迷的人，<a href="https://community.acescentral.com/latest">这在一定程度上要归功于 ACES</a>。</p>
+<p>But in reality, and this has been stated at <a href="https://paper.dropbox.com/doc/Meeting-Summaries-AmweeevBcufkcozYLHlG3">meeting#5</a> (of the Output Transforms VWG) : “​<em>The two big successes of ACES are the IDT concept, and the understanding that color management is needed.</em> ​” The Output Transforms (the module we use to display our renders) are ACES’ weakness, which is an issue since they are probably the most critical part of the “​<em>Image Formation Chain</em>​“.</p>
+<p>但实际上，这已在<a href="https://paper.dropbox.com/doc/Meeting-Summaries-AmweeevBcufkcozYLHlG3">会议#5</a>（输出变换 VWG）上指出：“ <em>ACES 的两大成功是 IDT 概念和对色彩管理必要性的理解。</em>  ” 输出变换（我们用来显示渲染的模块）是 ACES 的弱点，这是一个大问题，因为它们可能是“​<em>图像形成链</em>​”中最关键的部分。</p>
+<p>The biggest point overall is that many image makers who are uncomfortable with Color Management (because let’s face it, it is a scary and complex topic) have completely given up on learning and actually trusting their skills or eyes. There is like a psychological effect : “​<em>if it has been done by the Academy and used on the Lego movies, then it MUST be good. It MUST be.</em> ​” You don’t believe me ? Check this out :</p>
+<p>总体而言，最大的问题是，许多对色彩管理感到不舒服的图像制作者（因为让我们面对现实，这是一个可怕而复杂的话题）已经完全放弃学习，实际上不再相信自己的技能或眼睛。这就像是一种心理效应：“<em>如果它是由学院完成的，并用于乐高电影，那么它一定是好的。它一定是。</em>  ”你不相信我？看看这个：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0005_redshift_unreal_FHD-20241105171047-bozpicv.jpg" alt="" title="From the Redshift documentation 摘自 Redshift 文档" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0006_redshift_unreal_FHD-20241105171047-78ushpy.jpg" alt="" title="From the Unreal documentation 摘自 Unreal 文档" loading="lazy">​</p>
+<p>Why on earth would a blue rabbit turn magenta ? Is there something weird going on here ? Can we do better than this ? These two images come from the <a href="https://docs.redshift3d.com/display/RSDOCS/Color+Management+-+OCIO+ACES?product=cinema4d">Redshift</a> and <a href="https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/PostProcessEffects/ColorGrading/">Unreal</a> documentations, two respectable render engines. And this adds again to this fashion trend (in which my website participated) : “if ACES is implemented everywhere, it HAS TO be be perfect. It HAS TO.” So let’s see what is going on here…</p>
+<p>一只蓝色的兔子为什么会变成洋红色？这里面有什么奇怪的吗？我们能做得更好吗？这两张图片来自<a href="https://docs.redshift3d.com/display/RSDOCS/Color+Management+-+OCIO+ACES?product=cinema4d">Redshift</a>和<a href="https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/PostProcessEffects/ColorGrading/">Unreal</a>文档，这两个引擎都很有名。这又一次增加了这种流行趋势（我的网站也参与其中）：“如果 ACES 到处都实现，它必须是完美的。它必须是。”那么让我们看看这里发生了什么……</p>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/">The previous chapter</a> was mainly about Color Management prior to 2014. I am now going to describe <a href="https://www.oscars.org/science-technology/sci-tech-projects/aces">ACES</a>, a Color Management Workflow (CMW) developed by dozens of professionals under the auspices of the <a href="https://en.wikipedia.org/wiki/Academy_of_Motion_Picture_Arts_and_Sciences">Academy of Motion Picture Arts and Sciences</a> (AMPAS).</p>
+<p><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/">上一章</a>主要讲了2014年以前的色彩管理，现在我要讲一下<a href="https://www.oscars.org/science-technology/sci-tech-projects/aces">ACES ，它是由美国</a>​<a href="https://en.wikipedia.org/wiki/Academy_of_Motion_Picture_Arts_and_Sciences">电影艺术与科学学院</a>（AMPAS）赞助，数十位专业人员开发的色彩管理工作流程（CMW）。</p>
+<blockquote>
+<p>If you want to check the difference between a Color Managemement System (CMS) and a Color Management Workflow (CMW), please check <a href="https://community.acescentral.com/t/aces-2-0-meta-framework/3785">the explanation and proposal</a> by Daniele Siragusano.</p>
+<p>如果您想了解色彩管理系统（CMS）和色彩管理工作流程（CMW）之间的区别，请查看Daniele Siragusano 的<a href="https://community.acescentral.com/t/aces-2-0-meta-framework/3785">解释和建议。</a></p>
+</blockquote>
+<p>The whole idea behind ACES is to set a standard to help professionals in their color management. Many VFX studios such as ILM, Framestore, Double Negative and Animal Logic use it to exchange files and officially <a href="https://community.acescentral.com/t/list-of-aces-productions/23">more than 300 movies</a> have been done using ACES.</p>
+<p>ACES 背后的整个理念是制定一个标准来帮助专业人士进行色彩管理。许多视觉特效工作室（如 ILM、Framestore、Double Negative 和 Animal Logic）都使用它来交换文件，官方已使用 ACES 制作了<a href="https://community.acescentral.com/t/list-of-aces-productions/23">300 多部电影。</a></p>
+<blockquote>
+<p>After some investigation, I try to be careful about the previous statement. It has been confirmed during <a href="https://transcripts.gotomeeting.com/#/s/04223e593f9bd7ac1e0ccae009fbd652b6571a52b4e81afd9b7b6ff68b68ba92">one of the TAC meetings (at 1:02:28)</a> that some of the movies listed were not using the ACES Output Transform.</p>
+<p><a href="https://transcripts.gotomeeting.com/#/s/04223e593f9bd7ac1e0ccae009fbd652b6571a52b4e81afd9b7b6ff68b68ba92">经过一番调查，我试着谨慎对待前面的陈述。在一次 TAC 会议（1:02:28）</a>中已经确认，列出的一些电影没有使用 ACES 输出转换。</p>
+<p>-- It all comes down to the question : which requirements make a project ACES compliant ?</p>
+<p>-- 总而言之，这是一个问题：哪些要求使得项目符合 ACES 要求？</p>
+</blockquote>
+<p>ACES is available for free through OCIO (here is <a href="https://github.com/colour-science/OpenColorIO-Configs/tree/feature/aces-1.2-config">the link to the ACES 1.2 config</a>), just like the <a href="https://github.com/imageworks/OpenColorIO-Configs">spi-anim config</a>. ACES has also been implemented in CTL in <a href="https://help.prodicle.com/hc/en-us/articles/360002079888-Color-Managed-Workflow-in-Resolve-ACES-">Resolve</a> and GLSL / HLSL in <a href="https://docs.unrealengine.com/en-US/Engine/Rendering/PostProcessEffects/ColorGrading/index.html">Unreal</a> and <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@6.9/manual/Post-Processing-Tonemapping.html">Unity</a>.</p>
+<p>ACES 可通过 OCIO 免费获得（此处是<a href="https://github.com/colour-science/OpenColorIO-Configs/tree/feature/aces-1.2-config">ACES 1.2 配置的链接），就像</a>​<a href="https://github.com/imageworks/OpenColorIO-Configs">spi-anim 配置</a>一样。ACES 也在<a href="https://help.prodicle.com/hc/en-us/articles/360002079888-Color-Managed-Workflow-in-Resolve-ACES-">Resolve</a>中的 CTL以及<a href="https://docs.unrealengine.com/en-US/Engine/Rendering/PostProcessEffects/ColorGrading/index.html">Unreal</a>和<a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@6.9/manual/Post-Processing-Tonemapping.html">Unity</a>中的 GLSL/HLSL中实现。</p>
+<blockquote>
+<p>If you don’t feel like following by another technical chapter, I don’t blame you. You can skip to <a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/">chapter 2</a>.</p>
+<p>如果你不想再看另一章技术内容，我不会责怪你。你可以直接跳到<a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/">第 2 章</a>。</p>
+<p>-- Otherwise let’s dive in.</p>
+<p>-- 否则我们就深入研究吧。</p>
+</blockquote>
+<h2 id="aces-概述-aces-overview">ACES 概述 ACES overview</h2>
+<p>Something that really hit me when I arrived at Animal Logic in 2016 was their range of colors. The artists were working on a beautiful and very saturated movie called <em>Lego Batman.</em>  It was my first day and I saw this shot on a monitor (I think <strong><a href="https://zerply.com/ncross">Nick Cross</a></strong> lit this shot).</p>
+<p>2016 年我刚到 Animal Logic 时，我被他们的色彩范围深深震撼了。艺术家们正在制作一部名为 <em>《乐高蝙蝠侠》的精美且饱和度极高的电影。</em> 那是我第一天上班，我在监视器上看到了这个镜头（我想是**<a href="https://zerply.com/ncross">Nick Cross</a>**为这个镜头打光的）。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0010_lego_batman_FHD-20241105171047-3hc0s5p.jpg" alt="" loading="lazy">​</p>
+<p>I really thought to myself : ​ <em>“Wow ! This looks good ! How did they get these crazy colors ?</em> ​” The range of colors really seemed wider than in my previous studio :</p>
+<p>我真的心想： <em>“哇！这看起来不错！他们是怎么得到这些疯狂的颜色的？</em>  ”颜色范围似乎比我以前的工作室更广：</p>
+<ul>
+<li>We have seen in the previous chapter that many studios and schools render within the <em>sRGB</em> gamut with a linear transfer function and display in <em>sRGB</em> through a 1D LUT (or a simple sRGB OETF).</li>
+<li>我们在上一章中看到，许多工作室和学校使用线性传递函数在<em>sRGB</em>色域内进行渲染，并通过 1D LUT（或简单的 sRGB OETF）在<em>sRGB中显示。</em></li>
+<li>Animal Logic uses P3 monitors which is the industry standard for cinema theaters. As we have seen in the previous chapter, it gives ​<strong>a wider range of colours to display</strong>​. The amazing art direction by <strong>Grant Freckelton</strong> also helped to achieve this amazing result.</li>
+<li>Animal Logic 使用 P3 显示器，这是电影院的行业标准。正如我们在上一章中看到的，它可以<strong>显示更广泛的颜色。</strong> <strong>Grant Freckelton</strong>出色的艺术指导也有助于实现这一惊人的效果。</li>
+</ul>
+<h3 id="为什么选择-aces-why-aces">为什么选择 ACES？ Why ACES ?</h3>
+<p>ACES has been developed by the Academy of Motion Picture Arts and Sciences with the help of camera manufacturers (Arri, Red, Sony…) and some VFX studios (ILM, Animal Logic…).</p>
+<p>ACES 由美国电影艺术与科学学院在摄像机制造商（Arri、Red、Sony……）和一些视觉特效工作室（ILM、Animal Logic……）的帮助下开发。</p>
+<blockquote>
+<p>You can check the contributors and the TAC members <a href="https://www.oscars.org/science-technology/sci-tech-projects/aces">here</a> (in the <em>CONTRIBUTORS</em> tab).</p>
+<p><a href="https://www.oscars.org/science-technology/sci-tech-projects/aces">您可以在此处</a>（在 <em>“贡献者”</em> 选项卡中）查看贡献者和 TAC 成员。</p>
+</blockquote>
+<p>When cameras were analog, things were simple. There were only a couple of formats : 35mm and 70mm.  <strong>TheOriginal Print, shot on film, was available for eternity.</strong></p>
+<p>当相机还是模拟相机时，事情很简单。只有两种格式：35 毫米和 70 毫米。<strong>用胶片拍摄的原版照片可以永久保存。</strong></p>
+<p>But with the digital revolution,  <strong>multiple cameras and formats have emerged.</strong>   These proprietary systems, used for <em>Digital Source Master</em> (​<em>DSM</em>​), can be outdated quite quickly or even worse, not sufficiently documented.</p>
+<p>但随着数字革命，<strong>出现了多种相机和格式。</strong> 这些用于​<em>数字源母版</em>​( <em>DSM</em> ) 的专有系统可能很快就会过时，甚至更糟的是，没有足够的文档记录。</p>
+<p>Issue is when these movies have to be remastered for new supports, the <em>DSM</em>s are not relevant anymore and <strong>the original creative intent is lost</strong>. So the original idea behind ACES was to encode these archives in a “standard” format to make them less ambiguous. The first name of ACES was indeed the “​<em>Image Interchange Framework</em>​” (IIF).</p>
+<p>问题是，当这些电影必须重新制作以支持新支持时，<em>DSM</em>就不再适用，<strong>最初的创作意图也随之消失</strong>。因此，ACES 的最初想法是将这些档案编码为“标准”格式，以减少歧义。ACES 的第一个名字确实是“​<em>图像交换框架</em>​”（IIF）。</p>
+<p><strong>BUT</strong> it has been explained quite clearly <a href="https://community.acescentral.com/t/a-single-fixed-output-transform-vs-a-choose-your-own-approach/3440/3">in this post</a> that :</p>
+<p><strong>但</strong><a href="https://community.acescentral.com/t/a-single-fixed-output-transform-vs-a-choose-your-own-approach/3440/3">这篇文章</a>已经解释得很清楚了：</p>
+<blockquote>
+<p>The ST2065-1 file format is far from ​<em>unambiguous</em>​. […] If I give you a ST2065-1 file you don’t know if it was made with the ut33, 0.1.1, 0.2.1, 0.71, 1.03 or 1.1 version of ACES. Which all will produce quite a different version of the movie. […] Is it a bad thing that we have an ambiguous archive file format? I don’t think so. It is good to have ST2065 and nail down a few parameters for the encoding. It is a better DSM (Digital Source Master), that’s it and it is great.</p>
+<p>ST2065-1 文件格式远非​<em>明确</em>​。[…] 如果我给您一个 ST2065-1 文件，您不知道它是使用 ACES 的 ut33、0.1.1、0.2.1、0.71、1.03 还是 1.1 版本制作的。所有这些版本都会产生完全不同的电影版本。[…] 我们有一个模棱两可的存档文件格式是一件坏事吗？我不这么认为。拥有 ST2065 并确定一些编码参数是件好事。它是一个更好的 DSM（数字源母版），就是这样，而且很棒。</p>
+<p>-- So it looks like that the sole purpose of ACES has not been achieved…</p>
+<p>-- 如此看来，ACES 的唯一目的并未实现……</p>
+</blockquote>
+<h3 id="aces-是什么-what-is-aces">ACES 是什么？ What is ACES ?</h3>
+<p>ACES is a CMW that includes a series of color spaces and transforms that allows you to manipulate them. The reference color space developed by the academy is called <em>ACES2065-1 (AP0 primaries).</em>  Here are its characteristics :</p>
+<p>ACES 是一个 CMW，它包含一系列颜色空间和变换，允许您对其进行操作。该学院开发的参考颜色空间称为<em>ACES2065-1（AP0 原色）。</em> 以下是它的特征：</p>
+<ul>
+<li>Ultra Wide Gamut (non-physically realizable primaries) 超宽色域（非物理可实现的原色）</li>
+<li>Linear 线性</li>
+<li>High Dynamic Range 高动态范围</li>
+<li>Standardised 标准化</li>
+<li>RGB</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0020_aces_colorspace_FHD-20241105171047-zgpc9dd.jpg" alt="" title="ACES2065-1 includes all these color spaces. ACES2065-1 包含所有这些颜色空间。" loading="lazy">​</p>
+<blockquote>
+<p>ACES2065-1 is also called the ACES colorspace. But I’d rather use its full name.</p>
+<p>ACES2065-1 也称为 ACES 色彩空间。但我更愿意使用它的全名。</p>
+<p>-- Terminology accuracy is critical in color management.</p>
+<p>-- 术语的准确性在色彩管理中至关重要。</p>
+</blockquote>
+<h4 id="一张图片中的-aces-aces-in-one-picture">一张图片中的 ACES ACES in one picture</h4>
+<p>ACES is composed of three main processes described in the following image :</p>
+<p>ACES 由下图描述的三个主要过程组成：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0030_ACES_autodesk_FHD-20241105171047-t3bzeac.jpg" alt="" loading="lazy">​</p>
+<ul>
+<li>A. <strong>IDT</strong> is the import/conversion of the textures/images/renders to the <em>ACEScg</em> colorspace.</li>
+<li>A. <strong>IDT</strong>是将纹理/图像/渲染导入/转换为<em>ACEScg</em>色彩空间。</li>
+<li>B. <em><strong>ACEScg</strong></em> is the rendering/working space.</li>
+<li>B. <em><strong>ACEScg</strong></em>是渲染/工作空间。</li>
+<li>C. <strong>RRT + ODT</strong> are the <em>Output Transform</em> to the monitor or video projector.</li>
+<li>C. <strong>RRT + ODT</strong>是到显示器或视频投影仪的<em>输出转换。</em></li>
+</ul>
+<blockquote>
+<p>We used to say RRT(Rendering Reference Transform) and ODT (Output Device Transform). I shall refer to them as Output Transform.</p>
+<p>我们过去常说 RRT（渲染参考变换）和 ODT（输出设备变换）。我将它们称为输出变换。</p>
+<p>-- RRT and ODT were merged for the HDR Output Transforms in ACES 1.1.</p>
+<p>--RRT 和 ODT 合并用于 ACES 1.1 中的 HDR 输出转换。</p>
+</blockquote>
+<p>The idea behind ACES is to deal with any color transform you may need :</p>
+<p>ACES 背后的想法是处理您可能需要的任何颜色变换：</p>
+<ul>
+<li>Is your texture in <em>sRGB</em> from <em>Internet</em> ? Or is it in linear within the <em>sRGB</em>gamut ? ACES provides all the matrixes and LUTs to convert one colorspace to another with the IDT (Input Device Transform).</li>
+<li>您的纹理是否来自<em>互联网的sRGB ？还是在sRGB</em>色域内呈线性？ACES 提供所有矩阵和 LUT，以便使用 IDT（输入设备转换）将一个色彩空间转换为另一个色彩空间。</li>
+<li>Is you monitor <em>Rec.709</em> or <em>P3</em> ? ACES provides all the LUTs to view your renders with the appropriate Output Transform.</li>
+<li>您的显示器是<em>Rec.709</em>还是​<em>P3</em>​？ACES 提供所有 LUT，以便您使用适当的输出变换查看渲染。</li>
+</ul>
+<blockquote>
+<p>This is why one of the important things about Color Management : you must know <strong>the colorspace (primaries, transfer function and white point) for</strong> <strong>each process (input, working space and output).</strong></p>
+<p>这就是为什么色彩管理的重要事项之一：您必须了解<strong>每个过程（输入、工作空间和输出）的色彩空间（原色、传递函数和白点）</strong>   <strong>。</strong></p>
+<p>--ACES tries to clarify that.</p>
+<p>--ACES 试图澄清这一点。</p>
+</blockquote>
+<h4 id="aces-颜色空间-aces-color-spaces">ACES 颜色空间 ACES color spaces</h4>
+<p>Here is a list of the five ACES color spaces :</p>
+<p>以下是五个 ACES 颜色空间的列表：</p>
+<ul>
+<li><em>ACES 2065-1</em> is scene linear with AP0 primaries. It remains the core of ACES and is the only interchange and archival format (for DCDM).</li>
+<li><em>ACES 2065-1</em>是具有 AP0 主色调的场景线性格式。它仍然是 ACES 的核心，并且是唯一的交换和存档格式（用于 DCDM）。</li>
+<li><em>ACEScg</em> is scene linear with AP1 primaries (the smaller “working”  color space for Computer Graphics).</li>
+<li><em>ACEScg</em>与 AP1 原色（计算机图形学的较小的“工作”色彩空间）场景线性相关。</li>
+<li><em>ACEScc</em>​, <em>ACEScct</em> and <em>ACESproxy</em> all have AP1 primaries and their own specified logarithmic transfer functions.</li>
+<li><em>ACEScc</em>​、<em>ACEScct</em>和<em>ACESproxy</em>均具有 AP1 原色和各自指定的对数传递函数。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Primaries</th>
+<th>White Point</th>
+<th>Transfer functions</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACES2065-1</td>
+<td>AP0 (non-physically realizable)</td>
+<td>~D60</td>
+<td>Linear</td>
+<td>Interchange and archival space</td>
+</tr>
+<tr>
+<td>ACEScc</td>
+<td>AP1 (non-physically realizable)</td>
+<td>~D60</td>
+<td>Logarithmic</td>
+<td>Working space (color grading)</td>
+</tr>
+<tr>
+<td>ACEScct</td>
+<td>AP1 (non-physically realizable)</td>
+<td>~D60</td>
+<td>Logarithmic (Cineon like)</td>
+<td>Working space (color grading)</td>
+</tr>
+<tr>
+<td>ACEScg</td>
+<td>AP1 (non-physically realizable)</td>
+<td>~D60</td>
+<td>Linear</td>
+<td>Working space (rendering, compositing)</td>
+</tr>
+<tr>
+<td>Acesproxy</td>
+<td>AP1 (non-physically realizable)</td>
+<td>~D60</td>
+<td>Logarithmic</td>
+<td>Transport space (deprecated)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>初选</th>
+<th>白点</th>
+<th>传递函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACES2065-1</td>
+<td>AP0（非物理可实现）</td>
+<td>~D60</td>
+<td>线性 (Linear)</td>
+<td>交换和档案空间</td>
+</tr>
+<tr>
+<td>ACEcc</td>
+<td>AP1（非物理可实现）</td>
+<td>~D60</td>
+<td>对数</td>
+<td>工作空间（调色）</td>
+</tr>
+<tr>
+<td>ACE 诊断试剂盒</td>
+<td>AP1（非物理可实现）</td>
+<td>~D60</td>
+<td>对数（类似 Cineon）</td>
+<td>工作空间（调色）</td>
+</tr>
+<tr>
+<td>血管紧张素转换酶</td>
+<td>AP1（非物理可实现）</td>
+<td>~D60</td>
+<td>线性 (Linear)</td>
+<td>工作空间（渲染、合成）</td>
+</tr>
+<tr>
+<td>乙酰辅酶</td>
+<td>AP1（非物理可实现）</td>
+<td>~D60</td>
+<td>对数</td>
+<td>运输空间（已弃用）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The ACES White Point is not exactly D60 (many people are wrong about this actually). It was chosen to avoid any misunderstanding that ACES would only be compatible with scenes shot under CIE Daylight with a CCT of 6000K.</p>
+<p>ACES 白点并非完全是 D60（实际上很多人对此都错了）。之所以选择它，是为了避免任何误解，即 ACES 仅与在 CIE 日光下拍摄且 CCT 为 6000K 的场景兼容。</p>
+<p>-- It’s all explained in <a href="https://github.com/ampas/aces-dev/blob/master/documents/README.md">here</a>.</p>
+<p>-- <a href="https://github.com/ampas/aces-dev/blob/master/documents/README.md">这里</a>已经解释得很清楚了。</p>
+</blockquote>
+<p>There is also an <a href="https://acescentral.com/knowledge-base-2/aces-working-spaces/">interesting article</a> about the different ACES color spaces if you want to read more on the topic.</p>
+<p>如果您想了解更多有关该主题的内容，还有一篇有关不同 ACES 颜色空间的<a href="https://acescentral.com/knowledge-base-2/aces-working-spaces/">有趣文章。</a></p>
+<blockquote>
+<p>Please note that the <strong>ACES2065-1 color space is not recommended for rendering.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>You should use ACEScg (AP1 primaries).</p>
+<p>请注意，<strong>不建议使用 ACES2065-1 颜色空间进行渲染。</strong> 您应该使用 ACEScg（AP1 原色）。</p>
+<p>-- More explanations are provided right below.</p>
+<p>-- 下面提供了更多解释。</p>
+</blockquote>
+<h3 id="为什么选择-acescg-why-acescg">为什么选择 ACEScg？ Why ACEScg ?</h3>
+<p>What about Computer Graphics ? How ACES can modify our renders ? Some tests have also been conducted by <strong><a href="https://nbviewer.jupyter.org/gist/sagland/3c791e79353673fd24fa">Steve Agland</a></strong> (Animal Logic) and <strong><a href="https://www.colour-science.org/anders-langlands/">Anders Langlands</a></strong> (Weta Digital) to render in ​<em>ACES2065-1</em>​.</p>
+<p><strong><a href="https://nbviewer.jupyter.org/gist/sagland/3c791e79353673fd24fa">那么计算机图形学呢？ACES 如何修改我们的渲染？ Steve Agland</a></strong> (Animal Logic) 和**<a href="https://www.colour-science.org/anders-langlands/">Anders Langlands</a>**  <em>(Weta Digital) 也对ACES2065-1</em>进行了一些渲染测试。</p>
+<p>An unexpected issue occurred when rendering in the <em>ACES2065-1</em> color space : it was so big that it gave some negative values and <a href="https://community.acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/7">would mess up with energy conservation</a>. It is very well explained in <a href="http://duikerresearch.com/2015/09/acescg-a-common-color-encoding-for-visual-effects-applications/">this post</a>. Some color peeps refer to this event as ​<em>The Great Discovery</em>​.</p>
+<p>在<em>ACES2065-1</em>色彩空间中进行渲染时出现了一个意外问题：它太大了，以至于给出了一些负值，并且<a href="https://community.acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/7">会扰乱能量守恒。</a>​<a href="http://duikerresearch.com/2015/09/acescg-a-common-color-encoding-for-visual-effects-applications/">这篇文章</a>对此进行了很好的解释。一些色彩爱好者将此事件称为​ <em>“大发现”</em> ​。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0040_aces_colorspaces_FHD-20241105171047-ohn9vrh.jpg" alt="" loading="lazy">​</p>
+<p>On top of that, grading on ACES2065-1 did not feel “​<em>natural</em>​“. From <a href="https://community.acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/2">ACEScentral</a>, <strong>Nick Shaw</strong> explains :</p>
+<p>最重要的是，ACES2065-1 的评级感觉不够“​<em>自然</em>​”。来自<a href="https://community.acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/2">ACEScentral 的</a>Nick <strong>Shaw</strong>解释道：</p>
+<blockquote>
+<p>The AP1 primaries are a compromise which code most colors likely to occur in images from real cameras using positive values. Because even the most saturated ACEScg colors are still “real”, this means that the maths of grading operations works in a way which “feels” better to colorists.</p>
+<p>AP1 原色是一种折衷方法，它使用正值对真实相机图像中可能出现的大多数颜色进行编码。因为即使是最饱和的 ACEScg 颜色仍然是“真实的”，这意味着调色操作的数学运算方式对调色师来说“感觉”更好。</p>
+<p>-- ACEScg is more artist friendly.</p>
+<p>-- ACEScg 对艺术家更加友好。</p>
+</blockquote>
+<p>Therefore another color space has been created for Computer Graphics : <em><a href="https://www.slideshare.net/hpduiker/acescg-a-common-color-encoding-for-visual-effects-applications">ACEScg (AP1 primaries)</a></em>  (which is <a href="https://acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/4">similar to </a>​*<a href="https://acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/4">Rec. 2020</a>*). I will repeat in bold and with emphasis because it is <strong>CRITICAL</strong> : <strong>you should never render inACES2065-1.</strong></p>
+<p>因此，为计算机图形学创建了另一个色彩空间：​*<a href="https://www.slideshare.net/hpduiker/acescg-a-common-color-encoding-for-visual-effects-applications">ACEScg（AP1 原色）</a>* ​（类似于<a href="https://acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/4">Rec </a>​*<a href="https://acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/4">. 2020</a>*）。我将用粗体和强调的方式重复一遍，因为它​<strong>至关重要</strong>​：<strong>您永远不应该在ACES2065-1中进行渲染。</strong></p>
+<h4 id="acescg我们的工作渲染空间-acescg-our-workingrendering-space">ACEScg：我们的工作/渲染空间 ACEScg : our working/rendering space</h4>
+<p>Why would we render in one color space and display in another ? What is the point ? Remember the Rendering space and the Display space <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#rendering-and-display-spaces">from Chapter 1 ?</a> We have already seen that they do not have to be the same.</p>
+<p>为什么我们要在一个颜色空间中渲染而在另一个颜色空间中显示？这样做有什么意义？还记得<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#rendering-and-display-spaces">第一章中的渲染空间和显示空间吗？</a>我们已经看到它们不必相同。</p>
+<p>But what if I told you that  <strong>rendering within different primaries will NOT give the same result</strong>  ? I’ll repeat for clarity : rendering in <em>Linear – sRGB</em> or <em>ACEScg</em> will not give the same “beauty” exr. The lighting calculation and therefore result will be different.</p>
+<p>但如果我告诉你，<strong>在不同的原色中渲染不会产生相同的结果</strong> <strong>，</strong> 你会怎么想？为了清楚起见，我再重复一遍：<em>在线性 - sRGB</em>或<em>ACEScg</em>中渲染不会产生相同的“美感”效果。照明计算和结果将有所不同。</p>
+<blockquote>
+<p>Lego Batman and Ninjago were rendered in linear – P3-D60, which was entirely down to the space the surfacing was done in. Peter Rabbit forward was rendered in ACEScg.</p>
+<p>Lego Batman 和 Ninjago 以线性 - P3-D60 渲染，这完全取决于表面处理的空间。Peter Rabbit 前进以 ACEScg 渲染。</p>
+<p>-- The choice of rendering primaries is definitely not a trivial decision…</p>
+<p>-- 渲染原色的选择绝对不是一个微不足道的决定……</p>
+</blockquote>
+<p>First of all, we shall all agree that RGB rendering is kind of broken from first principles (compared to spectral rendering). So we want to use a colorspace for rendering that makes it a bit less broken and <em>ACEScg</em> is a good candidate for that. By switching from <em>Linear – sRGB</em> to ​<em>ACEScg</em>​, you will access <strong>Wide Gamut Rendering</strong>. How do we know which particular color space is suited for our needs ? As always, by doing some tests !</p>
+<p>首先，我们都同意 RGB 渲染与基本原理相比有些不协调（与光谱渲染相比）。因此，我们希望使用一种色彩空间进行渲染，使其不那么不协调，而<em>ACEScg</em>就是一个很好的选择。通过从<em>Linear – sRGB</em>切换到​<em>ACEScg</em>​，您将访问<strong>宽色域渲染</strong>。我们如何知道哪种特定的色彩空间适合我们的需求？一如既往，通过进行一些测试！</p>
+<p>To perform a proper comparison between rendering color spaces, we’d need a reference called the “​<em>ground truth</em>​“. In our case, it would be an unbiased image like the spectral render engine <a href="https://www.mitsuba-renderer.org/">Mitsuba</a> allows you to generate. Otherwise we could not compare objectively the renders !</p>
+<p>为了对渲染色彩空间进行适当的比较，我们需要一个称为“​<em>基本事实</em>​”的参考。在我们的例子中，它将是一个无偏图像，就像光谱渲染引擎<a href="https://www.mitsuba-renderer.org/">Mitsuba</a>允许您生成的图像一样。否则我们无法客观地比较渲染！</p>
+<blockquote>
+<p>The claim is not that BT2020 or ACEScg are the ultimate colourspaces,  <strong>in fact none is</strong>, the claim is that they tend to reduce error generally a bit better compared to others. They happen to have an orientation that is the jack-of-all-trades of all the major RGB colourspaces.</p>
+<p>并不是说 BT2020 或 ACEScg 是终极色彩空间，<strong>事实上它们都不是</strong>，而是它们比其他色彩空间更能减少错误。它们恰好是所有主要 RGB 色彩空间的万能者。</p>
+<p>-- Thomas Mansencal.</p>
+<p>-- 托马斯·曼森卡尔。</p>
+</blockquote>
+<h4 id="spectral-rec709-和-rec-2020-之间的比较-comparison-between-spectral-rec709-and-rec-2020">Spectral、Rec.709 和 Rec. 2020 之间的比较 Comparison between Spectral, Rec.709 and Rec. 2020</h4>
+<p>Some really interesting tests and research have been conducted by <strong><a href="https://www.colour-science.org/anders-langlands/">Anders Langlands</a></strong> and ​<strong>Thomas Mansencal</strong>​. They are explained in <a href="https://computergraphics.stackexchange.com/questions/8152/for-shader-math-why-should-linear-rgb-keep-the-gamut-of-srgb">this post</a>. Three different renders have been done :</p>
+<p><strong><a href="https://www.colour-science.org/anders-langlands/">Anders Langlands</a><strong>和</strong>Thomas Mansencal</strong>进行了一些非常有趣的测试和研究。<a href="https://computergraphics.stackexchange.com/questions/8152/for-shader-math-why-should-linear-rgb-keep-the-gamut-of-srgb">本文</a>对此进行了解释。进行了三种不同的渲染：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0050_mitsuba_spectral_FHD-20241105171047-wjwi4ij.jpg" alt="" loading="lazy">​</p>
+<ul>
+<li>sRGB/​<em>Rec.709</em>​, the smallest gamut of all.</li>
+<li>sRGB/ ​<em>Rec.709</em>​，所有色域中最小的。</li>
+<li>Spectral, the ground truth using <a href="https://en.wikipedia.org/wiki/Spectral_rendering">wavelengths</a> for its calculation.</li>
+<li><a href="https://en.wikipedia.org/wiki/Spectral_rendering">光谱，使用波长</a>进行计算的基本事实。</li>
+<li><em>Rec. 2020</em>​, which is similar to ​<em>ACEScg</em>​.</li>
+<li><em>Rec. 2020 ，与ACEScg</em>类似。</li>
+</ul>
+<p>Then, you subtract them from one another. The darkest it gets, the closer it is to spectral ! So if you have a look at the bottom row <strong>the average value is overall darker.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>Which means that <em>Rec. 2020</em> gets us “closer” to spectral rendering.</p>
+<p>然后，将它们相减。颜色越暗，就越接近光谱！所以如果你看一下下面一行，你会发现<strong>平均值总体上更暗。</strong> 这意味着<em>Rec. 2020</em>让我们“更接近”光谱渲染。</p>
+<blockquote>
+<p>What is the difference between <a href="http://duikerresearch.com/wordpress/wp-content/uploads/2015/09/ACEScg-Digipro-2015.pdf">ACEScg</a> and Rec. 2020 ? What is the advantage to have the three ACEScg primaries out of the CIE diagram ? To encompass P3 mostly, ACEScg is a gamut close to BT.2020 but that encompasses P3. This requires non-physically realizable primaries.</p>
+<p><a href="http://duikerresearch.com/wordpress/wp-content/uploads/2015/09/ACEScg-Digipro-2015.pdf">ACEScg</a>和 Rec. 2020之间有什么区别？将三个 ACEScg 原色置于 CIE 图之外有什么好处？为了最大程度地涵盖 P3，ACEScg 的色域接近 BT.2020，但涵盖 P3。这需要非物理可实现的原色。</p>
+<p>-- Explanation by Thomas Mansencal. It is worth noting that the choice of the ACEScg primaries was controversial.</p>
+<p>-- 托马斯·曼森卡尔 (Thomas Mansencal) 解释。值得注意的是，ACEScg 主色调的选择是有争议的。</p>
+</blockquote>
+<h4 id="acescg-解释-acescg-explanation">ACEScg 解释 ACEScg explanation</h4>
+<p>The technical reason behind this difference is given in a series of posts :</p>
+<p>一系列文章中给出了这种差异背后的技术原因：</p>
+<blockquote>
+<p>From <strong><a href="https://www.colour-science.org/posts/about-rendering-engines-colourspaces-agnosticism/">Thomas Mansencal</a></strong> : On a strictly technical point of view, rendering engines are indeed colourspaces agnostic. They just chew through whatever data you throw at them without making any consideration of the colorspace the data is stored into. However the choice of colorspace and its primaries is critical to achieve a faithful rendering. […]</p>
+<p>**<a href="https://www.colour-science.org/posts/about-rendering-engines-colourspaces-agnosticism/">Thomas Mansencal</a>**表示：从严格的技术角度来看，渲染引擎确实与色彩空间无关。它们只会处理您向其输入的任何数据，而不会考虑数据存储在哪个色彩空间中。然而，色彩空间及其原色的选择对于实现忠实的渲染至关重要。[…]</p>
+</blockquote>
+<p>If you are using sRGB textures, you will be rendering in this particular gamut (by default). Only the use of an Input Device Transform (IDT) will allow you to render in <em>ACEScg</em> (or a conversion beforehand).</p>
+<p>如果您使用 sRGB 纹理，您将在此特定色域中进行渲染（默认情况下）。只有使用输入设备转换 (IDT) 才允许您在<em>ACEScg</em>中进行渲染（或事先进行转换）。</p>
+<blockquote>
+<p>From <a href="https://acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/4">Thomas Mansencal</a> : <em>What most CG artists are referring to as linear is currently sRGB / BT.709 / Rec. 709 colourspace with a linear transfer function. ACEScg is intrinsically linear which makes it perfect for rendering.</em>  […] some RGB colorspaces have gamuts that are better suited for CG rendering and will get results that overall will be closer to a ground truth full spectral rendering. ACEScg / BT.2020 have been shown to produce more faithful results in that regard.</p>
+<p><a href="https://acescentral.com/t/acescg-vs-linear-srgb-709-cg-rendering/1512/4">Thomas Mansencal</a>表示：<em>目前大多数 CG 艺术家所指的线性是指具有线性传递函数的 sRGB / BT.709 / Rec. 709 色彩空间。ACEScg 本质上是线性的，这使其非常适合渲染。</em>  […] 一些 RGB 色彩空间的色域更适合 CG 渲染，并且总体上会得到更接近真实全光谱渲染的结果。ACEScg / BT.2020 已被证明在这方面能产生更忠实的结果。</p>
+</blockquote>
+<p>And if this was not clear enough :</p>
+<p>如果这还不够清楚的话：</p>
+<blockquote>
+<p>Yes, the basis vectors are different and BT.2020 / ACEScg are producing better results, likely because the primaries are sharper along the fact that the basis vectors are rotated in way that reduces errors. A few people (I’m one of them) have <a href="https://www.colour-science.org/posts/about-rendering-engines-colourspaces-agnosticism/">written about that</a> a few years ago about it. […] Each RGB colorspace has different basis vectors as a result of which mathematical operations such as multiplication, division and power are not equivalent. […] <em>Generally, you should avoid rendering with ACES2065-1 because it is far from optimal for computer graphics rendering, […].</em></p>
+<p>是的，基向量不同，BT.2020/ACEScg 产生了更好的结果，可能是因为原色更清晰，并且基向量以减少错误的方式旋转。几年前有几个人（我是其中之一）写过关于它的<a href="https://www.colour-science.org/posts/about-rendering-engines-colourspaces-agnosticism/">文章</a>。[…] 每个 RGB 颜色空间都有不同的基向量，因此乘法、除法和幂等数学运算并不等价。[…]<em>通常，您应该避免使用 ACES2065-1 进行渲染，因为它远非计算机图形渲染的最佳选择，[…]。</em></p>
+</blockquote>
+<h4 id="进一步了解虚拟初选-a-closer-look-at-virtual-primaries">进一步了解虚拟初选 A closer look at virtual primaries</h4>
+<p><a href="https://community.acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380">One of my favorite posts on ACESCentral</a> contains some interesting information :</p>
+<p><a href="https://community.acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380">我最喜欢的 ACESCentral 帖子之一</a>包含一些有趣的信息：</p>
+<blockquote>
+<p><em>The reason for unreal primaries is that they are necessary in order to code all colours within the CIE “horseshoe” using only positive values. The AP0 primaries form the smallest possible triangle which contains all the real colours. This has the knock-on effect that a significant proportion of code values are “wasted” on unreal colours. […] The AP1 primaries are a compromise which code most […] colours likely to occur in images from real cameras using positive values. Because even the most saturated ACEScc/ACEScct/ACEScg colours are still real, this means that the maths of grading operations works in a way which “feels” better to colourists.</em></p>
+<p><em>之所以需要非真实原色，是因为它们是使用正值编码 CIE“马蹄形”内所有颜色所必需的。AP0 原色形成包含所有真实颜色的最小三角形。这会产生连锁反应，即很大一部分代码值被“浪费”在非真实颜色上。[…] AP1 原色是一种折衷方案，它使用正值编码最有可能出现在真实相机图像中的颜色。因为即使是最饱和的 ACEScc/ACEScct/ACEScg 颜色仍然是真实的，这意味着调色操作的数学运算方式让调色师“感觉”更好。</em></p>
+<p>-- Nick Shaw.</p>
+<p>-- 尼克·肖。</p>
+</blockquote>
+<blockquote>
+<p><em>AP1 was designed to produce more reasonable ‘RGB’ grading (so that the dials move in the direction of R and G and B), to pick up critical yellows and golds along the spectral locus (to get that entire edge of the locus), and to clearly encompass Rec.2020 primaries by just a small amount. […] Getting rid of the negative blue primary location in AP0 was also a goal.</em></p>
+<p><em>AP1 的设计目标是产生更合理的“RGB”分级（这样刻度盘就会朝 R、G 和 B 方向移动），拾取光谱轨迹上的关键黄色和金色（以获得轨迹的整个边缘），并清晰地包含少量 Rec.2020 原色。[…] 消除 AP0 中的负蓝色原色位置也是一个目标。</em></p>
+<p>-- Jim Houston.</p>
+<p>-- 吉姆休斯顿。</p>
+</blockquote>
+<p>You can also check <a href="https://community.acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/3">Scott Dyer’s answer</a> from the same thread. From my personal experience, I can share that rendering in ACEScg :</p>
+<p>您还可以从同一主题中查看<a href="https://community.acescentral.com/t/difference-between-virtual-and-real-color-primaries/1380/3">Scott Dyer 的回答。根据我的个人经验，我可以在 ACEScg 中分享该渲染：</a></p>
+<ul>
+<li>Is <strong>not</strong> “better” than rendering in Linear – sRGB. It is just different and you should test by yourself to see if Wide Gamut Rendering fits your needs.</li>
+<li>并<strong>不</strong>比线性 - sRGB 渲染“更好”。它只是不同而已，你应该自己测试一下，看看广色域渲染是否符合你的需求 <strong>。</strong></li>
+<li>Gives a result which is closer to Spectral Rendering, but this  <strong>not</strong> necessarily suitable for all projects, especially in Full CG.</li>
+<li>给出的结果更接近光谱渲染，但这<strong>不</strong>一定适合所有项目，尤其是在全 CG 中。</li>
+<li>Does  <strong>not</strong> give access to more bright and saturated colors. That is the biggest misconception about it. These <a href="https://blenderartists.org/t/filmic-is-on-everything-in-the-compositor-not-just-render-layers/1197815/82">values do not make it to the display</a> !</li>
+<li><strong>无法</strong>获得更明亮和饱和的颜色。这是对它最大的误解。这些<a href="https://blenderartists.org/t/filmic-is-on-everything-in-the-compositor-not-just-render-layers/1197815/82">值无法显示出来</a>！</li>
+</ul>
+<p>So yeah, Wide Gamut rendering has both pros and cons. And as always,  <strong>you should test for yourself</strong>.</p>
+<p>所以，广色域渲染既有优点也有缺点。和往常一样，<strong>你应该自己测试一下</strong>。</p>
+<h3 id="输入设备转换-idt-input-device-transform-idt">输入设备转换 (IDT) Input Device Transform (IDT)</h3>
+<p>The IDT is the process to import the textures/images to your working/rendering space, which most likely will be ACEScg.</p>
+<p>IDT 是将纹理/图像导入到您的工作/渲染空间的过程，很可能是 ACEScg。</p>
+<h4 id="康奈尔框示例-cornell-box-example">康奈尔框示例 Cornell box example</h4>
+<p>Here are two renders of a Cornell Box in Guerilla Render. I have used <strong>the same sRGB textures</strong> for both renders, with the following values :</p>
+<p>这是 Guerilla Render 中康奈尔盒子的两张渲染图。我对两张渲染图使用了<strong>相同的 sRGB 纹理</strong>，其值如下：</p>
+<ol>
+<li>Green sRGB primary at (0, 1, 0).</li>
+<li>绿色 sRGB 原色位于 (0, 1, 0)。</li>
+<li>Red sRGB primary at (1, 0, 0).</li>
+<li>红色 sRGB 原色位于 (1, 0, 0)。</li>
+<li>Middle gray at (0.18, 0.18, 0.18).</li>
+<li>中间灰色为 (0.18, 0.18, 0.18)。</li>
+</ol>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0060_guerilla_cornellBox_FHD-20241105171047-1ah5t3e.jpg" alt="" title="I have actually used some sRGB textures for these renders. Pure green (0,1,0), pure red (1,0,0) and midgray (0.18). 我实际上已经使用了一些 sRGB 纹理来进行这些渲染。纯绿色 (0,1,0)、纯红色 (1,0,0) 和中灰色 (0.18)。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0070_guerilla_cornellBox_FHD-20241105171047-5i4vpop.jpg" alt="" title="Only difference between the two renders is the switch of Rendering space. 两种渲染的唯一区别是渲染空间的切换。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0080_guerilla_cornellBox_FHD-20241105171047-055ir3q.jpg" alt="" title="Here is the difference between the two renders. 这是两次渲染之间的区别。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0090_guerilla_cornellBox_FHD-20241105171047-yua25i0.jpg" alt="" title="Similar differences can be observed between... 在...之间也可以观察到类似的差异。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0100_guerilla_cornellBox_FHD-20241105171047-s3fmw7x.jpg" alt="" title="cyan and pink textures. 青色和粉红色的纹理。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0110_guerilla_cornellBox_FHD-20241105171047-ewsyvv3.jpg" alt="" title="Same thing for... 同样的事情..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0120_guerilla_cornellBox_FHD-20241105171047-u1aj5n9.jpg" alt="" title="blue and yellow. 蓝色和黄色。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0130_guerilla_cornellBox_FHD-20241105171047-2l16rv0.jpg" alt="" title="But here is the catch : midgray is 0.18 in linear - sRGB and ACEScg. 但这里有一个问题：中灰色在线性 - sRGB 和 ACEScg 中是 0.18。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0140_guerilla_cornellBox_FHD-20241105171047-zwa5299.jpg" alt="" title="No difference since an achromatic color is not affected by the change of primaries. 没有区别，因为无彩色不受原色变化的影响。" loading="lazy">​</p>
+<p>The only difference between these Cornell boxes is the rendering space :</p>
+<p>这些康奈尔盒之间的唯一区别是渲染空间：</p>
+<ul>
+<li>In the first one, the rendering space is what many softwares call “​<em>linear</em>​“. Which actually means <em>sRGB</em> gamut with a linear transfer function (“​<em>Utility – Linear – sRGB</em>​“).</li>
+<li>第一个中，渲染空间是许多软件所称的“​<em>线性</em>​”。这实际上意味着具有线性传递函数的<em>sRGB色域（“Utility - Linear - sRGB</em> ”）。</li>
+<li>In the second one, the rendering space is ​<em>ACEScg</em>​. I set the IDT correctly to properly test the wide gamut rendering.</li>
+<li>在第二个中，渲染空间是​<em>ACEScg</em>​。我正确设置了 IDT 以正确测试宽色域渲染。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0150_cornell_box_settings_maya_FHD-20241105171047-tfnrh63.jpg" alt="" title="Here are the settings I have used in Maya. Please note that I have used some sRGB textures for this Cornell Box. 这是我在 Maya 中使用的设置。请注意，我为这个 Cornell Box 使用了一些 sRGB 纹理。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0160_cornell_box_settings_guerilla_FHD-20241105171047-jx2ufwv.jpg" alt="" title="Here are the settings I have used in Guerilla. Fortunately those are quite similar between softwares. 这是我在 Guerilla 中使用的设置。幸运的是，这些设置在不同软件之间非常相似。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0170_cornell_box_settings_nuke_FHD-20241105171047-er55m8j.jpg" alt="" title="That's the same thing in Nuke. You can see that the Read Node is using roles for the IDT. Nuke 中也是一样。您可以看到读取节点正在使用 IDT 的角色。" loading="lazy">​</p>
+<p>Main thing about this test to take in account is that<span data-type="text" style="color: var(--b3-font-color12);"> </span><strong>I used some textures.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>If you use colors directly in your software, you may not get the same result. It would also depend on how the <em>color_picking</em> role has been implemented. So use the following values carefully :</p>
+<p>关于这个测试，需要考虑的主要事情是<strong>我使用了一些纹理。</strong> 如果你在软件中直接使用颜色，可能不会得到相同的结果。这还取决于<em>color_picking</em>角色的实现方式。因此请谨慎使用以下值：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sRGB primaries</th>
+<th>sRGB primaries converted to ACEScg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red primary</td>
+<td>1, 0, 0</td>
+<td>0.61312, 0.07020, 0.02062</td>
+</tr>
+<tr>
+<td>Green primary</td>
+<td>0, 1, 0</td>
+<td>0.33951, 0.91636, 0.10958</td>
+</tr>
+<tr>
+<td>Blue primary</td>
+<td>0, 0, 1</td>
+<td>0.04737, 0.01345, 0.86980</td>
+</tr>
+<tr>
+<td>Mid gray</td>
+<td>0.18, 0.18, 0.18</td>
+<td>0.18, 0.18, 0.18</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sRGB 原色</th>
+<th>sRGB 原色转换为 ACEScg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>红原色</td>
+<td>1，0，0</td>
+<td>0.61312，0.07020，0.02062</td>
+</tr>
+<tr>
+<td>绿色原色</td>
+<td>0，1，0</td>
+<td>0.33951，0.91636，0.10958</td>
+</tr>
+<tr>
+<td>蓝色原色</td>
+<td>0，0，1</td>
+<td>0.04737，0.01345，0.86980</td>
+</tr>
+<tr>
+<td>中灰色</td>
+<td>0.18, 0.18, 0.18</td>
+<td>0.18, 0.18, 0.18</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>You must also be careful with your mipmap generation (tex files). If you switch your rendering space, it is safer to delete the existing tex files. Otherwise you may get some incorrect results.</p>
+<p>您还必须小心处理 mipmap 生成（tex 文件）。如果您切换渲染空间，删除现有的 tex 文件会更安全。否则您可能会得到一些不正确的结果。</p>
+</blockquote>
+<h4 id="为什么我们会得到不同的全局照明-why-do-we-get-a-different-global-illumination">为什么我们会得到不同的全局照明？ Why do we get a different global illumination ?</h4>
+<p>OCIO allows us to set the color space of our scene to ACEScg and to have a closer-to-spectral GI in our render. We can do the same process in Nuke to analyze what is actually happening :</p>
+<p>OCIO 允许我们将场景的颜色空间设置为 ACEScg，并在渲染中获得更接近光谱的 GI。我们可以在 Nuke 中执行相同的过程来分析实际发生​​的情况：</p>
+<ul>
+<li>On the left, we have a pure green constant at 0,1,0.</li>
+<li>在左侧，我们有一个纯绿色常数 0,1,0。</li>
+<li>We convert it from <em>sRGB</em> to <em>ACEScg</em> using an <em>OCIOColorSpace</em> node.</li>
+<li>我们使用<em>OCIOColorSpace</em>节点将其从<em>sRGB</em>转换为​<em>ACEScg</em>​。</li>
+<li>The same color expressed in <em>ACEScg</em> has some information in the red and blue channels.  <strong>It is really just a conversion :</strong>  ACES does not “​<em>add</em>​” anything.</li>
+<li><em>ACEScg</em>中表达的相同颜色在红色和蓝色通道中有一些信息。<strong>这实际上只是一种转换：</strong>   ACES 不会“​<em>添加</em>​”任何东西。</li>
+</ul>
+<blockquote>
+<p>The conversion does not change the color. It gives the same chromaticity but expressed differently.</p>
+<p>转换不会改变颜色。它给出相同的色度，但表达方式不同。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0180_primaries_conversion_FHD-20241105171047-zf3cxep.jpg" alt="" title="I am converting the green primary from a sRGB gamut to ACEScg. 我正在将绿色原色从 sRGB 色域转换为 ACEScg。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0190_primaries_conversion_FHD-20241105171047-w5vah97.jpg" alt="" title="In this particular case, sRGB - Texture and Linear - sRGB give the same result. But you will have to be extra careful about setting the right IDT. 在此特定情况下，sRGB - 纹理和线性 - sRGB 给出相同的结果。但您必须格外小心地设置正确的 IDT。" loading="lazy">​</p>
+<p>Here is another way of explaining it :</p>
+<p>以下是另一种解释方式：</p>
+<ul>
+<li>On the left, we have a green primary in the <em>sRGB/Rec.709</em> color space.</li>
+<li>在左侧，我们在<em>sRGB/Rec.709</em>色彩空间中有一个绿色原色。</li>
+<li>Using a <em>Matrix 3×3</em> to switch from <em>sRGB</em> to ​<em>ACEScg</em>​, this chromaticity with unique XY coordinates has been converted.</li>
+<li>使用<em>3×3 矩阵从sRGB</em>切换到​<em>ACEScg</em>​，此具有唯一 XY 坐标的色度已转换。</li>
+<li>The color is not a pure green anymore in the <em>ACEScg</em> color space (right image).</li>
+<li><em>在ACEScg</em>颜色空间中，颜色不再是纯绿色（右图）。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0200_primary_gamu_FHD-20241105171047-ih0v1i5.jpg" alt="" loading="lazy">​</p>
+<p>Because of the conversion process, the ray is no longer stopped by a zero on some channels (red and blue in this case). Light paths are therefore less likely to be stopped by a null channel.</p>
+<p>由于转换过程，光线不再被某些通道（本例中为红色和蓝色）上的零值阻挡。因此，光路不太可能被零值通道阻挡。</p>
+<h4 id="idt-概述-idt-overview">IDT 概述 IDT overview</h4>
+<p>ACES provides all the 3D LUTs and Matrix we need to process these transforms. Most common IDT for Computer Graphics are :</p>
+<p>ACES 提供了处理这些变换所需的所有 3D LUT 和矩阵。计算机图形学最常见的 IDT 是：</p>
+<ul>
+<li><strong>Utility – sRGB – Texture</strong> : If your texture comes from Photoshop or Internet. Only for display-referred textures encoded with an sRGB OETF, like an albedo map.</li>
+<li><strong>实用程序 – sRGB – 纹理</strong>​：如果您的纹理来自 Photoshop 或互联网。仅适用于使用 sRGB OETF 编码的显示参考纹理，如反照率图。</li>
+<li><strong>Utility – Linear – sRGB</strong> : If your texture is linear within the sRGB primaries and you want to convert it to ACEScg, like an exr file.</li>
+<li><strong>实用程序 - 线性 - sRGB</strong>​：如果您的纹理在 sRGB 原色中是线性的，并且您想要将其转换为 ACEScg，就像 exr 文件一样。</li>
+<li><strong>Utility – Raw</strong> : If you do NOT want any transform applied on your texture, like normal maps.</li>
+<li><strong>实用程序 - 原始</strong>​：如果您不想在纹理上应用任何变换，如法线贴图。</li>
+</ul>
+<blockquote>
+<p>Please note that if your rendering space is ACEScg, in this particular case,<strong>Utility – Raw</strong> and <strong>ACEScg</strong> are contextually the “same” IDT. No transforms are applied with both options.</p>
+<p>请注意，如果您的渲染空间是 ACEScg，那么在这种特殊情况下，<strong>Utility – Raw</strong>和<strong>ACEScg</strong>在上下文中是“相同”的 IDT。这两个选项均不应用任何变换。</p>
+</blockquote>
+<h4 id="绘制色域-to-plot-the-gamut">绘制色域 To plot the gamut</h4>
+<p>Plotting the gamut of an image allows you to <strong>map its pixels against the CIE 1931 Chromaticity Diagram.</strong>  This function is available in <a href="https://www.colour-science.org/">colour-science</a>, developed by ​<strong>Thomas Mansencal</strong>​.</p>
+<p>绘制图像的色域可让您将<strong>其像素与 CIE 1931 色度图进行映射。</strong> 此功能可在<a href="https://www.colour-science.org/">色彩科学中找到，由</a>​<strong>Thomas Mansencal</strong>开发。</p>
+<ul>
+<li>On the first image, we have plotted a render done in sRGB. The pixels are within the sRGB gamut.</li>
+<li>在第一张图片中，我们绘制了在 sRGB 中完成的渲染图。像素位于 sRGB 色域内。</li>
+<li>On the second image, we have plotted a render done in ACEScg. The pixels have a wider coverage of the gamut.</li>
+<li>在第二张图片上，我们绘制了在 ACEScg 中完成的渲染。像素的色域覆盖范围更广。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0210_plot_gamut_sRGB_ACEScg_FHD-20241105171047-xt3ju7v.jpg" alt="" loading="lazy">​</p>
+<blockquote>
+<p>There is also an app available on Windows and Mac called <a href="https://spatioplotter.com/color3d/">Color Spatioplotter</a> if you want to plot the gamut of an image. I haven’t tried it myself but from the feedback I got, it seems to be working fine at a very affordable price.</p>
+<p>如果您想要绘制图像的色域，Windows 和 Mac 上还有一款名为<a href="https://spatioplotter.com/color3d/">Color Spatioplotter</a>的应用程序。我自己还没有尝试过，但从我收到的反馈来看，它似乎运行良好，而且价格非常实惠。</p>
+</blockquote>
+<p>As a conclusion on this IDT / ACEScg section, I would like to add that :</p>
+<p>作为 IDT / ACEScg 部分的结论，我想补充一点：</p>
+<ul>
+<li>The Cornell boxes examples are best-case scenarios. In real production, with much more complex stimuli, the differences are not that important.</li>
+<li>康奈尔盒子的例子是最佳情况。在实际生产中，刺激要复杂得多，差异并不那么重要。</li>
+<li>Closer to Spectral rendering should be interpreted as “​<em>the chromaticities after indirect bounces are closer</em>​“, which again does not necessarily look “better” (as shown <a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/#rendering-in-acescg">here</a>).</li>
+<li>更接近光谱渲染应该解释为“​<em>间接反射后的色度更接近</em>​”，但这并不一定看起来“更好”（如此处所示<a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/#rendering-in-acescg">）</a>。</li>
+<li>Wide gamut rendering adds an another layer of complexity when it comes to displaying these images, since a proper gamut compression (which ACES does not have) would be needed.</li>
+<li>宽色域渲染在显示这些图像时增加了另一层复杂性，因为需要适当的色域压缩（ACES 没有）。</li>
+</ul>
+<p>Again, test for yourself, trust your eyes and compare both pros and cons.</p>
+<p>再次，亲自测试，相信自己的眼睛，比较优点和缺点。</p>
+<h3 id="输出变换-output-transform">输出变换 Output Transform</h3>
+<p>The ACES Output Transform is made of two separated steps called the Reference Rendering Transform (RRT) and the Output Device Transform (ODT). This was and is still true for all Output Transforms in ACES 1.0.X. The release of ACES 1.1 introduced some <a href="https://github.com/ampas/aces-dev/tree/master/transforms/ctl/outputTransforms">new HDR Output Transforms</a> as a single step, which is called Single Stage Tone Scale (SSTS).</p>
+<p>ACES 输出变换由两个独立的步骤组成，称为参考渲染变换 (RRT) 和输出设备变换 (ODT)。ACES 1.0.X 中的所有输出变换都遵循这一原则，现在依然如此。ACES 1.1 版本引入了一些<a href="https://github.com/ampas/aces-dev/tree/master/transforms/ctl/outputTransforms">新的 HDR 输出变换</a>作为单个步骤，称为单级色调缩放 (SSTS)。</p>
+<blockquote>
+<p>Tone Scale is the ACES terminology for what generally people call Tone Mapping.</p>
+<p>色调等级是 ACES 术语，即人们通常所说的色调映射。</p>
+</blockquote>
+<p>The origin of the two steps Output Transform (RRT+ODT) can be found in <a href="https://community.acescentral.com/t/aces-background-document/3568">this document by Ed Giorgianni</a>. The idea behind it is the following :</p>
+<p>两步输出变换（RRT+ODT）的起源可以在<a href="https://community.acescentral.com/t/aces-background-document/3568">Ed Giorgianni 的这篇文档</a>中找到。 其背后的想法如下：</p>
+<ul>
+<li>RRT : intermediate rendering to an idealized and hypothetical reference display. It is the ” ​<em>ACES look</em>​“, like a virtual film stock.</li>
+<li>RRT：中间渲染到理想化和假设的参考显示。它是“ ​<em>ACES 外观</em>​”，就像虚拟胶片一样。</li>
+<li>ODT : final rendering for a specific real-world display device (primaries, eotf and white point). It also takes in account the Viewing Environment (dark, dim or normal surround) and the nits.</li>
+<li>ODT：特定真实世界显示设备的最终渲染（原色、eotf 和白点）。它还考虑了观看环境（黑暗、昏暗或正常环绕）和尼特。</li>
+</ul>
+<blockquote>
+<p>If you display your sRGB render directly on P3 without transformation, I would say that it is “Absence of Colour Management”.</p>
+<p>如果您不经过转换就直接在 P3 上显示 sRGB 渲染，我会说这是“缺乏色彩管理”。</p>
+<p>-- Thomas Mansencal.</p>
+<p>-- 托马斯·曼森卡尔。</p>
+</blockquote>
+<p>In the next paragraphs, you will find a description of the ACES 1.X Output Transforms. It is not an in-depth analysis, but rather a collection of information from ACESCentral and some simple visual examples. We now know (in January 2022), partly thanks to the Output Transform Virtual Working Group for ACES2.0, their limitations and issues. I have described them a bit <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/#aces-limitations">below</a> and also more extensively in <a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/#aces">this article</a>. <strong>Watch out !</strong></p>
+<p>在接下来的段落中，您将找到对 ACES 1.X 输出变换的描述。这不是深入的分析，而是来自 ACESCentral 的信息和一些简单的视觉示例的集合。我们现在知道（2022 年 1 月），部分归功于 ACES2.0 的输出变换虚拟工作组，它们的局限性和问题。我<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/#aces-limitations">在下面对</a>它们进行了一些描述，并在<a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/#aces">本文</a>中进行了更广泛的描述。<strong>小心！</strong></p>
+<h4 id="参考渲染变换-rrt-reference-rendering-transform-rrt">参考渲染变换 (RRT) Reference Rendering Transform (RRT)</h4>
+<p>In practice, the RRT + ODT process is combined for the user but I think it is worth to describe here some <a href="https://github.com/ampas/aces-dev/blob/master/transforms/ctl/rrt/RRT.ctl">components of the RRT</a>. I am particularly interested by the infamous “sweeteners” : ​<em>glow module</em>​, <em>red modifier</em>and<em>global desaturation.</em></p>
+<p>实际上，RRT + ODT 流程是为用户组合的，但我认为值得在这里描述<a href="https://github.com/ampas/aces-dev/blob/master/transforms/ctl/rrt/RRT.ctl">RRT 的一些组件</a>。我对臭名昭著的“甜味剂”特别感兴趣：​<em>辉光模块</em>​、<em>红色修改器</em>和<em>全局去饱和。</em></p>
+<blockquote>
+<p>The output of the RRT is called Output Color Encoding Specification (OCES).</p>
+<p>RRT 的输出称为输出颜色编码规范 (OCES)。</p>
+</blockquote>
+<p>These “sweeteners” have generated much debate about where they belong and if they should be part of a <em>Look Modification Transform</em> (LMT). They also cause problems for invertibility. Here are <a href="https://paper.dropbox.com/doc/Meeting-Summaries--BHrPtCUJTaJT~c22CazPrAbjAg-AmweeevBcufkcozYLHlG3">a few quotes</a> about their history :</p>
+<p>这些“甜味剂”引起了很多争论，关于它们属于哪里以及它们是否应该成为​<em>外观修改变换</em>​(LMT) 的一部分。它们还给可逆性带来了问题。以下是<a href="https://paper.dropbox.com/doc/Meeting-Summaries--BHrPtCUJTaJT~c22CazPrAbjAg-AmweeevBcufkcozYLHlG3">一些</a>关于它们历史的引述：</p>
+<blockquote>
+<p>[They] originally came from an aim to be “pseudo filmic” in the early days. [..] Glow came from perceived filmic look. […] Red modifier and glow are different. Glow is aesthetic.</p>
+<p>[它们] 最初是出于早期“伪电影”的目的。[...] 辉光来自感知的电影外观。[...] 红色修饰符和辉光是不同的。辉光是美学的。</p>
+<p>-- Scott Dyer</p>
+<p>-- 斯科特·戴尔</p>
+</blockquote>
+<blockquote>
+<p>I don’t consider [the red modifier] a “sweetener”. It’s compensating for saturation effect of RGB tone scale.[…] It is compensating for “hot” reds.</p>
+<p>我不认为 [红色修饰剂] 是一种“甜味剂”。它是为了补偿 RGB 色调的饱和度效果。[…] 它是为了补偿“热”红色。</p>
+<p>-- Doug Walker and Alex Forsythe</p>
+<p>-- 道格·沃克和亚历克斯·福赛斯</p>
+</blockquote>
+<p>It is worth noting that at some point in the future, the whole Output Transform architecture may be modified for ACES 2.0. There is<a href="https://community.acescentral.com/t/a-single-fixed-output-transform-vs-a-choose-your-own-approach/3440/15"> a thread</a> about “following” the three OCIO steps : ​<em>Look</em>​, ​<em>Display</em>​, ​<em>View</em>​.</p>
+<p>值得注意的是，在未来的某个时候，整个输出变换架构可能会针对 ACES 2.0 进行修改。有一个关于“遵循”三个 OCIO 步骤的<a href="https://community.acescentral.com/t/a-single-fixed-output-transform-vs-a-choose-your-own-approach/3440/15">线程： </a>​<em>Look</em>​、​<em>Display</em>​、​<em>View</em>​。</p>
+<h4 id="输出设备转换-odt-output-device-transform-odt">输出设备转换 (ODT) Output Device Transform (ODT)</h4>
+<p>The ODT is the process to display the reference (OCES) on your monitor. The academy recommends the use of an ODT adapted to your screen. It should be based on your project needs :</p>
+<p>ODT 是将参考 (OCES) 显示在您的显示器上的过程。学院建议使用适合您的屏幕的 ODT。它应该基于您的项目需求：</p>
+<ul>
+<li>Do you work for TV and Internet ? You should display in <em>sRGB</em> or ​<em>Rec.709</em>​.</li>
+<li>您从事电视和互联网工作吗？您应该以<em>sRGB</em>或<em>Rec.709</em>显示。</li>
+<li>Are you working in Feature Film ? You should display in ​<em>P3</em>​.</li>
+<li>您是在制作故事片吗？您应该在<em>P3</em>中显示。</li>
+</ul>
+<blockquote>
+<p>Rec. 2020 is clearly the future but there are no projectors that are able to cover 100% of this color space. The technology is not there yet. But in ten years maybe, it will be the new norm. So as far as I know, in 2022, Rec.2020 is actually only used as a container for P3 deliveries.</p>
+<p>Rec. 2020 显然是未来的趋势，但没有投影仪能够覆盖 100% 的色彩空间。技术还不够成熟。但也许十年后，它将成为新的常态。所以据我所知，在 2022 年，Rec.2020 实际上仅用作 P3 交付的容器。</p>
+<p>-- Not there yet, unless you own a <a href="https://www.christiedigital.com/products/projectors/all-projectors/">Christie</a>.</p>
+<p>-- 还没到那一步，除非你拥有一台<a href="https://www.christiedigital.com/products/projectors/all-projectors/">克里斯蒂 (Christie)</a>。</p>
+</blockquote>
+<h4 id="输出变换的示例和比较-examples-and-comparison-of-output-transforms">输出变换的示例和比较 Examples and comparison of Output Transforms</h4>
+<p>Here are some examples comparing nuke-default OCIO setup with ACES 1.1. Please note that Nuke is wrong in its OCIO config :</p>
+<p>以下是一些将 nuke-default OCIO 设置与 ACES 1.1 进行比较的示例。请注意，Nuke 的 OCIO 配置是错误的：</p>
+<ul>
+<li>As it has been implemented in Nuke, <em>rec709</em> (approximatively a Gamma value of 1.95) is a camera encoding OETF !</li>
+<li>正如在 Nuke 中实现的，​<em>rec709</em>​（Gamma 值大约为 1.95）是一个相机编码 OETF！</li>
+<li><a href="https://github.com/ampas/aces-dev/blob/dev/transforms/ctl/odt/rec709/ODT.Academy.Rec709_100nits_dim.ctl">Rec.709 (ACES) uses a BT.1886 EOTF</a> (equivalent Power function of 2.4) and is in reference to an EOTF output display.</li>
+<li><a href="https://github.com/ampas/aces-dev/blob/dev/transforms/ctl/odt/rec709/ODT.Academy.Rec709_100nits_dim.ctl">Rec.709 (ACES) 使用 BT.1886 EOTF</a>（等效功率函数为 2.4）并参考 EOTF 输出显示。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0220_cornell_rec709_ODT_FHD-20241105171047-yx0erlp.jpg" alt="" title="A linear render displayed in rec709 with Nuke's Viewer. This is just wrong. 使用 Nuke 的 Viewer 在 rec709 中显示的线性渲染。这完全是错误的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0230_cornell_rec709_ODT_FHD-20241105171047-624ujgy.jpg" alt="" title="From Jeremy Selan : “Friends don’t let friends view scene-linear without an S-shaped viewing transform”. Jeremy Selan 说道：“如果没有 S 形观看变换，朋友就不会让朋友观看场景线性”。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0240_cornell_rec709_ODT_FHD-20241105171047-98913uh.jpg" alt="" title="If we add one stop... 如果我们增加一站..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0250_cornell_rec709_ODT_FHD-20241105171047-ad22zhi.jpg" alt="" title="Differences are even more noticeable. 差异更加明显。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0260_cornell_rec709_ODT_FHD-20241105171047-p7ba28u.jpg" alt="" title="With two stops... 中途有两次停留..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0270_cornell_rec709_ODT_FHD-20241105171047-lyetwhb.jpg" alt="" title="The over-exposed look holds better... But starts to skew ! Both walls skew towards yellow ! 过度曝光的效果更好……但开始歪斜！两面墙都偏向黄色！" loading="lazy">​</p>
+<p>I have also done a test on the MacBeth chart to compare the “​<em>Film (sRGB)</em> ​” from the spi-anim config with the ACES config.</p>
+<p>我还在 MacBeth 图表上做了测试，将 spi-anim 配置中的“<em>胶片（sRGB）</em>  ”与 ACES 配置进行了比较。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0280_macBeth_sRGB_ODT_FHD-20241105171047-5zdrylp.jpg" alt="" title="A small test I have been doing in Nuke. 我在 Nuke 中做的一个小测试。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0290_macBeth_sRGB_ODT_FHD-20241105171047-1lp8yao.jpg" alt="" title="On the left, the MacBeth Chart seen through the Film sRGB from the spi-anim config. 左侧是从 spi-anim 配置中通过胶片 sRGB 看到的 MacBeth 图表。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0300_macBeth_sRGB_ODT_FHD-20241105171047-gti2ctr.jpg" alt="" title="On the right, the MacBeth Chart seen through the Rec. 709 transform from the ACES config. 右侧是通过 ACES 配置的 Rec. 709 转换看到的 MacBeth 图表。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0310_macBeth_sRGB_ODT_FHD-20241105171047-x4b4p4g.jpg" alt="" title="And we increase the exposure by 1 stop on each frame. 我们将每一帧的曝光度增加 1 级。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0320_macBeth_sRGB_ODT_FHD-20241105171047-xdmqxbq.jpg" alt="" title="It is interesting to observe the differences... 观察这些差异很有趣..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0330_macBeth_sRGB_ODT_FHD-20241105171047-91rk73w.jpg" alt="" title="Especially on two specific samples... 特别是两个特定的样本……" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0340_macBeth_sRGB_ODT_FHD-20241105171047-vea0hti.jpg" alt="" title="The Yellow (color 16) has a hard time with the spi-anim config. 黄色（颜色 16）在 spi-anim 配置方面遇到了困难。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0350_macBeth_sRGB_ODT_FHD-20241105171047-a8w1zcs.jpg" alt="" title="And the Cyan (color 18) does not even exist in the sRGB gamut ! 并且青色（颜色 18）甚至不存在于 sRGB 色域中！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0360_macBeth_sRGB_ODT_FHD-20241105171047-yh7vena.jpg" alt="" title="The Cyan is just visually clamped. Funny how it stays stuck there. 青色只是在视觉上被限制了。有趣的是它一直卡在那里。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0370_macBeth_sRGB_ODT_FHD-20241105171047-619cfdk.jpg" alt="" title="Think about it : the Cyan (color 18) is not available in the sRGB gamut. Insane ! 想想看：青色（颜色 18）在 sRGB 色域中不可用。太疯狂了！" loading="lazy">​</p>
+<blockquote>
+<p>I’ll just put it out there so that it is clear : there is no point in using a P3D65 ACES ODT if your monitor only covers sRGB. It won’t make your renders look prettier.</p>
+<p>我只是想说清楚：如果您的显示器仅覆盖 sRGB，则使用 P3D65 ACES ODT 毫无意义。它不会让您的渲染看起来更漂亮。</p>
+<p>-- Your ODT should match your monitor characteristics basically.</p>
+<p>-- 您的 ODT 应该基本与您的显示器特性相匹配。</p>
+</blockquote>
+<h4 id="输出变换说明-output-transform-clarification">输出变换说明 Output Transform clarification</h4>
+<p><a href="https://community.acescentral.com/t/linear-srgb-not-behaving-as-expected/2355/3">Many artists</a> have been confused by Nuke’s default display transform :</p>
+<p><a href="https://community.acescentral.com/t/linear-srgb-not-behaving-as-expected/2355/3">许多艺术家</a>对 Nuke 的默认显示变换感到困惑：</p>
+<ul>
+<li>Why does sRGB display transform and sRGB (ACES) do NOT match ?</li>
+<li>为什么 sRGB 显示变换和 sRGB（ACES）不匹配？</li>
+<li>Because <strong>the sRGB (ACES) Output Transform includes some tone scale</strong><span data-type="text" style="color: var(--b3-font-color12);"> !</span></li>
+<li>因为<strong>sRGB（ACES）输出变换包含一些色调比例</strong><a href="">！</a></li>
+</ul>
+<blockquote>
+<p>In ACES, we call this the “rendering” step. Going from ACEScg (scene-referred) to your display is not a simple color space conversion. It is actually a “complex” (color and tonality) rendering operation.</p>
+<p>在 ACES 中，我们将其称为“渲染”步骤。从 ACEScg（场景引用）到您的显示器并不是简单的颜色空间转换。它实际上是一个“复杂”（颜色和色调）的渲染操作。</p>
+<p>-- Most artists know this process as “tone mapping”.</p>
+<p>-- 大多数艺术家都将这个过程称为“色调映射”。</p>
+</blockquote>
+<p>From <a href="https://acescentral.com/t/rec709-nuke-setup-calibration/1560">ACEScentral</a>, <strong>Nick Shaw</strong> explains :</p>
+<p>来自<a href="https://acescentral.com/t/rec709-nuke-setup-calibration/1560">ACEScentral 的</a>Nick <strong>Shaw</strong>解释道：</p>
+<blockquote>
+<p>The ACES Rec.709 Output Transform is a much more sophisticated display transform, which includes <strong>a colour space mapping</strong> from the ACEScg working space to Rec.709, <strong>and tone mapping to expand mid-tone contrast and compress the shadows and highlights.</strong>  The aim of this is to produce an image on a Rec.709/BT.1886 display which is <strong>a good perceptual match</strong> to the original scene.</p>
+<p>ACES Rec.709 输出变换是一种更为复杂的显示变换，其中包括从 ACEScg 工作空间到 Rec.709 的<strong>色彩空间映射，以及色调映射以扩大中间色调对比度并压缩阴影和高光。</strong> 这样做的目的是在 Rec.709/BT.1886 显示器上生成与原始场景在<strong>感知上匹配良好的</strong>图像。</p>
+</blockquote>
+<h4 id="输出变换概述-output-transform-overview">输出变换概述 Output Transform overview</h4>
+<p>Some <a href="https://acescentral.com/t/aces-frustration-question-about-transforms/1197">people complain</a> <a href="https://acescentral.com/t/tone-scale-slope-behavior-at-min-and-max-luminance/1262">about the</a> tone mapping included in the Output Transform. Here a few things to know :</p>
+<p>有些<a href="https://acescentral.com/t/aces-frustration-question-about-transforms/1197">人抱怨</a> <a href="https://acescentral.com/t/tone-scale-slope-behavior-at-min-and-max-luminance/1262">输出</a>变换中包含的色调映射。以下是一些需要了解的事情：</p>
+<ul>
+<li>The ACES tone mapping is not “neutral”, it comes with a “look”. Its values <strong><a href="https://acescentral.com/t/odt-tonescale/387">are not arbitrary</a></strong> neither[​<em>but indeed subjective</em>​].</li>
+<li>ACES 色调映射并非“中性”，而是带有“外观”。其值​**<a href="https://acescentral.com/t/odt-tonescale/387">也不是任意的</a>**​[​<em>而是主观的</em>​]。</li>
+<li>The contrast of the RRT/ODT <strong><a href="https://acescentral.com/t/aces-frustration-question-about-transforms/1197/3">was validated by many very experienced industry professionals</a></strong> in a carefully setup projection environment.</li>
+<li>许多经验丰富的行业专业人士在精心设置的投影环境中**<a href="https://acescentral.com/t/aces-frustration-question-about-transforms/1197/3">验证了</a>**RRT/ODT 的对比度。</li>
+<li>The tone mapping [​<em>has</em>​] <strong><a href="https://acescentral.com/t/aces-frustration-question-about-transforms/1197/6">much less shadow and highlight compression</a></strong> happening in the HDR ODTs.</li>
+<li>色调映射在 HDR ODT 中发生的**<a href="https://acescentral.com/t/aces-frustration-question-about-transforms/1197/6">阴影和高光压缩要少</a>**​<em>得多</em>​。</li>
+<li>The ACES Viewing Transforms are a do-your-best <strong><a href="https://acescentral.com/t/aces-frustration-question-about-transforms/1197/8">on each device with different viewing conditions.</a></strong></li>
+<li>**<a href="https://acescentral.com/t/aces-frustration-question-about-transforms/1197/8">ACES 观看变换是针对具有不同观看条件的每台设备</a>**尽力而为的。</li>
+</ul>
+<blockquote>
+<p>The RRT and ODT splines and thus the ACES system tone scale (RRT+ODT) were derived through visual testing on a large test set of images […] from expert viewers. So no, the values are not arbitrary.</p>
+<p>RRT 和 ODT 样条以及 ACES 系统色调等级 (RRT+ODT) 是通过对专家观众的大量测试图像进​​行视觉测试得出的。因此，这些值不是任意的。</p>
+<p>-- From <a href="https://acescentral.com/t/odt-tonescale/387">Scott Dyer</a>, ACES mentor.</p>
+<p>-- 来自ACES 导师<a href="https://acescentral.com/t/odt-tonescale/387">Scott Dyer 。</a></p>
+</blockquote>
+<p>Some additional explanations about the RRT/ODT process from <a href="https://acescentral.com/t/why-rrt-odt-srgb-makes-the-look-darker/2659/2">this post</a> :</p>
+<p><a href="https://acescentral.com/t/why-rrt-odt-srgb-makes-the-look-darker/2659/2">这篇文章</a>中有关 RRT/ODT 过程的一些附加解释：</p>
+<ul>
+<li>The ACES RRT was designed for Theatrical Exhibition where Viewing Conditions are Dark. Content for cinema tends to be authored with more contrast to compensate for the dark surround.</li>
+<li>ACES RRT 专为观看条件较暗的影院展览而设计。影院内容往往具有更高的对比度，以补偿黑暗的环境。</li>
+<li>Even though there is a surround compensation process (Dark &lt;–&gt; Dim), the values to drive that process were subjectively obtained and it might not be enough for all the cases.</li>
+<li>即使存在环绕补偿过程（暗&lt;–&gt;暗淡），驱动该过程的值也是主观获得的，可能不足以满足所有情况。</li>
+<li>The RRT + ODTs are also the results of viewing images by an expert viewer, so there is undeniably some subjectivity built-in.</li>
+<li>RRT + ODT 也是专家查看图像的结果，因此不可否认的是其中存在一定的主观性。</li>
+<li>Some companies such as Epic Games are pre-exposing the Scene-Referred Values with a 1.45 gain (which would match roughly an exposure increase of 0.55 in your lights).</li>
+<li>一些公司（例如 Epic Games）正在对场景参考值进行预曝光，增益为 1.45（这大致相当于灯光中 0.55 的曝光量增加）。</li>
+</ul>
+<blockquote>
+<p>Another description of the ODT tone scale can be found <a href="https://acescentral.com/t/odt-tonescale/387">here</a>.</p>
+<p>关于 ODT 音阶的另一种描述可<a href="https://acescentral.com/t/odt-tonescale/387">在此处</a>找到。</p>
+</blockquote>
+<h4 id="塑形者-shaper">塑形者 Shaper</h4>
+<p>The ACES Output Transform includes a ​<em>shaper</em>​, which is a logarithmic color space, to optimize the data. It is a transparent process, nothing more than an intermediate state for data, with purely technical goals.</p>
+<p>ACES 输出变换包含一个​<em>整形器</em>​，即对数颜色空间，用于优化数据。这是一个透明的过程，只不过是数据的中间状态，具有纯粹的技术目标。</p>
+<p>What does exactly happen when we display in<em>sRGB (ACES)</em>  with an OCIO config ? To go to ​<em>sRGB (ACES)</em> ​, OCIO first transforms the color to ​<em>ACES2065-1 (AP0 primaries)</em> ​. Then from <em>AP0</em> we go to a colour space called <em>Shaper</em> thanks to a 1D LUT and finally to <em>sRGB</em> thanks to a 3D LUT.</p>
+<p><em>当我们使用 OCIO 配置在sRGB（ACES）</em> 中显示时究竟会发生什么？要转到​<em>sRGB（ACES）</em> ​，OCIO 首先将颜色转换为​<em>ACES2065-1（AP0 原色）</em> ​。然后从<em>AP0</em>开始，我们借助 1D LUT进入名为<em>Shaper</em>的色彩空间，最后借助 3D LUT进入<em>sRGB 。</em></p>
+<p>From the ACES 1.2 OCIO Config :</p>
+<p>来自 ACES 1.2 OCIO 配置：</p>
+<pre><code>  - !&lt;ColorSpace&gt;
+    name: Output - sRGB
+    family: Output
+    equalitygroup: &quot;&quot;
+    bitdepth: 32f
+    description: |
+      ACES 1.0 Output - sRGB Output Transform
+    
+      ACES Transform ID : urn:ampas:aces:transformId:v1.5:ODT.Academy.RGBmonitor_100nits_dim.a1.0.3
+    isdata: false
+    allocation: uniform
+    allocationvars: [0, 1]
+    to_reference: !&lt;GroupTransform&gt;
+      children:
+        - !&lt;FileTransform&gt; {src: InvRRT.sRGB.Log2_48_nits_Shaper.spi3d, interpolation: tetrahedral}
+        - !&lt;FileTransform&gt; {src: Log2_48_nits_Shaper_to_linear.spi1d, interpolation: linear}
+    from_reference: !&lt;GroupTransform&gt;
+      children:
+        - !&lt;FileTransform&gt; {src: Log2_48_nits_Shaper_to_linear.spi1d, interpolation: linear, direction: inverse}
+        - !&lt;FileTransform&gt; {src: Log2_48_nits_Shaper.RRT.sRGB.spi3d, interpolation: tetrahedral}
+</code></pre>
+<p>A*<a href="https://opencolorio.readthedocs.io/en/latest/tutorials/baking_luts.html?highlight=shaper#shaper-spaces">shaper</a><em>​</em>is needed* because <em>a 3D LUT (even 64^3) is not suitable for applying to linear data like ACEScg.</em> Otherwise it would be just a waste of data.</p>
+<p><em>需要</em>一个​*<a href="https://opencolorio.readthedocs.io/en/latest/tutorials/baking_luts.html?highlight=shaper#shaper-spaces">整形器</a><em>​，因为</em>3D LUT（即使是 64^3）不适合应用于 ACEScg 这样的线性数据。* 否则就只是浪费数据。*​ *</p>
+<h3 id="送货-delivery">送货 Delivery</h3>
+<p>Once you’re happy with your renders and pretty much done with the project, you are ready to deliver your frames. In animation studios, we generally deliver scene-linear exr files to a digital laboratory, such as <a href="https://www.company3.com/">this one</a>.</p>
+<p>一旦您对渲染感到满意并且项目基本完成，您就可以交付您的帧了。在动画工作室中，我们通常将场景线性 exr 文件交付给数字实验室，例如<a href="https://www.company3.com/">这个</a>。</p>
+<p>With ACES, it is pretty much the same concept with a couple of important notes. For final delivery to the Digital Intermediate, it is recommended to deliver ACES compliant EXR files.</p>
+<p>ACES 的概念基本相同，但有几个重要注意事项。对于最终交付给数字中间片，建议交付符合 ACES 标准的 EXR 文件。</p>
+<p>This is the standard set by the Academy to exchange files between facilities. This is really important. Your render output will be <em>ACEScg (AP1)</em>  but your compositing output has to be <em>ACES2065-1 (AP0)</em>  with the correct metadata.</p>
+<p>这是学院为设施间交换文件而设定的标准。这真的很重要。您的渲染输出将是<em>ACEScg (AP1)，</em> 但您的合成输出必须是具有正确元数据的<em>ACES2065-1 (AP0) 。</em></p>
+<blockquote>
+<p>Rendering in ACEScg uses color primaries that are closer to actual devices – a little bigger than Rec2020, but AP0 is the target for File Outputs (archive and interchange). When working completely within your own facility without sharing of files, ACEScg is sometimes used for convenience but using the format in the name of the file to distinguish it from the ACES standard (putting ACEScg in EXR with the primaries specified – a device or AP1 – means it is not an ACES file). The ACES flag in a header should not be set.</p>
+<p>ACEScg 中的渲染使用更接近实际设备的原色 - 比 Rec2020 稍大，但 AP0 是文件输出（存档和交换）的目标。当完全在自己的设施内工作而不共享文件时，有时会使用 ACEScg 以方便使用，但使用文件名中的格式将其与 ACES 标准区分开来（将 ACEScg 放入 EXR 中并指定原色 - 设备或 AP1 - 意味着它不是 ACES 文件）。不应设置标头中的 ACES 标志。</p>
+<p>-- <a href="https://community.acescentral.com/t/clarification-about-acescg-vs-aces2065-1/1670/6">Explanation</a> by Jim Houston.</p>
+<p>-- 吉姆休斯顿 (Jim Houston) 的<a href="https://community.acescentral.com/t/clarification-about-acescg-vs-aces2065-1/1670/6">解释。</a></p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0380_nuke_delivery_FHD-20241105171047-p6k34nr.jpg" alt="" loading="lazy">​</p>
+<p>The interchange and archival files should be written as OpenEXRs conforming to ​<em>SMPTE  2065-4</em>​. In Nuke, you should set the Write node’s colorspace to <em>ACES2065-1</em> and check the box <em>write ACES compliant EXR</em> to get the correct metadata.</p>
+<p><em>交换文件和存档文件应以符合SMPTE 2065-4</em>  的 OpenEXR 格式写入。在 Nuke 中，应将写入节点的色彩空间设置为<em>ACES2065-1 ，并勾选写入符合 ACES 标准的 EXR</em>复选框以获取正确的元数据。</p>
+<p>From <a href="https://community.acescentral.com/t/supported-compression-for-aces-exr-container/391/2">ACEScentral</a>, <strong>Doug Walker</strong> explains :</p>
+<p>来自<a href="https://community.acescentral.com/t/supported-compression-for-aces-exr-container/391/2">ACEScentral 的</a>Doug <strong>Walker</strong>解释道：</p>
+<blockquote>
+<p>The SMPTE ST 2065-4 spec “ACES Image Container File Layout” currently requires uncompressed files. Also, there are other restrictions such as only 16-bit float and only certain channel layouts (RGB, RGBA, and stereo RGB/RGBA). These limitations do make sense for use-cases that involve archiving or real-time playback.</p>
+<p>SMPTE ST 2065-4 规范“ACES 图像容器文件布局”目前要求使用未压缩的文件。此外，还有其他限制，例如仅限 16 位浮点数和仅限某些通道布局（RGB、RGBA 和立体声 RGB/RGBA）。这些限制对于涉及存档或实时播放的用例确实有意义。</p>
+</blockquote>
+<h2 id="aces-限制-aces-limitations">ACES 限制 ACES limitations</h2>
+<h3 id="aces-回顾与增强-aces-retrospective-and-enhancements">ACES 回顾与增强 ACES Retrospective and Enhancements</h3>
+<p>In March 2017, a study has listed some possible improvements for ACES : <a href="https://acescentral.com/t/aces-retrospective-and-enhancements/884">ACES Retrospective and Enhancements</a>. It is an interesting document that has lead to several changes in the ACES organization. Here is <a href="https://community.acescentral.com/t/a-response-to-aces-retrospective-and-enhancements/1344">a link to the official response</a> from the ACES Leadership.</p>
+<p>2017 年 3 月，一项研究列出了 ACES 的一些可能的改进：  <a href="https://acescentral.com/t/aces-retrospective-and-enhancements/884">ACES 回顾和增强</a>。这是一份有趣的文件，它导致了 ACES 组织的几项变革。以下是ACES 领导层的<a href="https://community.acescentral.com/t/a-response-to-aces-retrospective-and-enhancements/1344">官方回应链接。</a></p>
+<p>A <a href="https://community.acescentral.com/t/acesnext-aces-1-0-listening-tour-feedback-and-roadmap/1488/2">list of 48 points to improve</a> has also been published on the forum and the creation of several <em><a href="https://acescentral.com/working-groups-home/">Virtual Working Groups</a></em> has already brought some solutions to the table. Do not hesitate to join the process !</p>
+<p>论坛上还公布了<a href="https://community.acescentral.com/t/acesnext-aces-1-0-listening-tour-feedback-and-roadmap/1488/2">48 项需要改进的要点</a>，并且已成立了多个*<a href="https://acescentral.com/working-groups-home/">虚拟工作组，</a>* 并已提出了一些解决方案。不要犹豫，加入我们的行列吧！</p>
+<blockquote>
+<p><a href="https://www.displaydaily.com/paid-news/ldm/ldm-event-reports/press-and-market/a-proposal-for-aces-2-0">This interesting article</a> also describes ACES’ issues and a proposal to solve them.</p>
+<p><a href="https://www.displaydaily.com/paid-news/ldm/ldm-event-reports/press-and-market/a-proposal-for-aces-2-0">这篇有趣的文章</a>还描述了 ACES 的问题以及解决方案的建议。</p>
+</blockquote>
+<h3 id="色调倾斜和色域剪切-hue-skews-and-gamut-clipping">色调倾斜和色域剪切 Hue skews and Gamut Clipping</h3>
+<p>The two biggest issues I have encountered with ACES are called <em>Hue skews</em> and ​<em>Gamut Clipping</em>​. Some image makers believe that the audience got used to it and are not bothered. Some find them truly horrific. I’ll let you decide for yourselves.</p>
+<p>我遇到的 ACES 最大的两个问题是<em>色调倾斜</em>和​<em>色域剪切</em>​。一些图像制作者认为观众已经习惯了，不会介意。有些人觉得它们真的很可怕。我让你们自己决定。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0690_volumetric_skews_posterization_FHD-20241105171047-tsdv3wq.jpg" alt="" title="An ACEScg red primary volumetric spot light... Notice how the impact goes pink and weird. ACEScg 红色主体积聚光灯...注意撞击后变成粉红色并且变得奇怪。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0700_volumetric_skews_posterization_FHD-20241105171047-9idpitd.jpg" alt="" title="An sRGB red primary just goes Dorito orange when overexposed. 当过度曝光时，sRGB 红色原色就会变成 Dorito 橙色。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0710_volumetric_skews_posterization_FHD-20241105171047-pc9emmb.jpg" alt="" title="An ACEScg blue primary volumetric spot light... Notice how the impact goes purple and weird. ACEScg 蓝色主体积聚光灯...注意撞击如何变成紫色和奇怪的颜色。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0720_volumetric_skews_posterization_FHD-20241105171047-95q9fqi.jpg" alt="" title="An sRGB blue primary just goes pinky when overexposed. 当过度曝光时，sRGB 蓝色原色就会变成粉红色。" loading="lazy">​</p>
+<p>In these slides, I described the issue as “posterization”. It has been <a href="https://community.acescentral.com/t/notice-of-meeting-aces-output-transforms-architecture-vwg-meeting-3-1-13-2021/3478/2">discussed on ACESCentral</a> and described as “Gamut Clipping”.</p>
+<p><em>在这些幻灯片中，我将这个问题描述为“色调分离”。ACESCentral</em>*<a href="https://community.acescentral.com/t/notice-of-meeting-aces-output-transforms-architecture-vwg-meeting-3-1-13-2021/3478/2">对此进行了讨论</a>* <em>，并将其描述为“色域剪切”。</em></p>
+<p>There are different reasons for this kind of issues. They are pretty technical and beyond the scope of this chapter but I have listed them here (and more extensively in <a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/#aces">this article</a>) :</p>
+<p>导致此类问题的原因有很多。它们非常技术性，超出了本章的讨论范围，但我在这里列出了它们（并在<a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/#aces">本文</a>中进行了更详细的介绍）：</p>
+<ul>
+<li>A 3×3 matrix can only model linear transformations which may induce <em><a href="https://en.wikipedia.org/wiki/Abney_effect">Abney effect</a></em> because they are straight lines (just like brute force gamut clips).</li>
+<li>3×3 矩阵只能模拟可能引起*<a href="https://en.wikipedia.org/wiki/Abney_effect">阿布尼效应的</a>*线性变换，因为它们是直线（就像强力色域剪辑一样）。</li>
+<li>Discrete per-channel lookups (also called ​<em>RGB tone mapping</em>​) skew the intention. Any aesthetic transfer function that asymptotes at 1.0 suffers this.</li>
+<li>离散的每通道查找（也称为​<em>RGB 色调映射</em>​）会扭曲意图。任何在 1.0 处渐近的美学传递函数都会受到影响。</li>
+<li>The aesthetic transfer function ends up collapsing lots of different values into the same one, hence ​<em>Gamut Clipping</em>​. The non-physically realizable primaries of ACEScg may also be responsible.</li>
+<li>美学传递函数最终将许多不同的值合并为同一个值，因此产生了​<em>色域剪切</em>​。ACEScg 的非物理可实现原色也可能是造成这种情况的原因。</li>
+</ul>
+<h3 id="odt-剪辑值-the-odts-clip-values">ODT 剪辑值 The ODTs clip values</h3>
+<p>Most of these notions are eventually related to what we call<span data-type="text" style="color: var(--b3-font-color12);"> </span><strong>gamut mapping.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>This is the key element missing in ACES. I have thought for a very long time that the ODT would remap the gamut it in a smart way. Unfortunately it is not the case, it just does a 3×3 matrix transform, a tone scale and a clamp !</p>
+<p>这些概念中的大多数最终都与我们所谓的<strong>色域映射有关。</strong> 这是 ACES 中缺少的关键元素。我很久以来就认为 ODT 会以一种智能的方式重新映射色域。不幸的是，事实并非如此，它只是进行 3×3 矩阵变换、色调缩放和限制！</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0730_red_ramp_exposure_FHD--20241105171047-nwbvkhj.jpg" alt="" title="Three different ramps... 三种不同的坡道..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0740_red_ramp_exposure_FHD--20241105171047-nmnguw6.jpg" alt="" title="From left to right : sRGB primary with sRGB (spi-anim), sRGB primary with sRGB (ACES) and ACEScg primary with sRGB (ACES). 从左到右：sRGB 主色与 sRGB（spi-anim）、sRGB 主色与 sRGB（ACES）以及 ACEScg 主色与 sRGB（ACES）。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0750_red_ramp_exposure_FHD--20241105171047-pnyrzxb.jpg" alt="" title="And we increase exposure by one stop for each frame... 我们将每一帧的曝光量增加一级……" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0760_red_ramp_exposure_FHD--20241105171047-ds9kfgm.jpg" alt="" title="First issue in ACES : the middle ramp goes Dorito orange. ACES 中的第一个问题：中间的坡道变成了 Dorito 橙色。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0770_red_ramp_exposure_FHD--20241105171047-3g2bjsy.jpg" alt="" title="Second issue in ACES : the right ramp goes pink. ACES 中的第二个问题：右侧坡道变成粉红色。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0780_red_ramp_exposure_FHD--20241105171047-xaurcum.jpg" alt="" title="These changes are called Hue skews. 这些变化被称为色调倾斜。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0790_red_ramp_exposure_FHD--20241105171047-wmfujuc.jpg" alt="" title="You can also see a bit of clipping in the right ramp. 您还可以看到右侧坡道上有少量剪辑。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0800_red_ramp_exposure_FHD--20241105171047-z4crllx.jpg" alt="" title="This may also partly come from the OCIO interpolation gap in the LUT. 这也可能部分来自于 LUT 中的 OCIO 插值差距。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0810_red_ramp_exposure_FHD--20241105171047-8i9grw3.jpg" alt="" title="The ACEScg primary on the right can only be reached by a laser (a narrow-band source). 只有激光（窄带光源）才能到达右侧的 ACEScg 主星。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0820_red_ramp_exposure_FHD--20241105171047-7bfp8dm.jpg" alt="" title="It is so impossible to display it properly without Gamut Mapping. 如果没有色域映射就不可能正确显示。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0830_red_ramp_exposure_FHD--20241105171047-n4izbsn.jpg" alt="" title="Interesting to note that the spi-anim display does not go to white. It is completely stuck. 有趣的是，spi-anim 显示并没有变成白色。它完全卡住了。" loading="lazy">​</p>
+<p>As you can see in the code below, an <em>ODT</em> brings the values back into its gamut through a 3×3 matrix and a clamp which cause some ​<em>Gamut Clipping</em>​. This is one of the issue we are facing with very saturated values :</p>
+<p>正如您在下面的代码中看到的，<em>ODT</em>通过 3×3 矩阵和夹具将值带回其色域，这会导致一些​<em>色域剪切</em>​。这是我们在非常饱和的值时面临的问题之一：</p>
+<pre><code>// Handle out-of-gamut values
+// Clip values &lt; 0 or &gt; 1 (i.e. projecting outside the display primaries)
+linearCV = clamp_f3( linearCV, 0., 1.);
+</code></pre>
+<blockquote>
+<p>All ODTs clamp to the target gamut so it is impossible to have something outside the gamut. All values ​​are assumed to be between 0 and 1 after this process and this the penultimate step before the transfer function (that will not change this result).</p>
+<p>所有 ODT 都限制在目标色域内，因此不可能出现色域外的情况。在此过程之后，所有值都假定在 0 到 1 之间，这是传递函数之前的倒数第二步（这不会改变此结果）。</p>
+</blockquote>
+<p>Let’s now see the difference between 3×3 matrixes and Gamut Mapping. We could say that the Gamut mapping in ACES is very “<a href="https://community.acescentral.com/t/re-framing-and-clarifying-the-goals-of-an-output-transform/4195/28">crude</a>” or completely missing. It depends on how you see things.</p>
+<p>现在让我们看看 3×3 矩阵和色域映射之间的区别。我们可以说 ACES 中的色域映射非常“<a href="https://community.acescentral.com/t/re-framing-and-clarifying-the-goals-of-an-output-transform/4195/28">粗糙</a>”或完全缺失。这取决于你如何看待事物。</p>
+<h3 id="关于-33-矩阵-a-word-about-33-matrixes">关于 3×3 矩阵 A word about 3×3 matrixes</h3>
+<p><strong>Thomas Mansencal</strong> shared some knowledge about matrixes and their use in ACES. Matrixes are currently used in more than 50 “places” such as IDTs, the <em>BlueLightArtifactFix</em> LMT, the RRT and ODTs. They are mostly used in definitions for colorspace changes, chromatic adaptation and saturation adjustment.</p>
+<p><strong>Thomas Mansencal</strong>分享了一些有关矩阵及其在 ACES 中的应用的知识。矩阵目前用于 50 多个“地方”，例如 IDT、<em>BlueLightArtifactFix</em> LMT、RRT 和 ODT。它们主要用于色彩空间变化、色彩适应和饱和度调整的定义。</p>
+<blockquote>
+<p>The advantage is that they are modeling a linear transformation which is very fast to apply, is very stable numerically, invertible (most of  the time), easy to implement and does not suffer from exposure variance. This advantage is also their curse because <strong>they can only model linear transformations</strong><span data-type="text" style="color: var(--b3-font-color12);">.</span></p>
+<p>其优点在于，它们模拟的是线性变换，这种变换应用起来非常快，数值上非常稳定，可逆（大多数时候），易于实现，并且不受曝光方差的影响。这一优点也是它们的祸害，因为​<strong>它们只能模拟线性变换</strong><span data-type="text" style="color: var(--b3-font-color12);">。</span></p>
+<p>-- An online app for <a href="https://www.colour-science.org:8010/apps/rgb_colourspace_transformation_matrix">RGB Colourspace Transformation Matrix</a>.</p>
+<p>-- <a href="https://www.colour-science.org:8010/apps/rgb_colourspace_transformation_matrix">RGB 色彩空间变换矩阵</a>的在线应用程序。</p>
+</blockquote>
+<h4 id="处理立方体-handling-a-cube">处理立方体 Handling a cube</h4>
+<p>To understand better how matrix 3×3 works, <strong>Thomas</strong> used a comparison with a cube. I like simple examples !</p>
+<p>为了更好地理解 3×3 矩阵的工作原理，<strong>Thomas</strong>使用了立方体作为比较。我喜欢简单的例子！</p>
+<blockquote>
+<p>Imagine that you have two cubes with different rotations and scale. A 3×3 matrix could make one cube fit to the other perfectly. Now imagine that you have a cube and a sphere and you want to fit them together ?  The 3×3 matrix would get you to the point where the sphere and the cube are sharing the same space but <strong>they would not have the same shape</strong>​. This is where you need a non-linear transformation basically that will do more than rotating and scaling your space. You will need to locally distort it ! 3×3 is basically <strong>putting two large handles around your space</strong> and kind of  distorting it globally, note that a 4×4 matrix would also allow you to translate,  <strong>a 3×3 by convention commonly only scales and rotates</strong> (in 3D spaces).</p>
+<p>想象一下，您有两个具有不同旋转和缩放比例的立方体。3×3 矩阵可以使一个立方体完美地贴合另一个立方体。现在想象一下，您有一个立方体和一个球体，并且想要将它们贴合在一起？3×3 矩阵将使球体和立方体共享同一空间，但<strong>它们的形状不同</strong>。这是您需要非线性变换的地方，它的作用基本上不仅仅是旋转和缩放您的空间。您需要局部扭曲它！3×3 基本上是<strong>在您的空间周围放置两个大手柄</strong>并对其进行全局扭曲，请注意，4×4 矩阵还允许您平移，<strong>而按照惯例 3×3 通常只缩放和旋转</strong>（在 3D 空间中）。</p>
+<p>-- More information about matrixes can be found <a href="https://gamedev.stackexchange.com/a/118848">here</a>.</p>
+<p>-- <a href="https://gamedev.stackexchange.com/a/118848">关于矩阵的更多信息可以在这里</a>找到。</p>
+</blockquote>
+<p>Matrixes are a good tool for color spaces’ conversions, such as the ones used in the <em>IDT</em> and <em>Utilities</em> but are less than ideal when it comes to ​<em>Display Transform</em>​. A more sophisticated Gamut Mapping process would be appropriate in this case.</p>
+<p>矩阵是色彩空间转换的良好工具，例如<em>IDT</em>和<em>实用程序中使用的矩阵，但在显示变换</em>方面则不太理想。在这种情况下，更复杂的色域映射过程会更合适。</p>
+<h3 id="色域映射-gamut-mapping">色域映射 Gamut mapping</h3>
+<p>What is <a href="https://graphics.stanford.edu/courses/cs178/applets/gamutmapping.html">gamut mapping</a> ? A proper Output Transform (also called ​<em>Display Rendering Transform</em>​) should be composed of two main elements :</p>
+<p>什么是<a href="https://graphics.stanford.edu/courses/cs178/applets/gamutmapping.html">色域映射</a>？正确的输出变换（也称为​<em>显示渲染变换</em>​）应由两个主要元素组成：</p>
+<ul>
+<li>Tone mapping (or intensity/luminance mapping) to compress an infinite range (​<em>HDR</em>​) on a limited range (​<em>SDR</em>​).</li>
+<li>色调映射（或强度/亮度映射）在有限范围（<em>SDR</em> ）上压缩无限范围（<em>HDR</em> ） 。</li>
+<li>Gamut mapping to compress a wide gamut (​<em>ACEScg</em>​) to a smaller gamut (​<em>P3</em>​) by maintaining the intention of the scene as best as possible.</li>
+<li>色域映射通过尽可能保持场景的意图，将宽色域（​<em>ACEScg</em>​）压缩为较小的色域（<em>P3 ）。</em></li>
+</ul>
+<blockquote>
+<p>Jed Smith actually does <a href="https://community.acescentral.com/t/output-transform-tone-scale/3498/60">a much more complete description</a> of which “modules” we might need for an Output Transform.</p>
+<p>Jed Smith 实际上对我们可能需要哪些“模块”进行输出转换做了<a href="https://community.acescentral.com/t/output-transform-tone-scale/3498/60">更完整的描述。</a></p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0840_aces_odt_limitations_rec709_aces_FHD-20241105171047-wlbhg6i.jpg" alt="" title="Interesting hue skews with the ACES ODT. ACES ODT 的色调倾斜很有趣。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0850_aces_odt_limitations_red_ipp2_FHD-20241105171047-ag8chjq.jpg" alt="" title="Which are simply not there with a RED IPP2 ODT. But we have lost some saturation on the way. RED IPP2 ODT 根本不具备这种能力。但我们在途中损失了一些饱和度。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0860_aces_odt_limitations_arri_k1s1_FHD-20241105171047-anr1v4w.jpg" alt="" title="The famous Arri K1S1 does a pretty good job as well. 著名的 Arri K1S1 的表现也相当出色。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0870_aces_odt_limitations_filmlight_tcam_FHD-20241105171047-hiomf1h.jpg" alt="" title="Interesting results as well from TCAMv2. TCAMv2 也得到了有趣的结果。" loading="lazy">​</p>
+<blockquote>
+<p>I have used this <a href="https://github.com/colour-science/OpenColorIO-Configs/tree/feature/aces_vwg_gm/aces_1.2">experimental OCIO config</a> to compare different Output Transforms.</p>
+<p>我已经使用这个<a href="https://github.com/colour-science/OpenColorIO-Configs/tree/feature/aces_vwg_gm/aces_1.2">实验性的 OCIO 配置</a>来比较不同的输出转换。</p>
+</blockquote>
+<p>This process is actually quite complex and there has been many attempts these last few years to solve this riddle : <a href="https://gpuopen.com/fidelityfx-lpm/">AMD Fidelity FX</a>, <a href="http://32ipi028l5q82yhj72224m8j.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/GdcVdrLottes.pdf">AMD Variable Dynamic Range</a>, <a href="https://gpuopen.com/learn/using-amd-freesync-2-hdr-gamut-mapping">AMD FreeSync HDR Gamut Mapping</a>, <a href="https://www.slideshare.net/DICEStudio/high-dynamic-range-color-grading-and-display-in-frostbite">Frostbite</a>… With more or less success.</p>
+<p>这个过程实际上相当复杂，过去几年里有过很多尝试来解答这个谜题：<a href="https://gpuopen.com/fidelityfx-lpm/">AMD Fidelity FX</a>、<a href="http://32ipi028l5q82yhj72224m8j.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/GdcVdrLottes.pdf">AMD 可变动态范围</a>、<a href="https://gpuopen.com/learn/using-amd-freesync-2-hdr-gamut-mapping">AMD FreeSync HDR 色域映射</a>、<a href="https://www.slideshare.net/DICEStudio/high-dynamic-range-color-grading-and-display-in-frostbite">Frostbite</a> ……或多或少都取得了成功。</p>
+<blockquote>
+<p>Apart from ICC, there are not really any systems that do [gamut mapping]. It is the  <strong>responsibility of the colorist</strong> to manage this kind of problem by desaturating a bit the red. But it is not necessarily a limitation of ACES, on the contrary. The system allows you to use extreme values  <strong>so with great power comes great responsibilities.</strong>   This is where gamut mapping would be useful. The reality is that all the technology changes super super fast and it takes a lot of time to build the tools.  <strong>The research is not even finished in fact :</strong>   for example, LED onset lighting is very recent.</p>
+<p>除了 ICC，实际上没有任何系统可以进行 [色域映射]。<strong>调色师有责任</strong>通过稍微降低红色的饱和度来处理此类问题。但这不一定是 ACES 的限制，恰恰相反。该系统允许您使用极端值，<strong>因此能力越大，责任越大。</strong> 这就是色域映射的用武之地。现实情况是，所有技术的变化都超级快，构建工具需要大量时间。<strong>事实上，研究甚至还没有完成：</strong> 例如，LED 光源照明是最近才出现的。</p>
+<p>Some advice from Thomas Mansencal.</p>
+<p>来自 Thomas Mansencal 的一些建议。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0880_aces_odt_limitations_rec709_aces_FHD-20241105171047-c7zrq87.jpg" alt="" title="Rec. 2020 colors used an emissive shader, like if they were LED lights. Rec. 2020 颜色使用发射着色器，就像 LED 灯一样。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0890_aces_odt_limitations_red_ipp2_FHD-20241105171047-k4djl6u.jpg" alt="" title="I think it helps to compare the ODTs better, especially with the influence on the ground. 我认为这有助于更好地比较 ODT，尤其是对地面的影响。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0900_aces_odt_limitations_arri_k1s1_FHD-20241105171047-8gmlhhb.jpg" alt="" title="Funny how the Arri K1S1 struggles with the red and cyan tones. 有趣的是，Arri K1S1 在处理红色和青色色调时遇到了困难。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0910_aces_odt_limitations_filmlight_tcam_FHD-20241105171047-p9j03bf.jpg" alt="" title="And finally TCAMv2... 最后是 TCAMv2..." loading="lazy">​</p>
+<blockquote>
+<p>One issue that has often been noticed is what we call the ​<em>Blue Light Artifact</em>​. It is very well described in <a href="https://community.acescentral.com/t/colour-artefacts-or-breakup-using-aces/520/7">this post</a> from ACEScentral. A <a href="https://community.acescentral.com/t/colour-artefacts-or-breakup-using-aces/520/10">temporary fix</a> has also been provided until a more long-term solution is found, such as <a href="https://github.com/jedypod/gamut-compress">the Gamut Compress algorithm by Jed Smith</a>.</p>
+<p>一个经常被注意到的问题就是我们所说的​<em>蓝光伪影</em>​。ACEScentral的<a href="https://community.acescentral.com/t/colour-artefacts-or-breakup-using-aces/520/7">这篇文章</a>对此进行了很好的描述。还提供了一个<a href="https://community.acescentral.com/t/colour-artefacts-or-breakup-using-aces/520/10">临时修复</a>，直到找到更长期的解决方案，例如<a href="https://github.com/jedypod/gamut-compress">Jed Smith 的 Gamut Compress 算法</a>。</p>
+</blockquote>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p>ACES provides the following characteristics :</p>
+<p>ACES 具有以下特点：</p>
+<ul>
+<li>Compatibility through <em>OCIO</em> with many softwares.</li>
+<li><em>通过OCIO</em>与许多软件兼容。</li>
+<li>Free and support from the community on <a href="https://acescentral.com/">ACEScentral</a>.</li>
+<li><a href="https://acescentral.com/">免费并享受ACEScentral</a>社区的支持。</li>
+</ul>
+<p>However, several aspects should be adressed for ACES 2.0 to make it more robust and reliable :</p>
+<p>然而，应该解决 ACES 2.0 的几个方面问题，以使其更加健壮和可靠：</p>
+<ul>
+<li>Hue Skews due to per-channel (RGB) lookup.</li>
+<li>由于每个通道（RGB）查找导致色调倾斜。</li>
+<li>Gamut clipping (or posterization) due to lack of signal compression (aka gamut mapping).</li>
+<li>由于缺乏信号压缩（又称色域映射）导致色域剪切（或色调分离）。</li>
+<li>The current Output Transforms are not “neutral”/chromaticity-linear/hue-preserving (light mixtures in the working space are <strong>not</strong><span data-type="text" style="color: var(--b3-font-color12);"> </span>respected).</li>
+<li>当前的输出变换不是“中性”/色度线性/色调保留（<span data-type="text" style="color: var(--b3-font-color12);">不</span>尊重工作空间中的光混合）。</li>
+<li>The path to white is just an “happy accident” where colours converge to primaries and their complements.</li>
+<li>通往白色的道路只是一个“幸福的意外”，其中颜色汇聚到原色和它们的补色。</li>
+<li>Lack of predictability between the SDR and HDR Output Transforms.</li>
+<li>SDR 和 HDR 输出转换之间缺乏可预测性。</li>
+<li>ACES deliveries are still ambiguous and should be fixed by the ACES Metadata File (AMF).</li>
+<li>ACES 交付仍然不明确，应该通过 ACES 元数据文件 (AMF) 进行修复。</li>
+</ul>
+<p>On paper, the idea of ACES is interesting : a standard for professionals to help them color managing. In practice,  it is an over-complex system that is actually not really recommended nor even used by color professionals (except for exchanging files).</p>
+<p>从理论上讲，ACES 的理念很有趣：为专业人士提供帮助他们管理色彩的标准。实际上，这是一个过于复杂的系统，色彩专业人士实际上并不推荐甚至不使用该系统（除了交换文件）。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0920_geometry_sRGB_FHD-20241105171047-nekxnsq.jpg" alt="" title="Here is a Linear - sRGB render displayed in sRGB. I have used sRGB textures. Please note the clipping on the red sphere is due to lack of tone mapping. 这是在 sRGB 中显示的线性 - sRGB 渲染。我使用了 sRGB 纹理。请注意，红色球体上的剪切是由于缺少色调映射造成的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0930_geometry_sRGB_FHD-20241105171047-l3ts3ui.jpg" alt="" title="Here is the same render displayed in Film (sRGB) from the spi-anim OCIO config. 这是从 spi-anim OCIO 配置中以胶片 (sRGB) 显示的相同渲染。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0940_geometry_sRGB_FHD-20241105171047-j3h37n8.jpg" alt="" title="And this is again the same render displayed in sRGB (ACES). Please note the hue shifts towards the Notorious 6 ! 这又是在 sRGB（ACES）中显示的相同渲染。请注意色调向 Notorious 6 偏移！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0950_geometry_sRGB_FHD-20241105171047-606x6ea.jpg" alt="" title="And this an ACEScg render from the same scene. With the different Global Illumination on the red sphere. 这是来自同一场景的 ACEScg 渲染图。红色球体上的全局照明不同。" loading="lazy">​</p>
+<h2 id="概括-summary">概括 Summary</h2>
+<p>Here are the key points we have seen in this chapter :</p>
+<p>以下是我们在本章中看到的要点：</p>
+<ul>
+<li>ACESis an attempt at setting a standard Color Management Workflow.</li>
+<li>ACES试图设定一个标准的色彩管理工作流程。</li>
+<li>It is designed around three important steps : the Input Transforms (for input/import), ACEScg (working/rendering space) and the Output Transforms (for display).</li>
+<li>它围绕三个重要步骤设计：输入变换（用于输入/导入）、ACEScg（工作/渲染空间）和输出变换（用于显示）。</li>
+<li>Ideally you should know and color the color spaces used for each step. ACES gives you access through OCIO to the transforms needed to do so.</li>
+<li>理想情况下，您应该了解并着色每个步骤使用的颜色空间。ACES 让您可以通过 OCIO 访问所需的转换。</li>
+<li>ACES lets you manipulate most (all ?) of color spaces but is composed of four different color spaces itself : ACES2065-1, ACEScc, ACEScct and ACEScg.</li>
+<li>ACES 让您可以操作大多数（全部？）颜色空间，但它本身由四种不同的颜色空间组成：ACES2065-1、ACEScc、ACEScct 和 ACEScg。</li>
+<li>Having access to Wide Gamut Rendering allows for interesting experiments but should be studied with care.</li>
+<li>利用宽色域渲染可以进行有趣的实验，但应谨慎研究。</li>
+<li>ACES has unfortunately issues, such as Hue Skews and Gamut Clipping, which in my opnion cannot be solved by a colorist : “​<em>LMTs for a DRT with wiggles are difficult</em>​.” (from <a href="https://community.acescentral.com/t/notice-of-meeting-output-transforms-architecture-vwg-january-5-2022/4207">meeting#36</a>). It actually prevents you to reach certain colors on display :</li>
+<li>不幸的是，ACES 存在一些问题，例如色调倾斜和色域剪切，在我看来，这些问题是调色师无法解决的：“​<em>带有摆动的 DRT 的 LMT 很难</em>​。” (来自<a href="https://community.acescentral.com/t/notice-of-meeting-output-transforms-architecture-vwg-january-5-2022/4207">会议#36</a> )。它实际上会阻止您在显示器上达到某些颜色：</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/015_ACES_0960_eiskoLouise_concert_sRGB_FHD-20241105171047-hfj0poe.jpg" alt="" loading="lazy">​</p>
+<blockquote>
+<p>From <a href="https://community.acescentral.com/t/output-transform-tone-scale/3498/158">this post</a> originally. It is virtually impossible to compensate for this behaviour.</p>
+<p>原文来自<a href="https://community.acescentral.com/t/output-transform-tone-scale/3498/158">此帖</a>。这种行为几乎不可能得到补偿。</p>
+</blockquote>
+<p>Maybe these limitations come from the ACES’ History itself. I have tried to summarize it below from the information I could gather on ACESCentral and during the VWG meetings.</p>
+<p>也许这些限制来自 ACES 的历史本身。我试图根据我在 ACESCentral 和 VWG 会议期间收集的信息总结如下。</p>
+<h2 id="aces-历史-aces-history">ACES 历史 ACES history</h2>
+<p>ACES has a complex history :</p>
+<p>ACES 有着复杂的历史：</p>
+<ul>
+<li>It started as an “Interchange Framework” with a single color space ACES2065-1 (AP0 primaries).</li>
+<li>它开始是一个具有单一色彩空间 ACES2065-1（AP0 原色）的“交换框架”。</li>
+<li>Then, if I understood correctly, feedback from colorists and VFX studios was not great. So AP1 primaries were created to give birth to ACEScg, ACEScc, ACEScct and ACESproxy. Two of these four color spaces are now deprecated (or <a href="https://community.acescentral.com/t/a-single-fixed-output-transform-vs-a-choose-your-own-approach/3440">almost</a>).</li>
+<li>然后，如果我理解正确的话，调色师和 VFX 工作室的反馈并不好。因此，AP1 原色被创建，从而诞生了 ACEScg、ACEScc、ACEScct 和 ACESproxy。这四个颜色空间中有两个现在已被弃用（或<a href="https://community.acescentral.com/t/a-single-fixed-output-transform-vs-a-choose-your-own-approach/3440">几乎被弃用</a>）。</li>
+<li>Having non-physically realizable primaries (AP1) for a working space is a controversial choice. They are outside of the Spectral Locus !</li>
+<li>在工作空间中使用非物理可实现的原色 (AP1) 是一个有争议的选择。它们在光谱轨迹之外！</li>
+<li>Same thing for White Point which is almost ~D60 ! Would have Rec.2020 (with actual physical primaries and a White Point of D65) been a good candidate for the working space ?</li>
+<li>白点也差不多是 ~D60 ！Rec.2020（具有实际物理原色和 D65 白点）是否是工作空间的良好候选者？</li>
+<li>Finally, the Output Transforms were created with “​<em>contradictory design requirements</em>​” and a core technology (Per-Channel Lookup) that has proven to be inadequate and overly complex (the SSTS is over a thousand lines of code).</li>
+<li>最后，输出转换是用“​<em>矛盾的设计要求</em>​”和核心技术（每通道查找）创建的，但事实证明这项技术不够充分而且过于复杂（SSTS 有超过一千行代码）。</li>
+</ul>
+<p>I actually try to explain and detail all of these points in my latest article (from September 2021) <a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/">here</a>. I would recommend to read it if you are done with this chapter. Or you can now move to less technical chapters and focus on cinematography. Your call !</p>
+<p>实际上，我尝试在我的最新文章（2021 年 9 月）中详细解释和阐述所有这些要点<a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/">。</a>如果您读完了本章，我建议您阅读它。或者您现在可以转到技术性较低的章节并专注于电影摄影。您说了算！</p>
+<h2 id="来源-sources">来源 Sources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=vKtF2S7WEv0">Alex Fry presentation at Siggraph 2015</a>.  There is <a href="https://www.fxguide.com/fxfeatured/siggraph-day-3-and-out/">an article</a> as well.</li>
+<li><a href="https://www.youtube.com/watch?v=vKtF2S7WEv0">Alex Fry 在 Siggraph 2015 上的演讲</a>。还有<a href="https://www.fxguide.com/fxfeatured/siggraph-day-3-and-out/">一篇文章。</a></li>
+<li><a href="http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-24E4143D-6FD1-4210-B677-3D5EEF3D3F29">These</a> <a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2016/ENU/Maya/files/GUID-43589612-96FC-425E-A150-F2BFC364D7D7-htm.html">articles</a> from Autodesk were helpful to me.</li>
+<li><a href="http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-24E4143D-6FD1-4210-B677-3D5EEF3D3F29">Autodesk 的这些</a> <a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2016/ENU/Maya/files/GUID-43589612-96FC-425E-A150-F2BFC364D7D7-htm.html">文章</a>对我很有帮助。</li>
+<li>If you want to read more about  <a href="https://www.slideshare.net/hpduiker/acescg-a-common-color-encoding-for-visual-effects-applications">ACEScg</a> (here are <a href="http://duikerresearch.com/2015/09/acescg-a-common-color-encoding-for-visual-effects-applications/">the slides</a> and <a href="http://duikerresearch.com/wordpress/wp-content/uploads/2015/09/ACEScg-Digipro-2015.pdf">the pdf</a>).</li>
+<li>如果您想了解有关  <a href="https://www.slideshare.net/hpduiker/acescg-a-common-color-encoding-for-visual-effects-applications">ACEScg</a>的更多信息（这里有<a href="http://duikerresearch.com/2015/09/acescg-a-common-color-encoding-for-visual-effects-applications/">幻灯片</a>和<a href="http://duikerresearch.com/wordpress/wp-content/uploads/2015/09/ACEScg-Digipro-2015.pdf">pdf</a>）。</li>
+<li>If you need a reminder about wide gamut rendering, <a href="https://computergraphics.stackexchange.com/questions/8152/for-shader-math-why-should-linear-rgb-keep-the-gamut-of-srgb">these</a> <a href="https://www.colour-science.org/anders-langlands/">posts</a> are interesting.</li>
+<li>如果您需要有关宽色域渲染的提醒，<a href="https://computergraphics.stackexchange.com/questions/8152/for-shader-math-why-should-linear-rgb-keep-the-gamut-of-srgb">这些</a> <a href="https://www.colour-science.org/anders-langlands/">帖子</a>很有趣。</li>
+<li>Steve Agland also did <a href="https://nbviewer.jupyter.org/gist/sagland/3c791e79353673fd24fa">some interesting tests</a>. And <a href="https://nbviewer.jupyter.org/github/colour-science/colour-website/blob/master/ipython/about_rendering_engines_colourspaces_agnosticism.ipynb">Thomas</a> as well.</li>
+<li>史蒂夫·阿格兰 (Steve Agland) 也做了<a href="https://nbviewer.jupyter.org/gist/sagland/3c791e79353673fd24fa">一些有趣的测试</a>。<a href="https://nbviewer.jupyter.org/github/colour-science/colour-website/blob/master/ipython/about_rendering_engines_colourspaces_agnosticism.ipynb">托马斯 (Thomas)</a>也做了一些有趣的测试。</li>
+</ul>
+<h2 id="文章和博客-articles-and-blogs">文章和博客 Articles and blogs</h2>
+<p>I have removed most of the articles’ links because most of them are only scratching the surface or just making a blind praise of ACES.</p>
+<p>我删除了大部分文章的链接，因为其中大部分都只是触及表面或只是对 ACES 进行盲目的赞美。</p>
+<ul>
+<li>Two Blender posts where I explain my point of view : <a href="https://devtalk.blender.org/t/blender-support-for-aces-academy-color-encoding-system/13972/176">here</a> and <a href="https://blenderartists.org/t/filmic-is-on-everything-in-the-compositor-not-just-render-layers/1197815/50">here</a>.</li>
+<li>我在两篇 Blender 帖子中解释了我的观点：<a href="https://devtalk.blender.org/t/blender-support-for-aces-academy-color-encoding-system/13972/176">这里</a>和<a href="https://blenderartists.org/t/filmic-is-on-everything-in-the-compositor-not-just-render-layers/1197815/50">这里</a>。</li>
+<li>If you are curious about the ODT, check these <a href="https://acescentral.com/t/color-primaries-shifting-and-negative-values-ocio-confusion/892/27">two</a> <a href="https://acescentral.com/t/odt-tonescale/387">posts</a> from <a href="https://acescentral.com/">ACEScentral</a>.</li>
+<li>如果您对 ODT 感到好奇，请查看<a href="https://acescentral.com/">ACEScentral</a>的这<a href="https://acescentral.com/t/color-primaries-shifting-and-negative-values-ocio-confusion/892/27">两篇</a> <a href="https://acescentral.com/t/odt-tonescale/387">文章</a>。</li>
+<li>If you want to get technical about ACES, <a href="http://www.mdpi.com/2313-433X/3/4/40">this document</a> is made for you.</li>
+<li>如果您想了解 ACES 的技术信息，<a href="http://www.mdpi.com/2313-433X/3/4/40">本文档</a>非常适合您。</li>
+<li>Nothing impeaches you to render in spectral like <a href="https://inlifethrill.com/octane-render-rgbspectrum-vs-gaussianspectrum/">this example</a> in Octane.</li>
+<li>没有什么可以像Octane 中的<a href="https://inlifethrill.com/octane-render-rgbspectrum-vs-gaussianspectrum/">这个示例</a>一样阻止您进行光谱渲染。</li>
+<li>Siggraph 2017 has this interesting but quite <a href="https://jo.dreggn.org/path-tracing-in-production/2017/talk-jo.pdf">technical paper</a> about spectral and ACES rendering.</li>
+<li>Siggraph 2017 有一篇关于光谱和 ACES 渲染的有趣但相当<a href="https://jo.dreggn.org/path-tracing-in-production/2017/talk-jo.pdf">技术性的论文。</a></li>
+<li>The <a href="http://duikerresearch.com/2015/09/aces-1-0-opencolorio-config/">ACES 1.0 OCIO Config</a>.</li>
+<li>ACES <a href="http://duikerresearch.com/2015/09/aces-1-0-opencolorio-config/">1.0 OCIO 配置</a>。</li>
+<li>Unreal Engine <a href="https://docs.unrealengine.com/en-US/Engine/Rendering/PostProcessEffects/ColorGrading/index.html">accidentally shows the ACES hue Skews</a> in their documentation.</li>
+<li>虚幻引擎在其文档中<a href="https://docs.unrealengine.com/en-US/Engine/Rendering/PostProcessEffects/ColorGrading/index.html">意外显示了 ACES 色调倾斜</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=O3_ye3tPJPI">Birds of a feather Siggraph 2019</a> about ACES 2.0. <a href="https://acescentral.com/uploads/default/original/2X/b/be3311492cb764eba305577ecfe98d07a59ef02a.pdf">ACES 2.0 roadmap</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=O3_ye3tPJPI">Birds of a feather Siggraph 2019</a>关于 ACES 2.0。ACES <a href="https://acescentral.com/uploads/default/original/2X/b/be3311492cb764eba305577ecfe98d07a59ef02a.pdf">2.0 路线图</a>。</li>
+<li>Two videos in French : <a href="https://vimeo.com/38149795">représentation de la couleur</a> and <a href="https://vimeo.com/38150632">Academy Color Encoding Specifications</a>.</li>
+<li>两个法语视频：<a href="https://vimeo.com/38149795">représentation de la couleur</a>和<a href="https://vimeo.com/38150632">Academy Color Encoding Specifications</a>。</li>
+<li><a href="https://www.lightspace.lightillusion.com/aces_overview.html">ACES &amp; Associated Workflows</a> by Light Illusion.</li>
+<li><a href="https://www.lightspace.lightillusion.com/aces_overview.html">由 Light Illusion 提供的ACES 及相关工作流程</a>。</li>
+<li>You can find a list of IDT <a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/Maya/files/GUID-2622A6C2-B79B-442E-B5C3-327474409CC7-htm.html">here</a> and some explanation about LMT <a href="https://vimeo.com/38150632">there</a>.</li>
+<li><a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/Maya/files/GUID-2622A6C2-B79B-442E-B5C3-327474409CC7-htm.html">您可以在这里</a>找到 IDT 列表，并<a href="https://vimeo.com/38150632">在那里</a>找到有关 LMT 的一些说明。</li>
+<li><a href="https://www.youtube.com/watch?v=ZRj3pbv189A">Kevin Wheatley ACES presentation</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=ZRj3pbv189A">Kevin Wheatley ACES 演示</a>。</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80-foreword">前言 Foreword</a></li>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a></li>
+<li><a href="#aces-%E6%A6%82%E8%BF%B0-aces-overview">ACES 概述 ACES overview</a>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-aces-why-aces">为什么选择 ACES？ Why ACES ?</a></li>
+<li><a href="#aces-%E6%98%AF%E4%BB%80%E4%B9%88-what-is-aces">ACES 是什么？ What is ACES ?</a>
+<ul>
+<li><a href="#%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E4%B8%AD%E7%9A%84-aces-aces-in-one-picture">一张图片中的 ACES ACES in one picture</a></li>
+<li><a href="#aces-%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4-aces-color-spaces">ACES 颜色空间 ACES color spaces</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-acescg-why-acescg">为什么选择 ACEScg？ Why ACEScg ?</a>
+<ul>
+<li><a href="#acescg%E6%88%91%E4%BB%AC%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B8%B2%E6%9F%93%E7%A9%BA%E9%97%B4-acescg-our-workingrendering-space">ACEScg：我们的工作/渲染空间 ACEScg : our working/rendering space</a></li>
+<li><a href="#spectral-rec709-%E5%92%8C-rec-2020-%E4%B9%8B%E9%97%B4%E7%9A%84%E6%AF%94%E8%BE%83-comparison-between-spectral-rec709-and-rec-2020">Spectral、Rec.709 和 Rec. 2020 之间的比较 Comparison between Spectral, Rec.709 and Rec. 2020</a></li>
+<li><a href="#acescg-%E8%A7%A3%E9%87%8A-acescg-explanation">ACEScg 解释 ACEScg explanation</a></li>
+<li><a href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BA%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E5%88%9D%E9%80%89-a-closer-look-at-virtual-primaries">进一步了解虚拟初选 A closer look at virtual primaries</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87%E8%BD%AC%E6%8D%A2-idt-input-device-transform-idt">输入设备转换 (IDT) Input Device Transform (IDT)</a>
+<ul>
+<li><a href="#%E5%BA%B7%E5%A5%88%E5%B0%94%E6%A1%86%E7%A4%BA%E4%BE%8B-cornell-box-example">康奈尔框示例 Cornell box example</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E4%BC%9A%E5%BE%97%E5%88%B0%E4%B8%8D%E5%90%8C%E7%9A%84%E5%85%A8%E5%B1%80%E7%85%A7%E6%98%8E-why-do-we-get-a-different-global-illumination">为什么我们会得到不同的全局照明？ Why do we get a different global illumination ?</a></li>
+<li><a href="#idt-%E6%A6%82%E8%BF%B0-idt-overview">IDT 概述 IDT overview</a></li>
+<li><a href="#%E7%BB%98%E5%88%B6%E8%89%B2%E5%9F%9F-to-plot-the-gamut">绘制色域 To plot the gamut</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BE%93%E5%87%BA%E5%8F%98%E6%8D%A2-output-transform">输出变换 Output Transform</a>
+<ul>
+<li><a href="#%E5%8F%82%E8%80%83%E6%B8%B2%E6%9F%93%E5%8F%98%E6%8D%A2-rrt-reference-rendering-transform-rrt">参考渲染变换 (RRT) Reference Rendering Transform (RRT)</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87%E8%BD%AC%E6%8D%A2-odt-output-device-transform-odt">输出设备转换 (ODT) Output Device Transform (ODT)</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E5%8F%98%E6%8D%A2%E7%9A%84%E7%A4%BA%E4%BE%8B%E5%92%8C%E6%AF%94%E8%BE%83-examples-and-comparison-of-output-transforms">输出变换的示例和比较 Examples and comparison of Output Transforms</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E5%8F%98%E6%8D%A2%E8%AF%B4%E6%98%8E-output-transform-clarification">输出变换说明 Output Transform clarification</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E5%8F%98%E6%8D%A2%E6%A6%82%E8%BF%B0-output-transform-overview">输出变换概述 Output Transform overview</a></li>
+<li><a href="#%E5%A1%91%E5%BD%A2%E8%80%85-shaper">塑形者 Shaper</a></li>
+</ul>
+</li>
+<li><a href="#%E9%80%81%E8%B4%A7-delivery">送货 Delivery</a></li>
+</ul>
+</li>
+<li><a href="#aces-%E9%99%90%E5%88%B6-aces-limitations">ACES 限制 ACES limitations</a>
+<ul>
+<li><a href="#aces-%E5%9B%9E%E9%A1%BE%E4%B8%8E%E5%A2%9E%E5%BC%BA-aces-retrospective-and-enhancements">ACES 回顾与增强 ACES Retrospective and Enhancements</a></li>
+<li><a href="#%E8%89%B2%E8%B0%83%E5%80%BE%E6%96%9C%E5%92%8C%E8%89%B2%E5%9F%9F%E5%89%AA%E5%88%87-hue-skews-and-gamut-clipping">色调倾斜和色域剪切 Hue skews and Gamut Clipping</a></li>
+<li><a href="#odt-%E5%89%AA%E8%BE%91%E5%80%BC-the-odts-clip-values">ODT 剪辑值 The ODTs clip values</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E-33-%E7%9F%A9%E9%98%B5-a-word-about-33-matrixes">关于 3×3 矩阵 A word about 3×3 matrixes</a>
+<ul>
+<li><a href="#%E5%A4%84%E7%90%86%E7%AB%8B%E6%96%B9%E4%BD%93-handling-a-cube">处理立方体 Handling a cube</a></li>
+</ul>
+</li>
+<li><a href="#%E8%89%B2%E5%9F%9F%E6%98%A0%E5%B0%84-gamut-mapping">色域映射 Gamut mapping</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+<li><a href="#%E6%A6%82%E6%8B%AC-summary">概括 Summary</a></li>
+<li><a href="#aces-%E5%8E%86%E5%8F%B2-aces-history">ACES 历史 ACES history</a></li>
+<li><a href="#%E6%9D%A5%E6%BA%90-sources">来源 Sources</a></li>
+<li><a href="#%E6%96%87%E7%AB%A0%E5%92%8C%E5%8D%9A%E5%AE%A2-articles-and-blogs">文章和博客 Articles and blogs</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-Color-Management/">
+              <h3 class="post-title">
+                CG Cinematography 第 1 章：色彩管理
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

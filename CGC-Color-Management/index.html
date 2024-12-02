@@ -1,0 +1,1313 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CG Cinematography 第 1 章：色彩管理 | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="CG Cinematography 第 1 章：色彩管理 | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+
+Chapter 1: Color Management - Chris Brejon - Chris Brejon
+https://chrisbrejon.com/cg-cinematography/chapter-1-color-ma..." />
+    <meta name="keywords" content="Color,ACES,OCIO,CG Cinematography" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              CG Cinematography 第 1 章：色彩管理
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-21
+              </span>
+              <span>
+                95 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/ospYPv23vW/" class="post-tag">
+                  # Color
+                </a>
+              
+                <a href="https://zcfly1992.github.io/_GcDUwqFHG/" class="post-tag">
+                  # ACES
+                </a>
+              
+                <a href="https://zcfly1992.github.io/NcPgcQE9Gqz/" class="post-tag">
+                  # OCIO
+                </a>
+              
+                <a href="https://zcfly1992.github.io/UC8oB5Mlnn/" class="post-tag">
+                  # CG Cinematography
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_240_monitor_colorspace_FHD-20241105015121-ocr6glf.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <hr>
+<ul>
+<li>Chapter 1: Color Management - Chris Brejon - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/">https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/</a></li>
+<li>CG Cinematography Color Management is about this beautiful yet annoying and essential topic of gamut. Definitely not the easiest way to start.</li>
+</ul>
+<hr>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p>You cannot talk about Cinematography without addressing the question of Color Management. It is essential to know within which color space you are working and what is your display target. <strong>Chapter 1 and 1.5 are the only technical chapters of the book.</strong>   We will focus on the artistic side in the next chapters. Don’t be scared !</p>
+<p>谈论电影摄影时，不能不谈色彩管理问题。了解您在哪个色彩空间内工作以及您的显示目标是什么至关重要。<strong>第 1 章和 1.5 章是本书仅有的技术章节。</strong>  我们将在接下来的章节中重点介绍艺术方面。不要害怕！</p>
+<blockquote>
+<p>Sure, you could work in full sRGB with no LUT and still get <a href="https://vimeo.com/35309941">a decent result</a>… But, let’s no go down that path.</p>
+<p>当然，您可以在没有 LUT 的完全 sRGB 模式中工作，并且仍然可以获得<a href="https://vimeo.com/35309941">不错的结果</a>...但是，我们不要走这条路。</p>
+</blockquote>
+<p>Yes, color management is a pain in the arse, but it will give you  <strong>strong foundations to build a proper lighting</strong> later on. <strong>Lighting in computer graphics is so connected to technology</strong> that a good understanding of these concepts is important.</p>
+<p>是的，色彩管理很麻烦，但它可以为您以后<strong>构建合适的照明奠定坚实的基础。计算机图形学中的照明与技术密切相关，</strong> 因此很好地理解这些概念非常重要。</p>
+<p>There are some good introductory courses out there such as <a href="https://cinematiccolor.org/">Cinematic Color</a>, but it is always a bit frustrating for me to get lost in mathematic formulas at page 9 ! So I have tried to keep this chapter as simple and artist-friendly as I could. Thanks for reading !</p>
+<p>有一些不错的入门课程，例如<a href="https://cinematiccolor.org/">电影色彩</a>，但我总是在第 9 页迷失在数学公式中，这有点令人沮丧！所以我尽量让这一章尽可能简单和艺术家友好。谢谢阅读！</p>
+<blockquote>
+<p>If you don’t feel like starting by a technical chapter,   <strong>I don’t blame you.</strong>   You can skip directly to <a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/">chapter 2</a>.</p>
+<p>如果你不想从技术章节开始，<strong>我不会责怪你。</strong> 你可以直接跳到<a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/">第 2 章</a>。</p>
+<p>But maybe it is worth the effort…</p>
+<p>但也许这是值得的……</p>
+</blockquote>
+<h3 id="第一个也是最重要的决定-the-first-and-most-important-decision">第一个也是最重要的决定 The first and most important decision</h3>
+<p>Based on my experience, the choice of a Color Management Workflow (CMW) is the first decision to make when you start a project. Because, every single artistic decision will be based on this choice :</p>
+<p>根据我的经验，选择色彩管理工作流程 (CMW) 是启动项目时要做的第一个决定。因为，每一个艺术决定都将基于这个选择：</p>
+<ul>
+<li>反照率值 Albedo values</li>
+<li>灯光的曝光 Lights’ exposures</li>
+<li>外观开发（纹理和表面处理） Look development (texturing and surfacing)</li>
+</ul>
+<p>The trailer below is an example of thousands of hours of hard work by hundreds of artists that got wasted by wrong color management. Look at the lava, it is clamped !</p>
+<p>下面的预告片就是数百名艺术家数千小时的辛勤工作因错误的色彩管理而白费的例子。看看熔岩，它被夹住了！</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Wonder%20Park%202019%20-%20New%20Trailer%20-%20Paramount%20Pictures-20241114143654-caywenl.mp4" data-src=""></video></p>
+<h3 id="引言-introductory-quote">引言 Introductory Quote</h3>
+<p>Some of my data comes from <a href="https://www.colour-science.org/posts/the-importance-of-terminology-and-srgb-uncertainty/">this article</a> by ​<strong>Thomas Mansencal</strong>​. As it is a bit technical, I have tried to simplify it for readers who are not familiar with this topic. Let’s start with this great quote from <strong><a href="http://www.rit-mcsl.org/fairchild/PDFs/MDFcv.pdf">Mark D. Fairchild</a></strong> :</p>
+<p>我的部分数据来自 <strong>Thomas Mansencal</strong> 的<a href="https://www.colour-science.org/posts/the-importance-of-terminology-and-srgb-uncertainty/">这篇文章</a>。由于它有点技术性，我试图为不熟悉这个主题的读者简化它。让我们从 <strong><a href="http://www.rit-mcsl.org/fairchild/PDFs/MDFcv.pdf">Mark D. Fairchild</a></strong> 的这句名言开始：</p>
+<blockquote>
+<p>“Why should it be particularly difficult to agree upon consistent terminology in the field of color appearance ? Perhaps the answer lies in the very nature of the subject. Almost everyone knows what color is. After all, they have had firsthand experience of it since shortly after birth. However, very few can precisely describe their color experiences or even precisely define color.”</p>
+<p>“为什么在色彩外观领域就很难达成一致的术语？也许答案就在于这个主题的本质。几乎每个人都知道颜色是什么。毕竟，他们从出生后不久就拥有了第一手的色彩体验。然而，很少有人能准确描述他们的色彩体验，甚至准确定义色彩。”</p>
+</blockquote>
+<h2 id="视觉错觉-optical-illusions">视觉错觉 Optical Illusions</h2>
+<p>There are three things to take in account when we talk about color :</p>
+<p>当我们谈论颜色时，有三件事需要考虑：</p>
+<ul>
+<li>眼睛 The eye</li>
+<li>大脑 The brain</li>
+<li>主题 The subject</li>
+</ul>
+<p>Here are a few examples that will show you that our brain can be easily tricked and that we should speak about color with humility.</p>
+<p>这里有几个例子可以告诉你我们的大脑很容易被欺骗，我们应该谦虚地谈论颜色。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_010_optical_illusions_FHD-20241105015121-fhmd8ix.jpg" alt="" title="We'll start easy with this illusion. The gray bar across the center is actually one constant color ! 我们先从这个幻觉开始。中心的灰色条实际上是一种恒定的颜色！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_020_optical_illusions_FHD-20241105015121-rie3za3.jpg" alt="" title="First example is called the Checker Shadow Illusion or the Adelson's Same Color Illusion.  第一个例子被称为棋盘阴影错觉或阿德尔森的相同颜色错觉。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_030_optical_illusions_FHD-20241105015121-xkg121o.jpg" alt="" title="Yes, A and B have the same values ! We expect the cylinder to cast a shadow on the checkerboard and we compensate for the shadow we assume has been created by the cylinder.  是的，A 和 B 具有相同的值！我们预计圆柱体会在棋盘上投下阴影，并且我们会补偿我们假设由圆柱体产生的阴影。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_040_optical_illusions_FHD-20241105015121-m2et717.jpg" alt="" title="Can you guess this one ?  你能猜出这个吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_050_optical_illusions_FHD-20241105015121-fytdy58.jpg" alt="" title="Yep, that's the same color !  是的，是相同的颜色！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_060_optical_illusions_FHD-20241105015121-74oraym.jpg" alt="" title="And yes, that is twice the same dog ! The yellow to blue gradient in the background completely messes with our perception. Freaky, right ?  是的，这是两只相同的狗！背景中从黄色到蓝色的渐变完全扰乱了我们的感知。很奇怪，对吧？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_070_optical_illusions_FHD-20241105015121-rw2eva9.jpg" alt="" title="You can find plenty of optical illusions on internet. I was astonished on how easy it was to trick me !  你可以在互联网上找到大量的视觉错觉。我很惊讶它们竟然如此轻易地欺骗了我！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_080_optical_illusions_FHD-20241105015121-qcj5f4n.jpg" alt="" title="Amazing optical illusion from David Novick ! All the spheres are actually the same brown color... Crazy !  大卫·诺维克令人惊叹的视错觉！所有球体实际上都是相同的棕色……太疯狂了！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_090_grey_blue_stripe_FHD-20241105015121-mu1x1oy.gif" alt="" title="Animated illusions are pretty fun as well. If you look at the dot in the right corner, the moving stripe will go blue. Astounding !  动画幻象也很有趣。如果你看右上角的点，移动的条纹会变成蓝色。令人震惊！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_100_pink_dots_FHD-20241105015121-uqzy7hf.gif" alt="" title="Look at the cross in the center... The moving dot gets green !  看看中心的十字架......移动的点变成绿色！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_110_optical_illusions_FHD-20241105015121-el4qu9i.jpg" alt="" title="A proof that color is still very debatable, even on social networks. Is the dress blue or white ? This last example really shows that color is still a trending topic.  这证明颜色仍然是一个备受争议的话题，即使在社交网络上也是如此。这件裙子是蓝色的还是白色的？最后一个例子确实表明颜色仍然是一个热门话题。" loading="lazy">​</p>
+<p>You can find plenty of  <a href="https://nerdist.com/5-optical-illusions-that-show-you-why-your-brain-messes-with-the-dress/">optical</a>  illusions on internet, like our last example : is  <a href="https://www.nytimes.com/interactive/2015/02/28/science/white-or-blue-dress.html">the dress blue or white</a>  ?</p>
+<p>您可以在互联网上找到大量的<a href="https://nerdist.com/5-optical-illusions-that-show-you-why-your-brain-messes-with-the-dress/">视觉</a>错觉，例如我们的最后一个例子：<a href="https://www.nytimes.com/interactive/2015/02/28/science/white-or-blue-dress.html">这件衣服是蓝色的还是白色的</a>？</p>
+<p>The Dress has also been  <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/col.21966">studied by scientists</a>  !</p>
+<p>这件连衣裙还被<a href="https://onlinelibrary.wiley.com/doi/full/10.1002/col.21966">科学家研究</a>过！</p>
+<h2 id="人类视觉系统-hvs-human-visual-system-hvs">人类视觉系统 (HVS) Human Visual System (HVS)</h2>
+<h3 id="人眼-the-human-eye">人眼 The human eye</h3>
+<p>First thing to know is that <strong>the</strong> <strong><a href="https://www.webmd.com/eye-health/amazing-human-eye">human eye</a></strong> <strong>is an incredibly complex and advanced technology.</strong>    We are poorly trying to replicate its reconstruction process with cameras and screens. <strong><a href="https://www.nkcf.org/about-keratoconus/how-the-human-eye-works/">How does it work ?</a></strong></p>
+<p>首先要知道的是，<strong><a href="https://www.webmd.com/eye-health/amazing-human-eye">人眼</a>**<strong>是一种极其复杂和先进的技术。</strong> 我们正试图用相机和屏幕复制其重建过程。</strong><a href="https://www.nkcf.org/about-keratoconus/how-the-human-eye-works/">它是如何工作的？</a>**</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_120_eye_retina_FHD-20241105015121-odklr8k.jpg" alt="" title="I have copied most of this text from the websites linked above. 我从上面链接的网站复制了大部分文字。" loading="lazy">​</p>
+<blockquote>
+<p>The cornea is the clear, transparent front covering which admits light. Its refractive power bends the light rays in such a way that they pass freely through the pupil. <strong>The pupil is the opening in the center of the iris and works like a shutter in a camera.</strong>  It is an adjustable opening that controls the intensity of light permitted to strike the crystalline lens. It has the ability to enlarge and shrink, depending on how much light is entering the eye.</p>
+<p>角膜是透明的前部覆盖物，可透光。角膜的折射能力使光线弯曲，使其自由穿过瞳孔。<strong>瞳孔是虹膜中心的开口，其作用类似于相机中的快门。</strong> 瞳孔是一个可调节的开口，可控制允许照射到晶状体的光线强度。它可以根据进入眼睛的光线量扩大或缩小。</p>
+<p>After passing through the iris, the light rays pass thru the eye’s natural crystalline lens. <strong>This clear, flexible structure works like the lens in a camera,</strong>  shortening and lengthening its width in order to focus light rays properly. The crystalline lens focuses light through the vitreous humor, a dense, transparent gel-like substance,that fills the globe of the eyeball and supports the retina.</p>
+<p>光线穿过虹膜后，会穿过眼睛的天然晶状体。<strong>这种透明、灵活的结构就像照相机中的镜头一样，</strong> 可以缩短和延长其宽度，以便正确聚焦光线。晶状体通过玻璃体聚焦光线，玻璃体是一种致密、透明的凝胶状物质，充满眼球并支撑视网膜。</p>
+<p><strong>The retina functions much like the film in a camera.</strong>  It receives the image that the cornea focuses through the eye’s internal lens and transforms this image into electrical impulses that are carried by the optic nerve to the brain. Retinas are made of <strong>photoreceptors,</strong>  which come in two kinds :  <strong>rods and cones.</strong></p>
+<p><strong>视网膜的功能与照相机中的胶卷非常相似。</strong> 它接收角膜通过眼睛内部晶状体聚焦的图像，并将该图像转换为电脉冲，由视神经传送到大脑。视网膜由<strong>光感受器组成，</strong> 光感受器有两种：<strong>视杆细胞和视锥细胞。</strong></p>
+<p>We will come back to rods and cones <a href="https://chrisbrejon.com/chapter-4-light-categories/#Moon">later</a>.</p>
+<p><a href="https://chrisbrejon.com/chapter-4-light-categories/#Moon">我们稍后</a>会回顾视杆细胞和视锥细胞。</p>
+</blockquote>
+<h3 id="虾蛄的眼睛-the-mantis-shrimp-eye"><strong>虾蛄</strong>的眼睛 The mantis shrimp eye</h3>
+<p>I thought it was interesting to discuss the human eye with the creator of <a href="http://guerillarender.com/">Guerilla Render</a>, <strong>Benjamin Legros</strong>, who actually explained to me : <strong>our eyes actually only see in red, green and blue.</strong>  They are crap !</p>
+<p>我认为与 <a href="http://guerillarender.com/">Guerilla Render</a> 的创建者 <strong>Benjamin Legros</strong> 讨论人眼很有趣，他实际上向我解释说：<strong>我们的眼睛实际上只能看到红色、绿色和蓝色。</strong> 它们是垃圾！</p>
+<p>Nothing compared to the <a href="https://en.wikipedia.org/wiki/Mantis_shrimp">mantis shrimp</a>. Here are some pretty amazing eyes : they have twelve photoreceptors, when humans only have three ! It can even see UV and Infrared, like the Predator ! I really liked this original take on our trichromatic system.</p>
+<p><a href="https://en.wikipedia.org/wiki/Mantis_shrimp">虾蛄</a>简直是小巫见大巫。螳螂虾的眼睛真是太神奇了：它们有 12 个光感受器，而人类只有 3 个！螳螂虾甚至能像捕食者一样看到紫外线和红外线！我真的很喜欢这种对我们三色系统的原创看法。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_130_mantis_shrimp_FHD-20241105015121-43oahue.jpg" alt="" title="Introducing the Mantis Shrimp !  介绍虾蛄！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_140_mantis_shrimp_FHD-20241105015121-3n0p13t.jpg" alt="" title="A close-up just for the beauty of it...  特写镜头只是为了展现它的美丽……" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_150_mantis_shrimp_FHD-20241105015121-esnsar1.jpg" alt="" title="Killer eyes, just like the Predator !  凶狠的眼神，就像铁血战士一样！" loading="lazy">​</p>
+<p>Mantis shrimp is a reference for color scientists.</p>
+<p>螳螂虾是色彩学家的参考。</p>
+<blockquote>
+<p><em><strong>Mantis shrimps</strong></em>​ <em>,</em>  or <em><strong>stomatopods</strong></em>, are marine <a href="https://en.wikipedia.org/wiki/Crustacean">crustaceans</a> of the <a href="https://en.wikipedia.org/wiki/Order_(biology)">order</a> <em><strong>Stomatopoda</strong></em>​ <em>.</em>  They are among the most important <a href="https://en.wikipedia.org/wiki/Predation">predators</a> in many shallow, <a href="https://en.wikipedia.org/wiki/Tropics">tropical</a> and <a href="https://en.wikipedia.org/wiki/Subtropics">subtropical</a> marine <a href="https://en.wikipedia.org/wiki/Habitat">habitats</a>. However, despite being common, they are poorly understood, as many species spend most of their lives tucked away in burrows and holes.</p>
+<p><strong>虾蛄</strong>，又名 <strong>口足目</strong>，是 <strong>口足</strong>​<a href="https://en.wikipedia.org/wiki/Order_(biology)">目</a>海洋<a href="https://en.wikipedia.org/wiki/Crustacean">甲壳动物</a>。它们是 许多浅水、 <a href="https://en.wikipedia.org/wiki/Tropics">热带</a> 和 <a href="https://en.wikipedia.org/wiki/Subtropics">亚热带</a> 海洋 <a href="https://en.wikipedia.org/wiki/Habitat">栖息地</a>中最重要的 <a href="https://en.wikipedia.org/wiki/Predation">捕食者</a>之一。然而，尽管它们很常见，但人们对它们的了解却很少，因为许多种类的虾蛄一生中大部分时间都藏在洞穴中。</p>
+</blockquote>
+<h3 id="人类的大脑-the-human-brain">人类的大脑 The human brain</h3>
+<p>Our brain has also an important part in our Visual System. It is responsible for managing all this data. When the image hits the retina,  <strong>it is actually upside down.</strong>  The brain put its back correctly :</p>
+<p>我们的大脑在视觉系统中也占有重要地位。它负责管理所有这些数据。当图像到达视网膜时，<strong>它实际上是颠倒的。</strong> 大脑正确地将其背面朝上：</p>
+<blockquote>
+<p>What we really see is our mind’s reconstruction of objects based on input provided by the eyes, not the actual light received by our eyes.</p>
+<p>我们真正看到的是我们的大脑根据眼睛提供的输入对物体的重建，而不是我们眼睛实际接收到的光线。</p>
+<p>-- From <a href="https://www.cambridgeincolour.com/tutorials/cameras-vs-human-eye.htm">this article.</a> 出自<a href="https://www.cambridgeincolour.com/tutorials/cameras-vs-human-eye.htm">本文。</a></p>
+</blockquote>
+<h2 id="什么是光-what-is-light">什么是光？ What is light ?</h2>
+<p>To define color, you must first define light because <strong>no color is perceptible without light.</strong></p>
+<p>要定义颜色，首先必须定义光，因为<strong>没有光就无法感知任何颜色。</strong></p>
+<ul>
+<li><a href="https://simple.wikipedia.org/wiki/Light">光是</a>一种能量。 <a href="https://simple.wikipedia.org/wiki/Light">Light</a> is a type of energy.</li>
+<li>光能以波的形式传播。 Light energy travels in waves.</li>
+</ul>
+<p>Some light travels in short, “choppy” waves. Other light travels in long, lazy waves. <strong>Blue</strong> light waves are shorter than <strong>red</strong> light waves.</p>
+<p>有些光以短而“断断续续”的波传播。其他光则以长而缓慢的波传播。<span data-type="text" id="" style="color: var(--b3-font-color3);">蓝</span>光波比<strong>红</strong>光波短。</p>
+<blockquote>
+<p>From <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a> : a study of color science begins with the spectrum. One measures light energy as a function of wavelengths. […] Light towards the middle of this range (yellow-green) is perceived as being most luminous.</p>
+<p>摘自<a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">电影色彩</a>：色彩科学的研究始于光谱。人们测量光能作为波长的函数。[…] 位于该范围中间（黄绿色）的光被认为是最明亮的。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_160_visible_wave_FHD-20241105015121-dkdzp8y.jpg" alt="" loading="lazy">​</p>
+<p><a href="https://en.wikipedia.org/wiki/Light">Light</a> is an electromagnetic radiation which is visible to the human eye.</p>
+<p><a href="https://en.wikipedia.org/wiki/Light">光是</a>人眼可见的电磁辐射。</p>
+<p>All light travels in a straight line unless something gets in the way and does one of these things :</p>
+<p>所有光都沿直线传播，除非有东西阻挡并发生以下情况之一：</p>
+<ul>
+<li><strong>反射</strong>它（像镜子一样）。 <strong>Reflect</strong> it (like a mirror).</li>
+<li><strong>使其折射</strong>（像棱镜一样弯曲）。 <strong>Refract</strong> it (bend like a prism).</li>
+<li><strong>将其散射</strong>（就像大气中的气体分子一样）。 <strong>Scatter</strong> it (like molecules of the gases in the atmosphere).</li>
+</ul>
+<blockquote>
+<p>We could also add <a href="https://en.wikipedia.org/wiki/Diffraction">Diffraction</a> to this list, even if it looks like a more complex phenomenon.</p>
+<p>我们还可以把<a href="https://en.wikipedia.org/wiki/Diffraction">衍射</a>添加到这个列表中，即使它看起来是一个更复杂的现象。</p>
+</blockquote>
+<p><strong>Light is the source of all colors.</strong> <span data-type="text" id="" style="color: var(--b3-font-color8);"> </span>It is actually stunning how important light is in our lives. <strong>When a lemon appears yellow, it is because its surface reflects the yellow color rather than because it is really yellow.</strong>  It has confused me a lot in the past but <a href="https://en.wikipedia.org/wiki/Pigment">pigments</a> appear colored because they selectively reflect and absorb certain wavelengths of <a href="https://en.wikipedia.org/wiki/Light">visible light.</a></p>
+<p><strong>光是所有颜色的来源。</strong> 光在我们生活中的重要性令人震惊。<strong>柠檬呈黄色，是因为它的表面反射了黄色，而不是因为它本身就是黄色。</strong> 过去我对此感到很困惑，但<a href="https://en.wikipedia.org/wiki/Pigment">色素</a>之所以呈彩色，是因为它们选择性地反射和吸收某些波长的<a href="https://en.wikipedia.org/wiki/Light">可见光。</a></p>
+<p>Most of these notions come from <em>Wikipedia</em> and you can find plenty of <a href="https://spaceplace.nasa.gov/blue-sky/en/">articles</a> on this topic online. Here is a more technical description :</p>
+<p>这些概念大部分来自​<em>维基百科</em>​，你可以在网上找到大量关于这个主题的<a href="https://spaceplace.nasa.gov/blue-sky/en/">文章</a>。以下是更技术性的描述：</p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Light">Light</a> is an electromagnetic radiation which is visible to the human eye. Visible light is usually defined as having wavelengths in the range of 400-700 nanometres between the infrared (with longer wavelengths) and the ultraviolet (with shorter wavelengths). These waves are made of <a href="https://en.wikipedia.org/wiki/Photon">photons</a>.</p>
+<p><a href="https://en.wikipedia.org/wiki/Light">光</a>是人眼可见的电磁辐射。可见光通常定义为波长介于红外线（波长较长）和紫外线（波长较短）之间的 400-700 纳米范围内的光。这些波由<a href="https://en.wikipedia.org/wiki/Photon">光子</a>组成。</p>
+</blockquote>
+<h2 id="从光到色-from-light-to-colour">从光到色 From Light to Colour</h2>
+<p>So how do we go from Light Spectra to Colour ? I cannot explain the Color Matching Functions more clearly than ​<strong>Jeremy Selan</strong>​, so I’ll just quote him :</p>
+<p>那么我们如何从光谱到颜色呢？我无法比 <strong>Jeremy Selan</strong> 更清楚地解释配色函数，所以我只引用他的话：</p>
+<blockquote>
+<p>The human visual system […] is trichromatic. Thus, color can be fully specified as a function of three variables. Through a series of perceptual experiments, the color community has derived three curves, the CIE1931 color matching functions, which allow for <strong>the conversion of spectral energy into a measure of color.</strong></p>
+<p>人类的视觉系统 […] 是三色的。因此，颜色可以完全指定为三个变量的函数。通过一系列感知实验，色彩界得出了三条曲线，即 CIE1931 色彩匹配函数，这些曲线允许将<strong>光谱能量转换为颜色的度量。</strong></p>
+<p>--  来自令人惊叹的*<a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">电影色彩</a>*。 From the amazing <em><a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a></em>.</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_170_color_matching_functions_FHD-20241105015121-rvhebxq.jpg" alt="" loading="lazy">​</p>
+<p>The CIE 1931 Color Matching Functions convert spectral energy distributions into a measure of color, XYZ. XYZ predicts if two spectral distributions appear identical to an average human observer. […] When you integrate a spectral power distribution with CIE 1931 curves, the output is referred to as CIE XYZ <a href="https://www.hunterlab.com/blog/color-measurement-2/understanding-tristimulus-values-taking-guesswork-color-measurement-instrumentation/">tristumulus values</a>.</p>
+<p>CIE 1931 色彩匹配函数将光谱能量分布转换为色彩度量 XYZ。XYZ 预测两个光谱分布在普通人类观察者眼中是否相同。[…] 当您将光谱功率分布与 CIE 1931 曲线相积分时，输出称为 CIE XYZ <a href="https://www.hunterlab.com/blog/color-measurement-2/understanding-tristimulus-values-taking-guesswork-color-measurement-instrumentation/">三色值</a>。</p>
+<p><a href="https://en.wikipedia.org/wiki/Metamerism_(color)">Metarism</a> is at the base of everything.</p>
+<p><a href="https://en.wikipedia.org/wiki/Metamerism_(color)">同色异谱</a>是一切事物的基础。</p>
+<p>It has taken me a while to connect the dots and I do not think I could have figured this out without this amazing diagram from <a href="https://hg2dc.com/2020/01/07/question-16/">hg2dc.com</a> :</p>
+<p>我花了一段时间才把这些点联系起来，如果没有 <a href="https://hg2dc.com/2020/01/07/question-16/">hg2dc.com</a> 上的这张令人惊叹的图表，我想我不可能弄清楚这一点：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_175_diagramme_recap_FHD-20241105015121-xsf5dy2.jpg" alt="" loading="lazy">​</p>
+<p>When one converts all possible spectra into x,y,Y space and plots x,y they fall into  <strong>a horse-shoe shaped</strong> region on the chromaticity chart.</p>
+<p>当将所有可能的光谱转换到 x、y、Y 空间并绘制 x、y 时，它们会落入色度图上的<strong>马蹄形区域。</strong></p>
+<p>Let’s recap ! So far we have seen that :</p>
+<p>让我们回顾一下！到目前为止，我们已经看到：</p>
+<ul>
+<li>We, poor humans, can be tricked very easily.</li>
+<li>我们这些可怜的人类，很容易被欺骗。</li>
+<li>The Human Visual System (HVS) is incredibly complex.</li>
+<li>人类视觉系统 (HVS) 极其复杂。</li>
+<li>Light and Colour are two inseparable subjects.</li>
+<li>光与色是两个不可分割的主题。</li>
+<li>Spectral wavelengths got “converted” to Chromaticity Diagrams (the horse-shoe shape) for the first time in 1931.</li>
+<li>1931 年，光谱波长首次“转换”为色度图（马蹄形）。</li>
+</ul>
+<h2 id="1931-年和-1976-年的-cie-色度图-the-cie-chromaticity-diagrams-from-1931-and-1976">1931 年和 1976 年的 CIE 色度图 The CIE Chromaticity Diagrams from 1931 and 1976</h2>
+<p>The <em><a href="https://en.wikipedia.org/wiki/CIE_1931_color_space">CIE XYZ</a></em> is a Chromaticity Diagram defined by the <em><a href="https://en.wikipedia.org/wiki/International_Commission_on_Illumination">International Commission on Illumination</a></em> (<em>CIE</em>) in 1931. It is the first step to <strong>describe colors based on human vision.</strong></p>
+<p>CIE <em><a href="https://en.wikipedia.org/wiki/CIE_1931_color_space">XYZ 是</a><em>​</em><a href="https://en.wikipedia.org/wiki/International_Commission_on_Illumination">国际照明委员会</a></em>( <em>CIE</em> ) 于 1931 年定义的色度图。它是<strong>根据人类视觉描述颜色的</strong>第一步。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_180_diagramme_CIE_FHD-20241105015121-wf2xvbc.jpg" alt="" title="The two main CIE diagrams from 1931 and 1976.
+1931 年和 1976 年的两张主要 CIE 图表。" loading="lazy">​</p>
+<p><em>CIE</em> scientists met in 1931 to represent the colors as we see them. The <em>CIE XYZ</em> chromaticity diagram was born ! They met 45 years later to improve it : <em>CIE U’V’</em>  was created. Even if the <em>CIE U’V’</em>  from 1976 is <a href="https://hg2dc.com/2020/01/01/question-15/">a more “perceptually uniform” variation</a>, the one from 1931 is still the most used in the color community. <strong>Old habits die hard.</strong></p>
+<p><em>CIE</em> 科学家于 1931 年开会，以表示我们看到的颜色。CIE <em>XYZ</em> 色度图诞生了！45 年后，他们开会对其进行了改进：创建了 <em>CIE U'V'</em> 。即使 1976 年的 <em>CIE U'V'</em> 是<a href="https://hg2dc.com/2020/01/01/question-15/">一种更“感知统一”的变体</a>，1931 年的版本仍然是色彩界最常用的。<strong>旧习难改。</strong></p>
+<blockquote>
+<p>The research of David L. MacAdam (1942) showed that the CIE 1931 xy chromaticity diagram did not offer perceptual uniformity. What this means is that the relation between the  measurable chromaticity of a color and the error margin in observation, was not  consistent within the CIE 1931 xy chromaticity diagram.</p>
+<p>David L. MacAdam (1942) 的研究表明，CIE 1931 xy 色度图不提供感知一致性。这意味着，在 CIE 1931 xy 色度图中，颜色的可测量色度与观察误差范围之间的关系并不一致。</p>
+<p>-- From <a href="https://www.tftcentral.co.uk/articles/pointers_gamut.htm">this amazing article</a>.<br>
+来自<a href="https://www.tftcentral.co.uk/articles/pointers_gamut.htm">这篇令人惊奇的文章</a>。</p>
+</blockquote>
+<p>Here are two important notions about Chromaticity Diagrams :</p>
+<p>以下是有关色度图的两个重要概念：</p>
+<ul>
+<li>These chromaticity diagrams are <strong>the visualization of all chromaticities perceivable by the human eye.</strong></li>
+<li>这些色度图是<strong>人眼可感知的所有色度的可视化。</strong></li>
+<li>2 axis are available to give <strong>each chromaticity an unique coordinate on this diagram.</strong></li>
+<li>该图上有 2 个轴可用于为<strong>每个色度提供唯一的坐标。</strong></li>
+</ul>
+<blockquote>
+<p>From <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a> : the region inside the horse-shoe represents allpossible integrated color spectra; the region outside does not correspond to physically-possible colors.</p>
+<p>来自<a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">电影色彩</a>：马蹄铁内部的区域代表所有可能的综合色谱；外部区域并不对应物理上可能的颜色。</p>
+<p>-- Horseshoe or tongue shaped area. It really depends. It could be a windsurf sail as well.<br>
+马蹄形或舌形区域。这确实取决于情况。它也可能是风帆。</p>
+</blockquote>
+<p>The <em>CIE XYZ</em> serves as a standard reference against which many other color spaces are defined. Keep these diagrams in mind because we are going to constantly refer to them later on.</p>
+<p>CIE <em>XYZ</em> 是许多其他色彩空间定义的标准参考。记住这些图表，因为我们以后会经常参考它们。</p>
+<h3 id="色度还是颜色-chromaticity-or-color">色度还是颜色？ Chromaticity or Color ?</h3>
+<p>At this point, you may ask yourself : what is the difference between a Chromaticity and a Color ? It is a proper question. Basically, every time we mention the terms “Color” or “Hue”, we enter the field of “<em>perception</em>“. This means that a color only exists when it is perceived by a human being (or what we call a “<em>Standard Observer</em>“).</p>
+<p>此时，您可能会问自己：色度和颜色之间有什么区别？这是一个正确的问题。基本上，每次我们提到“颜色”或“色调”这些术语时，我们都会进入“<em>感知</em>”领域。这意味着颜色只有当它被人类（或我们所谓的“<em>标准观察者</em>”）感知时才存在。</p>
+<p>On the other hand, a chromaticity is a stimulus. It does not include any notion of someone looking at it and perceiving something. And yes, as you have probably guessed, <strong>the same stimulus can generate four different perceived colours.</strong>  It is demonstrated very clearly in <a href="https://dl.acm.org/doi/10.1145/3214834.3214846">this Siggraph 2018 course</a>.</p>
+<p>另一方面，色度是一种刺激。它不包括任何人看着它并感知到某物的概念。是的，正如您可能已经猜到的那样，<strong>相同的刺激可以产生四种不同的感知颜色</strong><a href="https://dl.acm.org/doi/10.1145/3214834.3214846">。这在 Siggraph 2018 课程</a>中得到了非常清晰的展示。</p>
+<p>Interestingly enough, <a href="https://cie.co.at/">the Commission internationale de I’Eclairage (CIE)</a> does list <a href="https://cie.co.at/eilvterm/17-23-001">two</a> <a href="https://cie.co.at/eilvterm/17-22-040">entries</a> to the word “colour” :</p>
+<p>有趣的是，<a href="https://cie.co.at/">国际照明委员会 (CIE)</a>确实列出了“colour”一词的<a href="https://cie.co.at/eilvterm/17-23-001">两个</a> <a href="https://cie.co.at/eilvterm/17-22-040">条目：</a></p>
+<ul>
+<li><strong>colour</strong>, &lt;psychophysical&gt; : specification of a <a href="https://cie.co.at/eilvterm/17-23-002">colour stimulus</a> in terms of operationally defined values, such as three <a href="https://cie.co.at/eilvterm/17-23-038">tristimulus values</a>.</li>
+<li><strong>颜色</strong>，&lt; 心理物理 &gt;：根据操作定义的值来指定<a href="https://cie.co.at/eilvterm/17-23-002">颜色刺激，例如三个</a>​<a href="https://cie.co.at/eilvterm/17-23-038">三色刺激值</a>。</li>
+<li><strong>colour</strong>, &lt;perceptual&gt; : characteristic of <a href="https://cie.co.at/eilvterm/17-22-082">visual perception</a> that can be described by attributes of <a href="https://cie.co.at/eilvterm/17-22-067">hue</a>, <a href="https://cie.co.at/eilvterm/17-22-059">brightness</a> (or <a href="https://cie.co.at/eilvterm/17-22-063">lightness</a>) and <a href="https://cie.co.at/eilvterm/17-22-072">colourfulness</a> (or <a href="https://cie.co.at/eilvterm/17-22-073">saturation</a> or <a href="https://cie.co.at/eilvterm/17-22-074">chroma</a>).</li>
+<li>**颜色，&lt;感知&gt;：**​<a href="https://cie.co.at/eilvterm/17-22-082">视觉感知</a>的特征，可以用<a href="https://cie.co.at/eilvterm/17-22-067">色调</a>、<a href="https://cie.co.at/eilvterm/17-22-059">亮度</a>（或<a href="https://cie.co.at/eilvterm/17-22-063">明度</a>）和<a href="https://cie.co.at/eilvterm/17-22-072">色度</a>（或<a href="https://cie.co.at/eilvterm/17-22-073">饱和度</a>或<a href="https://cie.co.at/eilvterm/17-22-074">色度</a>）的属性来描述。</li>
+</ul>
+<h2 id="rgb-颜色空间及其组成部分-rgb-color-space-and-its-components">RGB 颜色空间及其组成部分 RGB Color space and its components</h2>
+<p>An RGB color space is composed of all the colors available in our workspace. It is defined by three components :</p>
+<p>RGB 颜色空间由我们工作区中可用的所有颜色组成。它由三个组件定义：</p>
+<ul>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#Primaries">Primaries</a> <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#Primaries">初选</a></li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#Whitepoint">Whitepoint</a> <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#Whitepoint">白点</a></li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#Transfer">Transfer functions</a> <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#Transfer">传递函数</a></li>
+</ul>
+<p>This is what an RGB color space looks like :</p>
+<p>RGB 颜色空间如下：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_190_rgb_colorspace_HD-20241105015121-88blsxk.gif" alt="" loading="lazy">​</p>
+<p>This screenshot comes from <a href="https://www.colour-science.org/">colour-science</a>.</p>
+<p>该截图来自 <a href="https://www.colour-science.org/">colour-science</a>。</p>
+<p>On the image above, there are three important things to notice :</p>
+<p>在上图中，有三件重要的事情需要注意：</p>
+<ul>
+<li><strong>RGB color spaces actually exist in the 3D space</strong>  (screen left).</li>
+<li><strong>RGB 颜色空间实际上存在于 3D 空间中</strong>（屏幕左侧）。</li>
+<li>To make it easier to visualize, we generally only use a 2D slice like a Top view (bottom screen right). In this example you can see the Rec. 709 color space against the CIE 1931 diagram.</li>
+<li>为了便于直观显示，我们通常只使用 2D 切片，如顶视图（右下角屏幕）。在此示例中，您可以看到 Rec. 709 色彩空间与 CIE 1931 图表的对比。</li>
+<li>Notice the black points ? They represent the pixel values of the image (top screen right) within an RGB color space (in this case Rec. 709). It is called to <strong>plot the gamut.</strong></li>
+<li>注意到黑点了吗？它们代表 RGB 色彩空间（本例中为 Rec. 709）内图像（屏幕右上方）的像素值。它被称为<strong>绘制色域。</strong></li>
+</ul>
+<h3 id="初选-primaries">初选 Primaries</h3>
+<blockquote>
+<p>“The primaries chromaticity coordinates define the gamut (the triangle of colors) that can be encoded by a given RGB color space.”</p>
+<p>“原色色度坐标定义了可由给定 RGB 颜色空间编码的色域（颜色三角形）。”</p>
+</blockquote>
+<p><strong>In other words, the primaries are the vertices of the triangle.</strong>  We are going to complicate things a bit… Pay attention ! Each of these vertices has <strong>a pure RGB value</strong> expressed in their own color space :</p>
+<p><strong>换句话说，原色是三角形的顶点。</strong>  我们要把事情复杂化一点……注意！每个顶点都有<strong>一个纯 RGB 值，</strong> 用它们自己的颜色空间来表示：</p>
+<ul>
+<li>Red 红色 = 1, 0, 0</li>
+<li>Green 绿色 = 0, 1, 0</li>
+<li>Blue 蓝色 = 0, 0, 1</li>
+</ul>
+<p>But each of these vertices has <strong>an unique xy coordinate</strong> on the CIE diagram. That is how we are able to compare them. The only way to define a color (independently from its luminance) in an universal way is to give its xy coordinates.</p>
+<p>但这些顶点中的每一个在 CIE 图上都有<strong>一个唯一的 xy 坐标</strong>。这就是我们能够比较它们的方式。以通用方式定义颜色（独立于其亮度）的唯一方法是给出其 xy 坐标。</p>
+<p>In <a href="https://en.wikipedia.org/wiki/RGB_color_space">this chart</a>, you can see the coordinates for different color spaces :</p>
+<p><a href="https://en.wikipedia.org/wiki/RGB_color_space">在此图表</a>中，您可以看到不同颜色空间的坐标：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_200_primaries_FHD-20241105015121-ah4hfla.jpg" alt="" title="These are like the most common RGB color spaces. 这些就像最常见的 RGB 颜色空间。" loading="lazy">​</p>
+<p>For instance, there is nothing more saturated on earth that the BT.2020 primaries or lasers, they are both located on the Spectral Locus (the border of the Chromaticity Diagram). <strong>The closer a chromaticity is to the Spectral Locus, the more saturated it will be.</strong></p>
+<p>例如，世界上没有比 BT.2020 原色或激光更饱和的东西了，它们都位于光谱轨迹（色度图的边界）。<strong>色度越接近光谱轨迹，饱和度就越高。</strong></p>
+<p>Here is table of conversion of some primaries to illustrate this relationship :</p>
+<p>这里是一些原色的转换表，用来说明这种关系：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sRGB/BT.709 RGB values</th>
+<th>Rec.2020 RGB values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sRGB/BT.709 red primary</td>
+<td>1, 0, 0</td>
+<td>0.62742, 0.096910, 0.01639</td>
+</tr>
+<tr>
+<td>sRGB/BT.709 green primary</td>
+<td>0, 1, 0</td>
+<td>0.32928, 0.91594, 0.08803</td>
+</tr>
+<tr>
+<td>sRGB/BT.709 blue primary</td>
+<td>0, 0, 1</td>
+<td>0.04331, 0.01136, 0.89559</td>
+</tr>
+<tr>
+<td>BT.2020 red primary</td>
+<td>1.66045, -0.12455, -0.01815</td>
+<td>1, 0, 0</td>
+</tr>
+<tr>
+<td>BT.2020 green primary</td>
+<td>-0.58762, 1.13290, -0.10059</td>
+<td>0, 1, 0</td>
+</tr>
+<tr>
+<td>BT.2020 blue primary</td>
+<td>-0.07284, -0.00835, 1.11874</td>
+<td>0, 0, 1</td>
+</tr>
+</tbody>
+</table>
+<p>This table clearly shows what pixel negative values are : out-of-gamut values. BT.2020 primaries are outside the sRGB/BT.709 gamut.</p>
+<p>该表清楚地显示了像素负值是什么：超出色域的值。BT.2020 原色超出了 sRGB/BT.709 色域。</p>
+<h4 id="初选对比-primaries-comparison">初选对比 Primaries comparison</h4>
+<p>You should clearly see now that the different primaries of each color space (as shown in the image below) :</p>
+<p>现在您应该清楚地看到每个颜色空间的不同原色（如下图所示）：</p>
+<ul>
+<li>Have different xy coordinates. 具有不同的 xy 坐标。</li>
+<li>Have same RGB values. 具有相同的 RGB 值。</li>
+<li>Are different stimuli. 是不同的刺激。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_210_monitor_colorspace_FHD-20241105015121-gvdzyb2.jpg" alt="" title="I used both Chromaticity Diagrams (1931 and 1976) for comparison. 我使用了两张色度图（1931 年和 1976 年）进行比较。" loading="lazy">​</p>
+<h3 id="白点-whitepoint">白点 Whitepoint</h3>
+<blockquote>
+<p>The <a href="https://en.wikipedia.org/wiki/White_point">whitepoint</a> defines the white color for a given RGB color space. Any set of colors lying on the neutral axis passing through the whitepoint, no matter their Luminance, will be neutral to that RGB color space.</p>
+<p><a href="https://en.wikipedia.org/wiki/White_point">白点</a>定义给定 RGB 颜色空间的白色。任何位于通过白点的中性轴上的颜色集，无论其亮度如何，对于该 RGB 颜色空间而言都是中性的。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_220_CIE_Illuminants_D_Series_FHD-20241105015121-avhg6x1.jpg" alt="" title="D65 corresponds roughly to the average midday light in Western Europe. D65 大致相当于西欧的平均正午光照。" loading="lazy">​</p>
+<p>There are different types of white points. For instance, when a white point is supplied with a set of primaries, it is used to balance the primaries. For instance, the sRGB and Rec.2020 color spaces have a White Point of D65. This is part of their intrinsic characteristics.</p>
+<p>白点有多种类型。例如，当为一组原色提供白点时，它会用于平衡原色。例如，sRGB 和 Rec.2020 色彩空间的白点为 D65。这是其固有特性的一部分。</p>
+<p>But a viewing environment will also have a white point which may be the same or different. So there is a notion of a <strong>calibration white point</strong> and <strong>a creative white point.</strong>  An example of where they are different is for digital cinema which is calibrated to the DCI white point, but often movies will use another white point (D60 or D65) as the creative white point.</p>
+<p>但观看环境也会有一个白点，可能相同也可能不同。因此，存在<strong>校准白点</strong>和<strong>创作白点的概念。</strong> 它们不同之处的一个例子是数字电影，数字电影校准为 DCI 白点，但电影通常会使用另一个白点（D60 或 D65）作为创作白点。</p>
+<blockquote>
+<p>The neutral axis is also called the achromatic axis. 中性轴又称为消色差轴。</p>
+</blockquote>
+<p>An RGB color space can have <a href="https://github.com/colour-science/colour-notebooks/blob/master/notebooks/colorimetry/illuminants.ipynb">different whitepoints</a> depending its context usage. It can be a creative choice :</p>
+<p>RGB 颜色空间可以根据其上下文用途具有<a href="https://github.com/colour-science/colour-notebooks/blob/master/notebooks/colorimetry/illuminants.ipynb">不同的白点。 这可能是一个创造性的选择：</a></p>
+<ul>
+<li>
+<p>If you wish to simulate the light quality of a <strong>standard viewing booth,</strong>  choose D50. Selecting a warm color temperature such as D50 will create a warm-colored white.</p>
+<p>如果您希望模拟<strong>标准观景台</strong>的灯光质量，请选择 D50。选择暖色温（如 D50）将产生暖色白色。</p>
+</li>
+<li>
+<p>If you wish to simulate <strong>the quality of daylight at noon,</strong>  choose D65. A higher temperature setting such as D65 will create a white that is slightly cooler.</p>
+<p>如果您希望模拟<strong>中午日光的质量，</strong> 请选择 D65。较高温度设置（如 D65）将产生略冷的白色。</p>
+</li>
+<li>
+<p>If you prefer cooler daylight, choose D75.</p>
+<p>如果您喜欢较冷的日光，请选择 D75。</p>
+</li>
+</ul>
+<h3 id="传输函数oetf-和-eotf-transfer-functions-oetf-and-eotf">传输函数（OETF 和 EOTF） Transfer functions (OETF and EOTF)</h3>
+<blockquote>
+<p>The transfer functions perform the mapping between the linear light components (tristimulus values) and a non-linear R’G’B’ video signal (most of the time for coding optimisation and bandwidth performance).</p>
+<p>传递函数执行线性光分量（三刺激值）和非线性 R'G'B' 视频信号（大部分时间用于编码优化和带宽性能）之间的映射。</p>
+</blockquote>
+<p>Okay. Here things get a bit more complicated… We have seen earlier what the tristimulus values are. But what about coding optimization and bandwidth performance ? Here is the answer :</p>
+<p>好的。这里事情变得有点复杂……我们之前已经看到了三刺激值是什么。但是编码优化和带宽性能呢？答案如下：</p>
+<blockquote>
+<p>From <a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance PBR guide</a> : The Human Visual System (HVS) is <strong>more sensitive to relative differences in darker tones</strong> rather than brighter tones. Because of this, <strong>not using a gamma correction is wastefu****l</strong> as too many bits will be allocated to tonal regions where the HVS cannot distinguish between tones.</p>
+<p>来自 <a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance PBR 指南</a>：人类视觉系统 (HVS)<strong>对较暗色调的相对差异</strong>比较亮色调更敏感。因此，<strong>不使用伽马校正是一种浪费，</strong> 因为太多的位将被分配给 HVS 无法区分色调的色调区域。</p>
+</blockquote>
+<p>Transfer functions (or gamma) help to encode better the bits, thus increasing performance. There are two transfer functions :</p>
+<p>传递函数（或伽马）有助于更好地编码位，从而提高性能。传递函数有两种：</p>
+<ul>
+<li><strong>OETF</strong> : the opto-electronic transfer function, converts linear scene light into the video signal, typically within a camera. When you shoot or scan (for <strong>encoding</strong>).</li>
+<li><strong>OETF</strong>：光电转换函数，将线性场景光转换为视频信号，通常在相机内进行。当您拍摄或扫描（用于<strong>编码</strong>）时。</li>
+<li><strong>EOTF</strong> : electro-optical transfer function, which converts the video signal into the linear light output of the display. When you send a signal to the screen (for <strong>decoding</strong>).</li>
+<li><strong>EOTF</strong>：电光转换函数，将视频信号转换成显示器的线性光输出。当你将信号发送到屏幕（进行<strong>解码</strong>）时。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_230_transfer_functions_FHD-20241105015121-ftpw8qy.jpg" alt="" title="There are also logarithmic transfer functions but that’s another topic. 还有对数传递函数，但那是另一个话题。" loading="lazy">​</p>
+<h4 id="常见错误-common-mistakes">常见错误 Common mistakes</h4>
+<p>Important stuff to notice is that :</p>
+<p>需要注意的重要事项是：</p>
+<ul>
+<li>
+<p><strong>“Linear”is not a color space.</strong></p>
+<p><strong>“线性”不是一个颜色空间。</strong></p>
+</li>
+<li>
+<p><strong>“Linear”is not necessarily wide gamut and certainly  not infinite.</strong></p>
+<p><strong>“线性”不一定是宽色域，当然也不是无限的。</strong></p>
+</li>
+<li>
+<p><strong>It is a transfer function which is 100% gamut dependent.</strong></p>
+<p><strong>它是一个 100% 依赖于色域的传递函数。</strong></p>
+</li>
+</ul>
+<p>That is a very common mistake among even veteran VFX sups in the industry. Secondly, to simplify, let’s say that these transfer functions are related to <a href="https://en.wikipedia.org/wiki/Gamma_correction">gamma and tv signal :</a></p>
+<p>这是一个非常常见的错误，即使是业内资深的 VFX 主管也会犯这个错误。其次，为了简化，我们假设这些传递函数与<a href="https://en.wikipedia.org/wiki/Gamma_correction">伽马和电视信号相关：</a></p>
+<blockquote>
+<p>A common belief is that a non-linear Optical to Electrical Transfer Function is needed because of the non-linearity of the human visual system. It is true that the human visual system is very complex and lightness perception is non-linear, approximating to a cube-root power law.</p>
+<p>人们普遍认为，由于人类视觉系统的非线性，因此需要非线性光电转换函数。事实上，人类视觉系统非常复杂，亮度感知是非线性的，近似于立方根幂律。</p>
+<p>This is a similar explanation as the one from the Substance PBR guide.</p>
+<p>这与 Substance PBR 指南中的解释类似。</p>
+</blockquote>
+<p>We are going back to our first point : human vision is incredibly complex. And that we need these transfer functions for our visual comfort.</p>
+<p>我们回到第一点：人类视觉极其复杂。我们需要这些传递函数来保证视觉舒适度。</p>
+<blockquote>
+<p>One of the biggest fight I ever had was to convince my supervisors that linear was NOT some kind of infinite color space.</p>
+<p>我曾经经历过的最大斗争之一就是说服我的上司，线性并不是某种无限的色彩空间。</p>
+<p>In this case infinite means access to all colors of the spectrum.</p>
+<p>在这种情况下，无限意味着可以访问光谱的所有颜色。</p>
+</blockquote>
+<h2 id="颜色空间的属性-properties-of-a-color-space">颜色空间的属性 Properties of a color space</h2>
+<p>Two properties are also necessary in order <strong>to properly interpret a set of RGB values</strong> : <em>image state</em> and <em>viewing environment</em>.</p>
+<p><strong>为了正确解释一组 RGB 值，</strong> 还需要两个属性：<em>图像状态</em>和<em>查看环境</em>。</p>
+<h3 id="图像状态-image-state">图像状态 Image State</h3>
+<p>Image State is defined in the <a href="https://www.iso.org/standard/68761.html">international standard ISO 22028-1</a>. This is basically the international standard for how to define an RGB color space.</p>
+<p><a href="https://www.iso.org/standard/68761.html">图像状态在国际标准 ISO 22028-1</a> 中定义。这基本上是如何定义 RGB 颜色空间的国际标准。</p>
+<h4 id="场景参照-scene-referred">场景参照 Scene-referred</h4>
+<p><a href="https://twitter.com/momaku/status/812025645626703874">From </a>​**<a href="https://twitter.com/momaku/status/812025645626703874">Charles Poynton</a>** : Scene-referred means there is a <em>documented mathematical mapping</em> from the original scene light and the values recorded in the pixels/data. It is not exactly the same as “​<em>scene-linear</em>​“, even if these notions can overlap.</p>
+<p>**<a href="https://twitter.com/momaku/status/812025645626703874">Charles Poynton</a>**​<a href="https://twitter.com/momaku/status/812025645626703874">表示：场景相关</a>是指从原始场景光到像素/数据中记录的值之间存在<em>记录的数学映射。它与“场景线性</em>​”并不完全相同，即使这些概念可以重叠。</p>
+<blockquote>
+<p>A <em>scene referred</em> image is one whose light values are recorded as they existed at the camera focal plane before any kind of in-camera processing. These <em>linear light</em>values are directly proportional to the objective, physical light of the scene exposure. By extension, if an image is scene referred then the camera that captured it is little more than a photon measuring device.</p>
+<p><em>场景参考</em>图像是指在进行任何类型的相机内处理之前，光值记录在相机焦平面上。这些<em>线性光</em>值与场景曝光的客观物理光成正比。进一步说，如果图像是场景参考的，那么拍摄该图像的相机只不过是一个光子测量设备。</p>
+<p>In this quote, scene-referred and scene-linear are the same.</p>
+<p>在此引言中，场景引用和场景线性是相同的。</p>
+</blockquote>
+<h4 id="显示参考-display-referred">显示参考 Display-referred</h4>
+<p><a href="https://twitter.com/momaku/status/812025645626703874">From </a>​**<a href="https://twitter.com/momaku/status/812025645626703874">Charles Poynton</a>** :  Display-referred means that the image data is having a <em>documented mathematical mapping</em> from image code value to absolute colorimetric light at a display.</p>
+<p>**<a href="https://twitter.com/momaku/status/812025645626703874">查尔斯·波因顿 (Charles Poynton)</a>**​<a href="https://twitter.com/momaku/status/812025645626703874">表示</a>：显示引用意味着图像数据具有从图像代码值到显示器上的绝对比色光<em>的记录数学映射。</em></p>
+<blockquote>
+<p>A <em>display referred</em> image is one defined by how it will be displayed. Rec.709 for example is a display referred color space, meaning that the contrast range of Rec.709 images is mapped to the contrast range of the display device, a HD television.</p>
+<p>显示<em>参考</em>图像是根据其显示方式定义的图像。例如，Rec.709 就是显示参考色彩空间，这意味着 Rec.709 图像的对比度范围映射到显示设备（高清电视）的对比度范围。</p>
+</blockquote>
+<h3 id="查看环境-viewing-environment">查看环境 Viewing environment</h3>
+<p>As surprising as it sounds, yes, the Viewing environment is important when it comes to color spaces. The room you are sitting in, the light that you are using, the color of your walls… All of this have an influence on your viewing conditions and for BT.709 they are defined <a href="https://www.itu.int/rec/R-REC-BT.2035-0-201307-I/en">here</a>.</p>
+<p>虽然听起来很令人惊讶，但确实，观看环境对于色彩空间来说非常重要。你所在的房间、你使用的灯光、墙壁的颜色……所有这些都会影响你的观看条件，而对于 BT.709，它们<a href="https://www.itu.int/rec/R-REC-BT.2035-0-201307-I/en">在此处</a>进行了定义。</p>
+<blockquote>
+<p>The reference viewing environment is intended to provide an environment which can be replicated from one facility to another. It defines the Room Illumination, the Chromaticity background, the Observation angle and the Display characteristics and adjustment.</p>
+<p>参考观看环境旨在提供可以从一个设施复制到另一个设施的环境。它定义了房间照明、色度背景、观察角度以及显示特性和调整。</p>
+<p><a href="https://www.w3.org/Graphics/Color/sRGB.html">This article</a> and <a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/Maya-Rendering/files/GUID-4410C27C-BB49-491B-AD13-14F48A8CCAAE-htm.html">this one by Autodesk</a> also explain this topic.</p>
+<p><a href="https://www.w3.org/Graphics/Color/sRGB.html">这篇文章</a>和 <a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/Maya-Rendering/files/GUID-4410C27C-BB49-491B-AD13-14F48A8CCAAE-htm.html">Autodesk 的这篇文章</a>也解释了这个主题。</p>
+</blockquote>
+<h2 id="行业标准-industry-standards">行业标准 Industry Standards</h2>
+<p>Screen manufacturers and Cinema majors have agreed on some standards. Their characteristics change the way our images are displayed and rendered. Here are the five most important for us :</p>
+<p>屏幕制造商和电影专业人士已经就一些标准达成了一致。它们的特性改变了我们图像的显示和渲染方式。以下是对我们来说最重要的五个：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/SRGB">sRGB</a> for internet, Windows and camera photos.</li>
+<li><a href="https://en.wikipedia.org/wiki/SRGB">sRGB</a> 适用于互联网、Windows 和相机照片。</li>
+<li><a href="https://en.wikipedia.org/wiki/Rec._709">Rec. 709</a> has the <strong>same primaries</strong> than sRGB but differs on transfer function/gamma. This is  because the target use of Rec.709 is video where it’s supposed to be viewed on a dim surround.</li>
+<li><a href="https://en.wikipedia.org/wiki/Rec._709">Rec. 709</a> 与 sRGB 具有<strong>相同的原色</strong>，但在传输函数/伽马方面有所不同。这是因为 Rec.709 的目标用途是视频，需要在昏暗的环境中观看。</li>
+<li><a href="https://en.wikipedia.org/wiki/DCI-P3">DCI-P3</a> for cinema projectors.</li>
+<li><a href="https://en.wikipedia.org/wiki/DCI-P3">DCI-P3</a> 适用于电影放映机。</li>
+<li><a href="https://en.wikipedia.org/wiki/Rec._2020">Rec. 2020</a>, also called UHD TV, the future of colorimetry.</li>
+<li><a href="https://en.wikipedia.org/wiki/Rec._2020">Rec. 2020</a>，也称为 UHD TV，是比色法的未来。</li>
+<li><a href="https://en.wikipedia.org/wiki/Adobe_RGB_color_space">AdobeRGB</a> for printing projects.</li>
+<li><a href="https://en.wikipedia.org/wiki/Adobe_RGB_color_space">AdobeRGB</a> 用于打印项目。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_240_monitor_colorspace_FHD-20241105015121-ocr6glf.jpg" alt="" loading="lazy">​</p>
+<p><sub>A green BT.709 primary displayed on a BT.709 monitor will</sub> <strong><sub>NOT</sub></strong> <sub>look like a green BT.2020 primary displayed on a BT.2020 monitor. They are complete different chromaticities !</sub></p>
+<p><sub>BT.709 显示器上显示的绿色 BT.709 原色</sub><strong><sub>与</sub></strong><sub>BT.2020 显示器上显示的绿色 BT.2020 原色不同。它们的色度完全不同！</sub></p>
+<p>What are these color spaces for ? For two things :</p>
+<p>这些颜色空间有什么用呢？有两个用途：</p>
+<ul>
+<li><strong>Rendering Space</strong> : also called working space, for our lighting calculation (the scene-referred state).</li>
+<li><strong>渲染空间（Rendering Space）</strong> ：也称为工作空间，用于我们的照明计算（场景引用状态）。</li>
+<li><strong>Display Space</strong> : should match our monitors, which obviously need proper calibration (the display-referred state).</li>
+<li><strong>显示空间</strong>：应该与我们的显示器相匹配，显然需要适当的校准（显示参考状态）。</li>
+</ul>
+<h3 id="渲染和显示空间-rendering-and-display-spaces">渲染和显示空间 Rendering and Display spaces</h3>
+<p><strong>The rendering and display spaces do NOT have to be the same.</strong>  It is really important to understand the distinction between those two. <strong>In CG, the rendering space will always have a linear transfer function.</strong>  We will detail <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#scene-linear-workflow">the scene-linear workflow</a> in a bit.</p>
+<p><strong>渲染空间和显示空间不必相同。</strong> 了解两者之间的区别非常重要。<strong>在 CG 中，渲染空间始终具有线性传递函数。</strong> 稍后我们将详细介绍<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#scene-linear-workflow">场景线性工作流程。</a></p>
+<p>For the Display Space, when you work on a project, you have to ask yourself : what is our display target ? Are our images going to be seen on a smartphone, on a TV set or in a theater ? Basically the Display Space should match the monitors used at your company.</p>
+<p>对于显示空间，当您从事一个项目时，您必须问自己：我们的显示目标是什么？我们的图像会在智能手机、电视机还是剧院中看到？基本上，显示空间应该与您公司使用的显示器相匹配。</p>
+<p>This is where Color Management really comes in handy. In a CG workflow, it is vital to know <strong>for every single step which color space you are working in.</strong></p>
+<p>这时色彩管理就派上用场了。在 CG 工作流程中，了解<strong>每一步工作中的色彩空间至关重要。</strong></p>
+<blockquote>
+<p>When you buy a monitor, you should check the coverage of these color spaces. For example the monitors used at a famous Parisian studio only cover 93,7% of the P3 gamut. That’s too low ! We will never match perfectly the projectors from theaters. <strong>There is no point on working in a Display Space that does not match exactly the specifics of your monitor or needs of your project.</strong></p>
+<p>购买显示器时，您应该检查这些色彩空间的覆盖范围。例如，一家著名巴黎工作室使用的显示器仅覆盖 P3 色域的 93.7%。这太低了！我们永远无法完美匹配影院的投影仪。<strong>在与您的显示器特性或项目需求不完全匹配的显示空间中工作是没有意义的。</strong></p>
+<p><a href="https://en.wikipedia.org/wiki/DCI-P3">P3</a> is a common <a href="https://en.wikipedia.org/wiki/RGB_color_space">RGB color space</a> for digital movie projection, defined by the <a href="https://en.wikipedia.org/wiki/Digital_Cinema_Initiatives">Digital Cinema Initiatives</a> (DCI) organization and published by the <a href="https://en.wikipedia.org/wiki/Society_of_Motion_Picture_and_Television_Engineers">Society of Motion Picture and Television Engineers</a> (SMPTE).</p>
+<p><a href="https://en.wikipedia.org/wiki/DCI-P3">P3</a> 是数字电影放映的常用 <a href="https://en.wikipedia.org/wiki/RGB_color_space">RGB 色彩空间，由</a>​<a href="https://en.wikipedia.org/wiki/Digital_Cinema_Initiatives">数字电影促进会</a>(DCI) 组织定义，并由<a href="https://en.wikipedia.org/wiki/Society_of_Motion_Picture_and_Television_Engineers">美国电影电视工程师协会</a>(SMPTE) 发布。</p>
+</blockquote>
+<h3 id="什么是-srgb-what-is-srgb">什么是 sRGB？ What is sRGB ?</h3>
+<p>As this has been explained in <a href="https://www.colour-science.org/posts/the-importance-of-terminology-and-srgb-uncertainty/">Thomas Mansencal’s article</a>, sRGB is still a confused notion for many artists. Whats is sRGB ?</p>
+<p><a href="https://www.colour-science.org/posts/the-importance-of-terminology-and-srgb-uncertainty/">正如 Thomas Mansencal 的文章</a>所解释的那样，sRGB 对许多艺术家来说仍然是一个令人困惑的概念。什么是 sRGB？</p>
+<ul>
+<li>Some say : “​<em>It is a color space !</em> ​“</li>
+<li>有人说：“<em>这是一个色彩空间！</em>  ”</li>
+<li>Others reply : “​<em>It is a transfer function !</em> ​“</li>
+<li>其他人回答：“<em>这是一个传递函数！</em>  ”</li>
+</ul>
+<p>sRGB is actually both ! It is a color space that includes <strong>a transfer function which is a slight tweaking of the simple gamma 2.2 curve.</strong>   This is why you can also use gamma corrections (0.454 / 2.2) to be in linear or not.</p>
+<p>sRGB 实际上是两者兼而有之！它是一个包含传递函数的色彩空间 **<em>，<em><strong>​</strong>该函数是对简单的伽马 2.2 曲线的轻微调整。</em></em> 这就是为什么您还可以使用伽马校正 (0.454 / 2.2) 来实现线性或非线性。</p>
+<blockquote>
+<p>From the <a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance PBR guide</a> : “It is critically important to disambiguate the sRGB OETF from the sRGB color space; the OETF is only one of the three components that make an RGB color space.”</p>
+<p>摘自 <a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance PBR 指南</a>：“区分 sRGB OETF 与 sRGB 色彩空间至关重要；OETF 只是构成 RGB 色彩空间的三个组成部分之一。”</p>
+</blockquote>
+<h2 id="场景线性工作流-scene-linear-workflow">场景线性工作流 Scene-Linear workflow</h2>
+<p>This is for me the biggest step between a student work and a professional work. <strong>Scene-linear workflow is compulsory in the industry. I do not know any respectable studio that does not use it.</strong></p>
+<p>对我来说，这是学生作品和专业作品之间最大的一步。<strong>场景线性工作流程是行业内的强制性要求。我不知道有哪家值得尊敬的工作室不使用它。</strong></p>
+<blockquote>
+<p><strong><a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Jeremy Selan</a></strong> : it is often preferable to carry over those aspects of the traditional film workflow which are beneficial even in a fully-CG context. We thus advocate <strong>thinking of an animated feature as creating a“virtual movie-set”within the computer,</strong>  complete with a virtual camera, virtual negative stock, and virtual print stock.</p>
+<p><strong><a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Jeremy Selan</a></strong>：通常最好保留传统电影工作流程中那些即使在完全 CG 环境中也大有裨益的方面。因此，我们主张将<strong>动画片视为在计算机中创建的“虚拟电影场景”，</strong> 其中包括虚拟摄像机、虚拟负片和虚拟印刷片。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_250_linear_workflow_FHD-scaled-20241105015121-7o57k8c.jpg" alt="" loading="lazy">​</p>
+<p>In this example, the input is <strong>display-referred</strong> and gets linearized for the lighting calculation. Then, we take the <strong>scene-referred</strong> output and use tone-mapping to view it properly.</p>
+<p>在此示例中，输入与<em><strong>显示相关</strong></em>，并针对照明计算进行线性化。然后，我们获取与<em><strong>场景相关的</strong></em>输出并使用色调映射来正确查看它。</p>
+<p>As seen earlier, <strong>monitors have a gamma correction to  display the images correctly.</strong>  It is an industry standard for visual comfort since we had CRT monitors (because the light intensity does not change linearly with the voltage).</p>
+<p>如前所述，<strong>显示器具有伽马校正功能，可以正确显示图像。</strong> 自从我们有了 CRT 显示器（因为光强度不会随电压线性变化）以来，它一直是视觉舒适度的行业标准。</p>
+<blockquote>
+<p>In most cases, if a computer runs the Windows operating system, we can achieve close to ideal colors by using a monitor with a gamma value of 2.2. This is because Windows assumes a monitor with a gamma value of 2.2, the standard gamma value for Windows.</p>
+<p>在大多数情况下，如果计算机运行的是 Windows 操作系统，那么使用伽马值为 2.2 的显示器即可获得接近理想的色彩。这是因为 Windows 假定显示器的伽马值为 2.2，即 Windows 的标准伽马值。</p>
+<p>From Eizo’s <a href="https://www.eizo.be/en/knowledge/monitor-expertise/gamma-values-of-lcd-monitors/">website</a>. We will see in the next paraagraph why this terminology has confused me.</p>
+<p>来自 Eizo 的<a href="https://www.eizo.be/en/knowledge/monitor-expertise/gamma-values-of-lcd-monitors/">网站</a>。我们将在下一段中看到为什么这个术语让我感到困惑。</p>
+</blockquote>
+<p>We correct this problem by saving an inverted EOTF into our display-referred images. And this is why you need to linearize them for rendering. This is a very important point : your renders will  <strong>NEVER</strong> be correct if you do not use a linear transfer function for your rendering space. <strong>Rendering (and displaying) in plain sRGB are just wrong !</strong></p>
+<p>我们通过将反转的 EOTF 保存到我们的显示参考图像中来纠正这个问题。这就是为什么您需要将它们线性化以进行渲染的原因。这是一个非常重要的点：如果您不对渲染空间使用线性传递函数，您的渲染将<strong>永远不正确。在纯 sRGB 中渲染（和显示）是错误的！</strong></p>
+<h3 id="显示-eotf-是上还是下-display-eotf-is-it-up-or-down">显示 EOTF ：是“上”还是“下”？ Display EOTF : is it “up” or “down” ?</h3>
+<p>So when we say that our displays have a Gamma of 2.2 and that we save our display-referred images in “sRGB”, does it mean we add twice the same Gamma Correction ? Well, actually, no.</p>
+<p>那么，当我们说我们的显示器的 Gamma 为 2.2 并且我们将显示器相关的图像保存在“sRGB”中时，是否意味着我们添加了两倍相同的 Gamma 校正？嗯，实际上不是。</p>
+<p>It is very well explained in <a href="https://www.gdcvault.com/play/1012351/Uncharted-2-HDR">this presentation by John Hable</a> : the Gamma 2.2 of our displays (the EOTF) is actually a “Gamma Down” ! Not a “Gamma Up” ! This has been very unsettling for me since a Gamma of 2.2 in Nuke is a “Gamma Up”. So I got used to this behaviour for the past fifteen years…</p>
+<p><a href="https://www.gdcvault.com/play/1012351/Uncharted-2-HDR">John Hable</a> 在这次演讲中对此进行了很好的解释：我们显示器的 Gamma 2.2（EOTF）实际上是“Gamma Down”！而不是“Gamma Up”！这对我来说非常令人不安，因为 Nuke 中的 Gamma 2.2 是“Gamma Up”。所以在过去的十五年里我已经习惯了这种行为……</p>
+<p>But for displays, it is the other way around. So no, we do not add up twice the same Gamma Correction, that would be completely broken ! This is what we do when we save a display-referred image :</p>
+<p>但对于显示器来说，情况正好相反。所以，我们不会添加两倍相同的 Gamma 校正，那样会完全破坏效果！这是我们在保存显示器相关图像时所做的：</p>
+<ul>
+<li><strong>Encode</strong> a jpg for with an OETF (or inverted EOTF), so a “Gamma Up”.</li>
+<li>使用 OETF（或反转的 EOTF）对 jpg 进行<strong>编码</strong>，即“Gamma Up”。</li>
+<li><strong>Decode</strong> it on a monitor/display which has an EOTF (most likely a “Gamma” of 2.2), so a “Gamma Down”.</li>
+<li>在具有 EOTF（很可能是“Gamma”为 2.2）的监视器/显示器上对其进行<strong>解码</strong>，因此“Gamma Down”。</li>
+</ul>
+<h3 id="oetf-和-eotf无操作-oetf-and-eotf-a-no-operation">OETF 和 EOTF：无操作？ OETF and EOTF : a no-operation ?</h3>
+<p>In an ideal world, these two operations cancel out and we would call the whole thing a “​<em>no-operation</em>​“. But unfortunately this not exactly true for many historical reasons. But I don’t want to start <a href="https://community.acescentral.com/t/srgb-piece-wise-eotf-vs-pure-gamma/4024">another Gamma / sRGB EOTF “war”</a>, so I will not go further on this topic.</p>
+<p>在理想情况下，这两个操作会相互抵消，我们将整个过程称为“​<em>无操作</em>​”。但不幸的是，由于许多历史原因，情况并非如此。但我不想再引发<a href="https://community.acescentral.com/t/srgb-piece-wise-eotf-vs-pure-gamma/4024">另一场 Gamma / sRGB EOTF“战争”</a>，所以我不会再深入讨论这个话题。</p>
+<p>But basically we are still unsure if our monitor’s EOTF should be a sRGB Piecewise Function or a pure Power Function (what people misleadingly calls “Gamma”). Both exist in the real world. Nobody explains it better than Daniele Siragusano in this video :</p>
+<p>但基本上我们仍然不确定我们的显示器的 EOTF 应该是 sRGB 分段函数还是纯幂函数（人们误称其为“Gamma”）。两者都存在于现实世界中。没有人比 Daniele Siragusano 在这段视频中解释得更好：</p>
+<iframe src="https://player.bilibili.com/player.html?isOutside=true&amp;aid=113482766750882&amp;bvid=BV1W9mQYyELa&amp;cid=26762740678&amp;p=1" data-src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113482766750882&amp;bvid=BV1W9mQYyELa&amp;cid=26762740678&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 1098px; height: 612px;"></iframe>
+<p>原始视频：<a href="https://www.youtube.com/watch?v=NzhUzeNUBuM&amp;t=2s">https://www.youtube.com/watch?v=NzhUzeNUBuM&amp;t=2s</a></p>
+<p>It is interesting though to observe that we used to encode with an OETF and decode with an EOTF that would not match to take in account flare/surround compensation. But in 2022 we would rather let the Display Transform handle that and have the whole encoding/decoding phase to be a “no-operation”.</p>
+<p>不过，有趣的是，我们过去使用 OETF 进行编码，使用 EOTF 进行解码，这与考虑眩光/环绕补偿不匹配。但在 2022 年，我们宁愿让 Display Transform 处理这个问题，让整个编码/解码阶段成为“无操作”。</p>
+<p>In the end, we should not obsess with the word “Gamma”, it is just a greek letter ! You could also see the Gamma function as a Power function with an inverted exponent, as I try to recap in the table below :</p>
+<p>最后，我们不应该对“Gamma”这个词太过痴迷，它只是一个希腊字母！你也可以将 Gamma 函数看作一个具有倒数指数的幂函数，正如我在下表中尝试概括的那样：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Function</th>
+<th>Description</th>
+<th>Artist-friendly terminology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sRGB OETF</td>
+<td>(Gamma) Encoding</td>
+<td><em>a slight tweaking of the simple 2.2 Gamma function</em>(or 1/2.2 Power function)</td>
+<td>“Gamma Up”  or “Inverse EOTF”</td>
+</tr>
+<tr>
+<td>sRGB EOTF</td>
+<td>(Gamma) Decoding</td>
+<td><em>a slight tweaking of the pure 2.2 Power function</em>(or 1/2.2 Gamma function)</td>
+<td>“Gamma Down”</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>功能</th>
+<th>描述</th>
+<th>艺术家友好的术语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sRGB 光子发射晶体管</td>
+<td>（伽马）编码</td>
+<td><em>对简单的 2.2 Gamma 函数</em>​（或 1/2.2 Power 函数）进行轻微调整</td>
+<td>“Gamma Up” 或 “逆 EOTF”</td>
+</tr>
+<tr>
+<td>sRGB EOTF</td>
+<td>（伽玛）解码</td>
+<td><em>对纯 2.2 幂函数</em>（或 1/2.2 Gamma 函数）进行轻微调整</td>
+<td>“伽马下降”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="显示线性-display-linear">显示线性 Display Linear</h3>
+<p>And this little paragraph about displays/monitors’ EOTF lead me to another misconception I had. For me, “Display” and “Linear” would always be opposite terms. They could not co-exist together. Until I read <em>Cinematic Color</em> :</p>
+<p>这段关于显示器/监视器的 EOTF 的小段落让我想到了另一个误解。对我来说，“显示”和“线性”永远是相反的术语。它们不能共存。直到我读到​<em>电影色彩</em>​：</p>
+<blockquote>
+<p>Both the motion-picture and computer graphics communities are far too casual about using the word “linear” to reference both scene-referred and display-referred linear imagery. We highly encourage both communities to set a positive example, and to always distinguish between these two image states even in casual conversation.</p>
+<p>电影和计算机图形学界都过于随意地使用“线性”一词来指代场景引用和显示引用的线性图像。我们强烈鼓励这两个社区树立积极的榜样，即使在随意的谈话中也要始终区分这两种图像状态。</p>
+<p>To clarify, are you referencing the linear light as emitted by a display ? Did you use the word “gamma” ? Are there scary consequences to your imagery going above 1.0 ? If so, please use the term <strong>display-linear.</strong></p>
+<p>为了澄清起见，您指的是显示器发出的线性光吗？您用过“gamma”这个词吗？如果图像的亮度超过 1.0，会产生可怕的后果吗？如果是，请使用术语 <strong>display-linear。</strong></p>
+<p>Are you referencing high-dynamic range imagery ? Is your middle gray at 0.18 ? Are you talking about light in terms of “stops” ? Does 1.0 have no particular consequence in your pipeline ? If so, please use the term <strong>scene-linear.</strong></p>
+<p>你指的是高动态范围图像吗？你的中间灰度是 0.18 吗？你谈论的是“光圈”方面的光吗？1.0 在你的管道中没有特别的影响吗？如果是，请使用术语 <strong>“场景线性”。</strong></p>
+<p>Finally, for those using scene-linear workflows remember to use a viewing transform that goes beyond a simple gamma model. Friends don’t let friends view scene-linear imagery without an “S-shaped” view transform.</p>
+<p>最后，对于那些使用场景线性工作流的人来说，请记住使用超越简单伽马模型的视图变换。如果没有“S 形”视图变换，朋友就不会让朋友查看场景线性图像。</p>
+<p>-- A Plea for Precise Terminology.</p>
+<p>-- 恳求使用精确的术语。</p>
+</blockquote>
+<p>So it might a bit of a mind-bender but what we see on our displays, the actual light they emit, is… “​<em>Linear</em>​” ! Or better put “​<em>Display-Linear</em>​“, since the encoding and the decoding of our images are supposed to cancel each other out.</p>
+<p>这可能有点令人费解，但我们在显示器上看到的，它们发出的实际光线是……“​<em>线性</em>​”！或者更好地说是“​<em>显示线性</em>​”，因为我们图像的编码和解码应该相互抵消。</p>
+<h3 id="场景线性渲染空间的示例-example-of-scene-linear-rendering-space">场景线性渲染空间的示例 Example of scene-linear rendering space</h3>
+<p>The following example is using a sRGB OETF with no LUT, like most rendering softwares offer by default. We will see why <strong>this is pretty much wrong.</strong>   I have done a couple of really simple renders where I use mid-gray shaders to illustrate a scene-linear workflow :</p>
+<p>以下示例使用没有 LUT 的 sRGB OETF，就像大多数渲染软件默认提供的一样。我们将看到为什么<strong>这是完全错误的。</strong> 我做了几个非常简单的渲染，其中我使用中灰色着色器来说明场景线性工作流程：</p>
+<ul>
+<li><strong>Non scene-linear workflow</strong> : there is no linearization of the value. So 0.5 is used for the rendering.</li>
+<li><strong>非场景线性工作流程</strong>：值没有线性化。因此使用 0.5 进行渲染。</li>
+<li><strong>Scene-linear workflow</strong> : Middle gray is 0.18 in my scene which ​<strong>makes my calculation correct</strong>​.</li>
+<li><strong>场景线性工作流程</strong>：我的场景中的中间灰度为 0.18，这<strong>使得我的计算正确</strong>。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_260_linear_workflow_FHD-20241105015121-fjzvgwn.jpg" alt="" title="Non scene-linear rendering space : mid-gray is 0.5 in both Display and Rendering spaces. This is just wrong." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_270_linear_workflow_FHD-20241105015121-a4zfk95.jpg" alt="" title="Scene-linear rendering space : mid-gray is 0.5 in Display space and 0.18 in Rendering space." loading="lazy">​</p>
+<p><sub>Warning : a scene-linear workflow is only complete with a tone mapping step. 警告：场景线性工作流程只有通过色调映射步骤才算完成。</sub></p>
+<p>In this very limited experiment, you can see that the bouncing from the plane onto the sphere is more “realistic” in scene-linear rendering. Unfortunately, I was not able to produce a better comparison but hopefully you get the idea. Otherwise, we can just ask <strong>Jeremy Selan</strong> :</p>
+<p>在这个非常有限的实验中，你可以看到，在场景线性渲染中，从平面到球体的弹跳更加“真实”。不幸的是，我无法做出更好的比较，但希望你能明白我的意思。否则，我们可以问问​<strong>Jeremy Selan</strong>​：</p>
+<blockquote>
+<p>From <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a> : Why is <strong>scene-linear</strong> preferred for lighting ? First, the render itself benefits. Physically plausible light transport […] such as global illumination yield natural results when given scenes with high dynamic ranges. […] Light shaders also benefit from working with <strong>scene-referred linear,</strong>  specifically in the area of light falloff. […] when combined with physically-based shading models, using an r² light falloff behaves naturally.</p>
+<p>来自<a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">电影色彩</a>：为什么<strong>场景线性</strong>更适合照明？首先，渲染本身有好处。物理上合理的光传输 [...] 例如全局照明在给定具有高动态范围的场景时会产生自然效果。[...] 光着色器还可以从使用<strong>场景引用线性</strong>中受益，特别是在光衰减区域。[...] 当与基于物理的着色模型结合使用时，使用 r² 光衰减表现自然。</p>
+<p>r2 light falloff is just another term for quadratic decay.</p>
+<p>r2 光衰减只是二次衰减的另一个术语。</p>
+</blockquote>
+<p>Basically <strong>the scene-linear rendering provides the correct math for lighting.</strong>  here are <a href="http://guerillarender.com/doc/2.0/TD%20Guide_Technical%20Notes_Gamma%20Correction.html">plenty</a> <a href="https://docs.unity3d.com/Manual/LinearRendering-LinearOrGammaWorkflow.html">of</a> <a href="https://docs.arnoldrenderer.com/display/A5AFMUG/Gamma+Correction+and+Linear+Workflow">websites</a> that show <a href="https://renderman.pixar.com/color-management">examples</a> of scene-linear workflow. But if you pay attention, you will notice that these professional websites use a bit of “loose” terminology here ! And none of them mentions tone mapping, wich is arguably an essential step ! So take them with a pinch of salt.</p>
+<p>基本上，**<a href="https://docs.arnoldrenderer.com/display/A5AFMUG/Gamma+Correction+and+Linear+Workflow">场景</a>**<strong>线性渲染为照明提供了正确的数学计算。</strong> 有<a href="http://guerillarender.com/doc/2.0/TD%20Guide_Technical%20Notes_Gamma%20Correction.html">很多</a> <a href="https://docs.unity3d.com/Manual/LinearRendering-LinearOrGammaWorkflow.html">网站</a> 展示了场景线性工作流程的<a href="https://renderman.pixar.com/color-management">示例</a>。但如果你留心观察，你会发现这些专业网站在这里使用了一些“松散”的术语！而且他们都没有提到色调映射，这可以说是一个必不可少的步骤！所以，不要太在意。</p>
+<h3 id="线性混乱-linear-confusion">“线性”混乱 “Linear” confusion</h3>
+<h4 id="场景线性混乱-scene-linear-confusion">场景线性混乱 Scene-linear confusion</h4>
+<p>That is really the original sin from the VFX industry : <strong>thinking that“linear”was a color space.</strong>  The error is still quite common, <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#linear-workflow">even among VFX industry veterans.</a> And even some softwares are wrong about it !</p>
+<p>这确实是视觉特效行业的原罪：<strong>认为“线性”是一种色彩空间。</strong> 这种错误仍然很常见，<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/#linear-workflow">甚至在视觉特效行业资深人士中也是如此。</a>甚至有些软件对此也犯了错误！</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_280_softwares_colorspace_FHD-20241105015121-7m3bwky.jpg" alt="" title="These “linear” options have confused me for a very long time. 这些“线性”选项让我困惑了很长时间。" loading="lazy">​</p>
+<p>In Nuke, this is particularly disturbing : “<em>linear</em>” is listed as a color space, same as <em>sRGB</em> or <em>Rec.709</em>. In the <a href="https://support.foundry.com/hc/en-us/articles/115000229784?flash_diges">support pages from The Foundry</a>, you can find an explanation : “<em>However, Nuke’s color space isn’t a standard color space.”</em>  Guys, this should be written in <strong>BIG RED LETTERS !</strong></p>
+<p>在 Nuke 中，这一点尤其令人不安：“​<em>线性</em>​”被列为色彩空间，与 <em>sRGB</em> 或 <em>Rec.709</em> 相同。在 <a href="https://support.foundry.com/hc/en-us/articles/115000229784?flash_diges">The Foundry 的支持页面</a>中，你可以找到一个解释：“<em>但是，Nuke 的色彩空间不是标准色彩空间。”伙计们，这应该用</em>​<strong>大红字</strong>写出来！</p>
+<p>After a couple of e-mails following the release of my website, I thought it would be worth mentioning that <strong>working in scene-linear does not give you magically access to infinite color ranges.</strong>   You still have to take in account the primaries (or gamut) you are working in.</p>
+<p>在我的网站发布后，我发了几封电子邮件，我觉得值得一提的是，<strong>在场景线性中工作并不能让你神奇地获得无限的颜色范围。</strong> 你仍然需要考虑你正在工作的原色（或色域）。</p>
+<blockquote>
+<p>We will see in the <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">next chapter</a> how all of this color space confusion gets clarified with proper terminology.</p>
+<p><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">在下一章</a>中，我们将看到如何用适当的术语澄清所有这些颜色空间混淆。</p>
+</blockquote>
+<h4 id="显示线性混乱-display-linear-confusion">显示线性混乱 Display-linear confusion</h4>
+<p>I recently (April 2020) had the chance to talk with <strong>Doug Walker</strong> about linear issues regarding scene-referred and display-referred :</p>
+<p>最近 (2020 年 4 月)，我有机会与 <strong>Doug Walker</strong> 讨论了有关场景引用和显示引用的线性问题：</p>
+<blockquote>
+<p>The way that Linear Workflow is often described contains <strong>a crucial error.</strong>   Usually the description implies that the viewing process simply inverts the gamma adjustment applied on the input side. However, <strong>this is wrong</strong> and will lead to results that are too low in contrast, have too light a mid-gray, and have clipped highlights, therefore requiring artists to compensate by biasing the lighting and material decisions in unnatural ways.</p>
+<p>线性工作流程的描述方式通常包含<strong>一个关键错误。</strong> 通常的描述暗示查看过程只是反转输入端应用的伽马调整。然而，<strong>这是错误的，</strong> 会导致结果对比度太低，中间灰色太亮，高光被剪裁，因此需要艺术家通过以不自然的方式偏向照明和材料决策来进行补偿。</p>
+<p>By ​<strong>Doug Walker</strong>​, Technology lead for color science at Autodesk.</p>
+<p>作者：​<strong>Doug Walker</strong>​，Autodesk 色彩科学技术主管。</p>
+</blockquote>
+<p>Basically what most schools and students do is… <strong>Wrong !</strong>  The sRGB view transform maps 1.0 in the rendering space to 1.0 in the display space. This is one of the problems with using that as a view transform,  <strong>it does not leave room for anything above 1.0 and those values are simply clipped.</strong></p>
+<p>基本上，大多数学校和学生的做法是……<strong>错误的！</strong>  sRGB 视图变换将渲染空间中的 1.0 映射到显示空间中的 1.0。这是将其用作视图变换的问题之一，<strong>它没有为 1.0 以上的任何值留出空间，这些值只是被剪裁了。</strong></p>
+<blockquote>
+<p>In order to correct this, the viewing transform must account for the  fact that the input is what color scientists call  “scene-referred”  whereas the image being viewed on the monitor is “display-referred”. This means that <strong>the viewing transform should not be a simple gamma</strong> and instead needs to incorporate what is sometimes called a tone mapping step.</p>
+<p>为了纠正这个问题，观察变换必须考虑到这样一个事实：输入是色彩科学家所说的“场景相关”，而显示器上显示的图像是“显示相关”。这意味着<strong>观察变换不应该是简单的伽马，</strong> 而需要结合有时被称为色调映射的步骤。</p>
+<p>Which is the topic of our next paragraph.</p>
+<p>这就是我们下一段的主题。</p>
+</blockquote>
+<h3 id="色调映射-tone-mapping">色调映射 Tone mapping</h3>
+<p>Until now we have mostly focused on the scene-referred part of the process aka the rendering space. We are now going to detail <strong>the part that converts from scene-linear to display-linear.</strong>   Most artists know this process as “<em><strong><a href="https://en.wikipedia.org/wiki/Tone_mapping">tone mapping</a></strong></em>“, but it can also be called a “Display Rendering Transform”, a “View Transform” or an “Output Transform” for instance.</p>
+<p>到目前为止，我们主要关注的是该过程与场景相关的部分，即渲染空间。现在，我们将详细介绍<strong>从场景线性转换为显示线性的部分。</strong> 大多数艺术家将此过程称为“​***<a href="https://en.wikipedia.org/wiki/Tone_mapping">色调映射</a>***​”，但它也可以称为“显示渲染变换”、“视图变换”或“输出变换”。</p>
+<blockquote>
+<p>Tone mapping is the intentional modification of the relationship between relative scene luminance values and display luminance values usually intended to compensate for limitations in minimum and maximum achievable luminance levels of a particular display, perceptual effects associated with viewing environment differences between the scene and the reproduction, and preferential image reproduction characteristics. Tone mapping may be achieved through a variety of means but is quantified by its net effect on relationship between relative scene luminance values and display luminance values.</p>
+<p>色调映射是故意修改相对场景亮度值和显示器亮度值之间的关系，通常旨在补偿特定显示器的最小和最大可实现亮度水平的限制、与场景和再现之间的观看环境差异相关的感知效果以及优先图像再现特性。色调映射可以通过多种方式实现，但通过其对相对场景亮度值和显示器亮度值之间关系的净效应来量化。</p>
+<p>Alex Forsythe.</p>
+<p>亚历克斯·福赛斯。</p>
+</blockquote>
+<p>In any case, if you just apply an sRGB OETF for display,  <strong>your contrast will be off, your highlights will be clipped and your mid-grays will be in the wrong place.</strong>   Most CG artists will struggle and compensate for this error by biasing their lighting and material values but that is not necessary if a proper color management system is used.</p>
+<p>无论如何，如果您只是将 sRGB OETF 用于显示，<strong>您的对比度就会消失，您的高光将被剪切，您的中间灰色将位于错误的位置。</strong>   大多数 CG 艺术家会努力通过偏置照明和材质值来弥补这个错误，但如果使用适当的色彩管理系统，这并不是必要的。</p>
+<blockquote>
+<p>[…] for those using scene-linear workflows remember to use a viewing transform that goes beyond a simple gamma model. Friends don’t let friends view scene-linear imagery without an “S-shaped” view transform.</p>
+<p>[…] 对于使用场景线性工作流的用户，请记住使用超越简单伽马模型的视图变换。如果没有“S 形”视图变换，朋友就不会让他们查看场景线性图像。</p>
+<p>Jeremy Selan.</p>
+<p>杰里米·塞兰。</p>
+</blockquote>
+<h2 id="查找表-lut-lookup-table-lut">查找表 (LUT) Lookup table (LUT)</h2>
+<p>We won’t get too much in detail about “Display Transforms” in this chapter (I have written <a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/">a full article about them</a>) but it is important to know that they generally contain more than a “simple” tone-mapping operation. The famous s-curve is <strong>only one part</strong> of a complex series of operations. And these algorithms can sometimes be heavy and need to be baked into a Lookup Table (LUT) for real-time computation.</p>
+<p>本章我们不会过多地介绍“显示变换”（我已经写了<a href="https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/">一篇关于它们的完整文章</a>），但重要的是要知道它们通常包含的不仅仅是“简单”的色调映射操作。著名的 S 曲线只是一系列复杂操作的<strong>一部分</strong>。这些算法有时可能很繁重，需要将其嵌入查找表 (LUT) 中进行实时计算。</p>
+<blockquote>
+<p>From <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a> : Lookup tables (LUT) are a technique for optimizing the evaluation of functions that are expensive to compute and inexpensive to cache.</p>
+<p>来自<a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">电影色彩</a>：查找表（LUT）是一种优化计算成本高、缓存成本低的函数评估的技术。</p>
+<p>LUTs are also convenient to share data without breaking any Intellectual Property (“IP”).</p>
+<p>LUT 还可以方便地共享数据，而不会破坏任何知识产权（“IP”）。</p>
+</blockquote>
+<p>You can put many things in a LUT. As far as I know, <a href="https://lutify.me/essential-steps-in-color-grading-when-using-luts/">LUTs</a> originally come from live-action : they allow to transport grading operations between the set and the VFX facilities or DI house. But here we are going to mostly to focus on one step specific type of LUTs.</p>
+<p>您可以将很多东西放入 LUT 中。据我所知，<a href="https://lutify.me/essential-steps-in-color-grading-when-using-luts/">LUT</a> 最初来自实景拍摄：它们允许在场景和 VFX 设施或 DI 工作室之间传输分级操作。但在这里我们将主要关注单步特定类型的 LUT。</p>
+<p>Basically, thanks to a list of values (a table), 1D LUTs allow to display <strong>high-dynamic range images (HDR) on standard-dynamic range monitors (SDR).</strong>   Our monitors and film projectors are not able to display the entire HDR range. Generally, a 1D LUT is the best way to display pixels on a screen and to get a nice filmic look. We call them “Display LUTs”.</p>
+<p>基本上，得益于一串值（表格），1D LUT 允许<strong>在标准动态范围显示器 (SDR) 上显示高动态范围图像 (HDR)。</strong> 我们的显示器和电影放映机无法显示<strong>整个</strong> HDR 范围。通常，1D LUT 是在屏幕上显示像素并获得漂亮电影效果的最佳方式。我们称它们为“显示 LUT”。</p>
+<h3 id="lut-描述-lut-description">LUT 描述 LUT description</h3>
+<p>There are several kinds of LUT, but I will describe here the most common :</p>
+<p>LUT 有几种类型，但我将在这里描述最常见的一种：</p>
+<ul>
+<li><strong>1D LUT</strong> (left image) : it contains only one column of numbers as it affects RGB pixels the same way. They generally contain a Transfer Function or a <a href="https://en.wikipedia.org/wiki/Sigmoid_function">S-Curve Shape</a>. I used the <em>vd16.spi1d</em> from the <em>spi-anim</em> config  <em>(Sony Pictures Imageworks Animation)</em> . <strong>If the gamut of your image is Rec. 709, a 1D LUT will NOT change it.</strong></li>
+<li><strong>1D LUT</strong>​（左图）：它仅包含一列数字，因为它以相同的方式影响 RGB 像素。它们通常包含传递函数或 <a href="https://en.wikipedia.org/wiki/Sigmoid_function">S 曲线形状</a>。我使用了 <em>spi-anim</em> 配置 <em>（Sony Pictures Imageworks Animation）</em> 中的​<em>vd16.spi1d</em>​。<strong>如果您的图像色域为 Rec. 709，则 1D LUT 将不会更改它。</strong></li>
+<li><strong>3D LUT</strong> (right image) : it contains three columns of numbers as it affects RGB pixels differently. They can be used to map one color space to another. I used the <em>Rec. 709 for ACEScg Maya.csp</em> from the <em>ACES 1.2 (Academy Color Encoding System)</em>  config as an example. <strong>A 3D LUT allows you to switch from one gamut to another.</strong></li>
+<li><strong>3D LUT</strong>​（右图）：它包含三列数字，因为它对 RGB 像素的影响不同。它们可用于将一个颜色空间映射到另一个颜色空间。我以 <em>ACES 1.2（学院色彩编码系统）</em> 配置中的 <em>Rec. 709 for ACEScg Maya.csp</em> 为例。<strong>3D LUT 允许您从一个色域切换到另一个色域。</strong></li>
+</ul>
+<blockquote>
+<p>From <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a> : A lookup table (LUT) is characterized by its dimensionality, that is, the number of indices necessary to index an output value.</p>
+<p>来自<a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">电影色彩</a>：查找表 (LUT) 的特点在于它的维数，即索引输出值所需的索引数。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_290_LUTs_FHD-20241105015121-3fzhl3v.jpg" alt="" title="I have shortened the files on purpose for display convenience. These files actually have hundred of thousand of lines. 为了方便展示，我特意缩短了文件。这些文件实际上有数十万行。" loading="lazy">​</p>
+<p>We could also divide LUTs in two categories (although it could be considered as an arbitrary distinction) :</p>
+<p>我们还可以将 LUT 分为两类（尽管这可以被视为一种任意区分）：</p>
+<ul>
+<li><strong>Technical LUTs</strong>​, like for instance a “Cineon Log to Linear” spi1d LUT.</li>
+<li><strong>技术 LUT</strong>​，例如“Cineon Log to Linear” spi1d LUT。</li>
+<li><strong>Artistic LUTs</strong>​, such as a “Look” or “Look Modification Transform” (LMT).</li>
+<li><strong>艺术 LUT</strong>​，例如“外观”或“外观修改变换”（LMT）。</li>
+</ul>
+<h2 id="ocio-开放颜色-io-ocio-opencolorio">OCIO (开放颜色 IO) OCIO (OpenColorIO)</h2>
+<blockquote>
+<p>OCIO is an open source framework for configuring and applying colour transformations. […] It is designed for rolling out complex colour pipeline decisions to lots of people who might not individually understand what’s going on (ie : not colourists).</p>
+<p>OCIO 是一个用于配置和应用颜色转换的开源框架。[…] 它旨在向许多可能无法单独理解正在发生的事情的人（即：非调色师）推出复杂的颜色管道决策。</p>
+<p>Great OCIO definition that I copied from <a href="https://forum.blackmagicdesign.com/viewtopic.php?f=3&amp;t=242">this post</a>.</p>
+<p><a href="https://forum.blackmagicdesign.com/viewtopic.php?f=3&amp;t=242">我从这篇文章</a>中复制了很棒的 OCIO 定义。</p>
+</blockquote>
+<p>To load a LUT into <em>Maya</em>, <em>Nuke</em>, <em>Guerilla Render</em> or <em>Mari</em>, we will use an <a href="http://opencolorio.org/">OCIO</a> configuration. <strong>The OCIO config is the easiest way to share a LUT between different programs.</strong>  And guess what ? There are several OCIO Configs available <a href="https://github.com/imageworks/OpenColorIO-Configs">for free</a> to help you setup your Color Management Workflow without breaking a sweat.</p>
+<p>要将 LUT 加载到​<em>Maya</em>​、​<em>Nuke</em>​、<em>Guerilla Render</em> 或 <em>Mari</em> 中，我们将使用 <a href="http://opencolorio.org/">OCIO</a> 配置。<strong>OCIO 配置是在不同程序之间共享 LUT 的最简单方法。</strong> 猜猜怎么着？有几种<a href="https://github.com/imageworks/OpenColorIO-Configs">免费的</a> OCIO 配置可帮助您轻松设置色彩管理工作流程。</p>
+<p>Here is what the <em>OCIO</em> config from <em>Sony Picture Imageworks</em> (left side) and <em>ACES 1.2</em> (right side) look like :</p>
+<p>以下是​<em>Sony Picture Imageworks</em>​（左侧）和​<em>ACES 1.2</em>​（右侧）的 <em>OCIO 配置：</em></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_300_config_OCIO_FHD-20241105015121-vcwcsgs.jpg" alt="" title="I have also shortened the files on purpose for display convenience. 我还特意缩短了文件以方便显示。" loading="lazy">​</p>
+<p>Here are a few general observations about OCIO Configs :</p>
+<p>以下是有关 OCIO 配置的一些一般观察：</p>
+<ul>
+<li>Different roles like ​<em>color picking</em>​, <em>texture painting</em> or <em>compositing</em> are predefined. Watch out !</li>
+<li>预定义了不同的角色，例如​<em>颜色选择</em>​、<em>纹理绘制</em>或​<em>合成</em>​。注意！</li>
+<li>Different displays are available such DCI-P3, sRGB or Rec.709.</li>
+<li>有不同的显示器可用，如 DCI-P3、sRGB 或 Rec.709。</li>
+<li>In the spi-anim config, the “Film View” loads the file <em>vd16.spi1d</em> with a quick description. Handy !</li>
+<li>在 spi-anim 配置中，“Film View” 加载文件 <em>vd16.spi1d</em> 并附带简短说明。非常方便！</li>
+</ul>
+<blockquote>
+<p>There are several file formats for LUTs : spi1d, spi3d, csp, cube… Photoshop only accepts cube files. Adobe softwares are not OCIO friendly unfortunately. So you could try to use an <a href="https://en.wikipedia.org/wiki/ICC_profile">ICC profile</a>.</p>
+<p>LUT 有几种文件格式：spi1d、spi3d、csp、cube……Photoshop 只接受立方体文件。不幸的是，Adobe 软件不支持 OCIO。所以你可以尝试使用 <a href="https://en.wikipedia.org/wiki/ICC_profile">ICC 配置文件</a>。</p>
+</blockquote>
+<h3 id="外观开发和-lut-look-development-and-luts">外观开发和 LUT Look development and LUTs</h3>
+<p><strong>It is crucial that anyone doing look development or rendering uses the same Display Transform.</strong>  Artists from the Surfacing, Grooming, FX, Lighting and Compositing departments need to see the same thing. <strong>Texturing in plain sRGB but rendering with a s-curve LUT can give issues.</strong>  There are plenty of solutions for <a href="https://learn.foundry.com/mari/Content/user_guide/managing_colors/color_management.html">Mari</a>, <a href="https://substance3d.adobe.com/documentation/spdoc/version-7-4-223053247.html">Substance Painter</a> or <a href="https://acescentral.com/t/aces-photoshop-friendly-workflows/1369/16">Photoshop</a> to make our work consistent.</p>
+<p><strong>至关重要的是，任何进行外观开发或渲染的人都使用相同的显示变换。</strong> 来自表面处理、修饰、FX、照明和合成部门的艺术家需要看到同样的东西。<a href="https://learn.foundry.com/mari/Content/user_guide/managing_colors/color_management.html">在</a>​<strong>纯 sRGB 中进行纹理处理但使用 s 曲线 LUT 进行渲染可能会出现问题。Mari</strong>、<a href="https://substance3d.adobe.com/documentation/spdoc/version-7-4-223053247.html"> Substance Painter</a> 或 <a href="https://acescentral.com/t/aces-photoshop-friendly-workflows/1369/16">Photoshop</a> 有很多解决方案可以使我们的工作保持一致。</p>
+<p>I could make an analogy here : we generally need to test our look development assets under different HDRIs (or lighting conditions) to make sure they react well. Same goes with Display Transforms/LUTs. It is not uncommon to work the assets under a “neutral” studio LUT and check how it looks under the show LUT.</p>
+<p>我可以打个比方：我们通常需要在不同的 HDRI（或光照条件）下测试我们的外观开发资产，以确保它们反应良好。显示变换/LUT 也是如此。在“中性”工作室 LUT 下处理资产并检查其在节目 LUT 下的外观并不罕见。</p>
+<p>The OCIO configs are very handy because you can share them between softwares. You can use the official ones or build your own in Python (or manually). LUTs in animated movies have arrived pretty late compared to visual effects (VFX). But they are kind of a game changer in the industry. <a href="https://www.naughtydog.com/">Naughty Dog</a> has done some really <a href="https://www.slideshare.net/ozlael/hable-john-uncharted2-hdr-lighting">good</a> <a href="http://advances.realtimerendering.com/other/2016/naughty_dog/index.html">papers</a> about them.</p>
+<p>OCIO 配置非常方便，因为您可以在软件之间共享它们。您可以使用官方配置，也可以用 Python 构建自己的配置（或手动构建）。与视觉效果 (VFX) 相比，动画电影中的 LUT 出现得相当晚。但它们是行业游戏规则的改变者。<a href="https://www.naughtydog.com/">顽皮狗</a>已经发表了一些关于它们的非常<a href="https://www.slideshare.net/ozlael/hable-john-uncharted2-hdr-lighting">好的</a> <a href="http://advances.realtimerendering.com/other/2016/naughty_dog/index.html">论文</a>。</p>
+<h3 id="1d-lut-示例-1d-lut-example">1D LUT 示例 1D LUT example</h3>
+<p>What happens if you do not use a LUT ?  <strong>Every time your shot is overexposed, you will have to manually compensate for it. This is just wrong.</strong></p>
+<p>如果不使用 LUT 会发生什么？<strong>每次拍摄曝光过度时，您都必须手动进行补偿。这是错误的。</strong></p>
+<p>Without a LUT, you will decrease your light’s intensity if it burns out. <strong>BUT</strong> you will loose some bouncing from Global Illumination (GI), some Sub-Surface Scattering (SSS)… Without a Display Transfrom, you will <strong>NEVER</strong> get the right amount of energy in your scene.</p>
+<p>如果没有 LUT，如果灯光烧坏，灯光强度就会降低。<strong>但是，</strong> 您会失去一些全局照明 (GI) 的反射、一些次表面散射 (SSS)……如果没有显示转换，您将<strong>永远无法</strong>在场景中获得正确的能量。</p>
+<p>So you will probably have to create plenty of lights to compensate for the loss of energy. And this is how you end up with a complicated rig of 50 lights ! <strong>You want to be able to put as much energy as you need in a shot.</strong></p>
+<p>因此，您可能需要创建大量灯光来补偿能量损失。这就是您最终拥有 50 盏灯的复杂装置的原因！<strong>您希望能够在一次拍摄中投入所需的能量。</strong></p>
+<p>Check the example below : this is the <strong>SAME render displayed differently !</strong>  I repeat : the exr from the render engine does not change, <strong>it is just the way we view it.</strong></p>
+<p>查看下面的示例：这是以<strong>不同方式显示的相同渲染！</strong>  我再说一遍：渲染引擎​​的 exr 不会改变，<strong>这只是我们查看它的方式。</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_310_lut_spi_anim_FHD-20241105015121-9k6nx4o.jpg" alt="" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_320_lut_spi_anim_FHD-20241105015121-xzyz69o.jpg" alt="" loading="lazy">​</p>
+<p>This is the only way to display a scene-linear render. 这是显示场景线性渲染的唯一方法。</p>
+<h3 id="电影风格-filmic-look">电影风格 Filmic look</h3>
+<p>As a student I was obsessed to get a filmic look and pure blacks without making my renders look dirty. The only solution to achieve that is to use Tone Mapping (or better put, a Display Transform). <strong>It will give your images proper contrast and nicely roll off any pixels over 1.</strong>  Here is what a “filmic” s-curve for tone mapping looks like :</p>
+<p>作为一名学生，我痴迷于获得电影般的外观和纯黑色，而不会让我的渲染看起来很脏。实现这一目标的唯一解决方案是使用色调映射（或更好地说，显示变换）。<strong>它将为您的图像提供适当的对比度，并很好地消除任何超过 1 的像素。</strong> 以下是色调映射的“电影” S 曲线：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/010_colorManagement_330_s_curve_FHD-20241105015121-hr3q3ok.jpg" alt="" title="Please note that this is a semi-log plot. The X axis is logarithmic ! 请注意，这是一个半对数图。X 轴是对数的！" loading="lazy">​</p>
+<blockquote>
+<p>From Cinematic Color : most tone renderings map a traditional scene gray exposure to a central value on the output display. […] one adds a reconstruction slope greater than 1:1 to bump the midtone contrast. Of course, with this increase in contrast the shadows and highlights are severely clipped, so a rolloff in contrast of lower than 1:1 is applied on both the high and low ends to allow for highlight and shadow detail to have smooth transitions. <strong>With this high contrast portion in middle, and low contrast portions at the extrema, the final curve resembles an“S”shape as shown below.</strong></p>
+<p>来自电影色彩：大多数色调渲染将传统场景灰度曝光映射到输出显示屏上的中心值。[…] 添加大于 1:1 的重建斜率来提高中间色调对比度。当然，随着对比度的增加，阴影和高光被严重剪切，因此在高端和低端都应用了低于 1:1 的对比度衰减，以使高光和阴影细节具有平滑的过渡。<strong>由于中间有高对比度部分，极值有低对比度部分，因此最终曲线类似于“S”形，如下所示。</strong></p>
+</blockquote>
+<p>The rolloff of the highlights is pretty clear in the image above : all the values between 1 and 10 will be displayed in a range from 0.8 to 1. Only a tonemapping s-curve will give you  <strong>a proper contrast</strong> without breaking a sweat.</p>
+<p>在上图中，高光的滚降非常清晰：1 到 10 之间的所有值都将显示在 0.8 到 1 的范围内。只有色调映射 S 曲线才能让您轻松获得<strong>适当的对比度。</strong></p>
+<p>It is the same thing if you’re lighting an interior : make it “real” with a ceiling, a floor and four walls. I see too many people lighting with holes or missing walls… Lots of light leaking and therefore no contrast ! It cannot work in my opinion.</p>
+<p>如果你要照亮室内，也是一样：用天花板、地板和四面墙让它“真实”。我看到太多人用洞或缺失的墙来照明……大量漏光，因此没有对比度！在我看来，这是行不通的。</p>
+<h2 id="格式-format">格式 Format</h2>
+<p>We are all set for proper Color Management and ready to make some beautiful renders. But how do we keep all these values, especially above 1, in a proper format ? We can thank ILM to have invented <a href="http://www.openexr.com/">OpenEXR</a>.</p>
+<p>我们已经做好了正确的色彩管理准备，可以制作一些漂亮的渲染图了。但是，我们如何以正确的格式保存所有这些值，尤其是大于 1 的值？我们要感谢 ILM 发明了 <a href="http://www.openexr.com/">OpenEXR</a>。</p>
+<p>OpenEXR allows you to save in 16 bits half float to preserve all the “raw” data. You will also be able to write some Arbitrary  Output Variable (AOV) for your compositing process. You can check <a href="https://docs.arnoldrenderer.com/display/A5AFMUG/EXR">the Arnold documentation about exr files</a>.</p>
+<p>OpenEXR 允许您以 16 位半浮点数保存所有“原始”数据。您还可以为合成过程写入一些任意输出变量 (AOV)。您可以查看<a href="https://docs.arnoldrenderer.com/display/A5AFMUG/EXR">有关 exr 文件的 Arnold 文档</a>。</p>
+<blockquote>
+<p>From <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a> : It is important to remember when dealing with float-16 data, that the bits are allocated very differently from integer encodings. Whereas integer encodings have a uniform allocation of bits over the entire coding space, the floating-point encodings have increased precision in the low end, and decreased precision in the high end.</p>
+<p>来自 <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Cinematic Color</a>：处理浮点 16 数据时，需要记住的是，位的分配与整数编码非常不同。整数编码在整个编码空间中具有统一的位分配，而浮点编码在低端的精度增加，在高端的精度降低。</p>
+</blockquote>
+<p>After a couple of e-mails following the release of my website, I thought it would be worth mentioning that <strong>16 or 32 bits files do not give you magically access to infinite color ranges.</strong>  You still have to take in account the primaries (or gamut) you are working in.</p>
+<p>在我的网站发布后，我发了几封电子邮件，我觉得值得一提的是，<strong>16 位或 32 位文件并不能让你神奇地获得无限的色彩范围。</strong> 你仍然需要考虑你正在使用的原色（或色域）。</p>
+<blockquote>
+<p>We did render some AOVs in 32 bits on Playmobil :  Ncam, Pcam and Pworld for better precision.</p>
+<p>为了获得更好的精度，我们确实在 Playmobil：Ncam、Pcam 和 Pworld 上以 32 位渲染了一些 AOV。</p>
+<p>For Z Depth and position.</p>
+<p>对于 Z 深度和位置。</p>
+</blockquote>
+<p>A common misconception is also about the weight of the EXR files. I strongly believe that they are actually lighter than most formats, such as TGA, TIF, PNG and even JPG ! Just use the proper compression such as “<a href="https://en.wikipedia.org/wiki/OpenEXR#Compression_methods">dwab</a>” (developed by Dreamworks Animation) for example.</p>
+<p>一个常见的误解也是关于 EXR 文件的重量。我坚信它们实际上比大多数格式（如 TGA、TIF、PNG 甚至 JPG）都要轻！只需使用适当的压缩，例如“ <a href="https://en.wikipedia.org/wiki/OpenEXR#Compression_methods">dwab</a> ”（由梦工厂动画开发）。</p>
+<h2 id="范围-range">范围 Range</h2>
+<p>Finally we have to take care of our range. This topic is subject to controversy in many studios ! Basically you want to go as low as possible without affecting the data. There are two settings to take care of :</p>
+<p>最后，我们必须注意我们的范围。这个话题在许多工作室都存在争议！基本上，您希望在不影响数据的情况下尽可能降低范围。有两种设置需要注意：</p>
+<ul>
+<li><strong>Indirect Clamp Value</strong> : Clamp the sample values.</li>
+<li><strong>间接钳制值</strong>​：钳制样本值。</li>
+<li><strong>AA Clamp Value</strong> : Clamp the pixel values.</li>
+<li><strong>AA 限制值</strong>​：限制像素值。</li>
+</ul>
+<p><strong>Clamping the sample values</strong> will help you to reduce fireflies and noise. The lowest value I ever used was 10 and it helped me greatly. <strong>Clamping the pixel values</strong> will help your anti-aliasing for a smoother result.</p>
+<p><strong>限制样本值</strong>将有助于减少萤火虫和噪音。我曾经使用的最低值是 10，这对我帮助很大。<strong>限制像素值</strong>将有助于您的抗锯齿，从而获得更平滑的结果。</p>
+<p>If you have a very dark pixel next to an overexposed pixel, you do  <strong>NOT</strong> want the overexposed pixel to blow out every other pixel next to it. This is why we clamp our renders.</p>
+<p>如果过度曝光的像素旁边有一个非常暗的像素，您<strong>肯定不</strong>希望过度曝光的像素破坏其旁边的所有其他像素。这就是我们限制渲染的原因。</p>
+<p><strong>It may also depend on your scene and your render engine.</strong>  Some studios clamp their renders at 50. I have tried a couple of times as low as 30… I guess you need to try and test for yourself, especially on HDR displays ! Solid Angle explains pretty well <a href="https://docs.arnoldrenderer.com/display/A5AFMUG/Clamping">the topic of clamping</a>.</p>
+<p><strong>这可能还取决于您的场景和渲染引擎。</strong> 一些工作室将渲染限制在 50。我试过几次，最低低至 30……我想您需要自己尝试和测试，尤其是在 HDR 显示器上！ Solid Angle 很好地解释了<a href="https://docs.arnoldrenderer.com/display/A5AFMUG/Clamping">限制的主题</a>。</p>
+<p>We will see in <a href="https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/">chapter 9</a> why clamping pixel values can be an issue.</p>
+<p><a href="https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/">我们将在第 9 章</a>中看到为什么限制像素值会成为一个问题。</p>
+<h2 id="概括-summary">概括 Summary</h2>
+<p>We have seen some important and complex notions in this chapter. Hopefully I was able to explain them without causing too much headache. Here is a quick recap :</p>
+<p>我们在本章中看到了一些重要而复杂的概念。希望我能够解释它们而不会造成太多麻烦。以下是快速回顾：</p>
+<ul>
+<li>A color space has three components : three primaries, a white point and a transfer function.</li>
+<li>颜色空间有三个组成部分：三个原色、一个白点和一个传递函数。</li>
+<li>The difference between Transfer Functions (EOTF and OETF), a Gamma function and a Power function.</li>
+<li>传递函数（EOTF 和 OETF）、伽马函数和幂函数之间的区别。</li>
+<li>The different properties of a color space : scene-referred, display-referred and viewing environment.</li>
+<li>颜色空间的不同属性：场景相关、显示相关和观看环境。</li>
+<li>A presentation of the Industry standards : sRGB, Rec.709, DCI-P3 and Rec.2020.</li>
+<li>行业标准的介绍：sRGB、Rec.709、DCI-P3 和 Rec.2020。</li>
+<li>The importance of scene-linear and display-linear terminology, and the “linear” confusion.</li>
+<li>场景线性和显示线性术语的重要性，以及“线性”混淆。</li>
+<li>The benefits of a scene-linear workflow and the importance of tone-mapping.</li>
+<li>场景线性工作流程的好处和色调映射的重要性。</li>
+<li>The use of differents LUTs through OpenColorIO (OCIO) configuration files.</li>
+<li>通过 OpenColorIO（OCIO）配置文件使用不同的 LUT。</li>
+<li>And finally, how to save all our High Dynamic Range data into a proper file format : OpenEXR.</li>
+<li>最后，如何将所有高动态范围数据保存为适当的文件格式：OpenEXR。</li>
+</ul>
+<p>We have also seen that your rendering space (or scene-referred) should always have a linear transfer function and that you should <strong>NEVER</strong> display a linear image without a proper display transform.</p>
+<p>我们还看到，您的渲染空间（或场景引用）应该始终具有线性传递函数，并且您<strong>绝不</strong>应该在没有适当显示变换的情况下显示线性图像。</p>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p>Color Management is a never-ending topic that I continue to explore on a daily basis. I have tried to introduce it to you in an easily understandable post. <strong>A good color management is when you see the same thing along the color pipeline and in different softwares.</strong></p>
+<p>色彩管理是一个永无止境的话题，我每天都在不断探索。我试图用一篇通俗易懂的文章向你介绍它。<strong>良好的色彩管理是当你在色彩管道和不同的软件中看到相同的东西时。</strong></p>
+<p>If your colors or your contrast shift when you go from Substance Painter to Maya, it may be worth to analyze the issue. A good color pipeline is all about controlling the color space from the first sketches (probably done by the Art Department) to final delivery. <strong>Consistency is key.</strong></p>
+<p>如果从 Substance Painter 转到 Maya 时颜色或对比度发生变化，则可能需要分析一下这个问题。良好的色彩流程就是从最初的草图（可能是由艺术部门完成的）到最终交付控制色彩空间。<strong>一致性是关键。</strong></p>
+<p>This has been a great and long journey through color with my former colleague <strong>Christophe Verspieren</strong> . But it doesn’t end here. That would be too easy. If you are still up for it, we can move to <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">chapter 1.5 about the Academy Color Encoding System (ACES).</a></p>
+<p>这是与我前同事 <strong>Christophe Verspieren</strong> 一起探索色彩的一段伟大而漫长的旅程。但这并没有结束。那样就太简单了。如果你还想继续，我们可以转到<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">第 1.5 章，了解学院色彩编码系统 (ACES)。</a></p>
+<h2 id="来源-sources">来源 Sources</h2>
+<ul>
+<li><a href="https://www.colour-science.org/">Color Science Basics For Filmmakers</a>.</li>
+<li><a href="https://www.colour-science.org/">电影制作人的色彩科学基础知识</a>。</li>
+<li><a href="https://cinematiccolor.org/">Cinematic Color</a> is  <strong>a major document,</strong>  probably the best one but it is also quite technical.</li>
+<li><a href="https://cinematiccolor.org/">《电影色彩》</a>是<strong>一份重要的文件，</strong> 可能是最好的文件，但它也相当技术性。</li>
+<li><a href="https://nick-shaw.github.io/cinematiccolor/cinematic-color.html">Cinematic Color 2</a> is on its way…</li>
+<li><a href="https://nick-shaw.github.io/cinematiccolor/cinematic-color.html">Cinematic Color 2</a> 即将问世……</li>
+<li><a href="https://hg2dc.com/">The Hitchhiker’s Guide to Digital Colour</a> is a must-read.</li>
+<li><a href="https://hg2dc.com/">《数字色彩漫游指南》</a>是一本必读书籍。</li>
+<li>A couple of posts by Troy Sobotka about <a href="https://blender.stackexchange.com/questions/46825/render-with-a-wider-dynamic-range-in-cycles-to-produce-photorealistic-looking-im">wide dynamic range</a>, <a href="https://blender.stackexchange.com/questions/53155/how-must-i-adapt-my-workflow-to-work-with-scene-referred-data">scene referred data</a>, <a href="https://blender.stackexchange.com/questions/65948/how-to-make-3d-luts-and-use-them-in-blender">3d luts</a> and <a href="https://blender.stackexchange.com/questions/173582/using-blender-with-wider-gamut-than-709-primaries-like-aces">ACEScg in Blender</a>.</li>
+<li>Troy Sobotka 发表了几篇关于 Blender 中的<a href="https://blender.stackexchange.com/questions/46825/render-with-a-wider-dynamic-range-in-cycles-to-produce-photorealistic-looking-im">宽动态范围</a>、<a href="https://blender.stackexchange.com/questions/53155/how-must-i-adapt-my-workflow-to-work-with-scene-referred-data">场景参考数据</a>、<a href="https://blender.stackexchange.com/questions/65948/how-to-make-3d-luts-and-use-them-in-blender">3d luts</a> 和 ACEScg 的帖子。</li>
+<li><a href="http://poynton.ca/GammaFAQ.html">Frequently Asked Questions about Gamma</a> by Charles Poynton.</li>
+<li>Charles Poynton 的 <a href="http://poynton.ca/GammaFAQ.html">有关 Gamma 的常见问题解答</a>。</li>
+<li><a href="http://dicomp.arri.de/digital/digital_systems/DIcompanion/index.html">The ARRI Companion to Digital intermediate</a> by Harald Brendel.</li>
+<li>Harald Brendel 撰写的<a href="http://dicomp.arri.de/digital/digital_systems/DIcompanion/index.html">《ARRI 数字中间片指南》</a>。</li>
+<li><a href="https://www.colour-science.org/">Colour science</a> and <a href="http://awesome-colour.org/">Awesome colour</a>.</li>
+<li><a href="https://www.colour-science.org/">色彩科学</a>和<a href="http://awesome-colour.org/">令人惊叹的色彩</a>。</li>
+<li><a href="https://www.colour-science.org/posts/the-importance-of-terminology-and-srgb-uncertainty/">This article</a> about terminology was a <strong>game changer</strong> for me. And here are <a href="https://www.slideshare.net/thomasmansencal/the-importance-of-terminology-and-srgb-uncertainty-notes-05">the slides</a> !</li>
+<li><a href="https://www.colour-science.org/posts/the-importance-of-terminology-and-srgb-uncertainty/">这篇</a>关于术语的文章​<strong>改变了我的想法</strong>​。以下是<a href="https://www.slideshare.net/thomasmansencal/the-importance-of-terminology-and-srgb-uncertainty-notes-05">幻灯片</a>！</li>
+<li>If you need any information about OCIO, check <a href="http://opencolorio.org/">their website</a>.</li>
+<li>如果您需要有关 OCIO 的任何信息，请查看<a href="http://opencolorio.org/">其网站</a>。</li>
+<li>Steve Yedlin’s <a href="https://twitter.com/steveyedlin/status/1216449232892092418">color rendering for Knives Out</a> and <a href="http://www.yedlin.net/DisplayPrepDemo/DispPrepDemoFollowup.html">Display Prep Demo</a>.</li>
+<li>史蒂夫·叶德林为《利刃出鞘》和<a href="http://www.yedlin.net/DisplayPrepDemo/DispPrepDemoFollowup.html">《Display Prep Demo》进行的</a>​<a href="https://twitter.com/steveyedlin/status/1216449232892092418">色彩渲染</a>。</li>
+<li>Definition of <a href="https://www.itu.int/rec/R-REC-BT.709/en">BT.709</a> by the International telecommunication Union and <a href="https://www.itu.int/rec/R-REC-BT.2035-0-201307-I/en">its Reference Viewing Environment</a>.</li>
+<li>国际电信联盟对 <a href="https://www.itu.int/rec/R-REC-BT.709/en">BT.709</a> 的定义及其<a href="https://www.itu.int/rec/R-REC-BT.2035-0-201307-I/en">参考观看环境</a>。</li>
+</ul>
+<h2 id="丹尼尔西拉古萨诺-daniele-siragusanos">丹尼尔·西拉古萨诺 Daniele Siragusano’s</h2>
+<ul>
+<li>Effective Colour Management <a href="https://vimeo.com/119143638">Part 1</a> and <a href="https://vimeo.com/119143639">Part 2</a>. A fantastic lecture on the challenges of color management. From a DI perspective, but super relevant to VFX color pipelines.</li>
+<li>有效色彩管理<a href="https://vimeo.com/119143638">第 1 部分</a>和<a href="https://vimeo.com/119143639">第 2 部分</a>。关于色彩管理挑战的精彩讲座。从 DI 角度来看，但与 VFX 色彩管道非常相关。</li>
+<li><a href="https://vimeo.com/442069591">sRGB… We Need To Talk</a>. A good example of how complex a seemingly simple topic in color science can be : sRGB vs Rec709.</li>
+<li><a href="https://vimeo.com/442069591">sRGB...我们需要谈谈</a>。色彩科学中看似简单的主题其实非常复杂，一个很好的例子就是 sRGB 与 Rec709。</li>
+<li><a href="https://vimeo.com/375458465">Understanding visual adaptation for multi-delivery projects</a>. A fascinating talk about the effects of human visual adaptation.</li>
+<li><a href="https://vimeo.com/375458465">了解多交付项目的视觉适应</a>。关于人类视觉适应效果的精彩演讲。</li>
+<li><a href="https://vimeo.com/333078338">Camerimage 2018: Natural Colours &amp; Texture</a>. A fascinating talk about the correlation between luminance, hue, color purity, and the effects of different capture mediums.</li>
+<li><a href="https://vimeo.com/333078338">Camerimage 2018：自然色彩和纹理</a>。关于亮度、色调、色彩纯度以及不同捕捉介质的效果之间的相关性的精彩演讲。</li>
+<li><a href="https://vimeo.com/310759883">Managing White Points</a>. White is white right ? Maybe not.</li>
+<li><a href="https://vimeo.com/310759883">管理白点</a>。白色就是白色，对吗？也许不是。</li>
+<li>International Cinematography Days 2018, Stuttgart : <a href="https://vimeo.com/298129056">Colour Management</a> and  <a href="https://vimeo.com/298131298">Managing Colour in a Multi-Delivery Production</a>.</li>
+<li>2018 年斯图加特国际电影摄影日：<a href="https://vimeo.com/298129056">色彩管理</a>和  <a href="https://vimeo.com/298131298">多交付制作中的色彩管理</a>。</li>
+<li><a href="https://www.filmlight.ltd.uk/training/resources/generalvid/webinar1.php">Colour Management webinar in Baselight</a>.</li>
+<li><a href="https://www.filmlight.ltd.uk/training/resources/generalvid/webinar1.php">Baselight 中的色彩管理网络研讨会</a>。</li>
+<li>Most of FilmLight videos are available <a href="https://www.filmlight.ltd.uk/store/watch/colour-online/">here</a>.</li>
+<li>大部分 FilmLight 视频都可以<a href="https://www.filmlight.ltd.uk/store/watch/colour-online/">在这里</a>找到。</li>
+<li>All the links above have been copied from <a href="https://benmcewan.com/blog/2020/09/28/interview-jedediah-smith/">Jed Smith’s interview</a>.</li>
+<li>以上所有链接均取自<a href="https://benmcewan.com/blog/2020/09/28/interview-jedediah-smith/">杰德史密斯的采访</a>。</li>
+</ul>
+<h2 id="初学者推荐资源-recommended-sources-for-beginners">初学者推荐资源 Recommended sources for beginners</h2>
+<p>I was lucky enough to come across this list of recommended sources for beginners, by Daniele Siragusano :</p>
+<p>我很幸运地偶然发现了 Daniele Siragusano 为初学者推荐的资源列表：</p>
+<ul>
+<li>Two solide primers are <a href="http://as.wiley.com/WileyCDA/WileyTitle/productCd-0470024259.html">The Reproduction of Color</a> (Hunt) and <a href="http://as.wiley.com/WileyCDA/WileyTitle/productCd-1119967031.html">Color Appearance Models</a> (Fairchild).  This should give you a good foundation.</li>
+<li>两本不错的入门书是<a href="http://as.wiley.com/WileyCDA/WileyTitle/productCd-0470024259.html">《色彩再现》</a>（Hunt 著）和<a href="http://as.wiley.com/WileyCDA/WileyTitle/productCd-1119967031.html">《色彩外观模型》</a>（Fairchild 著）。这应该能为你打下良好的基础。</li>
+<li>Great book about DCPs : <a href="https://www.amazon.com/Mastering-Digital-Cinema-Industry-Handbook/dp/0240808746">Color and Mastering for Digital Cinema</a> (Kennel).</li>
+<li>关于 DCP 的优秀书籍：<a href="https://www.amazon.com/Mastering-Digital-Cinema-Industry-Handbook/dp/0240808746">《数字影院的色彩与母版制作》</a>（Kennel）。</li>
+<li>Here FilmLight hosts <a href="https://www.filmlight.ltd.uk/store/watch/product-tutorials/truelight-colour-spaces/">videos about colour management</a>.  A good introduction video is this <a href="https://www.filmlight.ltd.uk/store/watch/product-tutorials/truelight-colour-spaces/?vimeography_gallery=19&amp;vimeography_video=298129056">one</a>.</li>
+<li>FilmLight 上提供<a href="https://www.filmlight.ltd.uk/store/watch/product-tutorials/truelight-colour-spaces/">有关色彩管理的视频。这个视频是</a>​<a href="https://www.filmlight.ltd.uk/store/watch/product-tutorials/truelight-colour-spaces/?vimeography_gallery=19&amp;vimeography_video=298129056">一个</a>很好的介绍视频。</li>
+</ul>
+<h2 id="关于红色的视频-videos-about-the-red-colour">关于红色的视频 Videos about the red colour</h2>
+<p>I was sent <a href="https://www.mk2curiosity.com/film/rouges-ep3">these videos in French</a> about the red colour. They look quite interesting :</p>
+<p>我收到了这些关于红色的<a href="https://www.mk2curiosity.com/film/rouges-ep3">法语视频</a>。它们看起来很有趣：</p>
+<ul>
+<li><a href="https://www.mk2curiosity.com/episode/supercut-rouge-ep1">La première des couleurs</a> by Michel Pastoureau.</li>
+<li><a href="https://www.mk2curiosity.com/episode/supercut-rouge-ep1">米歇尔·帕斯托罗 (Michel Pastoureau) 的《La première des couleurs》</a>。</li>
+<li><a href="https://www.mk2curiosity.com/episode/supercut-rouge-ep4">Les enfants de la lumière</a> by Bernard Valeur.</li>
+<li><a href="https://www.mk2curiosity.com/episode/supercut-rouge-ep4">伯纳德·瓦勒 (Bernard Valeur) 的《光的孩子》</a>。</li>
+</ul>
+<h2 id="文章和博客-articles-and-blogs">文章和博客 Articles and blogs</h2>
+<ul>
+<li><a href="https://www.w3.org/Graphics/Color/sRGB">A Standard Default Color Space for the Internet – sRGB</a>.</li>
+<li><a href="https://www.w3.org/Graphics/Color/sRGB">互联网的标准默认色彩空间 – sRGB</a>。</li>
+<li><a href="https://twitter.com/momaku/status/812025645626703874">Interesting definitions of faithful presentation, scene-referred and display-refererred</a> by Charles Poynton.</li>
+<li><a href="https://twitter.com/momaku/status/812025645626703874">查尔斯·波因顿 (Charles Poynton)对忠实呈现、场景参照和显示参照提出了有趣的定义</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=PXcTaB5cAoM">Colour Management Unreal Engine 2019</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=PXcTaB5cAoM">色彩管理虚幻引擎 2019</a>。</li>
+<li><a href="https://docs.themolecule.com/color/">Color for VFX</a> by Chris Healer.</li>
+<li><a href="https://docs.themolecule.com/color/">视觉特效的色彩</a>由 Chris Healer 负责。</li>
+<li><a href="https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a">A beginner’s guide to colorimetry</a>.</li>
+<li><a href="https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a">比色法初学者指南</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=5U-F7EhLp7g">RGB Lights : the untold truth</a> by Indy Mogul.</li>
+<li>RGB 灯： Indy Mogul <a href="https://www.youtube.com/watch?v=5U-F7EhLp7g">不为人知的真相。</a></li>
+<li><a href="https://www.jorgenhdri.com/explained">HDRI explained</a> by JorgenHDRI.</li>
+<li><a href="https://www.jorgenhdri.com/explained">HDRI 由 JorgenHDRI 解释</a>。</li>
+<li><a href="http://www.brucelindbloom.com/">Bruce Lindbloom’s website</a>.</li>
+<li><a href="http://www.brucelindbloom.com/">布鲁斯·林德布鲁姆的网站</a>。</li>
+<li><a href="http://www.huevaluechroma.com/">The Dimensions of Colour</a> by ​<strong>David Briggs</strong>​.</li>
+<li><strong>大卫·布里格斯 (David Briggs)</strong> 著<a href="http://www.huevaluechroma.com/">《色彩的维度》</a>。</li>
+<li><a href="https://www.fxecademy.com/color-spaces-of-the-vfx-pipeline-part-3-camera-space/">Color Spaces of the VFX Pipeline</a> by ​<strong>Steve Wright</strong>​.</li>
+<li><strong>史蒂夫赖特 (Steve Wright)</strong> 撰写<a href="https://www.fxecademy.com/color-spaces-of-the-vfx-pipeline-part-3-camera-space/">的《VFX 管道的色彩空间》</a>。</li>
+<li><a href="https://www.ediwalger.com.ar/es/blog/espectros">Edi Walger’s blog</a> (only in Spanish).</li>
+<li><a href="https://www.ediwalger.com.ar/es/blog/espectros">Edi Walger 的博客</a>（仅西班牙语）。</li>
+<li><a href="http://www.ryanjuckett.com/programming/rgb-color-space-conversion/">RGB Color Space Conversion</a> by ​<strong>Ryan Juckett</strong>​.</li>
+<li>由 <strong>Ryan Juckett 编写的</strong>​<a href="http://www.ryanjuckett.com/programming/rgb-color-space-conversion/">RGB 颜色空间转换</a>。</li>
+<li><a href="https://www.waveformlighting.com/tech/calculate-color-temperature-cct-from-cie-1931-xy-coordinates">Color Temperature from CIE 1931 converter</a>.</li>
+<li><a href="https://www.waveformlighting.com/tech/calculate-color-temperature-cct-from-cie-1931-xy-coordinates">来自 CIE 1931 转换器的色温</a>。</li>
+<li><a href="https://webkit.org/blog-files/color-gamut/">Examples</a> to check if your monitor is really P3.</li>
+<li>检查您的显示器是否真的是 P3 的<a href="https://webkit.org/blog-files/color-gamut/">示例。</a></li>
+<li>A short video in French about <a href="https://www.youtube.com/watch?v=cKc3-CuMP8M">mid gray</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=cKc3-CuMP8M">一段关于中灰色</a>的法语短片。</li>
+<li>An EIZO article about <a href="https://www.eizo.be/en/knowledge/monitor-expertise/gamma-values-of-lcd-monitors/">LCD monitor gamma</a>.</li>
+<li>一篇有关 <a href="https://www.eizo.be/en/knowledge/monitor-expertise/gamma-values-of-lcd-monitors/">LCD 显示器伽马</a>​​的 EIZO 文章。</li>
+<li><a href="https://www.youtube.com/watch?v=n0bxSD-Xx-Q">A youtube video</a> that explains sRGB and color gamut.</li>
+<li><a href="https://www.youtube.com/watch?v=n0bxSD-Xx-Q">YouTube 视频</a>解释了 sRGB 和色域。</li>
+<li>The <a href="https://www.openexr.com/documentation">openEXR documentation</a> is very interesting as well.</li>
+<li><a href="https://www.openexr.com/documentation">openEXR 文档</a>也非常有趣。</li>
+<li>Interesting posts about <a href="https://ciechanow.ski/color-spaces/">color spaces</a>, <a href="https://www.creativeplanetnetwork.com/news/news-features/understanding-gamma-and-high-dynamic-range-615702">gamma</a> and <a href="https://mixinglight.com/color-tutorial/10-things-about-hdr-grading/">HDR grading</a>.</li>
+<li><a href="https://ciechanow.ski/color-spaces/">关于色彩空间</a>、<a href="https://www.creativeplanetnetwork.com/news/news-features/understanding-gamma-and-high-dynamic-range-615702">伽马</a>和 <a href="https://mixinglight.com/color-tutorial/10-things-about-hdr-grading/">HDR 分级</a>的有趣帖子。</li>
+<li>A <a href="https://www.semanticscholar.org/paper/High-dynamic-range-television-for/7a7c284e3993338f64e1fa937175c7627ef1f1bd">semantic scholar pdf</a> about HDR television.</li>
+<li>关于 HDR 电视的<a href="https://www.semanticscholar.org/paper/High-dynamic-range-television-for/7a7c284e3993338f64e1fa937175c7627ef1f1bd">语义学者 pdf</a> 。</li>
+<li>An article about <a href="https://www.artstation.com/andreasmischok/blog/D0AG/what-the-hell-is-bit-depth">bit depth</a> and one about <a href="https://www.displaydaily.com/article/display-daily/you-can-t-describe-colour-volume-in-2d-or-can-you">Colour Volume Description</a>.</li>
+<li>一篇关于<a href="https://www.artstation.com/andreasmischok/blog/D0AG/what-the-hell-is-bit-depth">位深度</a>的文章和一篇关于<a href="https://www.displaydaily.com/article/display-daily/you-can-t-describe-colour-volume-in-2d-or-can-you">色彩体积描述的</a> 文章。</li>
+<li>You can download these <a href="https://www.arri.com/en/learn-help/learn-help-camera-system/tools/lut-generator">LUTs from Arri for free</a>.</li>
+<li>您可以从 Arri 免费下载这些 <a href="https://www.arri.com/en/learn-help/learn-help-camera-system/tools/lut-generator">LUTs</a> 。</li>
+</ul>
+<p>‍</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a>
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B9%9F%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E5%86%B3%E5%AE%9A-the-first-and-most-important-decision">第一个也是最重要的决定 The first and most important decision</a></li>
+<li><a href="#%E5%BC%95%E8%A8%80-introductory-quote">引言 Introductory Quote</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A7%86%E8%A7%89%E9%94%99%E8%A7%89-optical-illusions">视觉错觉 Optical Illusions</a></li>
+<li><a href="#%E4%BA%BA%E7%B1%BB%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F-hvs-human-visual-system-hvs">人类视觉系统 (HVS) Human Visual System (HVS)</a>
+<ul>
+<li><a href="#%E4%BA%BA%E7%9C%BC-the-human-eye">人眼 The human eye</a></li>
+<li><a href="#%E8%99%BE%E8%9B%84%E7%9A%84%E7%9C%BC%E7%9D%9B-the-mantis-shrimp-eye"><strong>虾蛄</strong>的眼睛 The mantis shrimp eye</a></li>
+<li><a href="#%E4%BA%BA%E7%B1%BB%E7%9A%84%E5%A4%A7%E8%84%91-the-human-brain">人类的大脑 The human brain</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%89-what-is-light">什么是光？ What is light ?</a></li>
+<li><a href="#%E4%BB%8E%E5%85%89%E5%88%B0%E8%89%B2-from-light-to-colour">从光到色 From Light to Colour</a></li>
+<li><a href="#1931-%E5%B9%B4%E5%92%8C-1976-%E5%B9%B4%E7%9A%84-cie-%E8%89%B2%E5%BA%A6%E5%9B%BE-the-cie-chromaticity-diagrams-from-1931-and-1976">1931 年和 1976 年的 CIE 色度图 The CIE Chromaticity Diagrams from 1931 and 1976</a>
+<ul>
+<li><a href="#%E8%89%B2%E5%BA%A6%E8%BF%98%E6%98%AF%E9%A2%9C%E8%89%B2-chromaticity-or-color">色度还是颜色？ Chromaticity or Color ?</a></li>
+</ul>
+</li>
+<li><a href="#rgb-%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%8A%E5%85%B6%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86-rgb-color-space-and-its-components">RGB 颜色空间及其组成部分 RGB Color space and its components</a>
+<ul>
+<li><a href="#%E5%88%9D%E9%80%89-primaries">初选 Primaries</a>
+<ul>
+<li><a href="#%E5%88%9D%E9%80%89%E5%AF%B9%E6%AF%94-primaries-comparison">初选对比 Primaries comparison</a></li>
+</ul>
+</li>
+<li><a href="#%E7%99%BD%E7%82%B9-whitepoint">白点 Whitepoint</a></li>
+<li><a href="#%E4%BC%A0%E8%BE%93%E5%87%BD%E6%95%B0oetf-%E5%92%8C-eotf-transfer-functions-oetf-and-eotf">传输函数（OETF 和 EOTF） Transfer functions (OETF and EOTF)</a>
+<ul>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF-common-mistakes">常见错误 Common mistakes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E7%9A%84%E5%B1%9E%E6%80%A7-properties-of-a-color-space">颜色空间的属性 Properties of a color space</a>
+<ul>
+<li><a href="#%E5%9B%BE%E5%83%8F%E7%8A%B6%E6%80%81-image-state">图像状态 Image State</a>
+<ul>
+<li><a href="#%E5%9C%BA%E6%99%AF%E5%8F%82%E7%85%A7-scene-referred">场景参照 Scene-referred</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E5%8F%82%E8%80%83-display-referred">显示参考 Display-referred</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83-viewing-environment">查看环境 Viewing environment</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A1%8C%E4%B8%9A%E6%A0%87%E5%87%86-industry-standards">行业标准 Industry Standards</a>
+<ul>
+<li><a href="#%E6%B8%B2%E6%9F%93%E5%92%8C%E6%98%BE%E7%A4%BA%E7%A9%BA%E9%97%B4-rendering-and-display-spaces">渲染和显示空间 Rendering and Display spaces</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-srgb-what-is-srgb">什么是 sRGB？ What is sRGB ?</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9C%BA%E6%99%AF%E7%BA%BF%E6%80%A7%E5%B7%A5%E4%BD%9C%E6%B5%81-scene-linear-workflow">场景线性工作流 Scene-Linear workflow</a>
+<ul>
+<li><a href="#%E6%98%BE%E7%A4%BA-eotf-%E6%98%AF%E4%B8%8A%E8%BF%98%E6%98%AF%E4%B8%8B-display-eotf-is-it-up-or-down">显示 EOTF ：是“上”还是“下”？ Display EOTF : is it “up” or “down” ?</a></li>
+<li><a href="#oetf-%E5%92%8C-eotf%E6%97%A0%E6%93%8D%E4%BD%9C-oetf-and-eotf-a-no-operation">OETF 和 EOTF：无操作？ OETF and EOTF : a no-operation ?</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E7%BA%BF%E6%80%A7-display-linear">显示线性 Display Linear</a></li>
+<li><a href="#%E5%9C%BA%E6%99%AF%E7%BA%BF%E6%80%A7%E6%B8%B2%E6%9F%93%E7%A9%BA%E9%97%B4%E7%9A%84%E7%A4%BA%E4%BE%8B-example-of-scene-linear-rendering-space">场景线性渲染空间的示例 Example of scene-linear rendering space</a></li>
+<li><a href="#%E7%BA%BF%E6%80%A7%E6%B7%B7%E4%B9%B1-linear-confusion">“线性”混乱 “Linear” confusion</a>
+<ul>
+<li><a href="#%E5%9C%BA%E6%99%AF%E7%BA%BF%E6%80%A7%E6%B7%B7%E4%B9%B1-scene-linear-confusion">场景线性混乱 Scene-linear confusion</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E7%BA%BF%E6%80%A7%E6%B7%B7%E4%B9%B1-display-linear-confusion">显示线性混乱 Display-linear confusion</a></li>
+</ul>
+</li>
+<li><a href="#%E8%89%B2%E8%B0%83%E6%98%A0%E5%B0%84-tone-mapping">色调映射 Tone mapping</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9F%A5%E6%89%BE%E8%A1%A8-lut-lookup-table-lut">查找表 (LUT) Lookup table (LUT)</a>
+<ul>
+<li><a href="#lut-%E6%8F%8F%E8%BF%B0-lut-description">LUT 描述 LUT description</a></li>
+</ul>
+</li>
+<li><a href="#ocio-%E5%BC%80%E6%94%BE%E9%A2%9C%E8%89%B2-io-ocio-opencolorio">OCIO (开放颜色 IO) OCIO (OpenColorIO)</a>
+<ul>
+<li><a href="#%E5%A4%96%E8%A7%82%E5%BC%80%E5%8F%91%E5%92%8C-lut-look-development-and-luts">外观开发和 LUT Look development and LUTs</a></li>
+<li><a href="#1d-lut-%E7%A4%BA%E4%BE%8B-1d-lut-example">1D LUT 示例 1D LUT example</a></li>
+<li><a href="#%E7%94%B5%E5%BD%B1%E9%A3%8E%E6%A0%BC-filmic-look">电影风格 Filmic look</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%BC%E5%BC%8F-format">格式 Format</a></li>
+<li><a href="#%E8%8C%83%E5%9B%B4-range">范围 Range</a></li>
+<li><a href="#%E6%A6%82%E6%8B%AC-summary">概括 Summary</a></li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+<li><a href="#%E6%9D%A5%E6%BA%90-sources">来源 Sources</a></li>
+<li><a href="#%E4%B8%B9%E5%B0%BC%E5%B0%94%E8%A5%BF%E6%8B%89%E5%8F%A4%E8%90%A8%E8%AF%BA-daniele-siragusanos">丹尼尔·西拉古萨诺 Daniele Siragusano’s</a></li>
+<li><a href="#%E5%88%9D%E5%AD%A6%E8%80%85%E6%8E%A8%E8%8D%90%E8%B5%84%E6%BA%90-recommended-sources-for-beginners">初学者推荐资源 Recommended sources for beginners</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E7%BA%A2%E8%89%B2%E7%9A%84%E8%A7%86%E9%A2%91-videos-about-the-red-colour">关于红色的视频 Videos about the red colour</a></li>
+<li><a href="#%E6%96%87%E7%AB%A0%E5%92%8C%E5%8D%9A%E5%AE%A2-articles-and-blogs">文章和博客 Articles and blogs</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-Introduction/">
+              <h3 class="post-title">
+                CG Cinematography 介绍
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1024 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CG Cinematography 第 2 章：色彩理论 | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="CG Cinematography 第 2 章：色彩理论 | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Chapter 2: Color Theory - Chris Brejon
+https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/
+CG Cinematogra..." />
+    <meta name="keywords" content="Color,ACES,OCIO,CG Cinematography" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              CG Cinematography 第 2 章：色彩理论
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-24
+              </span>
+              <span>
+                80 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/ospYPv23vW/" class="post-tag">
+                  # Color
+                </a>
+              
+                <a href="https://zcfly1992.github.io/_GcDUwqFHG/" class="post-tag">
+                  # ACES
+                </a>
+              
+                <a href="https://zcfly1992.github.io/NcPgcQE9Gqz/" class="post-tag">
+                  # OCIO
+                </a>
+              
+                <a href="https://zcfly1992.github.io/UC8oB5Mlnn/" class="post-tag">
+                  # CG Cinematography
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_260_plutchik_wheel_FHD-20241105171201-mw7ta1e.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>Chapter 2: Color Theory - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/">https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/</a></li>
+<li>CG Cinematography Color Theory is about this mysterious yet fascinating subject of mixing colors to convey an emotion. It's all about storytelling.</li>
+</ul>
+<hr>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p><strong>It is fascinating to realize that after fifteen years in the industry I know so little about color.</strong>  This chapter has been the most difficult to write since I am not a color artist. But hopefully I can still share a bit of knowledge with you.</p>
+<p><strong>令人惊奇的是，我在这个行业工作了 15 年，却发现我对色彩知之甚少。</strong> 这一章是最难写的，因为我不是色彩艺术家。但希望我仍然可以与你们分享一些知识。</p>
+<p>When you work in lighting, you obviously know some tricks : like orange and blue go well together. This scheme (a combination of colors), called ​ <em>“orange and teal</em>​“, is probably the most used in Hollywood. Why that ? I guess that is because it is ​<strong>the most used (and less risky) of all</strong>​.</p>
+<p>当你从事灯光工作时，你显然知道一些技巧：比如橙色和蓝色搭配起来很好看。这种方案（颜色组合）称为​ <em>“橙色和青色</em>​”，可能是好莱坞最常用的方案。为什么呢？我猜是因为它是​<strong>最常用的（风险最小）</strong> ​。</p>
+<blockquote>
+<p>They are actually a <a href="http://theabyssgazes.blogspot.com/2010/03/teal-and-orange-hollywood-please-stop.html">couple</a> of <a href="https://priceonomics.com/why-every-movie-looks-sort-of-orange-and-blue/">posts</a> that explain it pretty well. If you understand french, I suggest you read <a href="http://alexandrepresier.com/2016/08/23/orange-and-teal-pourquoi-un-tel-engouement/">this one</a> as well.</p>
+<p>其实有几篇<a href="http://theabyssgazes.blogspot.com/2010/03/teal-and-orange-hollywood-please-stop.html">帖子</a>解释得相当清楚。如果你懂法语，我建议你也读<a href="https://priceonomics.com/why-every-movie-looks-sort-of-orange-and-blue/">一下</a>​<a href="http://alexandrepresier.com/2016/08/23/orange-and-teal-pourquoi-un-tel-engouement/">这篇</a>。</p>
+</blockquote>
+<p>Since we have an Art Department doing Color Keys for us, it is easy for a (lazy) lighting artist to only scratch the surface when it comes to color : <strong>just match the reference !</strong></p>
+<p>由于我们有一个艺术部门为我们制作颜色键，所以对于一个（懒惰的）灯光艺术家来说，在颜色方面很容易只触及表面：<strong>只需匹配参考！</strong></p>
+<blockquote>
+<p>A color key is a concept painting, generally done in Photoshop by the Art Department.</p>
+<p>色键是一种概念画，通常由艺术部门使用 Photoshop 完成。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_010_color_key_pets_FHD-20241105171201-0ujbdz8.jpg" alt="" title="Color key from &quot;The secret life of pets&quot; by Ludovic Gavillet. 色彩键取自 Ludovic Gavillet 所著的《宠物的秘密生活》。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_020_color_key_pets_FHD-20241105171201-q6qqh2n.jpg" alt="" title="The actual shot in CG. Shot was lit by Lucie Lavergne if I recall correctly. CG 中的实际镜头。如果我没记错的话，镜头的灯光是由 Lucie Lavergne 打的。" loading="lazy">​</p>
+<p>Pretty good match of the color key, right ? It is not always the case but we will see about this <a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#12-color-and-medium">later</a>.</p>
+<p>色键匹配得很好，对吧？情况并不总是如此，但我们<a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#12-color-and-medium">稍后</a>会看到这一点。</p>
+<p>First, let’s have a look at the frames : <strong>orange</strong> is coming from the fire and <strong>blue</strong>  is coming from the roof. Nice <strong>Complementary Scheme</strong> ! This scheme is the most used in the Animation Industry nowadays. But there are actually plenty of others schemes available. We will study them <a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#Schemes">below</a>.</p>
+<p>首先，让我们看一下帧：<strong>橙色</strong>来自火焰，<strong>蓝色</strong>来自屋顶。很好的​<strong>互补方案</strong>​！这种方案是当今动画行业最常用的方案。但实际上还有很多其他方案可用。我们将<a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#Schemes">在下面</a>研究它们。</p>
+<h2 id="颜色术语-color-terminology">颜色术语 Color Terminology</h2>
+<p>Let’s go back a bit and start from the beginning. I really do not want to copy <a href="https://en.wikipedia.org/wiki/Color_theory">articles</a> from Wikipedia. So I will just do a quick catch-up on terminology. All the information you need is on the internet ! For example, the Khan Academy of Pixar about <a href="https://www.khanacademy.org/partner-content/pixar/color">Color Science</a> is pretty interesting. To talk about color, we mainly use these three important terms :</p>
+<p>让我们回顾一下，从头开始。我真的不想从维基百科上复制<a href="https://en.wikipedia.org/wiki/Color_theory">文章</a>。所以我只是快速了解一下术语。你需要的所有信息都在互联网上！例如，皮克斯的可汗学院关于<a href="https://www.khanacademy.org/partner-content/pixar/color">色彩科学的</a>内容非常有趣。谈论颜色时，我们主要使用这三个重要术语：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_030_color_solid_cylinder_FHD-20241105171201-wf1atzb.jpg" alt="" loading="lazy">​</p>
+<ul>
+<li><strong><a href="https://en.wikipedia.org/wiki/Hue">Hue :</a></strong>  also called color, tone, shade or tint.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Hue">色调：</a></strong> 也称为颜色、色调、明暗度或色彩。</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Colorfulness#Saturation">Saturation :</a></strong>  also called colorfulness.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Colorfulness#Saturation">饱和度：</a></strong> 又叫色彩度。</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Lightness">Value :</a></strong>  also called lightness.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Lightness">明度：</a></strong> 又称亮度。</li>
+</ul>
+<blockquote>
+<p>From <a href="https://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Sharon Callahan</a> : The eye is more attracted to a color than to a neutral image, the more saturated the color, the more attention it grabs.</p>
+<p>来自<a href="https://media.siggraph.org//education/cgsource/Archive/ConfereceCourses/S96/course30.pdf">Sharon Callahan</a>：与中性图像相比，颜色更容易吸引眼睛，颜色越饱和，越能吸引注意力。</p>
+</blockquote>
+<h2 id="色轮-color-wheel">色轮 Color Wheel</h2>
+<p>How do we organize colors ? <a href="https://en.wikipedia.org/wiki/Color_wheel">Color Wheel</a> is an interesting tool to start working with colors. They are two main different models of mixing colors :</p>
+<p>我们如何组织颜色？<a href="https://en.wikipedia.org/wiki/Color_wheel">色轮</a>是一个有趣的工具，可以开始使用颜色。它们是混合颜色的两种主要不同模型：</p>
+<ul>
+<li><strong><a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB :</a></strong>  The RGB color model is an <a href="https://en.wikipedia.org/wiki/Additive_color">additive</a> <a href="https://en.wikipedia.org/wiki/Color_model">color model</a> in which <a href="https://en.wikipedia.org/wiki/Red">red</a>, <a href="https://en.wikipedia.org/wiki/Green">green</a> and <a href="https://en.wikipedia.org/wiki/Blue">blue</a> light are added together in various ways to reproduce a broad array of <a href="https://en.wikipedia.org/wiki/Color">colors</a>, used in Computer Graphics.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB：</a></strong>  RGB 颜色模型是一种<a href="https://en.wikipedia.org/wiki/Additive_color">加色</a> <a href="https://en.wikipedia.org/wiki/Color_model">颜色模型</a>，其中<a href="https://en.wikipedia.org/wiki/Red">红</a>、<a href="https://en.wikipedia.org/wiki/Green">绿</a>和<a href="https://en.wikipedia.org/wiki/Blue">蓝光</a>以各种方式相加在一起以再现计算机图形学中使用的各种<a href="https://en.wikipedia.org/wiki/Color">颜色</a>。</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/CMYK_color_model">CMYK :</a></strong>  The CMYK color model is a <a href="https://en.wikipedia.org/wiki/Subtractive_color">subtractive </a>​<a href="https://en.wikipedia.org/wiki/Color_model">color model</a>, used in <a href="https://en.wikipedia.org/wiki/Color_printing">color printing</a>.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/CMYK_color_model">CMYK：</a></strong>  CMYK 颜色模型是一种<a href="https://en.wikipedia.org/wiki/Subtractive_color">减色</a>​<a href="https://en.wikipedia.org/wiki/Color_model">模型</a>，用于<a href="https://en.wikipedia.org/wiki/Color_printing">彩色印刷</a>。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_040_colorWheels_FHD-20241105171201-24l50gf.jpg" alt="" loading="lazy">​</p>
+<p>These are the two most famous models in the industry.</p>
+<p>这是业界最著名的两种车型。</p>
+<p><strong>There is no model better than the other one.</strong>  They just have different uses. Each model has its own Color Wheel, based on Primary, Secondary and Tertiary colors.</p>
+<p><strong>没有哪个模型比另一个更好。</strong> 它们只是用途不同。每个模型都有自己的色轮，基于原色、间色和复色。</p>
+<p>There is a third model : <strong><a href="https://en.wikipedia.org/wiki/RYB_color_model">RYB</a></strong> (red–yellow–blue, which makes up the primary color triad in a standard artist’s <a href="https://en.wikipedia.org/wiki/Color_wheel">color wheel</a>) described right below.</p>
+<p>还有第三种模型：​**<a href="https://en.wikipedia.org/wiki/RYB_color_model">RYB</a>**​（红-黄-蓝，构成标准艺术家<a href="https://en.wikipedia.org/wiki/Color_wheel">色轮</a>中的原色三色组），如下所述。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_050_color_wheels_FHD-20241105171201-rpjz06z.jpg" alt="" loading="lazy">​</p>
+<p>I am not very familiar with this model but it shows clearly how a color wheel is built.</p>
+<p>我对这个模型不是很熟悉，但它清楚地展示了色轮是如何构建的。</p>
+<p>The <strong><a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB Color Wheel</a></strong> with its additive model is the one used in Computer Graphics. I have done a render in <a href="http://guerillarender.com/">Guerilla Render</a> using 3 spotlights using pure Red, Green and Blue values. We have seen in the previous chapter that our cones are <a href="https://en.wikipedia.org/wiki/Color_vision">mostly sensitive</a> to these three colors.</p>
+<p>**<a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB 色轮</a>**及其加法模型是计算机图形学中使用的色轮。我在<a href="http://guerillarender.com/">Guerilla Render</a>中使用 3 个聚光灯进行了渲染，这些聚光灯分别使用纯红、绿和蓝值。我们在上一章中看到，我们的视锥细胞对这三种颜色<a href="https://en.wikipedia.org/wiki/Color_vision">最敏感。</a></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_060_RGB_additive_FHD-20241105171201-ut055j5.jpg" alt="" loading="lazy">​</p>
+<p>Guerilla Render is based on the RGB model, like most render engines.</p>
+<p>与大多数渲染引擎一样，Guerilla Render 基于 RGB 模型。</p>
+<h2 id="开尔文温度表-kelvin-temperature-chart">开尔文温度表 Kelvin Temperature Chart</h2>
+<p>The use of Color Wheels is also important when it comes to <a href="https://en.wikipedia.org/wiki/Color_temperature">temperature</a>. It is something you will hear quite a lot in lighting dailies : “​<em>this is too warm</em>​” or “​<em>make this light cooler</em>​“.</p>
+<p>在<a href="https://en.wikipedia.org/wiki/Color_temperature">温度</a>方面，色轮的使用也很重要。在日常照明中，你会经常听到这样的话：“​<em>这个太暖了</em>​”或“​<em>把这个光调冷一点</em>​”。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_070_color_picker_guerilla_FHD-20241105171201-r7w1c80.jpg" alt="" title="Typical RGB / HSV color picker from Guerilla Render. It can easily be switched to Kelvin temperature. Warning ! This Kelvin ramp has not been updated to ACEScg yet. 来自 Guerilla Render 的典型 RGB / HSV 颜色选择器。它可以轻松切换到开尔文温度。警告！此开尔文坡道尚未更新为 ACEScg。" loading="lazy">​</p>
+<p>In most renderers you have access to several color picking options.</p>
+<p>在大多数渲染器中，您可以使用多种颜色选择选项。</p>
+<blockquote>
+<p>Color temperature is conventionally expressed in kelvins, using the symbol K, a unit of measure for absolute temperature. Color temperatures over <strong>5000 K</strong> are called “cool colors” (bluish), while lower color temperatures (2700–​<strong>3000 K</strong>​) are called “warm colors” (yellowish).</p>
+<p>色温通常以开尔文表示，使用符号 K，这是绝对温度的测量单位。色温超过<strong>5000 K</strong>称为“冷色”（偏蓝），而色温较低（2700–3000 ​<strong>K</strong>​）称为“暖色”（偏黄）。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_080_kelvin_chart_FHD-20241105171201-jnfcl4r.jpg" alt="" loading="lazy">​</p>
+<p>This <a href="https://en.wikipedia.org/wiki/Kelvin">Kelvin</a> <a href="https://www.downlights.co.uk/faq-which-colour-temperature-.html">chart</a> goes from orange to blue… It kind of reminds us something, right ? The ​ <em>“orange and teal</em>​” scheme ! When you take an interior photo and adjust your white balance on an artificial lighting, most of the time exterior goes blue. ​<em>So, yes, “orange and teal</em>​” is quite basic but is also very close to natural lighting.</p>
+<p>这<a href="https://en.wikipedia.org/wiki/Kelvin">张开尔文</a> <a href="https://www.downlights.co.uk/faq-which-colour-temperature-.html">图表</a>从橙色变为蓝色……这让我们想起了一些东西，对吧？​ <em>“橙色和青色</em>​”方案！当您拍摄室内照片并在人工照明下调整白平衡时，大多数情况下室外会变成蓝色。​<em>所以，是的，“橙色和青色</em>​”非常基本，但也非常接近自然光。</p>
+<h3 id="深入研究普朗克轨迹-an-in-depth-look-at-the-planckian-locus">深入研究普朗克轨迹 An in-depth look at the Planckian locus</h3>
+<p>Get ready for some really interesting analysis by some fellow color scientists. Buckle up ! First of all, what is really a blackbody ?</p>
+<p>准备好听听一些色彩科学家的精彩分析吧。系好安全带！首先，黑体到底是什么？</p>
+<blockquote>
+<p>A blackbody itself is <strong>a theoretical construct</strong>​, so by that definition nothing is a true blackbody (no reflected radiation) even blackholes don’t satisfy the formal definition. However, on the other end any object above absolute zero has some blackbody radiation emission, so from that vantage everything is a blackbody… Hence why thermal cameras are helpful to see us human light bulbs in the dark.</p>
+<p>黑体本身是<strong>一种理论构造</strong>，因此根据该定义，没有任何东西是真正的黑体（没有反射辐射），甚至黑洞也不满足正式定义。然而，另一方面，任何高于绝对零度的物体都会发射一些黑体辐射，因此从这个角度来看，一切都是黑体……这就是为什么热像仪有助于在黑暗中看到我们人类的灯泡。</p>
+<p>-- Sean Cooper</p>
+<p>-- 肖恩·库珀</p>
+</blockquote>
+<p>So blackbodies do not really exist. That’s the first thing !</p>
+<p>所以黑体实际上并不存在。这是第一点！</p>
+<blockquote>
+<p>Another thing to be aware of with black body emission, is that <strong>fire emission generally isn’t mainly black body radiation.</strong>   Lots of light caused by the various molecules making up the fire (this is how fireworks work), so approximating with black body emission is quite limited.</p>
+<p>关于黑体辐射，还有一点需要注意，那就是<strong>火焰辐射通常不是以黑体辐射为主。</strong> 火焰中各种分子会产生大量光（烟花就是通过这种光产生的），因此用黑体辐射进行近似是相当有限的。</p>
+<p>-- Björn Ottosson</p>
+<p>-- 比约恩·奥托森</p>
+</blockquote>
+<p>Second thing, <strong>fire emission is mostly dependent on what burns.</strong>  Fascinating !</p>
+<p>第二点，<strong>火灾排放主要取决于燃烧的物质。</strong> 太有趣了！</p>
+<blockquote>
+<p><strong>Pure blackbody is an absolute term</strong>, in practice some sources do come very close to being a black body – take a piece of tungsten and run an electrical current through it and place it in a vacuum or an inert gas and you get pretty close, aka an old light bulb. […]  <strong>Tungsten bulb is pretty much the only light source that is really close</strong>, spectrally that is ! You could still find light sources that gets very close from the blackbody locus even though their spectral composition is not at all that of a blackbody, <strong>those are metamers</strong>.</p>
+<p><strong>纯黑体是一个绝对术语</strong>，实际上有些光源非常接近黑体——取一块钨丝，通上电流，然后将其放在真空或惰性气体中，你就会得到非常接近的黑体，也就是旧灯泡。[…]<strong>钨灯泡几乎是唯一真正接近黑体轨迹的光源</strong>，从光谱上看就是这样！你仍然可以找到非常接近黑体轨迹的光源，即使它们的光谱组成与黑体完全不同，<strong>它们就是同色异谱体</strong>。</p>
+<p>-- Kevin Wheatly and Thomas Mansencal</p>
+<p>-- 凯文·惠特利和托马斯·曼森卡尔</p>
+</blockquote>
+<p>And finally, incandescent light bulbs are the only source that come very close to the Planckian locus, except for metamers. We’ll see about solutions to these limitations right below.</p>
+<p>最后，除了同色异谱灯外，白炽灯是唯一非常接近普朗克轨迹的光源。我们将在下文中讨论这些限制的解决方案。</p>
+<h3 id="普朗克轨迹-vs-日光轨迹-planckian-locus-vs-daylight-locus">普朗克轨迹 VS 日光轨迹 Planckian locus VS Daylight locus</h3>
+<p>Something worth mentioning is that,  <strong>contrary to what many diagrams show on the internet</strong> (included the one above), <strong>10000K will not give you the “blue sky” colour</strong>. It is merely an attempt at classification ! If you have a look at the <a href="https://renderman.pixar.com/resources/RenderMan_20/PxrBlackbody.html">PxrBlackBody documentation from Renderman</a>, you will see a table that could be misleading :</p>
+<p>值得一提的是，<strong>与互联网上许多图表</strong>（包括上面的图表）显示的情况相反，<strong>10000K 不会给你“蓝天”的颜色</strong>。这只是一种分类尝试！如果你看一下<a href="https://renderman.pixar.com/resources/RenderMan_20/PxrBlackbody.html">Renderman 的 PxrBlackBody 文档</a>，你会看到一个可能会产生误导的表格：</p>
+<table>
+<thead>
+<tr>
+<th><strong>Temperature Value</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15000 to 27000</td>
+<td>Clear blue poleward sky</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>温度值</strong></th>
+<th><strong>来源</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15000 至 27000</td>
+<td>极地清澈蔚蓝的天空</td>
+</tr>
+</tbody>
+</table>
+<p>There are actually two distinct “datasets” for each locus : <em>Planckian locus</em> and ​<em>Daylight locus</em>​. <a href="https://www.waveformlighting.com/tech/what-is-the-difference-between-the-black-body-and-the-reconstituted-daylight-spectrum">This article</a> describes them precisely. And since <strong>the sky is not an emissive/incandescent body</strong>, it is basically impossible for a lighting artist to achieve a blue sky colour by using the ​<em>Planckian lockus</em>​. It is just the wrong dataset.</p>
+<p>实际上，每个轨迹都有两个不同的“数据集”：<em>普朗克轨迹</em>和​<em>日光轨迹</em>​。<a href="https://www.waveformlighting.com/tech/what-is-the-difference-between-the-black-body-and-the-reconstituted-daylight-spectrum">本文</a>对它们进行了精确描述。由于<strong>天空不是发射/白炽体</strong> <em>，因此灯光艺术家基本上不可能使用普朗克轨迹</em>来实现蓝色天空的颜色。这只是错误的数据集。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_085_blackbody_locus_FHD-20241105171201-chlt6wx.jpg" alt="" loading="lazy">​</p>
+<p>Here is a little summary about those two notions (from <a href="https://en.wikipedia.org/wiki/Planckian_locus">Wikipedia</a>) :</p>
+<p>以下是关于这两个概念的一个小总结（来自<a href="https://en.wikipedia.org/wiki/Planckian_locus">维基百科</a>）：</p>
+<ul>
+<li><em>Black body locus</em> or <em><a href="https://cie.co.at/eilvterm/17-23-059">Planckian locus</a></em> is the path that the color of an <a href="https://en.wikipedia.org/wiki/Black-body_radiation">incandescent black body</a> would take in a particular <a href="https://en.wikipedia.org/wiki/Chromaticity_space">chromaticity space</a> as the blackbody <a href="https://en.wikipedia.org/wiki/Temperature">temperature</a> changes.</li>
+<li><em>黑体轨迹</em>或*<a href="https://cie.co.at/eilvterm/17-23-059">普朗克轨迹</a>*​<a href="https://en.wikipedia.org/wiki/Black-body_radiation">是白炽黑体</a>的颜色随着黑体<a href="https://en.wikipedia.org/wiki/Temperature">温度</a>的变化在特定<a href="https://en.wikipedia.org/wiki/Chromaticity_space">色度空间</a>中的变化路径。</li>
+<li><em><a href="https://cie.co.at/eilvterm/17-23-060">Daylight locus</a></em> is defined with a mathematical function (<a href="https://en.m.wikipedia.org/wiki/Standard_illuminant">see CIE D series illuminants</a>). For displays, we tend to match the <em>daylight locus</em> and most colour spaces have daylight whitepoints (such as ​<em>D65</em>​).</li>
+<li><em><a href="https://cie.co.at/eilvterm/17-23-060">日光轨迹</a><em>用数学函数定义（<a href="https://en.m.wikipedia.org/wiki/Standard_illuminant">参见 CIE D 系列光源</a>）。对于显示器，我们倾向于匹配​</em>日光轨迹</em>​，大多数色彩空间都有日光白点（例如​<em>D65</em>​）。</li>
+</ul>
+<h3 id="一些很好的解释-some-great-explanations">一些很好的解释 Some great explanations</h3>
+<p>I am going to quote a few persons from <a href="https://lists.aswf.io/g/osl-dev/topic/blackbody_and_daylight/79546333">a conversation we had on the osl-dev list</a>, since their explanation is so brilliant :</p>
+<p>我将引用我们<a href="https://lists.aswf.io/g/osl-dev/topic/blackbody_and_daylight/79546333">在 osl-dev 列表中的几个人的对话</a>，因为他们的解释非常精彩：</p>
+<blockquote>
+<p><strong>Blackbody for lights is for incandescent lights without filters.</strong>   Anything else and the renderer should allow users to input colors in some other fashion, such as RGB. […] Take a look at <a href="https://astronomy.swin.edu.au/cosmos/b/blackbody+radiation">this graph</a> which shows how at 700nm the blue star is still outputting more red than the red star.</p>
+<p><strong>灯光的黑体适用于没有滤光片的白炽灯。</strong> 其他任何颜色，渲染器都应允许用户以其他方式输入颜色，例如 RGB。[…] 看看<a href="https://astronomy.swin.edu.au/cosmos/b/blackbody+radiation">这张图</a>，它显示了在 700nm 时蓝星输出的红色仍然比红星多。</p>
+<p><strong>Thiago Ize</strong>. <strong>蒂亚戈·伊泽</strong>。</p>
+</blockquote>
+<blockquote>
+<p><em>If you’re using a blackbody for a light colour it should be because you’re trying to simulate an incandescent of that temperature.</em>  <strong>Blackbody colours have precisely nothing to do with the colour of the sky.</strong>  <em>As others have mentioned the fact that literature refers to colours as “sky blue” is an attempt at classification.</em></p>
+<p>*如果您使用黑体来表示光的颜色，那应该是因为您试图模拟该温度的白炽灯。*​<strong>黑体颜色与天空的颜色完全无关。</strong> <em>正如其他人提到的那样，文献中将颜色称为“天蓝色”是一种分类尝试。</em></p>
+<p><strong>Anders Langlands</strong>. <strong>安德斯·朗兰兹</strong>。</p>
+</blockquote>
+<blockquote>
+<p>The blackbody function is good for figuring out the color of something that is purely an emissive warm body, no more and no less. An incandescent filament, a glowing hot piece of metal, molten lava, etc. There’s no particular reason to think this function would give you a good approximation <strong>to daylight sky, which is not a blackbody phenomenon.</strong></p>
+<p>黑体函数适合用来判断纯粹的辐射热体的颜色，不多也不少。白炽灯丝、炽热的金属片、熔岩等。没有特别的理由认为该函数可以很好地近似<strong>日光天空，这不是黑体现象。</strong></p>
+<p><strong>Larry Gritz</strong>.  <strong>拉里·格里茨</strong>。</p>
+</blockquote>
+<p>It could be interesting to implement ​<em>a function that gives the range of plausible overall daylight colors given a 1D input</em>​, a bit like the<a href="https://github.com/imageworks/OpenShadingLanguage/blob/d56d03e0c58ffed426117b67e43eb3da459082ce/src/liboslexec/opcolor.cpp#L747"> blackbody_rgb function</a> and the <a href="https://github.com/imageworks/OpenShadingLanguage/blob/d56d03e0c58ffed426117b67e43eb3da459082ce/src/liboslexec/opcolor.cpp#L546">BB_TABLE</a>. It could be called <em>daylight_rgb_function</em> and could rely on data such as <a href="https://en.m.wikipedia.org/wiki/Standard_illuminant">CIE D series illuminants</a>. Therefore a lighting artist could reach easily a “blue sky” colour for a rim light.</p>
+<p>实现​<em>一个函数，根据 1D 输入给出合理的整体日光颜色范围</em>​，这可能很有趣，有点像<a href="https://github.com/imageworks/OpenShadingLanguage/blob/d56d03e0c58ffed426117b67e43eb3da459082ce/src/liboslexec/opcolor.cpp#L747">blackbody_rgb 函数</a>和<a href="https://github.com/imageworks/OpenShadingLanguage/blob/d56d03e0c58ffed426117b67e43eb3da459082ce/src/liboslexec/opcolor.cpp#L546">BB_TABLE</a>。它可以称为​<em>daylight_rgb_function</em>​，并且可以依赖于<a href="https://en.m.wikipedia.org/wiki/Standard_illuminant">CIE D 系列光源</a>等数据。因此，灯光艺术家可以轻松获得边缘光的“蓝天”颜色。</p>
+<h3 id="天光和荧光光源等复杂现象-complex-phenomenons-such-as-skylight-and-fluorescent-light-sources">天光和荧光光源等复杂现象 Complex phenomenons such as Skylight and Fluorescent light sources</h3>
+<p>In the previous paragraph, I was mostly referring to the color selection process based on Kelvin temperatures that is available in most DCC softwares.</p>
+<p>在上一段中，我主要指的是大多数 DCC 软件中可用的基于开尔文温度的颜色选择过程。</p>
+<p>The <em>Physical Sun &amp; Sky</em> (or ​<em>Skylight</em>​) is a much more complex phenomenon to describe. And for the record, it looks like there are 16 CIE Standard General Skies (available in this <a href="http://andrewmarsh.com/software/cie-sky-web/">webapp</a>), which eventually gave birth to <a href="https://cgg.mff.cuni.cz/projects/SkylightModelling/">the Hosek-Wilkie Sky Dome</a> that has been implemented in most render engines.</p>
+<p>物理​<em>太阳和天空</em>​（或​<em>天光</em>​）是一种更复杂的现象。根据记录，看起来有 16 个 CIE 标准通用天空（可在此<a href="http://andrewmarsh.com/software/cie-sky-web/">Web 应用程序</a>中使用），最终催生了已在大多数渲染引擎中实现的<a href="https://cgg.mff.cuni.cz/projects/SkylightModelling/">Hosek-Wilkie 天空穹顶。</a></p>
+<blockquote>
+<p>There are several computational models that have been published for sky color, and they are usually more complex than merely the raw daylight color temperature — they are a complex function of position on earth, time of day and year, direction, and atmospheric conditions.</p>
+<p>目前已经发布了几种针对天空颜色的计算模型，它们通常比原始日光色温更复杂——它们是地球位置、一天中和一年中的时间、方向和大气条件的复杂函数。</p>
+<p><strong>Larry Gritz</strong>. <strong>拉里·格里茨</strong>。</p>
+</blockquote>
+<blockquote>
+<p>Fun fact : the bluest sky in the world was <a href="http://web.archive.org/web/20080517201411/http://www.npl.co.uk/blueskies/">measured in Brazil</a>.</p>
+<p>有趣的事实：世界上最蓝的天空是<a href="http://web.archive.org/web/20080517201411/http://www.npl.co.uk/blueskies/">在巴西测量的</a>。</p>
+</blockquote>
+<p>And if we want to push things even further, we could maybe go the extra mile :</p>
+<p>如果我们想更进一步，我们也许可以做得更多：</p>
+<blockquote>
+<p>Colour temperature as an input by itself is limited because pure blackbodies do not really exist in nature, so you want something that can model <a href="https://en.wikipedia.org/wiki/Color_temperature#Correlated_color_temperature">correlated colour temperature</a> (CCT). With a tint control (based on CCT/Delta u’v’), you can also model fluorescent light sources &amp; co.</p>
+<p>色温作为输入本身是有限的，因为纯黑体在自然界中并不存在，所以你需要一些可以模拟<a href="https://en.wikipedia.org/wiki/Color_temperature#Correlated_color_temperature">相关色温</a>(CCT) 的东西。使用色调控制（基于 CCT/Delta u'v'），您还可以模拟荧光光源等。</p>
+<p>Thomas Mansencal 托马斯·曼森卡尔</p>
+</blockquote>
+<h3 id="开尔文比较-kelvin-comparison">开尔文比较 Kelvin comparison</h3>
+<p>Is there a better way between working in RGB and Kelvin ? I know that this question is quite controversial. Some studios almost had a holy war about it. In my opinion,  <strong>it is only a matter of art direction and habits.</strong></p>
+<p>在 RGB 和开尔文之间，有没有更好的方法？我知道这个问题很有争议。一些工作室几乎为此展开了一场圣战。在我看来，<strong>这只是一个艺术指导和习惯的问题。</strong></p>
+<p><em>The secret life of pets</em> (Director : ​<strong>Chris Renaud</strong>​, Art Direction : ​<strong>Colin Stimpson</strong>​) has been almost entirely lit with Kelvin temperatures to get a natural look. This would have been completely impossible on <em>Lego Batman</em> (Director : ​<strong>Chris McKay</strong>​, Production Designer : ​<strong>Grant Freckelton</strong>​)  because of its saturated yet very original art direction.</p>
+<p>​ <em>《爱宠大机密》</em> ​（导演：​<strong>Chris Renaud</strong>​，艺术指导：​<strong>Colin Stimpson</strong>​）几乎完全采用开尔文温度照明，以获得自然的外观。这在​ <em>《乐高蝙蝠侠》</em> ​（导演：​<strong>Chris McKay</strong>​，制作设计师：​<strong>Grant Freckelton</strong>​）中是完全不可能的，因为它的艺术指导饱和但非常原创。</p>
+<blockquote>
+<p>Some supervisors prefer to work with Kelvin to avoid unnatural colors. It is like a safety net to them. I personally prefer RGB.</p>
+<p>有些主管喜欢使用开尔文色度来避免不自然的颜色。这对他们来说就像一张安全网。我个人更喜欢 RGB。</p>
+<p>Honestly I don’t blame them.</p>
+<p>说实话我不怪他们。</p>
+</blockquote>
+<p>There is one BIG difference though between these two films : how compositing was used.</p>
+<p>然而，这两部电影之间存在一个很大的区别：合成技术的使用方式。</p>
+<ul>
+<li>“<em>Pets</em>” mostly got his filmic look in compositing thanks to gamma, color corrector and saturation nodes. And of course 2D motion-blur and depth-of-field.</li>
+<li>“​<em>宠物</em>​” 的电影效果主要得益于伽玛、色彩校正器和饱和度节点的合成。当然还有 2D 运动模糊和景深。</li>
+<li>“​<em>Lego Batman</em>​” got his saturated look directly in lighting. I used the craziest values in my lights at Animal. It was almost a cultural shock to me.</li>
+<li>“​<em>乐高蝙蝠侠</em>​”的饱和外观直接来自灯光。我在 Animal 的灯光中使用了最疯狂的值。这对我来说几乎是一种文化冲击。</li>
+</ul>
+<blockquote>
+<p>I know some people may disagree so let me explain better. I am not saying there was no compositing involved on Lego Batman. But since we rendered with 3D motion-blur and depth-of-field, it was the first time in my life that I could get the final result in my Render View.</p>
+<p>我知道有些人可能不同意，所以让我更详细地解释一下。我并不是说乐高蝙蝠侠没有涉及合成。但由于我们用 3D 运动模糊和景深进行渲染，这是我一生中第一次能够在渲染视图中获得最终结果。</p>
+<p>More on that <a href="https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/">later</a>.</p>
+<p><a href="https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/">稍后将</a>对此进行更详细的说明。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_090_pets_color_key_FHD-20241105171201-yjtxya4.jpg" alt="" title="Here is a color key from the final sequence of Pets. My lighting was less desaturated and contrasted. 这是《宠物》最终片段的色键。我的灯光饱和度较低，对比度也较高。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_100_pets_compo_flat_FHD-20241105171201-4zo2qcu.jpg" alt="" title="Here is the lighting render of this shot. 这是此镜头的灯光渲染图。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_110_pets_compo_final_FHD-20241105171201-ouhnuiy.jpg" alt="" title="Here is the comp version. 这是压缩版本。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_120_batman_compo_FHD-20241105171201-0s2nbgx.jpg" alt="" title="This screenshot from the movie Lego Batman would match at 90% my Glimpse Render View. 电影《乐高蝙蝠侠》的这张截图与我的 Glimpse Render View 的匹配度达到 90%。" loading="lazy">​</p>
+<p>This is actually a huge debate in studios. How close a render should be to the final image ? I personally think that  <strong>we should be as close as we can to the final render.</strong>   But we will get to that <a href="https://chrisbrejon.com/cg-cinematography/chapter-10-compositing/">later</a>.</p>
+<p>这实际上是工作室中一个很大的争论。渲染应该与最终图像有多接近？我个人认为<strong>我们应该尽可能接近最终渲染。</strong> <a href="https://chrisbrejon.com/cg-cinematography/chapter-10-compositing/">但我们稍后</a>会讨论这个问题。</p>
+<h2 id="配色方案与和谐-color-schemes-and-harmonies">配色方案与和谐 Color Schemes and Harmonies</h2>
+<p>Interestingly enough the <a href="https://en.wikipedia.org/wiki/RYB_color_model">RYB Color Wheel</a> is the most used for any study of the Color Scheme. It is probably due to the historic use of red, yellow, and blue pigments as <a href="https://en.wikipedia.org/wiki/Primary_color">primary colors</a> in art and design, particularly <a href="https://en.wikipedia.org/wiki/Painting">painting.</a></p>
+<p>有趣的是，<a href="https://en.wikipedia.org/wiki/RYB_color_model">RYB 色轮</a>是色彩方案研究中使用最多的色轮。这可能是因为在艺术和设计（尤其是绘画）中，红色、黄色和蓝色颜料历来被用作<a href="https://en.wikipedia.org/wiki/Primary_color">原色</a>​<a href="https://en.wikipedia.org/wiki/Painting">。</a></p>
+<p>Here is a representation of Color Schemes :</p>
+<p>以下是颜色方案的表示：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_130_color_schemes_FHD-20241105171201-sirpl3d.jpg" alt="" loading="lazy">​</p>
+<ul>
+<li><strong><a href="https://en.wikipedia.org/wiki/Monochromatic_color">Monochromatic</a></strong> colors are all the colors of a single hue.</li>
+<li>**<a href="https://en.wikipedia.org/wiki/Monochromatic_color">单色</a>**是指单一色调的所有颜色。</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Analogous_colors">Analogous</a></strong> colors are groups of three colors that are next to each other on the color wheel.</li>
+<li>**<a href="https://en.wikipedia.org/wiki/Analogous_colors">类似</a>**色是色轮上彼此相邻的三种颜色的组合。</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Complementary_colors">Complementary</a></strong> colors are pairs of colors which, when combined or mixed, cancel each other out by producing a gray scale color like white or black. When placed next to each other, they create the strongest contrast for those two colors and are always opposite on the color wheel.</li>
+<li>**<a href="https://en.wikipedia.org/wiki/Complementary_colors">互补</a>**色是指成对的颜色，当它们组合或混合时，会通过产生白色或黑色等灰度色而相互抵消。当它们彼此相邻放置时，它们会为这两种颜色产生最强烈的对比，并且在色轮上总是相反的。</li>
+<li><strong><a href="http://www.paletton.com/wiki/index.php?title=Split_complementary_color_scheme">Split-complementary</a></strong> color scheme is a variation of the complementary color scheme. In addition to the base color, it uses the two colors adjacent to its complement. This color scheme has the same strong visual contrast as the complementary color scheme, but has less tension.</li>
+<li>**<a href="http://www.paletton.com/wiki/index.php?title=Split_complementary_color_scheme">分裂补色</a>**配色方案是补色配色方案的一种变体。除了基色外，它还使用补色相邻的两种颜色。这种配色方案与补色配色方案一样具有强烈的视觉对比，但张力较小。</li>
+<li><strong><a href="http://www.paletton.com/wiki/index.php?title=Triadic_color_scheme">Triadic Colors</a></strong> that are evenly spaced around the color wheel. Triadic color harmonies tend to be quite vibrant, even if you use pale or unsaturated versions of your hues.</li>
+<li>**<a href="http://www.paletton.com/wiki/index.php?title=Triadic_color_scheme">三色</a>**在色轮上均匀分布。即使您使用浅色或不饱和的色调，三色和谐也往往非常鲜艳。</li>
+<li><strong><a href="http://www.paletton.com/wiki/index.php?title=Tetradic_color_scheme">Tetradic</a><strong>​<a href="http://www.paletton.com/wiki/index.php?title=Tetradic_color_scheme"> or </a>​</strong><a href="http://www.paletton.com/wiki/index.php?title=Tetradic_color_scheme">Rectangle</a></strong> is a combination of four colors that consist of two sets of complementary colors. These colors form a rectangle on the color wheel. The colors on the short side of the rectangle are spaced one color apart.</li>
+<li>**<a href="http://www.paletton.com/wiki/index.php?title=Tetradic_color_scheme">四色</a><strong>​<a href="http://www.paletton.com/wiki/index.php?title=Tetradic_color_scheme">或</a>​</strong><a href="http://www.paletton.com/wiki/index.php?title=Tetradic_color_scheme">矩形</a>**是由两组互补色组成的四种颜色的组合。这些颜色在色轮上形成一个矩形。矩形短边上的颜色间隔一种颜色。</li>
+<li><strong><a href="https://mobilelabtutorials.wordpress.com/mobile-labs/color-theory/">Square</a></strong> is a combination of four colors equally spaced around the color wheel.</li>
+<li>**<a href="https://mobilelabtutorials.wordpress.com/mobile-labs/color-theory/">正方形</a>**是色轮上等距分布的四种颜色的组合。</li>
+</ul>
+<blockquote>
+<p>You can find more explanation about color schemes <a href="https://brightside.me/article/the-ultimate-color-combinations-cheat-sheet-92405/">here</a> and from <a href="https://www.slideshare.net/Presentitude/basic-color-theory-for-presentation-design-part-ii/">this great slide</a>.</p>
+<p>您可以<a href="https://brightside.me/article/the-ultimate-color-combinations-cheat-sheet-92405/">在这里</a>以及从<a href="https://www.slideshare.net/Presentitude/basic-color-theory-for-presentation-design-part-ii/">这张精彩的幻灯片</a>中找到有关配色方案的更多解释。</p>
+</blockquote>
+<h3 id="方案示例-schemes-examples">方案示例 Schemes examples</h3>
+<p>Some Color Scheme Generators are available <a href="https://www.sessions.edu/color-calculator/">here</a> and <a href="https://www.quackit.com/css/color/tools/css_color_scheme_generator.cfm">here</a>. Even Adobe has made <a href="https://color.adobe.com/create">one</a> ! They are really fun to play with. I thought it was interesting to have a look at the full list of color schemes because <strong>animated feature films mostly use the Complimentary Scheme.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>It kinda becomes a <a href="http://theabyssgazes.blogspot.com/2010/03/teal-and-orange-hollywood-please-stop.html">cliché</a>.</p>
+<p><a href="https://www.sessions.edu/color-calculator/">这里</a>和<a href="https://www.quackit.com/css/color/tools/css_color_scheme_generator.cfm">这里</a>有一些配色方案生成器。甚至 Adob​​e 也制作了<a href="https://color.adobe.com/create">一个</a>！它们真的很有趣。我认为查看完整的配色方案列表很有趣，因为<strong>动画电影大多使用互补方案。</strong> 它有点成为<a href="http://theabyssgazes.blogspot.com/2010/03/teal-and-orange-hollywood-please-stop.html">陈词滥调</a>。</p>
+<p>Here is a quick study of the color schemes from <em>Toy Story 4</em> (Director : ​<strong>Josh Cooley</strong>​, DP : <strong>Jean-Claude Kalache</strong> and ​<strong>Patrick Lin</strong>​). There is a great variety in this movie.</p>
+<p>​<em>以下是对《玩具总动员 4》</em> ​（导演：​<strong>Josh Cooley</strong>​，摄影指导：<strong>Jean-Claude Kalache</strong>和<strong>Patrick Lin</strong> ）配色方案的快速研究。这部电影的配色方案多种多样。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_140_toyStory4_scheme_monochromatic_FHD-20241105171201-quc5vpo.jpg" alt="" title="Amazing photography on Toy Story 4. Monochromatic scheme. 《玩具总动员 4》中的精彩摄影。单色方案。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_150_toyStory4_scheme_analogous_FHD-20241105171201-kiy225r.jpg" alt="" title="Caboom ! This one would be an analogous scheme ! Caboom！这将是一个类似的方案！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_160_toyStory4_scheme_analogous_FHD-20241105171201-0rvgilr.jpg" alt="" title="Same here I would say. Analogous scheme between blue and pink is beautiful. 我也一样。蓝色和粉色的类似配色很漂亮。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_170_toyStory4_scheme_complementary_FHD-20241105171201-2k2f9us.jpg" alt="" title="Complementary scheme. Looks gorgeous. 互补方案。看上去很漂亮。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_180_toyStory4_scheme_splitComplementary_FHD-20241105171201-ysnl8ex.jpg" alt="" title="Complementary scheme. Looks gorgeous. 互补方案。看上去很漂亮。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_190_toyStory4_scheme_tetradic_FHD-20241105171201-3jpynzm.jpg" alt="" title="I would go for tetradic scheme on this one. Blue, brown, yellow and green. 我会选择四色方案。蓝色、棕色、黄色和绿色。" loading="lazy">​</p>
+<p>There is a website with some pretty good color schemes : <a href="https://vividtheory.tumblr.com/">the vivid theory</a>.</p>
+<p>有一个网站有一些非常不错的配色方案：<a href="https://vividtheory.tumblr.com/">生动的理论</a>。</p>
+<p>After a few years working on animated feature films for Hollywood, you kind of end up seeing only two colors : <strong>Orange</strong> and ​<strong>Blue</strong><span data-type="text" style="color: var(--b3-font-color3);">.</span> Like this movie, <em>Coco</em> (Director : ​<strong>Lee Unkrich</strong>​, DP :  <strong><a href="https://www.imdb.com/name/nm2921423/?ref_=ttfc_fc_cr6">Matt Aspbury</a></strong> and <strong><a href="https://www.imdb.com/name/nm0270665/?ref_=ttfc_fc_cr7">Danielle Feinberg</a></strong>) :</p>
+<p>在好莱坞制作动画长片几年后，你最终只会看到两种颜色：<strong>橙色</strong>和​<strong>蓝色</strong>​。就像这部电影​ <em>《寻梦环游记》</em> ​（导演：​<strong>Lee Unkrich</strong>​，摄影指导：   <strong><a href="https://www.imdb.com/name/nm2921423/?ref_=ttfc_fc_cr6">Matt Aspbury</a><strong>和</strong><a href="https://www.imdb.com/name/nm0270665/?ref_=ttfc_fc_cr7">Danielle Feinberg</a></strong>）：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_200_coco_scheme_complementary_FHD-20241105171201-rvgougv.jpg" alt="" title="&quot;Orange and teal&quot; has been massively used on Coco. “橙色和青色”在 Coco 上被大量使用。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_210_coco_scheme_complementary_FHD-20241105171201-44lbczc.jpg" alt="" title="Don't get me wrong, this looks great. 别误会我的意思，这看起来很棒。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_220_coco_scheme_complementary_FHD-20241105171201-ala9kjb.jpg" alt="" title="But not very original. 但不太原创。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_230_coco_scheme_complementary_FHD-20241105171201-3ud6ycb.jpg" alt="" title="Not sure why the hot spot from the lamp is orange though. With ACES it would be white (overexposed). 不确定为什么灯的热点是橙色。使用 ACES 时它会是白色（曝光过度）。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_240_coco_scheme_complementary_FHD-20241105171201-p8my6gq.jpg" alt="" title="Most of the movie is based on this complementary scheme. Pretty efficient. 电影的大部分内容都是基于这种互补方案。非常有效。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_250_coco_scheme_complementary_FHD-20241105171201-byihizn.jpg" alt="" title="It is kind of the visual look for the whole movie. 这有点像整部电影的视觉效果。" loading="lazy">​</p>
+<p>What I really like though is that they change the scheme when introducing this new character Ernesto de la Cruz. The choice of green color is not fortuitous, it makes you feel uncomfortable. Maybe you don’t realize it when watching but your brain is probably like “​<em>something is off with this guy.</em> ​” We will come back to the green color <a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#13-the-green-problem">a bit below</a>.</p>
+<p>不过，我真正喜欢的是，他们在介绍这个新角色埃内斯托·德拉克鲁斯时改变了方案。绿色的选择并非偶然，它让你感到不舒服。也许你在观看时没有意识到这一点，但你的大脑可能会觉得“<em>这家伙有点不对劲”。我们</em>​<a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#13-the-green-problem">稍后</a>会回到绿色。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/COCO%2C%20de%20Disney%E2%80%A2Pixar%20-%20Miguel%20conoce%20a%20Ernesto%20de%20la%20Cruz%20en%20espan%CC%83ol-20241115010713-6pzt83c.mp4" data-src="assets/COCO, de Disney•Pixar - Miguel conoce a Ernesto de la Cruz en español-20241115010713-6pzt83c.mp4"></video></p>
+<blockquote>
+<p>Since we are talking about standardization on a movie, I am going to make a public confession. I have used <strong>the same blue color</strong> for the past ten years in all of my sky-related lights such as top, rim or environment lights : R : 0.4 / G : 0.7 / B : 1. Same goes for the sun: R: 1 / G: 0.8 / B: 0.6. Yes I only use round values, they are easier to share and to remember.</p>
+<p>既然我们在谈论电影的标准化，我要公开承认。过去十年来，我在所有与天空相关的灯光（如顶部、边缘或环境灯光）中都使用了​<strong>相同的蓝色</strong>​：R : 0.4 / G : 0.7 / B : 1。太阳也是如此：R：1 / G：0.8 / B：0.6。是的，我只使用整数值，这样更容易分享和记住。</p>
+<p>-- These are non-ACEScg values by the way.</p>
+<p>-- 顺便说一下，这些是非 ACEScg 值。</p>
+</blockquote>
+<h2 id="色彩心理学-color-psychology">色彩心理学 Color Psychology</h2>
+<p>The use of colors is certainly not something to take slightly. <a href="http://www.colour-affects.co.uk/psychological-properties-of-colours">Each color</a> can have a strong impact on us based on <a href="https://en.wikipedia.org/wiki/Color_psychology">our age, culture or gender. </a>In 1980, <a href="https://en.wikipedia.org/wiki/Robert_Plutchik">Robert Plutchik</a> constructed a <a href="https://en.wikipedia.org/wiki/Contrasting_and_categorization_of_emotions#Plutchik.27s_wheel_of_emotions">diagram</a> of emotions visualizing eight basic emotions : joy, trust, fear, surprise, sadness, disgust, anger and anticipation.</p>
+<p>颜色的使用绝对不是一件可以掉以轻心的事情。<a href="http://www.colour-affects.co.uk/psychological-properties-of-colours">每种颜色</a>都会根据<a href="https://en.wikipedia.org/wiki/Color_psychology">我们的年龄、文化或性别对我们产生强烈影响。1980</a>年，<a href="https://en.wikipedia.org/wiki/Robert_Plutchik">罗伯特·普拉奇克 (Robert Plutchik)</a>构建了一个情绪<a href="https://en.wikipedia.org/wiki/Contrasting_and_categorization_of_emotions#Plutchik.27s_wheel_of_emotions">图表</a>，其中形象化了八种基本情绪：喜悦、信任、恐惧、惊讶、悲伤、厌恶、愤怒和期待。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_260_plutchik_wheel_FHD-20241105171201-mw7ta1e.jpg" alt="" loading="lazy">​</p>
+<p>The sequence from Coco with Ernesto de la Cruz uses pink and green which gives <em>Annoyance</em> and ​<em>Apprehension</em>​. Pretty accurate right ? Interestingly enough, Pixar has inverted the colors of Fear and Disgust for the movie “Inside Out”.</p>
+<p>《寻梦环游记》中 Ernesto de la Cruz 的片段使用了粉色和绿色，表达了 <em>“烦恼”</em> 和​ <em>“忧虑</em>​”的感觉。很准确吧？有趣的是，皮克斯在电影《头脑特工队》中反转了“恐惧”和“厌恶”的颜色。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_270_inside_out_characters_FHD-20241105171201-8vijjlt.jpg" alt="" loading="lazy">​</p>
+<p>Here is <a href="http://www.nationalboardofreview.org/2015/06/qa-with-jonas-rivera-and-pete-docter/">an explanation</a> on the Character Design :</p>
+<p>以下是关于角色设计的<a href="http://www.nationalboardofreview.org/2015/06/qa-with-jonas-rivera-and-pete-docter/">解释：</a></p>
+<blockquote>
+<p>We relied on some verbal idioms like I feel blue, I feel sad, I’m about to explode with rage, etc.[…] Joy was a star, or a spark. Golden and illuminated. Sadness was a teardrop. So her shape and color resemble a teardrop. Fear is like a raw nerve, just a squiggly line, that’s why he’s tight. Disgust is the shape and color of a stalk of broccoli. And of course anger is a brick, immovable.</p>
+<p>我们依赖一些口头习语，如我心情不好，我感到难过，我快要怒不可遏了，等等。[…]快乐是一颗星星，或者一颗火花。金色而明亮。悲伤是一滴泪珠。所以她的形状和颜色就像一滴泪珠。恐惧就像一根生硬的神经，只是一条弯曲的线，这就是他紧张的原因。厌恶是一根西兰花茎的形状和颜色。当然，愤怒是一块砖，不可移动。</p>
+<p>-- This makes sense but I am still not sure why “Fear” is purple though.</p>
+<p>-- 这很有道理，但我仍然不确定为什么“恐惧”是紫色的。</p>
+</blockquote>
+<h2 id="色彩与情感-color-and-emotions">色彩与情感 Color and Emotions</h2>
+<p>According to <a href="https://www.paulekman.com/">Paul Ekman</a>, <strong>emotions are universal. But the way we show them, like our attitude, is cultural.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>He also says that what triggers the emotion is a personal factor. We can also state that the camera, music and lighting work are mostly addressed to the viewers’ emotions.</p>
+<p><a href="https://www.paulekman.com/">保罗·埃克曼</a>认为，<strong>情绪是普遍存在的。但我们表达情绪的方式，就像我们的态度一样，是文化的。</strong> 他还说，引发情绪的因素是个人因素。我们还可以说，摄像机、音乐和灯光工作大多针对观众的情绪。</p>
+<p><strong>But we should be careful to interpret colors as symbols because they are mostly linked to a culture historically and geographically.</strong>  Let me just quote Sharon Callahan here because I do not want you to think there is a universal color code. It is a bit more complicated than that.</p>
+<p><strong>但我们应该谨慎地将颜色解读为符号，因为它们大多与历史和地理上的文化有关。</strong> 我在这里只引用莎伦·卡拉汉的话，因为我不想让你认为存在一个通用的颜色代码。事实比这要复杂一些。</p>
+<blockquote>
+<p>Not until the Renaissance was color appreciated as an aesthetic choice. […] There are enough common life experiences and contexts within which to draw some generalizations about how color affects us emotionally, especially in American culture where many of them have been stereotypically reinforced by advertising.</p>
+<p>直到文艺复兴时期，色彩才被看作是一种审美选择。[…] 有足够多的共同生活经历和背景可以概括色彩如何影响我们的情感，尤其是在美国文化中，其中许多情感都通过广告得到了刻板的强化。</p>
+</blockquote>
+<p>Color temperature for natural and artificial lighting are quite universal. To deviate from them will most likely provoke a reaction.  <strong>But nothing says that this reaction will be the same for every culture of viewers.</strong></p>
+<p>自然光和人工照明的色温相当通用。偏离这些色温很可能会引起反应。<strong>但没有人能保证这种反应对于每种文化的观众来说都是相同的。</strong></p>
+<blockquote>
+<p>Perfect example for that is the white color : white being connected to weddings in the Western world but to funerals in China.</p>
+<p>白色就是一个完美的例子：在西方世界，白色与婚礼有关，但在中国，白色与葬礼有关。</p>
+</blockquote>
+<h2 id="坏人综合症-bad-guy-syndrome">坏人综合症 Bad Guy Syndrome</h2>
+<p>Personally I have never heard a Lighting Supervisor  <strong>arbitrarily</strong> say something like : “<em>This character is angry. Light him in red.</em> ” Most of the time the intention of color comes from the surroundings of the character : time of the day, weather and location chosen by the Art Department.</p>
+<p>就我个人而言，我从未听过灯光总监<strong>随意</strong>说出这样的话：“<em>这个角色很生气。用红色灯光照亮他。</em>  ” 大多数情况下，颜色的意图来自于角色的周围环境：艺术部门选择的一天中的时间、天气和地点。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_280_despicable_emotion_sunny_FHD-20241105171201-93u2zlh.jpg" alt="" title="Vibrant colors and sunny environment. Main character is happy. And so should feel the viewer. 色彩鲜艳，环境阳光明媚。主角很开心。观众也应该有同样的感受。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_290_despicable_emotion_rainy_FHD-20241105171201-5fb7x92.jpg" alt="" title="Desaturated colors and rainy environment. Main character is sad. And so should feel the viewer? I personally enjoyed him being bad again. 色彩不饱和，环境阴雨。主角很悲伤。观众也应该有同样的感受吗？我个人很喜欢他再次变坏。" loading="lazy">​</p>
+<p>A quite common example would be the bad guy standing in front of the chimney. To enhance the drama, a fire is generally an interesting light source. It allows us to justify strong rims or even light coming from below, like <em>Ninjago</em> (Director : <strong>Charlie Bean</strong>, Cinematography : <strong><a href="https://www.imdb.com/name/nm1852644/?ref_=ttfc_fc_cr25">Craig Welsh</a></strong>) :</p>
+<p>一个相当常见的例子是坏人站在烟囱前。为了增强戏剧效果，火通常是一个有趣的光源。它使我们能够证明强光甚至是来自下方的光线是合理的，就像<em>Ninjago</em>（导演：<strong>Charlie Bean</strong>，摄影：<strong><a href="https://www.imdb.com/name/nm1852644/?ref_=ttfc_fc_cr25">Craig Welsh</a></strong>）：</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/The Lego Ninjago Movie Clip - Finally Conquered Ninjago 2017  Movieclips Coming Soon-20241114145910-irfxoil.mp4" data-src=""></video></p>
+<blockquote>
+<p>We had a pretty accurate color key for this sequence. This is why we mostly focus on the <a href="https://www.cambridgeincolour.com/tutorials/white-balance.htm">White Balance</a> in lighting. This is our primary concern. We also try to make our images look  <strong>pleasant to the average viewer :</strong>   easily readable, saturated, not too dark with a nice shaping and composition.</p>
+<p>我们为这个序列设置了相当准确的颜色键。这就是为什么我们主要关注灯光中的<a href="https://www.cambridgeincolour.com/tutorials/white-balance.htm">白平衡</a>。这是我们的主要关注点。我们还试图让我们的图像<strong>对普通观众来说看起来令人愉悦 ：</strong> 易于阅读、饱和、不太暗，具有良好的造型和构图。</p>
+<p>We will see how to achieve all of this in the next chapters.</p>
+<p>我们将在下一章中看到如何实现所有这些。</p>
+</blockquote>
+<h2 id="生产实例-production-examples">生产实例 Production Examples</h2>
+<p>I am going to detail here different feature films. Each movie production can be quite unique due to various factors : art direction, size of the company, roles among the team… But let’s not kid ourselves. Most movies are a huge investment and  <strong>most producers want to play it safe :</strong>  I have lit the same way and used the same colors on “​<em>Planet 51</em>​“, “​<em>Pets</em>​“, “​<em>Ninjago</em>​” or “​<em>The Star</em>​“.</p>
+<p>我将在这里详细介绍不同的故事片。由于各种因素，每部电影的制作都可能非常独特：艺术指导、公司规模、团队中的角色……但我们不要自欺欺人。大多数电影都是一笔巨大的投资，<strong>大多数制片人都想稳妥行事：</strong> ​<em>我在“ 51号星球</em>​”、“​<em>宠物</em>​”、“​<em>忍者世界</em>​”或“​<em>星星</em>​”中都以相同的方式布光并使用了相同的颜色。</p>
+<h3 id="planet-51-和爱宠大机密-planet-51-and-the-secret-life-of-pets">Planet 51 和《爱宠大机密》 Planet 51 and The secret life of pets</h3>
+<p>Much like ​<em>Planet 51</em>​, <em>The secret life of pets</em> has a naturalistic look. It does not mean we only used natural lights but that the look of the film is natural, as opposed to artificial. We will dive deep in this topic in <a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Natural">Chapter 4</a>.</p>
+<p><em>与Planet 51</em>一样， <em>《爱宠大机密》</em> 具有自然主义风格。这并不意味着我们只使用自然光，而是说影片的画面是自然的，而不是人造的。我们将在<a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Natural">第 4 章</a>深入探讨这个主题。</p>
+<p>One thing I missed on both movies was the presence of the <em>Art Director</em> (​<em>AD</em>​) in dailies. In my experience, production is way more interesting when the <em>AD</em> comments the shots directly with us. Since he is the one who painted the color keys, I think it makes sense to have him on board until the <em>Digital Intermediate</em> (​<em>DI</em>​).</p>
+<p>​<em>这两部电影中我最怀念的一件事就是艺术总监</em>​( <em>AD</em> ) 在每日拍摄中的存在。根据我的经验，当<em>艺术总监</em>直接与我们一起评论镜头时，制作会更有趣。由于他是绘制色键的人，我认为让他参与到​<em>数字中间片</em>​( <em>DI</em> ) 中是有意义的。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_300_production_planet51_FHD-20241105171201-hex9dcn.jpg" alt="" title="Warm sun, cool shadows. Works perfectly. 温暖的阳光，凉爽的阴影。效果完美。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_310_production_pets_FHD-20241105171201-xjzzvbl.jpg" alt="" title="Same thing on Pets. Movie has to look not too dark, saturated with a clear read on the characters. 《宠物》也是一样。电影不能太阴暗，人物形象要清晰。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_320_production_pets_FHD-20241105171201-a7no71f.jpg" alt="" title="Warm sun and cool shadows was really a motto on Pets. At least it gave us consistency. By the way, the shadow of the tree is a GOBO. Fake shadows add richness to the shot. 温暖的阳光和凉爽的阴影确实是《宠物》的座右铭。至少它给了我们一致性。顺便说一句，树的阴影是遮光片。假阴影为镜头增添了丰富感。" loading="lazy">​</p>
+<blockquote>
+<p>Naturalistic looks are very common in animated movies.</p>
+<p>自然主义的外观在动画电影中非常常见。</p>
+</blockquote>
+<h3 id="普莱摩比-playmobil">普莱摩比 Playmobil</h3>
+<p>I had the chance to work directly with <strong><a href="http://www.remisalmon.com/">Rémi Salmon</a></strong>, Production Designer of <em><a href="https://www.youtube.com/watch?v=K-C1ys02wlU">Playmobil the movie</a></em>. Having him on the floor with the lighting crew was really useful : he was often available if I had any doubts or questions. Here is a couple of examples where Rémi used color to reinforce the story.</p>
+<p>我有机会直接与*<a href="https://www.youtube.com/watch?v=K-C1ys02wlU">电影 Playmobil</a><em>的制作设计师</em>*<a href="http://www.remisalmon.com/">Rémi Salmon</a>**合作。让他和灯光组一起在现场真的很有用：如果我有任何疑问或问题，他总是可以回答。以下是 Rémi 使用颜色来强化故事的几个例子。</p>
+<p>There is a sequence where two characters disagree and are arguing.  <strong>How can you use color to translate this visually ?</strong>  I thought Rémi’s solution was really clever :</p>
+<p>有一个场景，两个角色意见不合，正在争吵。<strong>你如何用颜色来视觉化地表达这一点？</strong> 我认为雷米的解决方案非常聪明：</p>
+<blockquote>
+<p>We are going to use the garland behind them as a justification for playing some colorful rims. However, Marla’s head will be lit in blue and Del’s in pink. And we will use a gradient to invert those colors on the seats. It is like if each character was in his own bubble.</p>
+<p>我们将使用他们身后的花环作为播放一些彩色轮辋的理由。但是，Marla 的头部将以蓝色点亮，而 Del 的头部将以粉红色点亮。我们将使用渐变来反转座椅上的这些颜色。就好像每个角色都在自己的泡泡里一样。</p>
+</blockquote>
+<p>I really thought this was a great idea. Unfortunately, I can only show you these screen grabs from YouTube but I hope you get the idea :</p>
+<p>我真的认为这是一个好主意。不幸的是，我只能向您展示来自 YouTube 的这些屏幕截图，但我希望您能理解这个想法：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_330_playmobil_argument_FHD-20241105171201-ipi5pi6.jpg" alt="" title="Two characters arguing in a food truck. How can we use color to show that ? 两个角色在餐车里争吵。我们该如何用颜色来表现这一点？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_340_playmobil_argument_FHD-20241105171201-i04cgez.jpg" alt="" title="Each character is in his own &quot;bubble&quot; of color. Marla being in a blue &quot;bubble&quot;, except for her seat. 每个角色都身处不同颜色的“泡泡”中。玛拉身处蓝色“泡泡”中，除了她的座位。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_350_playmobil_argument_FHD-20241105171201-5yuifyh.jpg" alt="" title="And Del being in a pink &quot;bubble&quot;, except for his seat. It is quite subtle but it is there. 德尔身处一个粉色“泡泡”中，除了他的座位。这很微妙，但确实存在。" loading="lazy">​</p>
+<p>Apparently, a similar technique has been used on the movie… <em>Se7en</em> (Director : ​<strong>David Fincher</strong>​, DP : ​<strong>Darius Khondji</strong>​) ! Check<a href="https://ascmag.com/articles/flashback-seven-1995"> this article</a>, it is a must-read !</p>
+<p>显然，类似的技巧也用在了电影《​<em>七宗罪</em>​》 （导演：​<strong>大卫·芬奇</strong>​，摄影指导：​<strong>达利斯·康吉</strong>​）上！看看<a href="https://ascmag.com/articles/flashback-seven-1995">这篇文章吧</a>，这是必读之作！</p>
+<blockquote>
+<p>The mismatched investigators examine a cache of revealing notebooks discovered in John Doe’s apartment — <strong>conflicting color temperatures adding to the scene’s unease.</strong></p>
+<p>两名调查人员在 John Doe 的公寓中发现了一批揭露真相的笔记本 <strong>，而相互矛盾的色温更增添了现场的不安感。</strong></p>
+</blockquote>
+<h4 id="playmobil-夜间场景-playmobil-night-sequence">Playmobil 夜间场景 Playmobil night sequence</h4>
+<p>We did another sequence with the same two characters where they land in an hostile city at night. Same challenge here : How do you make the viewer feel their discomfort ? Another great solution by Rémi :</p>
+<p>我们又拍摄了两个角色的片段，他们在夜晚降落在一个充满敌意的城市。同样的挑战：如何让观众感受到他们的不适？Rémi 的另一个绝妙解决方案：</p>
+<blockquote>
+<p>We are not going to make the sky blue. But green. This will show their discomfort. Green is a pretty uncomfortable color.</p>
+<p>我们不会把天空变成蓝色。而是绿色。这会让他们感到不舒服。绿色是一种相当不舒服的颜色。</p>
+</blockquote>
+<p>There was a debate about whether the sky should be blue or green. The blue version was nice but I thought green was more original and served better the story. I am really glad we could stick to this idea. Let’s say that the blue version was the safe one since 90% of CG movies have <a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Moon">a blue night</a>. Here is part of the sequence :</p>
+<p>关于天空应该是蓝色还是绿色，曾经有过争论。蓝色版本很好看，但我认为绿色更原始，也更符合故事情节。我很高兴我们能坚持这个想法。可以说蓝色版本是安全的，因为 90% 的 CG 电影都有<a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Moon">蓝色的夜晚</a>。以下是序列的一部分：</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Playmobil- The Movie  Film Clip  Starring Daniel Radcliffe-20241114145051-oweqn51.mp4" data-src="assets/Playmobil- The Movie  Film Clip  Starring Daniel Radcliffe-20241114145051-oweqn51.mp4"></video></p>
+<h4 id="物理但绿色-physical-but-green">物理但绿色 Physical but green</h4>
+<p>I had a debate recently on how to make the sky green in CG. The solution may seem pretty obvious but apparently it is not. Let’s say you are on a technically oriented show and for some dogmatic and/or practical reasons you only want to use a physical skylight. You have two solutions :</p>
+<p>最近我讨论了如何在 CG 中将天空变成绿色。解决方案似乎很明显，但显然并非如此。假设您正在参加一个技术导向的节目，出于某些教条和/或实际原因，您只想使用物理天窗。您有两种解决方案：</p>
+<ul>
+<li>The green tint of the sequence comes from a grade in compositing. <strong>Not ideal at all since you won’t see it in lighting.</strong></li>
+<li>序列中的绿色色调来自合成等级。<strong>一点也不理想，因为在灯光下你看不到它。</strong></li>
+<li>The green could come from the haze (volumetric effect) by tweaking its color. <strong>Not great since the green haze will probably be not part of GI and reflections.</strong></li>
+<li>通过调整颜色，绿色可能来自雾霾（体积效果）。<strong>效果不太好，因为绿色雾霾可能不是 GI 和反射的一部分。</strong></li>
+</ul>
+<p>My recommendation would be to put the green color in the environment light. <strong>No grade, no complicated setup.</strong>  I personally like when the sky you see in your render is the one that illuminates the scene. Or you could ask Matte-Painting to deliver an HDR map, we did that a lot on ​<em>Lego Batman</em>​. We will talk about this in <a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Sky">Chapter 4</a>.</p>
+<p>我的建议是将绿色放在环境光中。<strong>无需等级，无需复杂设置。</strong> 我个人喜欢渲染中看到的天空照亮场景。或者您可以让 Matte-Painting 提供 HDR 贴图，我们在 <em>《乐高蝙蝠侠》中经常这样做。我们将在</em>​<a href="https://chrisbrejon.com/cg-cinematography/chapter-4-light-categories/#Sky">第 4 章</a>中讨论这一点。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_360_playmobil_green_FHD-20241105171201-5e9wbjm.jpg" alt="" title="This night sequence was subtly lit in green to show the discomfort of the characters. It could have been a grade and/or some haze. 这个夜晚的场景用绿色巧妙地照亮，以显示角色的不适。它可能是等级和/或一些雾霾。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_370_lego_batman_sky_FHD-20241105171201-gao3cse.jpg" alt="" loading="lazy">​</p>
+<p>It is fun to play with artificial skylights once in a while.</p>
+<p>偶尔玩一下人工天窗还是很有趣的。</p>
+<p>Some supervisors stick only to Physical Skylight to avoid big discrepancies between sequences. It is also the insurance to get a predictable result. But you also lose control. I guess the question is how much control do you want to give to your team ?</p>
+<p>有些主管只坚持使用物理天窗，以避免序列之间出现巨大差异。这也是获得可预测结果的保证。但你也会失去控制权。我想问题是你想给你的团队多少控制权？</p>
+<h3 id="绿色问题-the-green-problem">绿色问题 The green problem</h3>
+<p>This theory about green was confirmed to me in <a href="http://jamesgurney.com/site/213/color-and-light-a-guide-for-the-realist-painter">this book </a>by <a href="http://jamesgurney.com/site/">James Gurney</a>. It is funny because I read this book when I was working on the sequence above. And I started to connect the dots… Have a look at <a href="http://gurneyjourney.blogspot.com/">James’ blog</a>, there is some amazing stuff there.</p>
+<p><a href="http://jamesgurney.com/site/">James Gurney</a>的<a href="http://jamesgurney.com/site/213/color-and-light-a-guide-for-the-realist-painter">这本书</a>证实了这个关于绿色的理论。有趣的是，我在研究上面的序列时读了这本书。然后我开始把这些点联系起来……看看<a href="http://gurneyjourney.blogspot.com/">James 的博客</a>，那里有一些很棒的内容。</p>
+<blockquote>
+<p><a href="http://gurneyjourney.blogspot.com/2008/06/green-problem.html">The Green Problem</a> : In the paperback book field, there’s an old saying that “green covers don’t sell.” Costume designers have told me that green often looks ghastly in stage lighting. Gallery directors have reported that clients aren’t attracted to paintings with a strong greenish cast, especially if the color tends toward a bright yellow-green.</p>
+<p><a href="http://gurneyjourney.blogspot.com/2008/06/green-problem.html">绿色问题</a>：在平装书领域，有句老话叫“绿色封面卖不出去”。服装设计师告诉我，绿色在舞台灯光下看起来往往很可怕。画廊主管报告说，客户不喜欢带有强烈绿色色调的画作，尤其是颜色趋向于明亮的黄绿色时。</p>
+</blockquote>
+<p>Why did I use <em>Playmobil</em> as my first two examples ? Because <a href="https://www.onanimationstudios.com/">On Animation</a> is a pretty small company (around 200 people) and we had the chance to have Rémi on the floor with us and during dailies. That is something we do not see that often unfortunately.</p>
+<p>为什么我用<em>Playmobil</em>作为前两个例子？因为<a href="https://www.onanimationstudios.com/">On Animation</a>是一家很小的公司（大约 200 名员工），我们有机会让 Rémi 和我们一起在现场和每天工作。不幸的是，这种情况我们并不常见。</p>
+<h3 id="乐高蝙蝠侠-lego-batman">乐高蝙蝠侠 Lego Batman</h3>
+<p>One more example about the green color. In ​<em>Lego Batman</em>​, there is a sequence where the Joker tricks Batman and offers him a deal. Guess what is the <a href="https://designshack.net/articles/graphics/understanding-color-dominant-vs-recessive-colors/">dominant color</a> of the sequence ?</p>
+<p>再举一个关于绿色的例子。在 <em>《乐高蝙蝠侠》</em> 中，有一个场景是小丑欺骗蝙蝠侠并向他提出交易。猜猜这个场景的<a href="https://designshack.net/articles/graphics/understanding-color-dominant-vs-recessive-colors/">主色调是什么？</a></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_380_lego_batman_color_green_FHD-20241105171201-xuml52m.jpg" alt="" title="Lego Batman is the only movie where I used pure colors in my lights. That was nuts (in a good way) ! 《乐高蝙蝠侠》是我在灯光中使用纯色的唯一一部电影。这真是太疯狂了（但从好的方面来说）！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_390_lego_batman_color_green_FHD-20241105171201-o5qg5ss.jpg" alt="" title="Everything about the Joker in this movie is green and pink. So it makes the shots and locations very recognizable. You can tell only by watching the color that the batcave is under Joker's control. Triadic color scheme by the way. 这部电影中小丑的一切都是绿色和粉色。因此，镜头和地点都非常容易辨认。你只需观察颜色就能知道蝙蝠洞在小丑的控制之下。顺便说一下，这是三色配色方案。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_400_lego_batman_color_blue_FHD-20241105171201-cb4yvuw.jpg" alt="" title="Blue, yellow and red (another triadic color scheme) : the batcave is under Batman's control. Color helps the viewer to instantly figure out where the action is taking place. Smart ! 蓝色、黄色和红色（另一种三色配色方案）：蝙蝠洞在蝙蝠侠的控制之下。颜色可以帮助观众立即弄清楚动作发生的位置。聪明！" loading="lazy">​</p>
+<p>Having Color Schemes per character is a very powerful tool. It can show their personality and their arc through the story. The Batcave in the slide above is the perfect example of having the same location under different influences : <strong>the change of color scheme indicates an important story point.</strong></p>
+<p>每个角色都有配色方案是一个非常强大的工具。它可以展示他们的个性和故事情节。上面幻灯片中的蝙蝠洞是同一地点受到不同影响的完美例子：<strong>配色方案的变化表明了一个重要的故事点。</strong></p>
+<p><strong>My personal experience on this movie was different from anything I have ever seen before.</strong>  For example, we did not use any Color Key. I know this seems insane but this workflow actually makes complete sense. We will come back to that in <a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#References">Chapter 5</a>.</p>
+<p><strong>我个人对这部电影的体验与我以前见过的任何电影都不同。</strong> <a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#References">例如，我们没有使用任何 Color Key。我知道这看起来很疯狂，但这种工作流程实际上完全合理。我们将在第 5 章</a>中回顾这一点。</p>
+<h4 id="乐高蝙蝠侠夜间序列-lego-batman-night-sequence">乐高蝙蝠侠夜间序列 Lego Batman night sequence</h4>
+<p>Here is an other example on <em>Lego Batman</em> : we were launching a sequence set in the woods at night, and <strong>Grant Freckelton</strong> was showing me some references. He told me :</p>
+<p><em>这是乐高蝙蝠侠</em> 的另一个例子：我们正在制作一个以夜晚的树林为背景的场景，<strong>Grant Freckelton</strong>向我展示了一些参考资料。他告诉我：</p>
+<blockquote>
+<p>We are going to make a sequence where the key will be warm on the set, neutral on the characters and blue on the volumetric FX.</p>
+<p>我们将制作一个序列，其中场景上的色调为暖色，角色上的色调为中性色，体积 FX 上的色调为蓝色。</p>
+</blockquote>
+<p>When I heard this, I can tell you that my heart skipped a beat. What the heck ? How can one make this work ? Different colors for the same key ? I just had finished <em><a href="https://vimeo.com/183156843">The Secret Life of Pets</a></em> where we did not use any Light-Linking and barely no cheat… I was not prepared for this !</p>
+<p>当我听到这个消息时，我可以告诉你，我的心跳漏了一拍。这是什么鬼？怎么才能让它工作？同一个键有不同的颜色？我刚刚完成了​*<a href="https://vimeo.com/183156843">《爱宠大机密》</a>* ​，我们没有使用任何光链接，几乎没有作弊……我对此毫无准备！</p>
+<p>Use of color On <em>Lego Batman</em> was very original and pretty much insane. <strong>It is the only movie where I used these (almost) pure colors : R : 1 / G : 0.01 / B : 0.01.</strong>  It took me time to accept it as it was so different to what I am used to.</p>
+<p><em>《乐高蝙蝠侠》</em> 的色彩运用非常新颖，甚至可以说是疯狂。<strong>这是我唯一一部使用这些（几乎）纯色的电影：R : 1 / G : 0.01 / B : 0.01。</strong> 我花了很长时间才接受它，因为它与我习惯的完全不同。</p>
+<blockquote>
+<p>I actually avoid to put 0 in CG, this quite a dangerous value as  <strong>it completely removes the information</strong>. 0 in CG is considered an optimization value.</p>
+<p>我实际上避免在 CG 中放置 0，<strong>这是一个非常危险的值</strong>，因为它会完全删除信息。CG中的 0 被视为优化值。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_410_lego_batman_scheme_split_FHD-20241105171201-8w7wvf4.jpg" alt="" title="Split-complementary scheme : orange, green and blue. I used pure values in my lights. Crazy ! The difference of hue between beauty and volumetric has actually been used on many sequences of Lego Batman. 分裂互补方案：橙色、绿色和蓝色。我在灯光中使用了纯色。太疯狂了！美丽和体积之间的色调差异实际上已在《乐高蝙蝠侠》的许多序列中使用。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_420_lego_batman_scheme_complementary_FHD-20241105171201-6i4h5w4.jpg" alt="" loading="lazy">​</p>
+<p>After a few days, I realized his choice was just great. The colors work really well together. It is actually a pretty common technique in his work :<strong>different colors for geometry and volumetric give depth and readability.</strong></p>
+<p>几天后，我意识到他的选择很棒。颜色搭配得很好。这实际上是他作品中一种相当常见的技巧：<strong>几何和体积的不同颜色赋予了深度和可读性。</strong></p>
+<blockquote>
+<p>Something important to notice is that <strong>we used neutral lights on the characters for the skin tones</strong>. <strong>A blue light on a Lego figure (or a minion) does not look good ! Damn green !</strong></p>
+<p>需要注意的是，<strong>我们在人物皮肤上使用了中性光</strong>。 <strong>乐高人物（或小黄人）上的蓝光看起来不太好看！该死的绿色！</strong></p>
+</blockquote>
+<h3 id="如何训练你的龙-how-to-train-your-dragon">如何训练你的龙 How to train your dragon</h3>
+<p><strong>I haven’t worked on this movie</strong> but I would like to use this example from Dave Walvoord. Do not hesitate to check <a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">his talk</a> from Siggraph 2019. It is a very interesting read ! I think the color principle he is describing below is simple but very clear and efficient.</p>
+<p><strong>我没有参与过这部电影的制作</strong>，但我想使用 Dave Walvoord 的这个例子。不要犹豫，看看<a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">他在 Siggraph 2019 上的演讲</a>。这是一篇非常有趣的文章！我认为他下面描述的色彩原理很简单，但非常清晰和有效。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_430_dragon_saturation_FHD-20241105171201-ohfvszp.jpg" alt="" title="The human world is earth tones, greens and browns, and fairly desaturated. Dragons represent the fantasy element. They are more colorful, with a broader palette and more saturation. 人类世界是土色调、绿色和棕色，饱和度较低。龙代表幻想元素。它们色彩更丰富，色调更广泛，饱和度更高。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_440_dragon_saturation_FHD-20241105171201-20mzrss.jpg" alt="" title="In the first Dragon movie, Berk is all unpainted wood and very drab taking the color palette of the humans. 在第一部《龙》电影中，博克岛全部由未上漆的木头构成，颜色非常单调，与人类的色调一致。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_450_dragon_saturation_FHD-20241105171201-zuknzvk.jpg" alt="" title="As the franchise progresses, the Dragons become increasingly integrated into the lifestyle of the Vikings until by the third movie, the color palette of the Dragons has completely infiltrated Berk. 随着电影情节的进展，龙逐渐融入了维京人的生活方式，直到第三部电影，龙的色调已经完全渗透到博克岛。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_460_dragon_saturation_FHD-20241105171201-iloc282.jpg" alt="" title="It is important to the story in the third movie that the Hidden World is the natural home of the dragons. To show this, the color palette matches that of the dragons which creates a very foreign feeling world with vibrant and saturated colors. 第三部电影中的故事很重要的一点是，隐秘世界是龙的自然家园。为了展示这一点，色调与龙的色调相匹配，用鲜艳饱和的色彩创造了一个非常陌生的世界。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_470_dragon_saturation_FHD-20241105171201-2ncdf2x.jpg" alt="" title="By the end of the third movie as the dragons fly away to the Hidden World, the frame is left with the desaturated earth tones of the humans, driving home the point that the vikings are now left back as they were at the beginning of the franchise. 在第三部电影的结尾，当龙飞向隐秘的世界时，画面中只剩下了人类的失色大地色调，这进一步表明维京人现在已经回到了电影系列开始时的状态。" loading="lazy">​</p>
+<p>Very interesting how the color is linked to the story.</p>
+<p>颜色和故事的联系非常有趣。</p>
+<blockquote>
+<p>Interesting comment about color in Lighting Design for Stylized Animation : “Using this color theory as a guide for lighting, it means that the Hidden world is lit with mostly neutral lights to allow the local colors to dominate. While in the human world, due to the desaturated local color palette, very saturated lights can be used to give each sequence a distinctive color palette and to enhance its mood.”</p>
+<p>关于风格化动画的照明设计中色彩的有趣评论：“使用这种色彩理论作为照明指南，这意味着隐藏的世界主要用中性光照亮，以使当地色彩占主导地位。而在人类世界中，由于局部调色板不饱和，可以使用非常饱和的灯光为每个序列赋予独特的调色板并增强其氛围。”</p>
+<p>I guess on Lego we used saturated lights on already saturated bricks !</p>
+<p>我想在乐高积木上我们在已经饱和的积木上使用了饱和灯光！</p>
+</blockquote>
+<p>I will use <a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">Dave Walvoord’s talk</a> several times in my book as a point of a comparison. Stay tuned !</p>
+<p>我将在我的书中多次引用<a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">Dave Walvoord 的演讲</a>作为比较点。敬请关注！</p>
+<h2 id="颜色和灯光-color-and-lights">颜色和灯光 Color and lights</h2>
+<p>It is difficult to come with some advice on color but here is my two cents. When you light, try not to have overlapping colors since they will just cancel each other.</p>
+<p>很难给出关于颜色的建议，但我有两点看法。当你打光时，尽量不要让颜色重叠，因为它们会相互抵消。</p>
+<p>For example if you light a character, try to have one main hue for the left lights and an other hue for the right ones. Otherwise your render will just blend these colors (additive process) and get all muddy.</p>
+<p>例如，如果您要照亮一个角色，请尝试为左侧灯光设置一个主色调，为右侧灯光设置另一个色调。否则，您的渲染只会混合这些颜色（添加过程）并变得混乱。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_480_guerilla_sample_muddy_viewport_FHD-20241105171201-o4o9vnq.jpg" alt="" title="Here is a quick setup with three lights in Guerilla. 这是在 Guerilla 中使用三盏灯的快速设置。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_490_guerilla_sample_muddy_rim_FHD-20241105171201-73ezth0.jpg" alt="" title="I have this soft warm rim from the left. 我有左边这个柔软温暖的边缘。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_500_guerilla_sample_muddy_fill_FHD-20241105171201-1scyxiq.jpg" alt="" title="And this blue fill. Maybe the guy is watching TV, who knows? 左边是柔和的暖色边缘，还有蓝色填充。也许那家伙正在看电视，谁知道呢？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_510_guerilla_sample_muddy_merge_FHD-20241105171201-9ow2gs7.jpg" alt="" title="When you add them, they blend nicely thanks to a complementary scheme. 当你添加它们时，由于互补方案，它们会很好地融合。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_520_guerilla_sample_muddy_side_FHD-20241105171201-tb5c6dk.jpg" alt="" title="When you add them, they blend nicely thanks to a complementary scheme. 当你添加它们时，由于互补方案，它们会很好地融合。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_530_guerilla_sample_muddy_beauty_FHD-20241105171201-ktdnvbd.jpg" alt="" title="The lights blend weirdly and cancel each other. I kinda lose the complementary scheme, especially since these three lights have the same exposure. 这些灯光混合得很奇怪，而且互相抵消。我有点失去了互补方案，尤其是因为这三盏灯的曝光度相同。" loading="lazy">​</p>
+<p>Let’s now have a look at a clear example from <a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">Dragon</a> where lights do not cancel each other and their temperature blend perfectly.</p>
+<p>现在让我们看一下<a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">Dragon</a>的一个清晰的例子，其中灯光不会相互抵消并且它们的温度完美地融合。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_540_dragon_lighting_beauty_FHD-20241105171201-n84uygc.jpg" alt="" title="Beautiful character lighting on How to train your Dragon 3. Let's have a look at the separated lights. 《驯龙高手3》中漂亮的人物灯光。让我们看看分开的灯光。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_550_dragon_lighting_breakdown_FHD-20241105171201-if9gdbv.jpg" alt="" title="Light coming from the right will mainly be warm-ish when light coming from the left will be cold. I have renamed the lights for better clarity but we will come back to that in chapter 8 about shot lighting. 来自右侧的光线主要偏暖，而来自左侧的光线则偏冷。我已重命名灯光，以便更加清晰，但我们将在有关拍摄照明的第 8 章中再次讨论这一点。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_560_scan_lighting_beauty_FHD-20241105171201-wvh18zt.jpg" alt="" title="I have tried to replicate the Dragon setup in Guerilla using ACES. Scan by Lee Perry Smith. 我尝试使用 ACES 在 Guerilla 中复制 Dragon 设置。由 Lee Perry Smith 扫描。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_570_scan_lighting_sky_FHD-20241105171201-heyrnbh.jpg" alt="" title="Here is the environment light with an HDR. 这是带有 HDR 的环境光。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_580_scan_lighting_sun_FHD-20241105171201-9pshek8.jpg" alt="" title="Sun. I used a distant light. 太阳。我使用了远光灯。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_590_scan_lighting_bounce_FHD-20241105171201-5aafr77.jpg" alt="" title="Bounce light. I used an area light to get softer shadows. 反射光。我使用区域光来获得更柔和的阴影。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_600_scan_lighting_sunsoft_FHD-20241105171201-48cfj5z.jpg" alt="" title="Fill light. The use of an area light in CG would be comparable to a reflector or a bounce card. 补光。区域光在 CG 中的使用与反射器或反光板类似。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_610_scan_lighting_rim_FHD-20241105171201-mp4tiuo.jpg" alt="" title="Rim. I used an area light in this case. Sometimes I use a distant light as well. 边缘。在这种情况下，我使用了区域光。有时我也会使用远距离光。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_620_scan_lighting_viewport_FHD-20241105171201-noxkt7x.jpg" alt="" title="Here is the light rig. I generally try to have clear light rigs in terms of intensities and colors. Lights from the right are indeed warm-ish and rim light from the left is cold. No muddy color nor washed-out render as colors don't overlap themselves. 这是灯光装置。我通常会尝试在强度和颜色方面使用清晰的灯光装置。右侧的灯光确实偏暖，而左侧的边缘光偏冷。没有浑浊的颜色或褪色的渲染，因为颜色不会相互重叠。" loading="lazy">​</p>
+<p>Another great example of naturalistic look, enhanced by dramatic lights.</p>
+<p>自然主义外观的另一个很好的例子，通过戏剧性的灯光增强。</p>
+<blockquote>
+<p>I am bit overlapping with Chapter 8 about Shot Lighting. The idea is to show that different directions of lights call generally for different colors. This concept is also valid for Set Lighting by the way.</p>
+<p>我与第 8 章关于镜头照明的内容有些重叠。这个想法是为了说明不同方向的灯光通常需要不同的颜色。顺便说一下，这个概念也适用于场景照明。</p>
+</blockquote>
+<p>The choice of colors and intensity in your lights is one of your most important task. We generally have a reference to guide us. <span data-type="text" style="color: var(--b3-font-color12);">You should try to avoid the 0 value at all costs.</span> It will  remove completely the channel and if you want to tweak your lights later in Nuke, you won’t have any information. Otherwise you could try to <a href="https://inlifethrill.com/octane-render-rgbspectrum-vs-gaussianspectrum/">render in spectral</a>. Here is an example using a scan by <strong><a href="http://ir-ltd.net/">Lee Perry Smith</a></strong> :</p>
+<p>选择灯光的颜色和强度是您最重要的任务之一。我们通常有一个参考来指导我们。<span data-type="text" style="color: var(--b3-font-color12);">您应该尽量避免使用 0 值。</span>它将完全删除通道，如果您以后想在 Nuke 中调整灯光，您将没有任何信息。否则，您可以尝试<a href="https://inlifethrill.com/octane-render-rgbspectrum-vs-gaussianspectrum/">在光谱中渲染</a>。以下是使用 <strong><a href="http://ir-ltd.net/">Lee Perry Smith</a></strong> 的扫描的示例：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_630_scan_lighting_red_FHD-20241105171201-y586w5f.jpg" alt="" title="Here is the same scan rendered with one area light. Its color is pure red : R : 1 / G : 0 / B : 0. If I add a gain in Nuke at R : 1 / G : 3 / B : 1, nothing happens. There is no green information nor blue. 这是用一个区域光渲染的相同扫描。其颜色为纯红色：R : 1 / G : 0 / B : 0。如果我在 Nuke 中以 R : 1 / G : 3 / B : 1 添加增益，则不会发生任何事情。没有绿色信息，也没有蓝色信息。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_640_scan_lighting_red_FHD-20241105171201-xmk6k1c.jpg" alt="" title="Another render, still with one area light. BUT its color is red-ish : R : 1 / G : 0.1 / B : 0.05. Not much difference, right ? 另一个渲染，仍然有一个区域光。但它的颜色是红色的：R ：1 / G ：0.1 / B ：0.05。差别不大，对吧？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_650_scan_lighting_red_FHD-20241105171201-chpqafu.jpg" alt="" title="Well actually there is a big one. If I add a gain in Nuke at R : 1 / G : 3 / B : 1, we have some information ! It can be pretty useful in case of a last minute retake. 嗯，实际上有一个大问题。如果我在 Nuke 中将增益增加到 R : 1 / G : 3 / B : 1，我们就会得到一些信息！如果最后一刻需要重拍，这会非常有用。" loading="lazy">​</p>
+<p>In a way it makes sense : 0 is forbidden in the albedo and it should be in our lights as well. Try to avoid it at all costs !</p>
+<p>从某种意义上说，这是有道理的：反照率中禁止使用 0，在我们的灯光中也应该禁止使用 0。尽量不惜一切代价避免这种情况！</p>
+<h2 id="概念和颜色键-concept-and-color-keys">概念和颜色键 Concept and Color Keys</h2>
+<p>It may seem trivial but this is one of the key point of my book/website. Should we apply the same colors and values between a 2D and a 3D image ? What difference is there between the two mediums ? Do we have to match perfectly a color key in CG ?</p>
+<p>这看起来可能微不足道，但这却是我这本书/网站的关键点之一。我们是否应该在 2D 和 3D 图像之间应用相同的颜色和值？这两种媒介之间有什么区别？我们是否必须完美匹配 CG 中的色键？</p>
+<p>I completely agree with <strong><a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">Dave Walvoord</a></strong> on this topic.</p>
+<p>我完全同意**<a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">Dave Walvoord</a>**在这个问题上的观点。</p>
+<blockquote>
+<p>From Lighting Design for Stylized Animation : “First, we use color keys as a guide, not a destination. […] We try not to take our color keys too literally. We want to be open to happy accidents and the process of discovery as we move into 3D.” So true !</p>
+<p>摘自《风格化动画的灯光设计》：“首先，我们使用色键作为指南，而不是目的地。[…] 我们尽量不要把色键看得太字面化。我们希望在进入 3D 时对意外惊喜和发现过程持开放态度。” 真是这样！</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_660_dragon_color_key_FHD-20241105171201-5wbuj9r.jpg" alt="" title="The time of day is morning and the sequence needed an upbeat tone. An artist generates a color key that imagines how our scene might look given these concepts. 时间是早上，这个片段需要一种欢快的基调。艺术家会生成一个色键，想象根据这些概念，我们的场景会是什么样子。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_670_dragon_compo_final_FHD-20241105171201-4zfafi5.jpg" alt="" title="This is what it became in the final film. At first glance it may look like we ignored the color key, but we did not. 这就是最终影片的效果。乍一看，我们似乎忽略了色键，但事实并非如此。" loading="lazy">​</p>
+<p>I guess they did not want to match the Color Key because it is a totally different medium. And even if we share some visual principles with 2D and live-action, CG in PBR also has its own rules. The color key above looks great in 2D, but I guess in 3D, there was a lack of details in the grass, shadows were harsh on the faces and they needed more patterns to make the render pleasant.</p>
+<p>我猜他们不想匹配 Color Key，因为这是一种完全不同的媒介。即使我们与 2D 和实景共享一些视觉原则，PBR 中的 CG 也有自己的规则。上面的 Color Key 在 2D 中看起来很棒，但我猜在 3D 中，草地上缺乏细节，脸上的阴影很刺眼，他们需要更多的图案来使渲染令人愉悦。</p>
+<h2 id="颜色和介质-color-and-medium">颜色和介质 Color and medium</h2>
+<p>In my experience matching a 2D color key actually depends on many factors : the relation between the art department and lighting, the director of the movie, the schedule… Some supervisors like to stick to references, some don’t care… It really depends.</p>
+<p>根据我的经验，匹配 2D 色键实际上取决于许多因素：艺术部门和灯光之间的关系、电影导演、日程安排……有些主管喜欢坚持参考，有些则不在乎……这真的取决于情况。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_680_pets_color_key_FHD-20241105171201-25pr9io.jpg" alt="" title="We start with this Color Key by Ludovic Gavillet for The secret life of pets. 我们从 Ludovic Gavillet 为《爱宠大机密》创作的《Color Key》开始。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_690_pets_compo_flat_FHD-20241105171201-xlcvsy7.jpg" alt="" title="This is my lighting render. We were using point clouds and shadow maps back then. I tried to match at the best of my abilities and also tackle the supervisor's notes. 这是我的灯光渲染。我们当时使用的是点云和阴影贴图。我尽力匹配，并处理主管的注释。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_700_pets_compo_final_FHD-20241105171201-vxdjjuc.jpg" alt="" title="Finally here is the compositing render. Its gets much closer to the color key with some improvement on color balance and saturation. 最后是合成渲染。它更接近色键，色彩平衡和饱和度有所改善。" loading="lazy">​</p>
+<p>I’ll now use a the short film <em>Competition</em> as an example where the color and the medium were deeply connected. I’ll focus on the first minute. Let’s have a look :</p>
+<p>现在我将以短片《<em>竞赛》</em> 为例，其中色彩和媒介有着深刻的联系。我将重点介绍第一分钟。让我们来看看：</p>
+<iframe src="https://player.bilibili.com/player.html?isOutside=true&amp;aid=51513362&amp;bvid=BV1t4411i7MH&amp;cid=90167185&amp;p=1" data-src="//player.bilibili.com/player.html?isOutside=true&amp;aid=51513362&amp;bvid=BV1t4411i7MH&amp;cid=90167185&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 1137px; height: 612px;"></iframe>
+<p>Adapting the color keys to CG was a bit of headache in this short film. The CG artists tried to match as close as they could but something did not quite fit. I personally think it was mainly due to the change of medium. Here is my explanation :</p>
+<p>在这个短片中，将色键适配到 CG 上有点令人头疼。CG 艺术家们试图尽可能地匹配，但有些地方不太合适。我个人认为这主要是由于媒介的变化。以下是我的解释：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_710_minions_the_competition_FHD-20241105171201-o64bo7c.jpg" alt="" title="Check the wall out : it's a ramp. I saw the color key (2D) of this sequence and it was looking great. 检查一下墙：这是个斜坡。我看到了这个序列的色键（2D），它看起来很棒。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_720_minions_the_competition_FHD-20241105171201-nbnwr67.jpg" alt="" title="But when it comes to CG, we need something else. We need more details to please the eye. 但说到 CG，我们需要一些别的东西。我们需要更多细节来取悦眼睛。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_730_minions_the_competition_FHD-20241105171201-8ks8en6.jpg" alt="" title="It took me a lot of time to understand this. But you cannot copy/paste 2D into 3D, at least for a PBR movie. 我花了很长时间才理解这一点。但你不能将 2D 复制/粘贴到 3D 中，至少对于 PBR 电影来说是这样。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_740_minions_the_competition_FHD-20241105171201-qpmse5c.jpg" alt="" title="For some reason, in PBR, we need details : scratches dirt, reflections... You name it ! 出于某种原因，在 PBR 中，我们需要细节：划痕、污垢、反射……您说得出！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_750_minions_the_competition_FHD-20241105171201-tp0bs57.jpg" alt="" title="A lighting artist told me : in CG we are always afraid that it may look fake. Adding details helps to make it more believable, which is not the same as realistic. Believable is the key. 一位灯光师告诉我：做 CG 的时候我们总是担心看起来很假。增加细节有助于让它更可信，这与真实感不一样。可信才是关键。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_760_minions_the_competition_FHD-20241105171201-pgzm5u8.jpg" alt="" title="I have nothing against this short by the way. It is working quite well. But it is the best example I know for 2D and 3D comparisons. 顺便说一句，我对这个短片没有任何意见。它的效果很好。但它是我所知道的 2D 和 3D 比较的最佳例子。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_770_minions_the_competition_FHD-20241105171201-4iqbton.jpg" alt="" title="Funny how with a bit of detail, like on the floor, it makes the image more interesting and richer. 有趣的是，通过一些细节，比如地板上的细节，它使图像变得更有趣和更丰富。" loading="lazy">​</p>
+<p>Here is the key to CG : we need details. And guess what ? Details are expensive. Once again if you are a surfacing artist, do not hesitate to check the <a href="https://academy.substance3d.com/courses/the-pbr-guide-part-1">PBR guide from Substance</a>. It is a great read on how to add colors and details to a material.</p>
+<p>这是 CG 的关键：我们需要细节。你猜怎么着？细节很昂贵。再次强调，如果你是一名表面艺术家，请不要犹豫，查看<a href="https://academy.substance3d.com/courses/the-pbr-guide-part-1">Substance 的 PBR 指南</a>。这是一本关于如何为材质添加颜色和细节的好书。</p>
+<blockquote>
+<p>I’ll finish with this quote from a great CG supervisor : each step of the pipeline should be an improvement from the previous step. Layout should be an improvement from storyboard and the same applies for lighting and color keys.</p>
+<p>最后，我想引用一位伟大的 CG 主管的一句话：流程的每一步都应该比前一步有所改进。布局应该比故事板有所改进，灯光和色键也一样。</p>
+</blockquote>
+<h2 id="2d-遗产-the-2d-legacy">2D 遗产 The 2D legacy</h2>
+<p>What happened on most movies I have worked on ? The director used to be an animation supervisor and the art director is an illustrator with a 2D background. This may cause some issues when reviewing lighting shots.</p>
+<p>我参与制作的大多数电影都发生了什么？导演曾经是动画总监，艺术总监是具有 2D 背景的插画师。这可能会在审查灯光镜头时造成一些问题。</p>
+<blockquote>
+<p>From Kristof Serrand’s conference : “Many people asks me when I am going to direct a feature film ? That’s a very weird question. It would be like asking Gérard Depardieu when he’s going to direct a movie.”</p>
+<p>摘自 Kristof Serrand 的发布会：“很多人问我什么时候会执导一部故事片？这是一个非常奇怪的问题。这就像问杰拉尔·德帕迪约什么时候会执导一部电影一样。”</p>
+</blockquote>
+<p>I have sometimes heard comments on PBR movies such as “​<em>Can you remove the Global Illumination ?</em> ​” or “​<em>Can you make the shadows brighter without changing the rest ?</em> ​“.</p>
+<p>我有时会听到对 PBR 电影的评论，例如“<em>您可以删除全局照明吗？</em>  ”或“<em>您可以在不改变其余部分的情况下使阴影更亮吗？</em>  ”。</p>
+<p>There is very often a cultural shock between 2D and 3D and the best solution I know is this one :  <strong>have a proper Director of Photography (DP) or Lighting Supervisor who is PBR-friendly.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>Let’s have a look at these photos by <strong>Sabine Weiss</strong> and concepts by ​<strong>Alberto Mielgo</strong>​.</p>
+<p>2D 和 3D 之间经常存在文化冲击，我知道的最佳解决方案是：<strong>聘请一位对 PBR 友好的摄影指导 (DP) 或灯光总监。</strong> 让我们来看看<strong>Sabine Weiss</strong>拍摄的这些照片和<strong>Alberto Mielgo</strong>的概念。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_780_sabine_weiss_photo_new_york_FHD-20241105171201-4m1d2je.jpg" alt="" title="Great photography by Sabine Weiss (metro NYC 1955) See the policeman? Great silhouette! But in CG, it would look weird or fake. We would need to add some details on him or a fill. 萨宾·韦斯 (Sabine Weiss) 拍摄的精彩照片（纽约地铁 1955 年）看到警察了吗？很棒的轮廓！但在 CG 中，它看起来很奇怪或很假。我们需要在他身上添加一些细节或填充。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_790_sabine_weiss_photo_sortie_metro_FHD-20241105171201-kijlm6w.jpg" alt="" title="Another great photography by Sabine Weiss. In CG, we would be missing a sun light on the foreground character. He is supposed to be in the sun already (you can tell by his shadow) but there is no impact on him. Works as a photo but would not in CG. 萨宾·韦斯的另一张精彩摄影作品。在 CG 中，前景人物身上的阳光会消失。他本应已经在阳光下（从他的影子就可以看出），但对他没有影响。作为照片效果不错，但在 CG 中则不行。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_800_alberto_mielgo_harry_potter_FHD-20241105171201-es78h50.jpg" alt="" title="I love this concept by Alberto Mielgo for Harry Potter. The green lightning in the sky is a subtle fantastic touch. See the silhouettes (lamp post and tree) on the right? It works perfectly in 2D but it would need some details in CG. 我喜欢 Alberto Mielgo 为《哈利·波特》设计的这个概念。天空中的绿色闪电是一种微妙而奇妙的点缀。看到右边的轮廓（灯柱和树）了吗？它在 2D 中效果完美，但在 CG 中需要一些细节。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_810_alberto_mielgo_spider_verser_FHD-20241105171201-rpet20c.jpg" alt="" title="There is 2D and then there is 2D. I cannot imagine how you feel when you receive a concept like this as a lighter. The amount of details is just insane. 有 2D，然后还有 2D。我无法想象当你收到这样的概念作为打火机时你会有什么感受。细节的数量简直太疯狂了。" loading="lazy">​</p>
+<p>Let me be crystal clear here. I am not saying that 2D is lacking details if you compare to 3D. I am saying that 2D can afford some minimalism (a simple ramp or a brush stroke) that 3D (PBR cartoon) cannot. You may see this in <a href="http://louromano.blogspot.com/">Lou Romano’s</a> work for example. But it does not make one medium better than the other.</p>
+<p>让我在这里说清楚。我并不是说与 3D 相比，2D 缺乏细节。我是说 2D 可以提供一些极简主义（简单的坡道或笔触），而 3D（PBR 卡通）则无法提供。例如，您可以在<a href="http://louromano.blogspot.com/">Lou Romano 的</a>作品中看到这一点。但这并不意味着一种媒介比另一种媒介更好。</p>
+<blockquote>
+<p>On a famous movie produced in Canada, the art director would keep asking for gradients everywhere. Can I have a gradient from the head to the feet ? And one from the foreground to the background ? And one from the left side of the character to the right ?</p>
+<p>在一部加拿大制作的著名电影中，艺术总监一直要求到处都要有渐变。我能从头到脚做一个渐变吗？从前景到背景做一个渐变吗？从角色的左侧到右侧做一个渐变吗？</p>
+<p>I let you imagine how the light rigs would look after this kind of comments.</p>
+<p>我让你想象一下，在这样的评论之后，灯光设备会是什么样子。</p>
+</blockquote>
+<h2 id="乐高蝙蝠侠体验-lego-batman-experience">乐高蝙蝠侠体验 Lego Batman experience</h2>
+<p>It seems to me there was an interesting solution on Lego Batman for the division of roles :</p>
+<p>在我看来，乐高蝙蝠侠对角色划分有一个有趣的解决方案：</p>
+<ul>
+<li><strong>Chris McKay</strong> is the director of Lego Batman, taking care of many tasks such as layout, animation, dialogues, editing and storytelling.</li>
+<li><strong>克里斯·麦凯</strong>担任《乐高蝙蝠侠》的导演，负责布局、动画、对话、剪辑和故事叙述等多项工作。</li>
+<li><strong>Grant Freckelton</strong> is the Production Designer of Lego Batman taking care of modeling, surfacing, lighting, visual effects and DI.</li>
+<li><strong>格兰特·弗雷克尔顿 (Grant Freckelton)</strong> 是乐高蝙蝠侠的制作设计师，负责建模、表面处理、灯光、视觉效果和 DI。</li>
+</ul>
+<blockquote>
+<p>I personally think this division of labors was really efficient. Each “director” was responsible for what he knew best.</p>
+<p>我个人觉得这种分工还是挺有效率的，每个“主管”只负责自己最擅长的事情。</p>
+</blockquote>
+<p>What does this mean concretely ?  <strong>Chris McKay was not present during lighting dailies.</strong>  <strong>Grant</strong> and <strong>Craig Welsh</strong> were running the show in lighting since they are really good at it. And once a week, they would show the approved shots to <strong>Chris</strong>. The worst retake I ever had from him was : “<em>There is an important line of dialogue by the end of the shot. Can you make Barbara’s face a bit brighter ?</em> “</p>
+<p>这具体是什么意思 <strong>？克里斯·麦凯 在每日灯光工作中并不在场。</strong> <strong>格兰特</strong>和<strong>克雷格·韦尔什</strong>负责灯光工作，因为他们在这方面非常擅长。每周一次，他们会向<strong>克里斯</strong>展示批准的镜头。他给我看过的最差的重拍是：“<em>镜头结束时有一句重要的台词。你能把芭芭拉的脸弄亮一点吗？</em>  ”</p>
+<p>​<strong>Grant</strong>​, our production designer, who would work mainly in Photoshop, actually knew about Global Illumination and our render engine : <a href="https://videoandfilmmaker.com/wp/index.php/news/qa-animal-logics-max-liani-creator-glimpse-ray-trace-rendering-engine/">Glimpse</a>. That’s very rare. I asked him if he was trained. I love his answer.</p>
+<p><strong>我们的制作设计师Grant</strong>主要使用 Photoshop 工作，但他实际上了解全局照明和我们的渲染引擎：<a href="https://videoandfilmmaker.com/wp/index.php/news/qa-animal-logics-max-liani-creator-glimpse-ray-trace-rendering-engine/">Glimpse</a>。这非常罕见。我问他是否受过培训。我喜欢他的回答。</p>
+<blockquote>
+<p>Just enough to understand the various passes that come out of rendering and the basic principles of shading and lighting. […]  Physically based renderers like <a href="https://www.fxguide.com/fxfeatured/a-glimpse-at-animal-logic/">Glimpse</a> and Vray are much easier to get  good results from than many legacy rendering techniques… which means  they’re easier for non-technically mind artists to grasp.</p>
+<p>足以理解渲染产生的各种过程以及阴影和照明的基本原理。[…] 与许多传统渲染技术相比，基于物理的渲染器（如<a href="https://www.fxguide.com/fxfeatured/a-glimpse-at-animal-logic/">Glimpse</a>和 Vray）更容易获得良好的效果……这意味着非技术型艺术家更容易掌握它们。</p>
+<p>You can check Max Liani’s blog <a href="https://maxliani.wordpress.com/2020/04/15/life-stories-the-glimpse-renderer-part-1/">here</a>.</p>
+<p><a href="https://maxliani.wordpress.com/2020/04/15/life-stories-the-glimpse-renderer-part-1/">您可以在此处</a>查看 Max Liani 的博客。</p>
+</blockquote>
+<p>So it looks like that PBR will not only benefit CG artists but also Art Directors. With a bit of training (it does not have to be complex) any person with a 2D background should be able to make wonders.</p>
+<p>因此，看起来 PBR 不仅对 CG 艺术家有益，对艺术总监也同样有益。只要经过一点培训（不必太复杂），任何具有 2D 背景的人都应该能够创造奇迹。</p>
+<p>But we do not want the other way around either. If your supervisor is only technical, good luck to you. It is all about finding a good balance between artistic and technical brains.</p>
+<p>但我们也不希望情况反过来。如果你的主管只是技术人员，祝你好运。关键在于在艺术和技术头脑之间找到一个良好的平衡。</p>
+<h3 id="两个大脑-two-brains">两个大脑 Two brains</h3>
+<p><strong>I don’t know if Grant and Craig realize it but they actually solved a BIG issue in animation studios nowadays.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>On the surface to be a lighter in the VFX industry or in animation studio looks similar. We put lights and render images. But there is one big difference : the culture within the studio. In VFX, lighting TDs are used to match a plate. They talk T-Stop, camera settings and HDR verification.</p>
+<p><strong>我不知道 Grant 和 Craig 是否意识到了这一点，但他们确实解决了如今动画工作室的一个大问题。</strong> 从表面上看，在 VFX 行业和动画工作室当灯光师看起来差不多。我们打灯并渲染图像。但有一个很大的区别：工作室内部的文化。在 VFX 中，灯光 TD 用于匹配底片。他们谈论 T-Stop、相机设置和 HDR 验证。</p>
+<p>In animation, we rely on the same principles but we bend the rules.  <strong>We don’t break them. We bend them.</strong>   There’s no need to match a plate because we get a concept as an inspiration. It is a more creative process. For Computer Graphics,  <strong>two cultures</strong> have been developed : one mostly artistic and one mostly scientific.</p>
+<p>在动画中，我们依赖相同的原则，但我们改变规则。<strong>我们不会破坏它们。我们改变它们。</strong> 没有必要匹配一个板块，因为我们会得到一个概念作为灵感。这是一个更具创造性的过程。对于计算机图形学，已经发展了    <strong>两种文化</strong>：一种主要是艺术性的，一种主要是科学性的。</p>
+<blockquote>
+<p><em><strong>Sharon Calahan</strong></em>​ <em>: On the other hand, computer generated animation has a more stylized, illustrative quality, with its roots more in hand-drawn animation than live-action cinema.</em></p>
+<p><em><strong>Sharon Calahan</strong></em>​ <em>：另一方面，计算机生成的动画具有更加风格化和说明性的特质，其根源更多地在于手绘动画而不是真人电影。</em></p>
+</blockquote>
+<p>Let me give you an example : I arrived at Framestore right after ​*<a href="https://www.imdb.com/title/tt0420238/">Despereaux</a><em>​. A bunch of tools had been developed for this animation movie to help artists on several tasks such as stereo. When the animation branch shut down, developers asked VFX supervisors if they were interested by any of  these tools. They replied : “​</em>We do not use of this stuff in VFX. We are not interested.* ​”  Six months later, Framestore was working on <em><a href="https://www.imdb.com/title/tt0499549/">Avatar</a></em> and the same guy had to redo all his stereo tools. <strong>Waste of time and money.</strong></p>
+<p>举个例子：我在*<a href="https://www.imdb.com/title/tt0420238/">《Despereaux》</a>* 之后就加入了 Framestore 。这部动画电影开发了一系列工具来帮助艺术家完成立体制作等多项任务。当动画部门关闭时，开发人员询问 VFX 主管是否对这些工具感兴趣。他们回答说：“<em>我们在 VFX 中不使用这些东西。我们不感兴趣。</em>  ” 六个月后，Framestore 正在制作​*<a href="https://www.imdb.com/title/tt0499549/">《阿凡达》</a>* ​，同一个人不得不重做他所有的立体工具。<strong>浪费时间和金钱。</strong></p>
+<h3 id="艺术家还是技师-artist-or-technician">艺术家还是技师？ Artist or Technician ?</h3>
+<p>Nowadays, thanks to path tracing, these two methods are slowly blending.  <strong>But it is still an issue in many studios.</strong>  On one side we have artists who talk about colors, composition, shapes and design. On the other side, we have CG supervisors who talk about Specular, Roughness, Light-Linking and Displacement bound. <strong>We need these two worlds to communicate and share because they both have to learn from each other.</strong></p>
+<p>如今，由于路径追踪，这两种方法正在慢慢融合。<strong>但这仍然是许多工作室面临的一个问题。</strong> 一方面，艺术家们谈论色彩、构图、形状和设计。另一方面，CG 主管们谈论镜面反射、粗糙度、光链接和位移边界。<strong>我们需要这两个世界进行交流和分享，因为他们都必须相互学习。</strong></p>
+<blockquote>
+<p>I once asked a colleague in London : are we artists or technicians ? I still remember his answer : a little bit of both.</p>
+<p>我曾经问过一位伦敦的同事：我们是艺术家还是技术人员？我还记得他的回答：两者都有一点。</p>
+<p>The word <em>artisan</em> is a good job description.</p>
+<p><em>“工匠”</em> 这个词是一个很好的职业描述。</p>
+</blockquote>
+<p>The BIG issue we are facing today is about Color Keys. <strong>How do we translate a 2D image painted in Photoshop into a PBR 3D medium ?</strong>  It  may sound basic or stupid but believe me, it is a very common issue.  How do we succeed in making these two worlds work hand-in-hand ? A VFX  supervisor once told me : “<strong>We need art directors who are PBR friendly.</strong> ” And he is a 100% right. This is why Animal’s way is the best solution I have ever seen.  <strong>It uses the best of both worlds.</strong></p>
+<p>我们今天面临的大问题是关于颜色键。<strong>我们如何将 Photoshop 中绘制的 2D 图像转换为 PBR 3D 介质？</strong> 这听起来可能很基础或愚蠢，但相信我，这是一个非常常见的问题。我们如何成功地让这两个世界携手合作？一位视觉特效主管曾经告诉我：“<strong>我们需要对 PBR 友好的艺术总监。</strong>  ”他 100% 正确。这就是为什么 Animal 的方式是我见过的最佳解决方案。<strong>它充分利用了两个世界的优点。</strong></p>
+<blockquote>
+<p>I have quite enjoyed the Lego Batman workflow. So I’ll often mention it.</p>
+<p>我非常喜欢乐高蝙蝠侠的工作流程。所以我经常提到它。</p>
+</blockquote>
+<h2 id="格兰特的话-a-word-from-grant">格兰特的话 A word from Grant</h2>
+<p>I also asked Grant about his views on color : “​<em>Do you have any process to choose the color schemes ? Is it based on the script, your “guts” or just references you like ?</em> ​” His answer is pretty astounding.</p>
+<p>我还问了格兰特他对色彩的看法：“<em>你选择配色方案有什么流程吗？是基于剧本，你的‘直觉’，还是只是你喜欢的参考？</em>  ”他的回答相当惊人。</p>
+<blockquote>
+<p>I wish I had a process ! This is a complicated one because it changes  depending on each director. It is a mixture of doing a color script in some situations and guts in the other. It’s also a matter of trying to balance aesthetics (making it look cool)  with storytelling (making choices that support the process of conveying information and provoking and emotional response). Some directors are happy with a steady onslaught of ‘cool’…. others are all about clarity or naturalism or whatever. This could be a whole discussion about colour theory… but as someone who never learnt colour theory formally I can say guts can account for a lot of it too. I’m still learning about how to use colour !</p>
+<p>我希望我有一个流程！这是一个复杂的流程，因为它会根据每个导演的不同而变化。在某些情况下，它是彩色剧本的混合，而在其他情况下，它需要勇气。这也是试图平衡美学（让它看起来很酷）和讲故事（做出支持传达信息和激发情感反应的选择）的问题。有些导演喜欢稳定的“酷”冲击……其他人则喜欢清晰度或自然主义或其他什么。这可能是关于色彩理论的整个讨论……但作为一个从未正式学习过色彩理论的人，我可以说勇气也可以解释很多。我还在学习如何使用颜色！</p>
+<p>I love his honesty. “Still learning”. That’s just awesome !</p>
+<p>我喜欢他的诚实。“仍在学习”。太棒了！</p>
+</blockquote>
+<h2 id="心理意象-the-mental-image">心理意象 The mental image</h2>
+<p>It took me a while to connect the dots on this one but let me explain. It seems to me that the fundamental difference between the 2D guys and the CG guys is about exposure. <strong>This is at the core of all our issues in feature animation.</strong>  And more interestingly this issue can actually be summed up  <strong>in one image.</strong>   Pretty cool, right ?</p>
+<p>我花了一段时间才把这些点联系起来，但让我解释一下。在我看来，2D 人员和 CG 人员之间的根本区别在于曝光。<strong>这是我们所有动画长片问题的核心</strong> <strong>。更</strong>有趣的是，这个问题实际上可以用<strong>一张图片</strong>来概括。很酷，对吧？</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_820_cambridge_mental_image_FHD-20241105171201-vwbf2a2.jpg" alt="" loading="lazy">​</p>
+<p>I asked a great 2D art director and an amazing lighting supervisor the following question : <strong>What should we try to reproduce in CG ? The camera or the eye ?</strong>   They both gave me a different answer :</p>
+<p>我问过一位出色的 2D 艺术总监和一位出色的灯光主管以下问题：<strong>我们应该在 CG 中重现什么？相机还是眼睛？</strong> 他们都给了我不同的答案：</p>
+<ul>
+<li>The art director replied : ​<em>the eye</em>​.</li>
+<li>艺术总监回答说：​<em>眼睛</em>​。</li>
+<li>The lighting supervisor replied : ​<em>the camera</em>​.</li>
+<li>灯光师回答：​<em>摄像机</em>​。</li>
+</ul>
+<p>Generally a director with a 2D background will aim at our mental image (right image), when a supervisor with a live-action experience will go for the camera exposure (left and center images).  <strong>The only solution I know is to make a choice. Which vision should we embrace ?</strong></p>
+<p>通常，具有 2D 背景的导演会瞄准我们的心理形象（右图），而具有实景拍摄经验的监督会选择摄像机曝光（左图和中间图）。<strong>我知道的唯一解决方案是做出选择。我们应该接受哪种愿景？</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_830_dragon_exposure_camera_FHD-20241105171201-268nfac.jpg" alt="" loading="lazy">​</p>
+<p>Beautiful frame. A bright object between two characters ties them together.</p>
+<p>漂亮的框架。两个角色之间的明亮物体将他们联系在一起。</p>
+<blockquote>
+<p>From  <strong><a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">Dave Walvoord</a></strong> : Traditionally, animated films are made as viewed from the eye of a painter because of the 2D origins of animation. The Dragon franchise uses the view from the camera.</p>
+<p>**<a href="https://dl.acm.org/ft_gateway.cfm?id=3328063&amp;ftid=2075896&amp;dwn=1&amp;CFID=93171903&amp;CFTOKEN=1be9a51a074662f3-B090FAA3-F889-4FE8-96BE8C27A4EB86D9">Dave Walvoord</a>**表示  ：传统上，动画电影是按照画家的视角制作的，因为动画起源于二维。《龙》系列电影采用了摄像机视角。</p>
+<p>They did a bold choice on Dragon.</p>
+<p>他们在“龙”上做出了大胆的选择。</p>
+</blockquote>
+<p>Most of the movies I have worked on had <em>a mental image</em> photography. I personally call this style <em>filled-saturated</em> (​<em>débouché-saturé</em>​) so it does not scare the children. The shot below from <em>The secret life of pets</em> (Director : ​<strong>Chris Renaud</strong>​, Art Director : ​<strong>Colin Stimpson</strong>​) is a perfect example.</p>
+<p>我参与制作的大多数电影都有<em>一种心理形象</em>摄影。我个人称这种风格为​ <em>“填充饱和”</em> ​（<em>débouché-saturé ），这样就不会吓到孩子。下面这张来自《爱宠大机密》</em> ​（导演：​<strong>Chris Renaud</strong>​，艺术总监：<strong>Colin Stimpson</strong> ）的镜头就是一个完美的例子。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/020_colorTheory_840_pets_exposure_eye_FHD-20241105171201-tw6m2or.jpg" alt="" loading="lazy">​</p>
+<p>With a photographic exposure, the sky would be blown-out.</p>
+<p>通过摄影曝光，天空将会被吹散。</p>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p>I have tried to express my view on color as a lighting artist. While a detailed overview of color is beyond the scope of this document, there are many articles which introduce color theory in wonderful detail :</p>
+<p>我试图表达我作为一名灯光艺术家对色彩的看法。虽然对色彩的详细概述超出了本文的范围，但有许多文章非常详细地介绍了色彩理论：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Wassily_Kandinsky">Wassily Kandinsky</a> and his <a href="https://ekaterinasmirnova.wordpress.com/2012/08/06/basic-color-theory-by-kandinsky-44/">color</a> <a href="http://sonnetsincolour.org/2015/07/kandinsky-on-the-inner-meanings-of-colours/">theory</a>.</li>
+<li><a href="https://en.wikipedia.org/wiki/Wassily_Kandinsky">瓦西里·康定斯基</a>和他的<a href="https://ekaterinasmirnova.wordpress.com/2012/08/06/basic-color-theory-by-kandinsky-44/">色彩</a> <a href="http://sonnetsincolour.org/2015/07/kandinsky-on-the-inner-meanings-of-colours/">理论</a>。</li>
+<li><a href="https://en.wikipedia.org/wiki/Theory_of_Colours#Goethe%27s_theory">Goethe</a> and his<a href="https://www.brainpickings.org/2012/08/17/goethe-theory-of-colours/"> color theory</a>.</li>
+<li><a href="https://en.wikipedia.org/wiki/Theory_of_Colours#Goethe%27s_theory">歌德</a>和他的<a href="https://www.brainpickings.org/2012/08/17/goethe-theory-of-colours/">色彩理论</a>。</li>
+<li><a href="https://en.wikipedia.org/wiki/Michel_Eug%C3%A8ne_Chevreul">Eugène Chevreul</a> and a link to his book (in French) about <a href="http://gallica.bnf.fr/ark:/12148/bpt6k1510139v/f506.item.zoom">color theory</a>. Otherwise there is a really <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiRh9Dzi57kAhXJxIUKHctKCTMQFjAAegQIARAB&amp;url=https%3A%2F%2Fwww.academia.edu%2F5633790%2FChevreul_s_Colour_Theory_and_its_Consequences_for_Artists&amp;usg=AOvVaw33xrHu_mxqvS3LGpl5AqfE">good paper</a> in English.</li>
+<li><a href="https://en.wikipedia.org/wiki/Michel_Eug%C3%A8ne_Chevreul">Eugène Chevreul以及他关于</a>​<a href="http://gallica.bnf.fr/ark:/12148/bpt6k1510139v/f506.item.zoom">色彩理论的</a>书（法语版）的链接。另外，还有一篇非常<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiRh9Dzi57kAhXJxIUKHctKCTMQFjAAegQIARAB&amp;url=https%3A%2F%2Fwww.academia.edu%2F5633790%2FChevreul_s_Colour_Theory_and_its_Consequences_for_Artists&amp;usg=AOvVaw33xrHu_mxqvS3LGpl5AqfE">好的</a>英文论文。</li>
+<li><a href="https://www.nickkolenda.com/color-psychology/">The psychology of color</a>.</li>
+<li><a href="https://www.nickkolenda.com/color-psychology/">色彩心理学</a>。</li>
+<li><a href="https://nofilmschool.com/Film-color-theory-and-color-schemes?fbclid=IwAR0ufUV02UxRsR-W7b-7v03Ttj5RGTcowV1w2OABvFG91XjKM4floWZyVXk">Great article</a> from the no film school about color. <strong>A very interesting read.</strong></li>
+<li>来自非电影学院的关于色彩的<a href="https://nofilmschool.com/Film-color-theory-and-color-schemes?fbclid=IwAR0ufUV02UxRsR-W7b-7v03Ttj5RGTcowV1w2OABvFG91XjKM4floWZyVXk">很棒的文章。</a>​<strong>读起来非常有趣。</strong></li>
+<li><a href="https://digitalsynopsis.com/design/cinema-palettes-famous-movie-colors/">Color palettes</a> for movies.</li>
+<li><a href="https://digitalsynopsis.com/design/cinema-palettes-famous-movie-colors/">电影的调色板</a>。</li>
+<li><a href="http://moviesincolor.com/">Movies and their color palettes</a>.</li>
+<li><a href="http://moviesincolor.com/">电影及其调色板</a>。</li>
+<li><a href="https://movie-screencaps.com/">Movie screencaps</a> for references and <a href="https://animationscreencaps.com/">Animation screencaps</a> as well.</li>
+<li><a href="https://movie-screencaps.com/">电影截图</a>可供参考，<a href="https://animationscreencaps.com/">动画截图</a>也是如此。</li>
+<li><a href="http://film-grab.com/">Film Grab</a> and <a href="https://filmcolors.org/">Film Colors</a>.</li>
+<li><a href="http://film-grab.com/">胶片抓取</a>和<a href="https://filmcolors.org/">胶片色彩</a>。</li>
+<li>An incredible website for references : <a href="http://shotdeck.com/">shotdeck</a>.</li>
+<li>一个令人难以置信的参考网站：<a href="http://shotdeck.com/">shotdeck</a>。</li>
+<li><a href="https://thecolorsofmotion.com/films">The colors of motion</a>.</li>
+<li><a href="https://thecolorsofmotion.com/films">运动的色彩</a>。</li>
+<li><a href="http://pourpre.com/fr/">Glossaire des couleurs</a> (in French).</li>
+<li><a href="http://pourpre.com/fr/">Glossaire des couleurs</a>（法语）。</li>
+<li><a href="https://youtu.be/-mCNrNPVJwU">Color Theory</a> on Youtube.</li>
+<li>Youtube 上的<a href="https://youtu.be/-mCNrNPVJwU">色彩理论。</a></li>
+<li><a href="https://www.studiobinder.com/blog/color-grading-vs-color-correction-process/">Studiobinder on color grading</a>.</li>
+<li><a href="https://www.studiobinder.com/blog/color-grading-vs-color-correction-process/">Studiobinder 负责色彩分级</a>。</li>
+<li>Some great artists : <a href="https://www.simonstalenhag.se/">Simon Stalenhag</a>, <a href="http://www.albertomielgo.com/">Alberto</a> <a href="https://www.youtube.com/watch?v=ClW1T077CSo">Mielgo</a>, Alexandre Jacob, <a href="http://www.pixelsham.com/">Daniele Tosti</a>, <a href="http://ryanchurch.com/">Ryan Church</a>, <a href="http://www.aurelien-predal.com/">Aurelien Predal</a>, <a href="https://www.remisalmon.com/">Rémi Salmon</a>, <a href="http://www.peah-art.com/">Péah</a>, <a href="http://www.goodbrush.com/">Craig Mullins</a>, <a href="https://www.artstation.com/artwork/l2ba">John Sweeney</a>, <a href="https://www.artstation.com/tithendar">Axel Sauerwald</a>, <a href="https://www.behance.net/gallery/95580169/EDISON-333">Colorsponge</a>, <a href="http://virtualmatter.org/">Kevin Whitfield</a>, <a href="http://www.avnergeller.com/">Avner Geller</a>, <a href="https://www.artstation.com/artwork/mqJ968">Artur Szymczak</a>.</li>
+<li>一些伟大的艺术家：<a href="https://www.simonstalenhag.se/">Simon Stalenhag</a>、<a href="http://www.albertomielgo.com/">Alberto </a> <a href="https://www.youtube.com/watch?v=ClW1T077CSo">Mielgo</a>、Alexandre Jacob、<a href="http://www.pixelsham.com/">Daniele Tosti</a>、<a href="http://ryanchurch.com/">Ryan Church</a>、<a href="http://www.aurelien-predal.com/">Aurelien Predal</a>、<a href="https://www.remisalmon.com/">Rémi Salmon</a>、<a href="http://www.peah-art.com/">Péah</a>、<a href="http://www.goodbrush.com/">Craig Mullins</a>、<a href="https://www.artstation.com/artwork/l2ba">John Sweeney</a>、<a href="https://www.artstation.com/tithendar">Axel Sauerwald</a>、<a href="https://www.behance.net/gallery/95580169/EDISON-333">Colorsponge</a>、<a href="http://virtualmatter.org/">Kevin Whitfield</a>、<a href="http://www.avnergeller.com/">Avner Geller</a>、<a href="https://www.artstation.com/artwork/mqJ968">Artur Szymczak</a>。</li>
+<li>I also would like to mention the work from <a href="http://zenopelgrims.com/">Zeno Pilgrims</a>. Big fan !</li>
+<li>我还想提一下<a href="http://zenopelgrims.com/">Zeno Pilgrims</a>的作品。超级粉丝！</li>
+<li>Some <a href="https://kotaku.com/the-art-of-spider-man-into-the-spider-verse-1831137867">concept art</a> <a href="https://www.artstation.com/artwork/rRJYOL?fbclid=IwAR0iM6LepiAGXp3XPj6tobwT_LqhVevWcQmtzZ27G1gdDmVdJsz2UNa4tQ4">from</a> <a href="https://www.cartoonbrew.com/feature-film/if-its-not-broke-break-it-sony-imageworks-renegade-approach-to-spider-man-into-the-spider-verse-167321.html">Spider-verse</a>.</li>
+<li><a href="https://www.artstation.com/artwork/rRJYOL?fbclid=IwAR0iM6LepiAGXp3XPj6tobwT_LqhVevWcQmtzZ27G1gdDmVdJsz2UNa4tQ4">来自</a>​<a href="https://www.cartoonbrew.com/feature-film/if-its-not-broke-break-it-sony-imageworks-renegade-approach-to-spider-man-into-the-spider-verse-167321.html">《蜘蛛侠：平行宇宙》</a>的一些<a href="https://kotaku.com/the-art-of-spider-man-into-the-spider-verse-1831137867">概念艺术</a> 。</li>
+<li>Some <a href="https://www.artstation.com/artwork/1nK3Kq">concept art</a> from <a href="https://beforesandafters.com/2020/05/29/unravelling-the-mystery-of-the-color-script-and-color-keys-in-scoob/">Scoob</a>.</li>
+<li><a href="https://beforesandafters.com/2020/05/29/unravelling-the-mystery-of-the-color-script-and-color-keys-in-scoob/">Scoob</a>的一些<a href="https://www.artstation.com/artwork/1nK3Kq">概念艺术</a>。</li>
+<li><a href="https://coolors.co/image-picker">Coolors Image Picker</a> helps you create beautiful palettes from your photos.</li>
+<li><a href="https://coolors.co/image-picker">Coolors 图像选择器</a>可帮助您从照片中创建漂亮的调色板。</li>
+<li><a href="https://colors.lol/">Overly descriptive color palettes</a>.</li>
+<li><a href="https://colors.lol/">过于描述性的调色板</a>。</li>
+<li><a href="http://colourware.org/2018/05/10/why-the-three-colour-primaries-rule-is-wrong/">The three colour primaries rule is wrong</a>.</li>
+<li><a href="http://colourware.org/2018/05/10/why-the-three-colour-primaries-rule-is-wrong/">三色原色规则是错误的</a>。</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a></li>
+<li><a href="#%E9%A2%9C%E8%89%B2%E6%9C%AF%E8%AF%AD-color-terminology">颜色术语 Color Terminology</a></li>
+<li><a href="#%E8%89%B2%E8%BD%AE-color-wheel">色轮 Color Wheel</a></li>
+<li><a href="#%E5%BC%80%E5%B0%94%E6%96%87%E6%B8%A9%E5%BA%A6%E8%A1%A8-kelvin-temperature-chart">开尔文温度表 Kelvin Temperature Chart</a>
+<ul>
+<li><a href="#%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6%E6%99%AE%E6%9C%97%E5%85%8B%E8%BD%A8%E8%BF%B9-an-in-depth-look-at-the-planckian-locus">深入研究普朗克轨迹 An in-depth look at the Planckian locus</a></li>
+<li><a href="#%E6%99%AE%E6%9C%97%E5%85%8B%E8%BD%A8%E8%BF%B9-vs-%E6%97%A5%E5%85%89%E8%BD%A8%E8%BF%B9-planckian-locus-vs-daylight-locus">普朗克轨迹 VS 日光轨迹 Planckian locus VS Daylight locus</a></li>
+<li><a href="#%E4%B8%80%E4%BA%9B%E5%BE%88%E5%A5%BD%E7%9A%84%E8%A7%A3%E9%87%8A-some-great-explanations">一些很好的解释 Some great explanations</a></li>
+<li><a href="#%E5%A4%A9%E5%85%89%E5%92%8C%E8%8D%A7%E5%85%89%E5%85%89%E6%BA%90%E7%AD%89%E5%A4%8D%E6%9D%82%E7%8E%B0%E8%B1%A1-complex-phenomenons-such-as-skylight-and-fluorescent-light-sources">天光和荧光光源等复杂现象 Complex phenomenons such as Skylight and Fluorescent light sources</a></li>
+<li><a href="#%E5%BC%80%E5%B0%94%E6%96%87%E6%AF%94%E8%BE%83-kelvin-comparison">开尔文比较 Kelvin comparison</a></li>
+</ul>
+</li>
+<li><a href="#%E9%85%8D%E8%89%B2%E6%96%B9%E6%A1%88%E4%B8%8E%E5%92%8C%E8%B0%90-color-schemes-and-harmonies">配色方案与和谐 Color Schemes and Harmonies</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%A1%88%E7%A4%BA%E4%BE%8B-schemes-examples">方案示例 Schemes examples</a></li>
+</ul>
+</li>
+<li><a href="#%E8%89%B2%E5%BD%A9%E5%BF%83%E7%90%86%E5%AD%A6-color-psychology">色彩心理学 Color Psychology</a></li>
+<li><a href="#%E8%89%B2%E5%BD%A9%E4%B8%8E%E6%83%85%E6%84%9F-color-and-emotions">色彩与情感 Color and Emotions</a></li>
+<li><a href="#%E5%9D%8F%E4%BA%BA%E7%BB%BC%E5%90%88%E7%97%87-bad-guy-syndrome">坏人综合症 Bad Guy Syndrome</a></li>
+<li><a href="#%E7%94%9F%E4%BA%A7%E5%AE%9E%E4%BE%8B-production-examples">生产实例 Production Examples</a>
+<ul>
+<li><a href="#planet-51-%E5%92%8C%E7%88%B1%E5%AE%A0%E5%A4%A7%E6%9C%BA%E5%AF%86-planet-51-and-the-secret-life-of-pets">Planet 51 和《爱宠大机密》 Planet 51 and The secret life of pets</a></li>
+<li><a href="#%E6%99%AE%E8%8E%B1%E6%91%A9%E6%AF%94-playmobil">普莱摩比 Playmobil</a>
+<ul>
+<li><a href="#playmobil-%E5%A4%9C%E9%97%B4%E5%9C%BA%E6%99%AF-playmobil-night-sequence">Playmobil 夜间场景 Playmobil night sequence</a></li>
+<li><a href="#%E7%89%A9%E7%90%86%E4%BD%86%E7%BB%BF%E8%89%B2-physical-but-green">物理但绿色 Physical but green</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%BF%E8%89%B2%E9%97%AE%E9%A2%98-the-green-problem">绿色问题 The green problem</a></li>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0-lego-batman">乐高蝙蝠侠 Lego Batman</a>
+<ul>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E5%A4%9C%E9%97%B4%E5%BA%8F%E5%88%97-lego-batman-night-sequence">乐高蝙蝠侠夜间序列 Lego Batman night sequence</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E4%BD%A0%E7%9A%84%E9%BE%99-how-to-train-your-dragon">如何训练你的龙 How to train your dragon</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A2%9C%E8%89%B2%E5%92%8C%E7%81%AF%E5%85%89-color-and-lights">颜色和灯光 Color and lights</a></li>
+<li><a href="#%E6%A6%82%E5%BF%B5%E5%92%8C%E9%A2%9C%E8%89%B2%E9%94%AE-concept-and-color-keys">概念和颜色键 Concept and Color Keys</a></li>
+<li><a href="#%E9%A2%9C%E8%89%B2%E5%92%8C%E4%BB%8B%E8%B4%A8-color-and-medium">颜色和介质 Color and medium</a></li>
+<li><a href="#2d-%E9%81%97%E4%BA%A7-the-2d-legacy">2D 遗产 The 2D legacy</a></li>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E4%BD%93%E9%AA%8C-lego-batman-experience">乐高蝙蝠侠体验 Lego Batman experience</a>
+<ul>
+<li><a href="#%E4%B8%A4%E4%B8%AA%E5%A4%A7%E8%84%91-two-brains">两个大脑 Two brains</a></li>
+<li><a href="#%E8%89%BA%E6%9C%AF%E5%AE%B6%E8%BF%98%E6%98%AF%E6%8A%80%E5%B8%88-artist-or-technician">艺术家还是技师？ Artist or Technician ?</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%BC%E5%85%B0%E7%89%B9%E7%9A%84%E8%AF%9D-a-word-from-grant">格兰特的话 A word from Grant</a></li>
+<li><a href="#%E5%BF%83%E7%90%86%E6%84%8F%E8%B1%A1-the-mental-image">心理意象 The mental image</a></li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-ACES/">
+              <h3 class="post-title">
+                CG Cinematography 第 1.5 章：学院色彩编码系统 (ACES)
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

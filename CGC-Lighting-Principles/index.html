@@ -1,0 +1,933 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CG Cinematography 第 6 章：照明原理 | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="CG Cinematography 第 6 章：照明原理 | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Chapter 6: Lighting Principles - Chris Brejon - Chris Brejon
+https://chrisbrejon.com/cg-cinematography/chapter-6-lighti..." />
+    <meta name="keywords" content="Lighting,CG Cinematography" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              CG Cinematography 第 6 章：照明原理
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-24
+              </span>
+              <span>
+                50 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/zwKy4lMn1V/" class="post-tag">
+                  # Lighting
+                </a>
+              
+                <a href="https://zcfly1992.github.io/UC8oB5Mlnn/" class="post-tag">
+                  # CG Cinematography
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0720_counterchange_bridge_spies_FHD-20241105171621-zhrs7e4.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>Chapter 6: Lighting Principles - Chris Brejon - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-6-lighting-principles/">https://chrisbrejon.com/cg-cinematography/chapter-6-lighting-principles/</a></li>
+<li>CG Cinematography Lighting Principles describe the fundamentals of a good lighting design. Based on personal experience and movies examples.</li>
+</ul>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p>We are going to review here some <strong>universal principles</strong> that can be applied on any CG movie. These principles have been developed by artists through centuries and have been adapted to our medium. Are directors of photography the new painters ?</p>
+<p>我们将在这里回顾一些可以应用于任何 CG 电影的<strong>通用原则</strong>。这些原则是艺术家们经过几个世纪的发展而形成的，并已适应我们的媒介。摄影导演是新画家吗？</p>
+<p>I could not come with a better list of <strong>objectives of lighting</strong> than the one presented in the book <em><a href="https://www.goodreads.com/en/book/show/188191.Matters_of_Light_Depth">Matters of Light and Depth</a></em> by ​<strong>Ross Lowell</strong>​. Here it is :</p>
+<p>我无法列出比<strong>Ross Lowell</strong>所著​*<a href="https://www.goodreads.com/en/book/show/188191.Matters_of_Light_Depth">《光与深度的问题</a>*​》一书中更好的<strong>照明目标</strong>列表。它如下：</p>
+<ol>
+<li>Directing the viewer’s eye  引导观众的视线</li>
+<li>Enhancing mood, atmosphere and drama  增强情绪、氛围和戏剧效果</li>
+<li>Creating depth  创造深度</li>
+<li>Conveying time of day and season  传达一天中的时间和季节</li>
+<li>Revealing character personality and situation  揭示人物性格和处境</li>
+<li>Complementing composition  补充成分</li>
+</ol>
+<p>This list looks pretty much complete to me ! I cannot think of more objectives than these ones. Nonetheless, I have tried to come with my own rules and see how they would fit in this list.</p>
+<p>在我看来，这个列表已经非常完整了！我想不出比这些更多的目标了。尽管如此，我还是尝试制定自己的规则，看看它们如何适合这个列表。</p>
+<h2 id="连续性-continuity">连续性 Continuity</h2>
+<p><em><strong>Continuity is the maintenance of continuous action and self-consistent detail in the various scenes of a film.</strong></em> <span data-type="text" style="color: var(--b3-font-color12);"> </span>For readability and not confusing the viewer, shots from a sequence must look similar and have a visual coherence. Until we realized there was a certain flexibility with this rule. The whole question is there : <strong>how far can you go without disturbing the average spectator ?</strong></p>
+<p><em><strong>连续性是指在电影的各个场景中保持连续的动作和自洽的细节。</strong></em> 为了便于阅读和不让观众感到困惑，序列​​中的镜头必须看起来相似且具有视觉连贯性。直到我们意识到这条规则有一定的灵活性。整个问题就在这里：<strong>在不打扰普通观众的情况下，你能走多远？</strong></p>
+<p>It is one of the biggest topic in animation studios nowadays. There are like two different ways of seeing this : the purists of continuity who think all the shots must perfectly match. And those who think we have a certain leeway between shots. Each studio has its way of doing things : <strong>one may say that it is cultural.</strong></p>
+<p>这是如今动画工作室最大的话题之一。有两种不同的观点：一种人坚持连续性，认为所有镜头必须完美匹配。另一种人认为镜头之间有一定的余地。每个工作室都有自己的做事方式：<strong>有人可能会说这是文化的。</strong></p>
+<p><strong>From what I have experienced, it really depends on the supervisor you work with.</strong>  You may get a very different response between studios. Ilion and Illumination really pay attention to continuity. Maybe too much. Craig and Grant have a complete different take on the subject. They really changed me. Let’s have a look at some examples.</p>
+<p><strong>从我的经验来看，这真的取决于你合作的主管。</strong> 你可能会得到工作室之间截然不同的回应。Ilion 和 Illumination 确实注重连续性。也许太过分了。Craig 和 Grant 对这个问题有完全不同的看法。他们真的改变了我。让我们看一些例子。</p>
+<h3 id="cg-示例-cg-examples">CG 示例 CG examples</h3>
+<h4 id="乐高蝙蝠侠-lego-batman">乐高蝙蝠侠 Lego Batman</h4>
+<p>First one comes from ​<em>Lego Batman</em>​. I have set the Master Lighting for this sequence and lit a couple of shots. Can you spot the continuity break ?</p>
+<p>第一个来自<em>乐高蝙蝠侠</em>。我为这个序列设置了主照明并打亮了几张照片。你能发现连续性中断吗？</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_050_continuity_lego_batman_HD-20241115015638-onh8f3c.mp4" data-src="assets/060_lightingPrinciples_050_continuity_lego_batman_HD-20241115015638-onh8f3c.mp4"></video></p>
+<p>Here is the answer. This is a perfect example of what we are allowed to do on an animated feature film. Be prepared !</p>
+<p>答案就在这里。这是我们在动画电影中被允许做的事情的完美例子。做好准备吧！</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0010_continuity_lego_batman_FHD-20241105171621-u2nat4y.jpg" alt="" title="In this shot, Bane is in complete shadow. 在这张照片中，贝恩完全处于阴影中。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0020_continuity_lego_batman_FHD-20241105171621-wg8wyq5.jpg" alt="" title="Next shot, he is in light ! 下一张照片，他在灯光下！" loading="lazy">​</p>
+<p>Camera angle is so different that you get away with it.</p>
+<p>摄像机角度如此不同，你就可以成功。</p>
+<p><strong>It is a direct cut ! Bane is in complete shadow. Cut. He is in light.</strong>  Has it bothered anyone ? Not that I know of. Continuity is importantbut <strong>shots do NOT have to match 100%.</strong></p>
+<p><strong>这是直接剪辑！贝恩完全处于阴影中。剪辑。他处于光亮中。</strong> 这是否打扰了任何人？据我所知没有。连续性很重要，但<strong>镜头不必 100% 匹配。</strong></p>
+<blockquote>
+<p>Craig Welsh used to tell us : <strong>We would rather break continuity than having an ugly shot in the movie.</strong>  We prefer you to make a bold statement rather than being shy artistically.</p>
+<p>克雷格·韦尔什曾经告诉我们：“<strong>我们宁愿打破连续性，也不愿在电影中出现丑陋的镜头。</strong> 我们更希望你大胆表达，而不是在艺术上害羞。”</p>
+<p>This statement empowers you as an artist.</p>
+<p>这句话赋予了你作为一名艺术家的力量。</p>
+</blockquote>
+<h4 id="乐高蝙蝠侠的故事讲述-storytelling-on-lego-batman">乐高蝙蝠侠的故事讲述 Storytelling on Lego Batman</h4>
+<p>What is important in the example above ? <strong>Storytelling.</strong>  In the first shot, the bad guys come out of the woods as an element of surprise. <strong>They come from the shadows.</strong>  In the second shot, they explain their motivation : <em>Why did they come ?</em>   <strong>We need to shed some light on them.</strong></p>
+<p>上面的例子中什么很重要？<strong>讲故事。</strong> 在第一个镜头中，坏人突然从树林里出现，让人措手不及。<strong>他们来自阴影中。</strong> 在第二个镜头中，他们解释了他们的动机：<em>他们为什么来？</em>  <strong>我们需要对他们进行一些揭露。</strong></p>
+<blockquote>
+<p>From <a href="https://dl.acm.org/citation.cfm?id=3328063">Dave Walvoord</a> : “Audiences are incredibly forgiving with light direction inconsistency.”</p>
+<p><a href="https://dl.acm.org/citation.cfm?id=3328063">Dave Walvoord</a>表示：“观众对于光线方向不一致的容忍度极高。”</p>
+</blockquote>
+<p>And I think Craig and Dave are right ! My advice is <strong>as long as the shots belong to the same world, we’re good.</strong>  At the end of the day, it is more important to respect a global feel about the shots rather than commenting on a slight change of rim on a background character.</p>
+<p>我认为 Craig 和 Dave 是对的！我的建议是，<strong>只要镜头属于同一个世界，那就没问题。</strong> 归根结底，尊重镜头的整体感觉比评论背景人物边缘的细微变化更重要。</p>
+<blockquote>
+<p>If I recall correctly, it has been demonstrated that the human mind focuses more easily on details rather than the big picture (it may have something to do <a href="http://faculty.bucks.edu/specpop/bigpic.htm">with left and right brain</a>). And I think we should fight that.</p>
+<p>如果我没记错的话，事实已经证明，人类的思维更容易关注细节而不是大局（这可能与<a href="http://faculty.bucks.edu/specpop/bigpic.htm">左脑和右脑</a>有关）。我认为我们应该与之抗争。</p>
+<p><strong>A note to all supervisors : pixel f#cking makes artists miserable. Please focus on the big picture.</strong></p>
+<p><strong>致所有主管：像素操弄让艺术家苦不堪言。请关注大局。</strong></p>
+</blockquote>
+<p>Here is another example from the same sequence. Breaking continuity everywhere !</p>
+<p>这是来自同一序列的另一个示例。处处打破连续性！</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0030_continuity_lego_batman_FHD-20241105171621-y28xk1h.jpg" alt="" title="Killer Croc has a neutral lighting on him. 杀手鳄身上有中性灯光。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0040_continuity_lego_batman_FHD-20241105171621-ulq3lwg.jpg" alt="" title="Look at the blue now on him ! That's a radical change of color ! 看看他身上现在的蓝色！颜色变化太大了！" loading="lazy">​</p>
+<p>A radical change of color on Killer Croc. Let’s not underestimate shot lighting !</p>
+<p>Killer Croc 的颜色发生了根本性变化。我们不要低估拍摄灯光！</p>
+<h3 id="实景示例-live-action-examples">实景示例 Live-action examples</h3>
+<p>Continuity has been a hot topic on every show I did. I found the next example on this blog : <a href="http://gurneyjourney.blogspot.co.nz/2015/07/resource-for-movie-screenshots.html">Gurney Journey</a>. It is an amazing blog that I really encourage you to consult.</p>
+<p>在我主持的每一场节目中，连续性都是一个热门话题。我在这个博客上找到了下一个例子：<a href="http://gurneyjourney.blogspot.co.nz/2015/07/resource-for-movie-screenshots.html">Gurney Journey</a>。这是一个很棒的博客，我非常鼓励你去参考。</p>
+<h4 id="雨果-hugo">雨果 Hugo</h4>
+<p>Let’s have a look at this clip from <em>Hugo</em> (Director : ​<strong>Martin Scorsese</strong>​, DP :  ​<strong>Robert Richardson</strong>​) where the Station Inspector (​**<a href="https://www.imdb.com/name/nm0056187/?ref_=ttfc_fc_cl_t2">Sacha Baron Cohen</a><strong>​) interrogates Isabelle (​</strong><a href="https://www.imdb.com/name/nm1631269/?ref_=ttfc_fc_cl_t4">Chloë Grace Moretz</a><strong>​) and Hugo (​</strong><a href="https://www.imdb.com/name/nm2633535/?ref_=ttfc_fc_cl_t3">Asa Butterfield</a>**​) on their whereabouts.</p>
+<p>让我们来看看 <em>《雨果》</em> （导演：<strong>马丁·斯科塞斯</strong>，摄影指导：  <strong>罗伯特·理查德森</strong>）的片段，车站督察（<strong><a href="https://www.imdb.com/name/nm0056187/?ref_=ttfc_fc_cl_t2">萨莎·拜伦·科恩</a></strong>）询问伊莎贝尔（<strong><a href="https://www.imdb.com/name/nm1631269/?ref_=ttfc_fc_cl_t4">科洛·格蕾斯·莫瑞兹</a></strong>）和雨果（<strong><a href="https://www.imdb.com/name/nm2633535/?ref_=ttfc_fc_cl_t3">阿萨·巴特菲尔德</a></strong>）的行踪。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_080_continuity_hugo_HD-20241115015709-v28ydgc.mp4" data-src="assets/060_lightingPrinciples_080_continuity_hugo_HD-20241115015709-v28ydgc.mp4"></video></p>
+<p><strong>Has anything disturbed you ?</strong>  It looked pretty good, right ? Well, let’s have a closer look, at the shots.</p>
+<p><strong>有什么事情让你感到不安吗？</strong> 看起来还不错，对吧？好吧，让我们仔细看看这些照片。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0050_continuity_hugo_FHD-20241105171621-ax13u47.jpg" alt="" title="There is a strong back lighting in this shot. 这张照片中的背光很强。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0060_continuity_hugo_FHD-20241105171621-pcge9xb.jpg" alt="" title="And this one as well ! Is this logical ? 还有这个！这合乎逻辑吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0070_continuity_hugo_FHD-20241105171621-50r2xm2.jpg" alt="" title="Well... Not at all ! 嗯...一点也不！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0080_continuity_hugo_FHD-20241105171621-0wf4mv4.jpg" alt="" title="But we don't care honestly ! 但说实话我们不在乎！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0090_continuity_hugo_FHD-20241105171621-ue3kf6a.jpg" alt="" title="A strong impact on the shoulders and a soft lighting on the face is a very common character lighting technique. 肩部受到强烈的冲击，脸部受到柔和的灯光，这是非常常见的角色照明技术。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0100_continuity_hugo_FHD-20241105171621-0oggmrs.jpg" alt="" title="The strong impact on their shoulders ties the shots together. Otherwise it would not work ! 肩膀受到的强烈冲击使射击连在一起。否则就行不通了！" loading="lazy">​</p>
+<p>Robert Richardson did a very good job in this dialogue sequence.</p>
+<p>罗伯特·理查森 (Robert Richardson) 在这一对话序列中表现非常出色。</p>
+<p>Actors are always backlit ! The lighting setup has been adjusted on every shot. Did you notice it ? Has it bothered you ? It does not bother me because theshots are still part of the same world.</p>
+<p>演员总是背光！每次拍摄时都会调整灯光设置。你注意到了吗？这让你感到困扰吗？这并不困扰我，因为这些镜头仍然是同一个世界的一部分。</p>
+<p><strong>The strong rim on Sacha Baron Cohen looks visually similar between shots. It ties them together.</strong>  Yes it is adapted. But it looks good. I really like <a href="http://gurneyjourney.blogspot.co.nz/2015/07/resource-for-movie-screenshots.html">James Gurney’s blog</a> but I completely disagree with him on this one :</p>
+<p><strong>萨莎·拜伦·科恩 (Sacha Baron Cohen) 的硬边在镜头之间看起来相似。它将他们联系在一起。</strong>  是的，这是改编的。但看起来不错。我真的很喜欢<a href="http://gurneyjourney.blogspot.co.nz/2015/07/resource-for-movie-screenshots.html">詹姆斯·格尼 (James Gurney) 的博客</a>，但我完全不同意他的观点：</p>
+<blockquote>
+<p><strong>James Gurney</strong>, commenting on Hugo Cabret : “<em>a lighting continuity issue that was</em> <strong>so distracting to me that it took me out of the film.</strong>  <em>When shooting the dialog coverage, director Martin Scorsese and cinematographer Robert Richardson reset the lights for all the closeups so that the actors were always backlit.”</em></p>
+<p><strong>詹姆斯·格尼 (James Gurney</strong> ) 评价雨果·卡布里特 (Hugo Cabret)：“<em>灯光连续性问题让</em>​<strong>我分心，让我无法专心看电影。</strong> <em>在拍摄对话镜头时，导演马丁·斯科塞斯 (Martin Scorsese) 和摄影师罗伯特·理查德森 (Robert Richardson) 重新设置了所有特写镜头的灯光，让演员始终处于背光状态。”</em></p>
+</blockquote>
+<h4 id="极速赛车手-speed-racer">极速赛车手 Speed Racer</h4>
+<p>I would never hesitate to <strong>adjust my lights to make your shots look as good as you can.</strong>   How far can you go ? I personally have rotated lights, tweaked their intensities and <strong>even their temperatures</strong> between shots !</p>
+<p>我会毫不犹豫地<strong>调整灯光，让你的照片看起来尽可能好。</strong> 你能做到什么程度？ 我亲自旋转灯光，调整它们的强度，甚至在拍摄之间调整<strong>它们的温度！</strong></p>
+<p>But does it mean you can do anything ? Let’s have a look at an example that does not really work. From the introduction sequence of <em>Speed Racer</em> (Directors : ​<strong>The Wachowski Brothers</strong>​, DP : <strong><a href="https://www.imdb.com/name/nm0005897/?ref_=ttfc_fc_cr15">David Tattersall</a></strong>).</p>
+<p>但这是否意味着你可以做任何事情？让我们看一个实际上行不通的例子。来自《<em>极速赛车手》</em> （导演：<strong>沃卓斯基兄弟</strong>，摄影指导：<strong><a href="https://www.imdb.com/name/nm0005897/?ref_=ttfc_fc_cr15">大卫·塔特索尔</a></strong>）的开场片段。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_120_continuity_speed_racer_HD-20241115015804-g2q9xak.mp4" data-src="assets/060_lightingPrinciples_120_continuity_speed_racer_HD-20241115015804-g2q9xak.mp4"></video></p>
+<p>I think we should have had a strong rim on the teacher in all the shots. To be honest, I found it <em>so distracting that it took me out of the film.</em>  But it does not mean the average viewer will notice it. In the end, it is all very personal.</p>
+<p>我认为我们应该在所有镜头中都给老师一个强烈的边缘。说实话，我觉得这<em>太让人分心了，以至于让我无法专心看电影。</em> 但这并不意味着普通观众会注意到它。归根结底，这一切都非常个人化。</p>
+<h4 id="狮子王-the-lion-king">狮子王 The Lion King</h4>
+<blockquote>
+<p>I cannot resist the urge to share with you <a href="https://ascmag.com/articles/making-the-lion-king">this article</a> on the Lion King. “<strong>Deschanel :</strong> When starting work on a scene, Sam Maniscalco, [lead lighting artist from visual-effects studio Moving Picture Company (MPC)] would look at it, and based on where we were in the story, begin to light it — considering the time of day, the location and so forth. He would also pick the sky to go with the scene; we needed to consider the mood, and we had 350 skies we could choose from. We would find the right clouds and sky color, and then adjust the sun to wherever we wanted it to be.  <strong>You might think we would just put the sun where we wanted it and leave it there every day — but, in fact, that never happened. We moved the sun on virtually every shot.</strong></p>
+<p>我忍不住想和你们分享<a href="https://ascmag.com/articles/making-the-lion-king">这篇</a>关于狮子王的文章。”<strong>德斯香奈：</strong> 开始拍摄一个场景时，萨姆·曼尼斯卡尔科（视觉效果工作室 Moving Picture Company (MPC) 的首席灯光艺术家）会查看场景，并根据我们在故事中的位置开始打光 — — 考虑到一天中的时间、位置等等。他还会选择与场景相配的天空；我们需要考虑氛围，我们有 350 种天空可供选择。我们会找到合适的云彩和天空颜色，然后将太阳调整到我们想要的任何位置。<strong>你可能会认为我们会把太阳放在我们想要的位置，然后每天都放在那里 — — 但事实上，那从未发生过。我们几乎在每个镜头中都会移动太阳。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Legato :</strong> That’s also something that makes the movie look like it was conventionally photographed. That so-called perfection of having the sun stay in one   spot — besides the fact that it doesn’t look great shot-to-shot — is  something you would only see in a computer-generated movie. That’s the ‘taste’ factor that makes this method transcend beyond a technical   exercise.  <strong>It might be mathematically correct to place the sun where it would actually be, but it’s not artistically correct</strong>  — so you do something else to make the shot work. That’s why we brought you in, as well as other people who do these things in the real world.”</p>
+<p><strong>Legato：</strong> 这也是让电影看起来像是传统拍摄的因素之一。让太阳停留在一个位置的所谓完美——除了镜头间看起来不太好之外——只有在计算机生成的电影中才能看到。这就是“品味”因素，它使这种方法超越了技术练习。将太阳放置在它实际的位置<strong>可能在数学上是正确的，但从艺术上来说并不正确</strong>  ——所以你需要做一些其他的事情来让镜头成功。这就是我们邀请你和其他在现实世界中做这些事情的人来做的原因。”</p>
+</blockquote>
+<h4 id="如何训练你的龙-how-to-train-your-dragon">如何训练你的龙 How to train your dragon</h4>
+<p>The following quote comes from ​<strong>Roger Deakins</strong>​‘ website. Yes ! He is talking about <em>How to train your dragon</em> at the end of it.</p>
+<p>以下引文来自<strong>Roger Deakins</strong>的网站。是的！他在最后谈论了 <em>《驯龙高手》 。</em></p>
+<blockquote>
+<p><strong><a href="https://www.rogerdeakins.com/lighting-2/top-light-off-on-how-to-train-you-dragon/">Roger Deakins</a></strong> : Yes, in live action you can never shoot two shots with the sun exactly in the same place so, you scout your locations, work out your shots and shoot each with the sun in a different spot that best suits each particular camera angle. There is one film in particular that is totally back lit and that is <strong>Dick Lester’</strong> s ‘Robin and Marian’.  <strong>It looks great but it doesn’t make sense if you really stop and think about the angle of the sun from shot to  shot …. but you don’t.</strong>   I was working on a recent animated film and we looked at the ‘real’ light in a forest as captured on a 360º dome and transferred onto our scene. Of course it was all green and mushy ! It was the real thing but it didn’t suit our scene.</p>
+<p><strong><a href="https://www.rogerdeakins.com/lighting-2/top-light-off-on-how-to-train-you-dragon/">罗杰·狄金斯</a></strong>：是的，在实景拍摄中，你不可能在太阳完全处于同一位置的情况下拍摄两个镜头，因此，你需要勘察位置，设计镜头，并在太阳处于不同位置的情况下拍摄每个镜头，以最适合每个特定的摄影角度。有一部特别的电影是完全背光的，那就是​<strong>迪克·莱斯特的</strong>​《罗宾和玛丽安》。<strong>它看起来很棒，但如果你真的停下来思考每个镜头中太阳的角度，它就没有意义了……但你没有。</strong> 我最近在制作一部动画电影，我们看着森林中的“真实”光线，它被 360º 圆顶捕捉到并转移到我们的场景中。当然，它全是绿色和糊状的！它是真实的，但它不适合我们的场景。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0110_continuity_robin_marian_FHD-20241105171621-6knm98l.jpg" alt="" title="I haven't watched the movie but from what I could gather from the internet. Backlit... 我没有看过这部电影，但从网上收集的信息来看。背光..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0120_continuity_robin_marian_FHD-20241105171621-0sxcuo3.jpg" alt="" title="Backlit... 背光..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0130_continuity_robin_marian_FHD-20241105171621-b012r8s.jpg" alt="" title="Backlit... 背光..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0140_continuity_robin_marian_FHD-20241105171621-30dgd7r.jpg" alt="" title="And backlit ! 还有背光！" loading="lazy">​</p>
+<p>Interesting example from Roger Deakins.</p>
+<p>罗杰·迪金斯（Roger Deakins）的有趣例子。</p>
+<blockquote>
+<p><strong>Matthias Menz</strong> :  Lighting continuity is utterly irrelevant. The worst thing I have come across in my career time and again is the idea of <strong>being religious about a sequence light rig.</strong>  That idea just never worked visually in my experience and it’s often enforced by supervisors with little to no visual understanding. Running a static light rig in 25 different shots, because you can, will not give you cinematography. <strong>Every shot has to be lit for its own needs while honoring a visual idea not a light rig.</strong></p>
+<p><strong>Matthias Menz</strong>​：灯光连续性完全不重要。在我的职业生涯中，我一次又一次遇到的最糟糕的事情就是<strong>对序列灯光设备过于虔诚。</strong> 根据我的经验，这个想法在视觉上根本行不通，而且它通常是由对视觉理解甚少或毫无理解的主管强制执行的。在 25 个不同的镜头中使用静态灯光设备，因为你可以这样做，但这不会给你带来电影摄影。<strong>每个镜头都必须根据自己的需要进行照明，同时尊重视觉理念而不是灯光设备。</strong></p>
+</blockquote>
+<h2 id="引导观众的视线-directing-the-viewers-eye">引导观众的视线 Directing the viewer’s eye</h2>
+<h3 id="对比-contrast">对比 Contrast</h3>
+<p>Contrast is the where the brightest and the darkest parts of an image meet. <strong>Your eye will always be attracted to the most contrasted area of an image.</strong>   We have already seen in <a href="https://chrisbrejon.com/cg-cinematography/chapter-3-gestalt-theory/#13-emphasis-through-contrasts">chapter 3 about contrast emphasis</a>.</p>
+<p>对比度是图像中最亮和最暗部分的交汇点。<strong>您的眼睛总是会被图像中对比度最高的区域所吸引。</strong> 我们已经在<a href="https://chrisbrejon.com/cg-cinematography/chapter-3-gestalt-theory/#13-emphasis-through-contrasts">第 3 章中了解了对比度强调</a>。</p>
+<h4 id="汉尼拔-hannibal">汉尼拔 Hannibal</h4>
+<p>The example below from <em>Hannibal</em> (Director : ​**<a href="https://www.imdb.com/name/nm0000631/?ref_=tt_ov_dr">Ridley Scott</a><strong>​, DP : ​</strong>John Mathieson**​) has always fascinated me. Julianne Moore is poorly lit. But having <strong>a white sheet of paper behind her head</strong> helps direct the eye to her face. Sometimes you do not need a complex lighting but a great composition.</p>
+<p>下面的例子来自​ <em>《汉尼拔》</em> ​（导演：​**<a href="https://www.imdb.com/name/nm0000631/?ref_=tt_ov_dr">雷德利·斯科特</a><strong>​，摄影指导：​</strong>约翰·马西森<strong>​），一直让我着迷。朱丽安·摩尔的灯光很差。但</strong>在她的头后面放一张白纸**有助于将视线引向她的脸。有时你不需要复杂的灯光，而需要出色的构图。</p>
+<blockquote>
+<p>Notice the strong rim on her shoulders and soft light on her face. <strong>That is</strong> <strong>a very common technique for character lighting to avoid strong impact directly on the face.</strong> We will come back to that later.</p>
+<p>注意她肩膀上的强烈边缘和脸上的柔和光线。<strong>这是</strong> <strong>人物照明的一种非常常见的技术，可以避免直接对脸部产生强烈影响。</strong> 我们稍后会再讨论这一点。</p>
+</blockquote>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_170_contrast_hannibal_HD-20241115015841-cjd7ab5.mp4" data-src="assets/060_lightingPrinciples_170_contrast_hannibal_HD-20241115015841-cjd7ab5.mp4"></video></p>
+<p>Thanks to Maël François and Sharon Callahan from Pixar for the <a href="https://www.3dvf.com/redaction/dossier-843-compte-rendu-game-connection-europe-2011-html/">trick</a>.</p>
+<p>感谢皮克斯的 Maël François 和 Sharon Callahan 提供的<a href="https://www.3dvf.com/redaction/dossier-843-compte-rendu-game-connection-europe-2011-html/">技巧</a>。</p>
+<blockquote>
+<p><em>At first sight, it looks like a counter-example of good lighting since Julianne Moore is poorly lit and therefore does not pop. But by having a white sheet of paper behind her and with a good framing, we may direct the viewer’s eye instantly to her face. A complex lighting is not always useful if composition is well thought.</em></p>
+<p><em>乍一看，这似乎是良好照明的反例，因为朱丽安·摩尔的光线很差，因此没有突出。但是，通过在她身后放一张白纸，并采用良好的构图，我们可以立即将观众的目光引向她的脸。如果构图经过深思熟虑，复杂的照明并不总是有用的。</em></p>
+</blockquote>
+<h4 id="巧克力-chocolat">巧克力 Chocolat</h4>
+<p>Next example comes from the movie <em>Chocolat</em> (Director : <strong><a href="https://www.imdb.com/name/nm0002120/?ref_=tt_ov_dr">Lasse Hallström</a></strong>, Cinematography : ​**<a href="https://www.imdb.com/name/nm0695536/?ref_=ttfc_fc_cr12">Roger Pratt</a>**​). A kick light gives an extra bit of contrast to the focus point.</p>
+<p>下一个例子来自电影​ <em>《浓情巧克力》</em> ​（导演：<strong><a href="https://www.imdb.com/name/nm0002120/?ref_=tt_ov_dr">拉斯·霍尔斯道姆</a></strong>，摄影师：​**<a href="https://www.imdb.com/name/nm0695536/?ref_=ttfc_fc_cr12">罗杰·普拉特</a>**​）。 踢光为焦点增加了一点对比度。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0170_contrast_chocolat_FHD-20241105171621-9hr1p3p.jpg" alt="" title="In this shot from Chocolat (DP : Roger Pratt), the character on the left is clearly put forward. 在《浓情巧克力》（摄影指导：罗杰·普拉特）的这个镜头中，左边的角色显得格外突出。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0180_contrast_chocolat_FHD-20241105171621-yn731a3.jpg" alt="" title="His clothes with a couple of white touches and the fact that he is more lit than the people surrounding him guide our eye, as well as the white sheet of paper he is holding. The empty chair next to him reinforce his isolation. 他的衣服上有一些白色，他比周围的人更明亮，以及他手里拿着的白纸，这些都引导着我们的目光。他旁边的空椅子强调了他的孤独。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0190_contrast_chocolat_FHD-20241105171621-sc20qlg.jpg" alt="" title="He even has a nice specular in the eyes that gives him an extra touch of life. 他的眼睛里甚至还有漂亮的镜面反射，给他增添了一丝活力。" loading="lazy">​</p>
+<p>Another trick from Maël !</p>
+<p>Maël 的另一个技巧！</p>
+<p>Both examples do have something in common : there is a foreground character in shadow. This technique known as <em>Negative space</em> is described in the next paragraph.</p>
+<p>这两个例子确实有一些共同点：前景人物处在阴影中。下一段将介绍这种称为<em>负空间的技术。</em></p>
+<h3 id="负空间-negative-space">负空间 Negative space</h3>
+<p>Having darker objects in the foreground (a bit like a silhouette) and brighter ones in the far background will give depth to your shot.</p>
+<p>前景中较暗的物体（有点像轮廓）和远处背景中较亮的物体将为您的照片增添深度。</p>
+<h4 id="忍者神龟-ninjago">忍者神龟 Ninjago</h4>
+<p>Negative space was used a lot at Animal. First example comes from a <em>Ninjago</em> short called <em>The Master</em> (Director : ​<strong>Jon Saunders</strong>​, DP : ​<strong>Craig Welsh</strong>​).</p>
+<p>Animal 大量使用了负空间。第一个例子来自<em>Ninjago</em>短片​ <em>《The Master》</em> ​（导演：​<strong>Jon Saunders</strong>​，摄影指导：​<strong>Craig Welsh</strong>​）。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0210_negativeSpace_ninjago_FHD-20241105171621-oyqy5jh.jpg" alt="" title="This shot is the first time I heard &quot;negative space&quot;. Unfortunately I had to fill the pillars and loose some contrast. 这是我第一次听到“负空间”这个词。不幸的是，我不得不填充柱子，从而损失了一些对比度。" loading="lazy">​</p>
+<p>First time I ever heard about negative space.</p>
+<p>我第一次听说负空间。</p>
+<h4 id="七宗罪-se7en">七宗罪 Se7en</h4>
+<p>The amazing cinematography by <strong>Darius Khondji</strong> on the movie <em>Se7en</em> provides us plenty of examples of negative space.</p>
+<p><strong>达吕斯·康吉 (Darius Khondji)</strong> 在电影 <em>《七宗罪》</em> 中令人惊叹的摄影技术为我们提供了大量负空间的例子。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0220_negativeSpace_se7en_FHD-20241105171621-err9kix.jpg" alt="" title="Perfect example of negative space in Se7en. (Director: David Fincher, DP: Darius Khondji) 《七宗罪》中负空间的完美范例。（导演：大卫·芬奇，摄影指导：达利斯·康吉）" loading="lazy">​</p>
+<h4 id="彰-akira">彰 Akira</h4>
+<p>Look at this shot from <em>Akira</em> (Director : ​<strong>Katsuhiro Otomo</strong>​, DP : ​<strong>Katsuji Misawa</strong>​). You can clearly read foreground, middle ground and background in terms of exposure and temperature.</p>
+<p>看看<em>Akira</em>的这个镜头（导演：​<strong>大友克洋</strong>​，摄影指导：​<strong>三泽胜二</strong>​）。你可以根据曝光和温度清楚地看出前景、中景和背景。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0200_negativeSpace_akira_FHD-20241105171621-0uex58u.jpg" alt="" title="This reminds us of the law of figure &amp; ground, right ? 这让我们想起了图形与背景定律，对吗？" loading="lazy">​</p>
+<p>A clear read and distinction is pretty much desirable in a cartoon PBR movie.</p>
+<p>在卡通 PBR 电影中，清晰的解读和区分是十分必要的。</p>
+<blockquote>
+<p>Do you see the violet volumetric in the street ? We used this trick a lot on Lego Batman to separate planes. We will come back to that a bit below but also in <a href="https://chrisbrejon.com/cg-cinematography/chapter-7-lighting-techniques/#11-volumetric-examples">Chapter 7</a>.</p>
+<p>你看到街道上的紫色体积了吗？我们在乐高蝙蝠侠中经常使用这个技巧来分离平面。我们将在下文以及<a href="https://chrisbrejon.com/cg-cinematography/chapter-7-lighting-techniques/#11-volumetric-examples">第 7 章</a>中回顾这一点。</p>
+</blockquote>
+<h3 id="两个角色之间的明亮物体-bright-object-between-two-characters">两个角色之间的明亮物体 Bright object between two characters</h3>
+<p>This is a technique commonly used in movies : <strong>having a bright object between two characters ties them together.</strong>   It took me a bit of time to understand the concept. But it is actually pretty simple.</p>
+<p>这是电影中常用的一种技巧：<strong>在两个角色之间放置一个明亮的物体，将他们联系在一起。</strong> 我花了一些时间才理解这个概念。但其实它很简单。</p>
+<p>It was first described to me by Mathias Menz and Sandip Kalsy in their masterclass. At first I was suspicious : <em>why a bright object ?</em>  <em>Why not a yellow object or a dark one ?</em>  But a few months thinking about it, here is my personal explanation.</p>
+<p>Mathias Menz 和 Sandip Kalsy 在他们的大师班上第一次向我描述了这一点。起初我很怀疑：<em>为什么是明亮的物体？</em>  <em>为什么不是黄色或深色的物体？</em> 但经过几个月的思考，以下是我个人的解释。</p>
+<p><strong>The viewer’s eye will generally be attracted by a light source.</strong>  The contrast actually helps to keep the eye in the zone of interest. That’s a very powerful and interesting composition tool !</p>
+<p><strong>观众的眼球通常会被光源吸引。</strong> 对比度实际上有助于让眼睛保持在感兴趣的区域。这是一个非常强大和有趣的构图工具！</p>
+<p>You can find really good examples of this trick in many movies such as ​<em>Bridge of Spies</em>​(Director : <strong><a href="https://en.wikipedia.org/wiki/Steven_Spielberg">Steven Spielberg</a></strong>, DP : <strong><a href="https://en.wikipedia.org/wiki/Janusz_Kami%C5%84ski">Janusz Kamiński</a></strong>) <em>, Tron Legacy</em> (Director : <strong><a href="https://en.wikipedia.org/wiki/Joseph_Kosinski">Joseph Kosinski</a></strong>, DP : <strong><a href="https://en.wikipedia.org/wiki/Claudio_Miranda">Claudio Miranda</a></strong>) or even <em>Inglorious Basterds</em> (Director : <strong><a href="https://en.wikipedia.org/wiki/Quentin_Tarantino">Quentin Tarantino</a></strong>, DP : <strong><a href="https://en.wikipedia.org/wiki/Robert_Richardson_(cinematographer)">Robert Richardson</a></strong>).</p>
+<p>你可以在很多电影中找到这一技巧的很好的例子，例如​ <em>《间谍之桥》</em> ​（导演：<strong><a href="https://en.wikipedia.org/wiki/Steven_Spielberg">史蒂文·斯皮尔伯格</a></strong>，摄影指导：<strong><a href="https://en.wikipedia.org/wiki/Janusz_Kami%C5%84ski">贾努什·卡明斯基</a></strong>）​ <em>、《创：战纪》</em> ​（导演：<strong><a href="https://en.wikipedia.org/wiki/Joseph_Kosinski">约瑟夫·科辛斯基</a></strong>，摄影指导：<strong><a href="https://en.wikipedia.org/wiki/Claudio_Miranda">克劳迪奥·米兰达</a></strong>）甚至是​ <em>《无耻混蛋》</em> ​（导演：<strong><a href="https://en.wikipedia.org/wiki/Quentin_Tarantino">昆汀·塔伦蒂诺</a></strong>，摄影指导：<strong><a href="https://en.wikipedia.org/wiki/Robert_Richardson_(cinematographer)">罗伯特·理查德森</a></strong>）。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0230_bright_object_munich-20241105171621-avxsbv9.jpg" alt="" title="You may have seen this clip in a previous chapter. The light between the two characters helps to focus on them. 您可能在上一章中看过这个片段。两个角色之间的灯光有助于将焦点集中在他们身上。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0240_bright_object_munich-20241105171621-sq90ix2.jpg" alt="" title="Same thing here. In CG, we would have probably decreased the reflection on the left mirror. Like a lot. No need for that in live-action. 同样的情况。在 CG 中，我们可能会减少左镜子的反射。减少很多。在真人秀中不需要这样做。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0250_bright_object_bridge-20241105171621-36tpcok.jpg" alt="" title="It does not necessarily have to be a light. Remember the spotlight on the chair we saw earlier ? It is faking an impact of the sun on the chair. It connects the characters together and makes the background more interesting. 它不一定非得是灯光。还记得我们之前看到的椅子上的聚光灯吗？它模拟了阳光照射在椅子上的效果。它将人物联系在一起，使背景更加有趣。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0260_bright_object_tron-20241105171621-sfphj6z.jpg" alt="" title="This principle of composition has really helped me. It did not know what to do with lamps before. Now I know at least one proper solution, like in Tron Legacy. 这个构图原则真的帮了我大忙。以前我不知道该怎么处理灯。现在我知道了至少一个合适的解决方案，就像《创：战纪》中那样。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0270_bright_object_inglorious-20241105171621-ifwadku.jpg" alt="" title="Inglorious Basterds (DP : Robert Richardson) has like a double bright object composition : the window and the table. But that is the same concept basically. 《无耻混蛋》（摄影指导：罗伯特·理查德森）的构图就像是双重明亮物体：窗户和桌子。但基本上是同一个概念。" loading="lazy">​</p>
+<p>Most of these examples come from Matthias Menz and Sandip Kalsy.</p>
+<p>这些例子中的大部分来自 Matthias Menz 和 Sandip Kalsy。</p>
+<h4 id="黑客帝国重装上阵-matrix-reloaded">黑客帝国重装上阵 Matrix Reloaded</h4>
+<p>Let’s follow with an example that doesn’t really work. Watching <em>Matrix Reloaded</em> (Director : ​<strong>Wachowski brothers</strong>​, DP : ​<strong>Bill Pope</strong>​), it really hit me.</p>
+<p>让我们来看一个实际上不起作用的例子。观看 <em>《黑客帝国 2：重装上阵》</em> （导演：<strong>沃卓斯基兄弟</strong>，摄影指导：<strong>比尔·波普</strong>）时，它真的震撼了我。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_270_bright_object_matrix_HD-20241115015912-2nd4tqu.mp4" data-src="assets/060_lightingPrinciples_270_bright_object_matrix_HD-20241115015912-2nd4tqu.mp4"></video></p>
+<p>Here is my personal analysis :  <strong>place the lamp where you want to focus the attention !</strong>  Otherwise it can really disturb the composition and the viewer.</p>
+<p>以下是我个人的分析：<strong>将灯放在您想要集中注意力的地方！</strong> 否则，它确实会干扰构图和观看者。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0290_bright_object_matrix-20241105171621-r6aexdj.jpg" alt="" title="Where does you eye go ? It stays next to Neo, right ? The light is actually helping in this shot. Composition is unbalanced but it reinforces Neo's loneliness. 你的目光投向了哪里？它一直盯着 Neo，对吧？光线实际上对这张照片有帮助。构图不平衡，但它强化了 Neo 的孤独感。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0280_bright_object_matrix-20241105171621-2jlwvft.jpg" alt="" title="But in this shot the light really disturbs me. I want to look at the characters, but my eye keep going to the left. It's a bit annoying. 但在这张照片中，光线确实让我感到不安。我想看人物，但我的视线却一直向左看。这有点烦人。" loading="lazy">​</p>
+<p>Not a big fan of those Zion shots.</p>
+<p>不太喜欢锡安的投篮。</p>
+<h4 id="常见嫌疑人-usual-suspects">常见嫌疑人 Usual Suspects</h4>
+<p>The following example, from <em>Usual Supects</em> (Director : ​<strong>Bryan Singer</strong>​, DP : ​**<a href="https://en.wikipedia.org/wiki/Newton_Thomas_Sigel">Newton Thomas Sigel</a>**​), is about contrast and the bright object technique. Let’s watch !</p>
+<p>以下示例来自 <em>《Usual Supects》</em> （导演：<strong>Bryan Singer</strong>，摄影指导：<strong><a href="https://en.wikipedia.org/wiki/Newton_Thomas_Sigel">Newton Thomas Sigel</a></strong>），是关于对比度和明亮物体技巧的。让我们一起来看看吧！</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_330_bright_object_usual_suspects_HD-20241115015937-w4m68c0.mp4" data-src="assets/060_lightingPrinciples_330_bright_object_usual_suspects_HD-20241115015937-w4m68c0.mp4"></video></p>
+<p>The light impact on the door (screen right) really caught my eye in the shot above. It looks great but I was kinda wondering what was its purpose or justification. Until Keaton (​<strong>Gabriel Byrne</strong>​) sat on the stairs, his head being right in front of the impact ! <strong>Pure dramatic lighting.</strong></p>
+<p>上面的镜头中，门上的光线撞击（屏幕右侧）确实吸引了我的注意。看起来很棒，但我有点想知道它的目的或理由是什么。直到基顿（​<strong>加布里埃尔·伯恩</strong>​）坐在楼梯上，他的头正好在撞击点前面！<strong>纯粹的戏剧灯光。</strong></p>
+<p>In CG we would probably have tried a caustics light or a soft bounce. If we tried a similar impact on a PBR cartoon movie, it would probably look too fake and we would need a justification. We will see about this technique in <a href="https://chrisbrejon.com/cg-cinematography/chapter-7-lighting-techniques/#7-caustics">the next chapter</a>.</p>
+<p>在 CG 中，我们可能会尝试焦散光或柔和反射。如果我们在 PBR 卡通电影中尝试类似的效果，它可能看起来太假了，我们需要一个理由。我们将在<a href="https://chrisbrejon.com/cg-cinematography/chapter-7-lighting-techniques/#7-caustics">下一章</a>中看到这种技术。</p>
+<h3 id="轮廓-silhouette">轮廓 Silhouette</h3>
+<blockquote>
+<p><strong>A silhouette is a dark shape or an outline of someone or something visible in restricted light against a brighter background.</strong></p>
+<p><strong>轮廓是在较亮的背景下在受限的光线下可见的深色形状或某人或某物的轮廓。</strong></p>
+<p>It is a particular example of the negative space.</p>
+<p>这是负空间的一个特殊例子。</p>
+</blockquote>
+<p>Strong silhouettes help to read the characters better. And guess what ? <strong>We always want to get a clear read on the characters.</strong>  We really don’t want to be confused about a shot. When you light a shot you should pay attention to stuff like :</p>
+<p>清晰的轮廓有助于更好地理解人物。你猜怎么着？<strong>我们总是想清楚地了解人物。</strong> 我们真的不想对镜头感到困惑。当你打光时，你应该注意以下几点：</p>
+<ul>
+<li>Is the character speaking ?</li>
+<li>角色在说话吗？</li>
+<li>Where is the main center of interest ?</li>
+<li>主要兴趣中心在哪里？</li>
+<li>What is the story point ?</li>
+<li>故事要点是什么？</li>
+<li>Where is my eye going ?</li>
+<li>我的眼睛要看哪儿？</li>
+</ul>
+<h4 id="乐高蝙蝠侠剪影-lego-batman-silhouette">乐高蝙蝠侠剪影 Lego Batman Silhouette</h4>
+<p>Silhouette is a great tool to direct the viewer’s eye. But I have not used it that often because most cartoon movies like to fill the shots with light. A shame. <em>Lego Batman</em> (Director : ​<strong>Chris McKay</strong>​, PD : ​<strong>Grant Freckelton</strong>​) is probably my best personal example. I clearly remember <strong>Grant</strong> saying :</p>
+<p>剪影是引导观众视线的绝佳工具。但我并不经常使用它，因为大多数卡通电影都喜欢用光线填充镜头。真遗憾。​ <em>《乐高蝙蝠侠》</em> ​（导演：​<strong>克里斯·麦凯</strong>​，导演：​<strong>格兰特·弗雷克尔顿</strong>​）可能是我个人最好的例子。我清楚地记得<strong>格兰特</strong>说过：</p>
+<blockquote>
+<p>Such an iconic silhouette as batman reads so well.</p>
+<p>蝙蝠侠这样的标志性轮廓读起来真是太棒了。</p>
+</blockquote>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_350_silhouette_lego_batman_HD-20241115020003-ug0ju8g.mp4" data-src="assets/060_lightingPrinciples_350_silhouette_lego_batman_HD-20241115020003-ug0ju8g.mp4"></video></p>
+<p>Silhouettes all over the place in this series of shots.</p>
+<p>在这一系列的照片中，到处都是轮廓。</p>
+<blockquote>
+<p>Herbert Heinsche from Animal Logic talks of a similar technique on his <a href="http://herbertheinsche.com/cinematography/directing-the-eyes/">website</a>.</p>
+<p>Animal Logic 公司的 Herbert Heinsche 在他的<a href="http://herbertheinsche.com/cinematography/directing-the-eyes/">网站</a>上谈到了类似的技术。</p>
+<p>Having silhouettes help directing the eyes and have a clear read of the action.</p>
+<p>轮廓有助于引导视线并清晰地了解动作。</p>
+</blockquote>
+<h4 id="第三人剪影-third-man-silhouette">第三人剪影 Third man Silhouette</h4>
+<p>Below is probably the most iconic silhouette in movie history : <em>Third man</em> (Director : ​<strong>Carol Reed</strong>​, Cinematography : ​<strong>Robert Krasker</strong>​). It is a classic ! If you haven’t watched it, just do it.</p>
+<p>下面可能是电影史上最具标志性的剪影： <em>《第三人》</em> （导演：<strong>卡罗尔·里德</strong>，摄影：<strong>罗伯特·克拉斯克</strong>）。这是一部经典之作！如果你还没看过，那就去看看吧。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_370_silhouette_third_man_HD-20241115020032-qngnthp.mp4" data-src="assets/060_lightingPrinciples_370_silhouette_third_man_HD-20241115020032-qngnthp.mp4"></video></p>
+<p>You’ll find below a complete analysis of the sequence. It was a very interesting exercise to do. What a tour-de-force !</p>
+<p>您将在下面找到对序列的完整分析。这是一项非常有趣的练习。真是一场精彩的表演！</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0320_silhouette_third_man_FHD-20241105171621-4sjjzao.jpg" alt="" title="This sequence is one of the most famous in the History of cinema. 这个片段是电影史上最著名的片段之一。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0330_silhouette_third_man_FHD-20241105171621-wxzfit5.jpg" alt="" title="By putting light in the background, Robert Krasker creates depth in the image. 通过在背景中添加光线，罗伯特·克拉斯克 (Robert Krasker) 在图像中创造了深度。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0340_silhouette_third_man_FHD-20241105171621-drmunq4.jpg" alt="" title="Same thing here : light and volumetrics in the background to create depth. It almost looks like a light-linking on the soldier. 这里也是一样：背景中的光和体积创造了深度。它看起来几乎就像士兵身上的光链接。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0350_silhouette_third_man_FHD-20241105171621-njijuo8.jpg" alt="" title="Great composition : strong rim on the police for an instant read and the shadow of Orson Welles on the wall to follow his action as well. 伟大的构图：警察的强烈边缘让人一眼就能看懂，墙上奥逊·威尔斯的影子也跟随他的动作。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0360_silhouette_third_man_FHD-20241105171621-ozdw2rb.jpg" alt="" title="Light in the background and shadow in the foreground create depth. The long shadows are very graphic. 背景中的光和前景中的阴影创造了深度。长长的阴影非常生动。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0370_silhouette_third_man_FHD-20241105171621-1opx27b.jpg" alt="" title="Again ! Light in the background to read the silhouettes instantly. Notice the impact in the foreground to create depth in the tunnel. Genius ! 再来一次！背景中的灯光可以立即读取轮廓。注意前景中的影响，以在隧道中创造深度。天才！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0380_silhouette_third_man_FHD-20241105171621-r9g482d.jpg" alt="" title="Interesting example here : Orson Welles is running towards the light in this shot. 这里有一个有趣的例子：在这张照片中，奥森·威尔斯 (Orson Welles) 正朝着光线奔跑。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0390_silhouette_third_man_FHD-20241105171621-dkyz1bi.jpg" alt="" title="Two shots later, the light is gone ! Simple mistake ? Or is this a premonition for a possible future death ? Is he running towards darkness ? 两声枪响之后，光消失了！只是个小失误？还是这是未来可能死亡的预兆？他正在奔向黑暗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0400_silhouette_third_man_FHD-20241105171621-5k1ds04.jpg" alt="" title="Light is now on the other side of the tunnel ! I just love this volumetrics effect. We used it a lot on Lego Batman. 现在隧道的另一边出现了光！我非常喜欢这种体积效果。我们在《乐高蝙蝠侠》中大量使用了这种效果。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0410_silhouette_third_man_FHD-20241105171621-5o6h7bh.jpg" alt="" title="I am big fan of this shot : I love the graphic silhouettes on the wall. It is a nice way to populate a frame. Quite original ! 我非常喜欢这张照片：我喜欢墙上的图形轮廓。这是一种很好的填充框架的方式。非常新颖！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0420_silhouette_third_man_FHD-20241105171621-29396zi.jpg" alt="" title="And the light is back ! Who cares about continuity ? 光明又回来了！谁在乎连续性？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0430_silhouette_third_man_FHD-20241105171621-klicfju.jpg" alt="" title="Light in the background allows for nice silhouettes. The shadow on the wall adds drama to the shot. 背景中的光线可以拍出漂亮的剪影。墙上的阴影为照片增添了戏剧效果。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0440_silhouette_third_man_FHD-20241105171621-ef8ovj9.jpg" alt="" title="&quot;Skip lighting&quot; on the tunnel walls : it is a technique to add details on a surface, like a rim. The light is sort of sliding on the surface. 隧道壁上的“跳跃照明”：这是一种在表面（如边缘）添加细节的技术。光线在表面上滑动。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0450_silhouette_third_man_FHD-20241105171621-umb0fso.jpg" alt="" title="Look at the &quot;negative space&quot; in this frame. Is he getting trapped ? Or will he escape ? 看看这幅画中的“负空间”。他被困住了吗？还是会逃脱？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0460_silhouette_third_man_FHD-20241105171621-1vuyyww.jpg" alt="" title="It really looks like a &quot;Shatner light&quot; on Orson Welles' face. Very modern ! 这看起来真的就像奥森·威尔斯脸上的“夏特纳之光”。非常现代！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0470_silhouette_third_man_FHD-20241105171621-krwqvvw.jpg" alt="" title="Use of negative space for composition. The shadow on the wall is also directing our eye towards the background. It goes directly to the policemen. 使用负空间进行构图。墙上的阴影也将我们的视线引向背景。它直接指向警察。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0480_silhouette_third_man_FHD-20241105171621-nln4qrz.jpg" alt="" title="Perfect instant read on the character ! 完美即时解读人物！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0490_silhouette_third_man_FHD-20241105171621-fgnavks.jpg" alt="" title="And again this &quot;Shatner light&quot; ! And a bit of counterchange as well ! This sequence is like an encyclopedia of all the principles ! 又是这个“沙特纳之光”！还有一点反向变化！这个序列就像是所有原理的百科全书！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0500_silhouette_third_man_FHD-20241105171621-18py70s.jpg" alt="" title="Notice the &quot;skip lighting&quot; on the walls ? The use of silhouette gives a graphic impact to the shot ! 注意到墙上的“跳跃照明”了吗？剪影的使用给镜头带来了图形效果！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0510_silhouette_third_man_FHD-20241105171621-vw26c6x.jpg" alt="" title="Same thing here : skip lighting, silhouettes and negative space. I don't get tired of it. 同样：跳过灯光、轮廓和负空间。我不会厌倦它。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0520_silhouette_third_man_FHD-20241105171621-a1ncsqt.jpg" alt="" title="Orson Welles is trapped in the sewers and in the frame ! I love when composition tells us something about the character ! 奥森·威尔斯被困在下水道和画框里！我喜欢构图告诉我们一些关于角色的信息！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0530_silhouette_third_man_FHD-20241105171621-8lth892.jpg" alt="" title="The tunnel is slightly offset compared to the other shots. Reflecting the uncomfortable situation of the character. It is called &quot;the Dutch Angle&quot;. 隧道与其他镜头相比略有偏移。反映出角色的不适处境。这被称为“荷兰角”。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0540_silhouette_third_man_FHD-20241105171621-wiqex1p.jpg" alt="" title="I love how the volumetrics has this nice pattern in it. So graphic ! 我很喜欢体积测量中这种漂亮的图案。太生动了！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0550_silhouette_third_man_FHD-20241105171621-4um6nvu.jpg" alt="" title="The lines of force in this shot help directing the eye. And so does the silhouette. Skip lighting adds details to the walls : we can clearly see the bricks. 这张照片中的力线有助于引导视线。轮廓也是如此。跳过照明为墙壁添加了细节：我们可以清楚地看到砖块。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0560_silhouette_third_man_FHD-20241105171621-6cyftdx.jpg" alt="" title="This shot baffled me : there is no rim on the character. You can barely read him. Is it because he is trapped in his environment ? The pattern of light on top of the stairs is very graphic and adds richness to the shot. 这张照片让我很困惑：人物没有边框。你几乎看不清他。是因为他被困在了环境中吗？楼梯顶部的光线图案非常生动，为照片增添了丰富感。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0570_silhouette_third_man_FHD-20241105171621-he494od.jpg" alt="" title="Continuity break : there is some light under the stairs now. It adds pattern and details to the walls. 连续性中断：楼梯下现在有一些光亮。它为墙壁增添了图案和细节。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0580_silhouette_third_man_FHD-20241105171621-yw9aclp.jpg" alt="" title="Orson Welles desperately reaching for the light. Nice highlight in the eyes that brings an extra touch of life. 奥森·威尔斯拼命地向光看去。眼睛里的亮点为画面增添了一抹活力。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0590_silhouette_third_man_FHD-20241105171621-rml3p8y.jpg" alt="" title="Use of negative space for composition. So modern ! 使用负空间进行构图。太现代了！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0600_silhouette_third_man_FHD-20241105171621-c10bt92.jpg" alt="" title="I love when the face gets half in shadow. It shows the struggle of the character. Will he reach the light or not ? 我喜欢脸部一半在阴影中的样子。这展现了人物的挣扎。他是否能到达光明？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0610_silhouette_third_man_FHD-20241105171621-h022faa.jpg" alt="" title="Threatening silhouette walking towards him. No &quot;Dutch Angle&quot; like we have seen earlier, showing that the character is quiet and confident. 一个威胁性的身影朝他走来。没有我们之前看到的“荷兰角”，这表明这个角色很安静，很自信。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0620_silhouette_third_man_FHD-20241105171621-bc76dl9.jpg" alt="" title="Will he get there ? Nice graphic pattern on his face showing the goal he is trying to reach... You will have to watch the movie if you want to find out ! 他能到达那里吗？他脸上的漂亮图案显示了他试图达到的目标...如果你想知道答案，你必须看这部电影！" loading="lazy">​</p>
+<p>Craig Welsh would do similar analysis during our weekly meetings.</p>
+<p>克雷格·威尔士 (Craig Welsh) 会在我们的每周会议上做类似的分析。</p>
+<h4 id="毁灭之路剪影-road-to-perdition-silhouette">毁灭之路剪影 Road to perdition Silhouette</h4>
+<p>Another great use of silhouette in <em>Road to perdition</em> (Director : ​<strong>Sam Mendes</strong>​, DP : ​**<a href="https://www.imdb.com/name/nm0005734/?ref_=ttfc_fc_cr10">Conrad L. Hall</a>**​). <strong>A forecasting of what is going to happen :</strong>  the silhouette of <em>Tom Hanks</em> (Sullivan) with a machine gun overlaying the character who is going to die.</p>
+<p>另一个剪影的绝妙运用是​ <em>《毁灭之路》</em> ​（导演：​<strong>萨姆·门德斯</strong>​，摄影指导：​**<a href="https://www.imdb.com/name/nm0005734/?ref_=ttfc_fc_cr10">康拉德·L·霍尔</a>**​）。<strong>对即将发生的事情的预测：</strong> ​<em>汤姆·汉克斯</em>​（苏利文饰）手持机关枪的剪影笼罩着即将死去的角色。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0630_silhouette_road_perdition_FHD-20241105171621-6sh919p.jpg" alt="" title="A forecasting of what is going to happen by silhouette. Brilliant ! 通过轮廓预测将要发生的事情。太棒了！" loading="lazy">​</p>
+<p>Many artists and supervisors consider this movie to be one of the best cinematography ever.</p>
+<p>许多艺术家和监督者认为这部电影是有史以来最好的电影摄影之一。</p>
+<h4 id="客串照明-cameo-lighting">客串照明 Cameo Lighting</h4>
+<blockquote>
+<p>The contrary of a silhouette is called Cameo Lighting : <em>bright characters over dark</em> background.</p>
+<p>与剪影相反的是所谓的“客串照明”：​<em>黑暗的背景上有明亮的人物</em>​。</p>
+<p>It actually comes from the Cameo Stone.</p>
+<p>它实际上来自于浮雕石。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0640_cameo_stone_FHD-20241105171621-2i0uz2y.jpg" alt="" title="The contrary of silhouette is called Cameo lighting. 与剪影相反的光线被称为“Cameo 光线”。" loading="lazy">​</p>
+<p>I just love this vocabulary. It is easier to communicate when concepts have a name.</p>
+<p>我就是喜欢这个词汇。当概念有名字时，交流起来就更容易了。</p>
+<h3 id="晕影-vignetting">晕影 Vignetting</h3>
+<p>In photography and optics, <strong><a href="https://en.wikipedia.org/wiki/Vignetting">vignetting</a></strong>  <strong>is a reduction of an image’s brightness or saturation toward the periphery compared to the image center.</strong></p>
+<p>在摄影和光学中，**<a href="https://en.wikipedia.org/wiki/Vignetting">渐晕</a>**<strong>是指与图像中心相比，图像边缘的亮度或饱和度降低。</strong></p>
+<p>In CG, it is quite common to ask an artist to vignette his lighting. Using a blocker, we can adjust by fading one or several lights and guide the viewer’s eye.</p>
+<p>在 CG 中，要求艺术家制作灯光晕影是很常见的。使用遮挡器，我们可以通过淡化一盏或几盏灯光来调整，并引导观众的视线。</p>
+<h4 id="巴里林登-barry-lindon">巴里·林登 Barry Lindon</h4>
+<p>Let’s have a look at these shots from <em>Barry Lindon</em> (Director : ​<strong>Stanley Kubrick</strong>​,  DP : <strong>John Alcott).</strong></p>
+<p>让我们来看看<em>巴里·林登</em>（导演：<strong>斯坦利·库布里克</strong>，摄影指导：<strong>约翰·奥尔科特）拍摄的这些镜头。</strong></p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_420_vignetting_barry_lindon_HD-20241115020117-wgksono.mp4" data-src="assets/060_lightingPrinciples_420_vignetting_barry_lindon_HD-20241115020117-wgksono.mp4"></video></p>
+<p><strong>Where does your eye go ?</strong>   Not to the window, right ?  <strong>It goes directly to the characters.</strong>  Thanks to the glow (lens effect), the contrast between the window and the curtain is washed out and does not attract the eye. The characters are side lit over a dark background, it works perfectly. There is not a single thing that stands out.</p>
+<p><strong>你的目光会投向哪里？</strong>   不会投向窗户，对吧？<strong>它会直接投向人物。</strong> 由于光晕（镜头效果），窗户和窗帘之间的对比度被冲淡，不会吸引眼球。人物在黑暗背景下从侧面照射，效果非常好。没有任何事物引人注目。</p>
+<p>Why is this composition genius ?  <strong>Because the light in the back window has been blocked.</strong>   Once again, in CG, using a directional by default, it would blast everything equally. This is why using a spot or a GOBO can make a huge difference.</p>
+<p>为什么这种构图是天才之举？<strong>因为后窗的光线被挡住了。</strong> 同样，在 CG 中，默认情况下使用定向光，它会均匀地照射所有物体。这就是为什么使用聚光灯或遮光片会产生巨大差异的原因。</p>
+<h4 id="如下-it-follows">如下 It follows</h4>
+<p>The movie <em>It follows</em> (Director : ​**<a href="https://en.wikipedia.org/wiki/David_Robert_Mitchell">David Robert Mitchell</a><strong>​, DP : ​</strong><a href="https://en.wikipedia.org/wiki/Mike_Gioulakis">Mike Gioulakis</a>**​) is another great example of vignetting. Cinematography is just gorgeous. It took me a while to realize it but inspiration for this movie comes from <a href="https://en.wikipedia.org/wiki/Gregory_Crewdson">Gregory Crewdson’s</a> work. <strong>Warning : viewer discretion is advised.</strong></p>
+<p>电影​ <em>《它跟随》</em> ​（导演：​**<a href="https://en.wikipedia.org/wiki/David_Robert_Mitchell">大卫·罗伯特·米切尔</a><strong>​，摄影指导：​</strong><a href="https://en.wikipedia.org/wiki/Mike_Gioulakis">迈克·吉奥拉基斯</a>**​）是另一个使用晕影的绝佳例子。电影摄影非常精彩。我花了一段时间才意识到这一点，但这部电影的灵感来自<a href="https://en.wikipedia.org/wiki/Gregory_Crewdson">格雷戈里·克鲁德森的</a>作品。<strong>警告：建议观众谨慎观看。</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0660_vignetting_crewdson_FHD-20241105171621-lsybr87.jpg" alt="" title="Between dream and reality, Gregory Crewdson's work is fascinating. 在梦境与现实之间，格雷戈里·克鲁德森 (Gregory Crewdson) 的作品令人着迷。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0670_vignetting_crewdson_FHD-20241105171621-83fi2i8.jpg" alt="" title="His works is really hard to analyze. This is like completely illogical lighting but the image totally makes sense. 他的作品真的很难分析。这就像完全不合逻辑的灯光，但图像却完全合乎逻辑。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0680_vignetting_crewdson_FHD-20241105171621-qj9xzym.jpg" alt="" title="The framing, the lighting and the depth is unique and quite unsettling to be honest. 说实话，它的取景、灯光和深度非常独特，而且相当令人不安。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0690_vignetting_it_follows_FHD-20241105171621-8gr6sqs.jpg" alt="" title="It follows is one of my favorite movies. Check the vignetting, it looks great ! 以下是我最喜欢的电影之一。看看晕影，看起来很棒！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0700_vignetting_it_follows_FHD-20241105171621-j2qocjo.jpg" alt="" title="Pure dramatic lighting. Where does the light actually come from ? 纯粹的戏剧灯光。光线究竟来自哪里？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0710_vignetting_it_follows_FHD-20241105171621-xhld0vc.jpg" alt="" title="Complementary scheme, bright object between characters, vignetting... This frame really has this Crewdson's vibe. 互补方案、人物之间的明亮物体、晕影......这个画面确实有 Crewdson 的氛围。" loading="lazy">​</p>
+<p>I just love the connection between those two artists. It is mind-blowing !</p>
+<p>我很喜欢这两位艺术家之间的联系。真是令人惊叹！</p>
+<h2 id="补充构图-complementing-composition">补充构图 Complementing Composition</h2>
+<blockquote>
+<p>Something I would like to mention is that if layout does not look good, you will have a hard time making the lighting look good. The composition of the shot has to be properly done. Because sometimes you fight with a shot until you realize the composition is actually the issue.</p>
+<p>我想说的是，如果布局不好看，你就很难让灯光看起来好看。镜头的构图必须正确。因为有时你会为一个镜头而苦苦挣扎，直到你意识到构图才是真正的问题。</p>
+</blockquote>
+<h3 id="反变革-counterchange">反变革 Counterchange</h3>
+<blockquote>
+<p><strong>Counterchange is the reversal of tonal relationships between a form and its background which occurs from one end of the form to another.</strong></p>
+<p><strong>反变是形式与其背景之间的音调关系的逆转，这种逆转从形式的一端发生到另一端。</strong></p>
+<p>It sounds complicated written like this but really it is not.</p>
+<p>这样写听起来很复杂但实际上并非如此。</p>
+</blockquote>
+<h4 id="间谍之桥-bridge-of-spies">间谍之桥 Bridge of spies</h4>
+<p>I have actually used this technique for years without even knowing it.  <strong>To put a name on the concept helped me to control it in a better way.</strong></p>
+<p>事实上，我已经使用这种技术很多年了，甚至都不知道它的存在。<strong>给这个概念命名可以帮助我更好地控制它。</strong></p>
+<p>Every time I work on a shot I try to keep it in mind. It has been used in many movies and really helps to build the composition. Do you notice anything particular about this shot from <em>Bridge of Spies</em> (Director : ​<strong>Steven Spielberg</strong>​, DP : ​<strong>Janusz Kaminski</strong>​) ?</p>
+<p>每次拍摄镜头时，我都会尽量记住这一点。它已在许多电影中被使用，并且确实有助于构建构图。你有没有注意到《​<em>间谍之桥》</em> ​（导演：​<strong>史蒂文·斯皮尔伯格</strong>​，摄影指导：​<strong>贾努兹·卡明斯基</strong>​）中的这个镜头有什么特别之处？</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0720_counterchange_bridge_spies_FHD-20241105171621-zhrs7e4.jpg" alt="" title="Pay attention on how the DP alternated shadow and light areas to have a nice composition. 注意 DP 如何交替阴影和亮区以获得良好的构图。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0730_counterchange_bridge_spies_FHD-20241105171621-sokazbj.jpg" alt="" title="The bright part of Tom Hank's face contrasts with the dark part of the background and vice-versa. This gives an instant read on the character and a rhythm to the image. 汤姆·汉克斯脸部的明亮部分与背景的黑暗部分形成对比，反之亦然。这让人一眼就能看出人物性格，并为画面增添了节奏感。" loading="lazy">​</p>
+<p>This was a game changer for me.</p>
+<p>这对我来说是一个改变。</p>
+<p>Pay attention on how the DP <strong>alternated shadow and light areas</strong> to have a nice composition. The bright part of Tom Hank’s face contrasts with the dark part of the background and vice-versa. <strong>This gives an instant read of the character and a rhythm to the image.</strong></p>
+<p>注意摄影指导如何<strong>交替使用阴影和亮区</strong>来获得漂亮的构图。汤姆汉克斯脸部的亮部与背景的暗部形成对比，反之亦然。<strong>这可以让人一眼看出人物性格，并为画面增添韵律。</strong></p>
+<p>Let’s have a look at this beautiful sequence as there are many things to comment about it.</p>
+<p>让我们来看看这个美丽的序列，因为有很多事情可以评论。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_460_counterchange_bridge_spies_HD-20241115020144-xwyixha.mp4" data-src="assets/060_lightingPrinciples_460_counterchange_bridge_spies_HD-20241115020144-xwyixha.mp4"></video></p>
+<p>Below is a cinematography analysis on this sequence about continuity, counterchange and a nice lighting trick by the end of it !</p>
+<p>下面是对该序列的摄影分析，涉及连续性、反转以及最后的精彩灯光技巧！</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0740_counterchange_bridge_spies_FHD-20241105171621-zc7kemm.jpg" alt="" title="First of all, did you notice the lighting continuity break on Tom Hanks ? 首先，您是否注意到汤姆·汉克斯的灯光连续性中断了？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0750_counterchange_bridge_spies_FHD-20241105171621-2oeguw0.jpg" alt="" title="It took three shots to change lighting direction on his face. Unnoticeable ! 拍了三次才改变他脸上的灯光方向。不引人注意！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0760_counterchange_bridge_spies_FHD-20241105171621-thfpovr.jpg" alt="" title="Secondly, can you spot the counterchange in this shot ? 其次，你能发现这张照片中的反转吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0770_counterchange_bridge_spies_FHD-20241105171621-e6hst12.jpg" alt="" title="I call this : perfect composition. 我称之为：完美构图。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0780_counterchange_bridge_spies_FHD-20241105171621-cp27g36.jpg" alt="" title="Let's have a look at the final shot. Do you notice anything strange ? 让我们看一下最终的镜头。你注意到有什么奇怪的吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0790_counterchange_bridge_spies_FHD-20241105171621-e4wvnon.jpg" alt="" title="Where does the light on the table in the back (screen left) come from ? It even has an opposite direction ! 后面桌子上的灯光（屏幕左侧）是从哪里来的？它甚至还有相反的方向！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0800_counterchange_bridge_spies_FHD-20241105171621-4krmgqf.jpg" alt="" title="But it helps to compose the shot ! Look at the eyes as well. They have this nice reflection that gives an extra touch of life to the character. 但这有助于构图！看看眼睛。它们有这种漂亮的反射，给角色增添了额外的活力。" loading="lazy">​</p>
+<p>This is pure old-school dramatic lighting. Love it !</p>
+<p>这是纯粹的老式戏剧灯光。喜欢它！</p>
+<h4 id="革命之路-revolutionary-road">革命之路 Revolutionary road</h4>
+<p><em>Revolutionary Road</em> (Director : ​<strong>Sam Mendes</strong>​, DP : ​<strong>Roger Deakins</strong>​)has some counterchange on many shots.</p>
+<p>​ <em>《革命之路》</em> ​（导演：​<strong>萨姆·门德斯</strong>​，摄影指导：​<strong>罗杰·迪金斯</strong>​）在许多镜头上都有一些反转。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0810_counterchange_revolutionary_road_FHD-20241105171621-7juqexi.jpg" alt="" title="Revolutionary Road has a lot of counterchange. 革命之路有很多的逆转。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0820_counterchange_revolutionary_road_FHD-20241105171621-qo6h2ks.jpg" alt="" title="It helps to direct the eye by adding contrast between the set and the characters. 通过增加场景和人物之间的对比，有助于引导视线。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0830_counterchange_revolutionary_road_FHD-20241105171621-hzxym41.jpg" alt="" title="Composition by light. It is a perfect read ! 由光组成的。读起来很完美！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0840_counterchange_revolutionary_road_FHD-20241105171621-a3rtcfg.jpg" alt="" title="Light on shadow, shadow on light... I don't get tired of it ! 光在影上，影在光上……我不会厌倦！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0850_counterchange_revolutionary_road_FHD-20241105171621-uds31c7.jpg" alt="" title="Same here. Nice depth on this shot as well. 我也是。这张照片的深度也很好。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0860_counterchange_revolutionary_road_FHD-20241105171621-u2fnpn0.jpg" alt="" title="Sunlight in this shot is artificial for better control. 为了更好地控制，这张照片中的阳光是人造的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0870_counterchange_revolutionary_road_FHD-20241105171621-gbao5oo.jpg" alt="" title="Counterchange everywhere... 到处都有逆转……" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0880_counterchange_revolutionary_road_FHD-20241105171621-b0db26o.jpg" alt="" title="Counterchange by color. Never had seen this one before. 按颜色变换。以前从未见过这种颜色。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0890_counterchange_revolutionary_road_FHD-20241105171621-gkmoh73.jpg" alt="" title="The use of windows in this movie is particularly clever. 这部电影对窗户的运用尤为巧妙。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0900_counterchange_revolutionary_road_FHD-20241105171621-98a0bf1.jpg" alt="" title="Another perfect counterchange... 又一次完美的反击……" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0910_counterchange_revolutionary_road_FHD-20241105171621-e8coyu9.jpg" alt="" title="There is a lot of tension in this movie. 这部电影充满了张力。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0920_counterchange_revolutionary_road_FHD-20241105171621-41bzcu0.jpg" alt="" title="Notice the light in the back, it gives depth to the frame. 注意背后的光线，它为画面增添了深度。" loading="lazy">​</p>
+<p>Great cinematography by Roger Deakins.</p>
+<p>罗杰·狄金斯的摄影技术非常出色。</p>
+<h4 id="古典绘画-classical-paintings">古典绘画 Classical paintings</h4>
+<p><em>Counterchange</em> is actually a technique developed in painting. Check the examples below from ​<strong>Caravaggio</strong>​, ​<strong>Vermeer</strong>​, <strong>Georges de la Tour</strong> and ​<strong>Gerard von Honthorst</strong>​.</p>
+<p><em>反向变换实际上是绘画中发展起来的一种技巧。以下是</em>​​<strong>卡拉瓦乔</strong>​、​<strong>维米尔</strong>​、<strong>乔治·德·拉·图尔</strong>和<strong>杰拉德·冯·洪托斯特</strong>的作品。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0930_counterchange_paintings_caravaggio_FHD-20241105171621-iy4jpez.jpg" alt="" title="The Incredulity of Saint Thomas by Caravaggio (c. 1601) is a perfect example of counterchange in painting. 卡拉瓦乔的《圣托马斯的怀疑》（约 1601 年）是绘画中反向变化的完美例子。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0940_counterchange_paintings_vermeer_FHD-20241105171621-e3mz7v1.jpg" alt="" title="The Milkmaid by Johannes Vermeer, c. 1657. Great lighting, great counterchange and great scheme of colors. Where is the light coming from ? 约翰内斯·维米尔的《倒牛奶的女仆》，约 1657 年。光线极佳，对比强烈，色彩搭配也极佳。光线从哪里来的？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0950_counterchange_paintings_deLaTour_FHD-20241105171621-lkqxtek.jpg" alt="" title="But I guess the master of counterchange would be Georges de la Tour. Peasant couple eating, c. 1620. 但我想，乔治·德·拉·图尔才是逆转大师。农民夫妇正在吃饭，约 1620 年。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0960_counterchange_paintings_deLaTour_FHD-20241105171621-2beqtun.jpg" alt="" title="The dice players (c. 1651) by Georges de la Tour is a very good example of composition by counterchange. 乔治·德·拉·图尔 (Georges de la Tour) 的《掷骰子者》(C.1651) 就是逆转构图的一个很好的例子。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0970_counterchange_paintings_deLaTour_FHD-20241105171621-q0cmi00.jpg" alt="" title="Old woman (c. 1618) is not the most subtle counterchange but still effective ! 老妇人（约 1618 年）不是最微妙的对应，但仍然有效！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0980_counterchange_paintings_deLaTour_FHD-20241105171621-eyodiao.jpg" alt="" title="A blind Hurdy Gurdy player by Georges de la Tour, c. 1620. Perfect counterchange. 乔治·德·拉·图尔 (Georges de la Tour) 绘制的盲人手摇风琴演奏者，约 1620 年。完美对应。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_0990_counterchange_paintings_deLaTour_FHD-20241105171621-gyr6itn.jpg" alt="" title="The denial of Saint Peter (c.1650) is another great example by Georges de la Tour. 《圣彼得的否认》（约 1650 年）是乔治·德·拉图尔的另一个伟大例子。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_1000_counterchange_paintings_deLaTour_FHD-20241105171621-8d4honn.jpg" alt="" title="Very stylized light and composition in The dream of St Joseph. (c. 1640) 《圣约瑟夫之梦》中的光线和构图非常风格化。（约 1640 年）" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_1010_counterchange_paintings_deLaTour_FHD-20241105171621-8ifb2xq.jpg" alt="" title="The big question about de la Tour is : did he go to Italy ? And did he see Caravaggio's paintings ? Another example in Saint Jacques le mineur. 关于德拉图尔，最大的疑问是：他去过意大利吗？他看过卡拉瓦乔的画吗？另一个例子是《圣雅克的遗迹》。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_1020_counterchange_paintings_deLaTour_FHD-20241105171621-ll69uif.jpg" alt="" title="There are only forty paintings from de la Tour around the world. Saint Thomas à la pique, c. 1635. 世界上只有四十幅德拉图尔的画作。《圣托马斯的愤怒》，约 1635 年。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_1030_counterchange_paintings_deLaTour_FHD-20241105171621-h1msklx.jpg" alt="" title="Saint Jérôme by Georges de la Tour, c.1630-1635. I love how he artificially made the head pop in front of the background. 乔治·德·拉·图尔 (Georges de la Tour) 的《圣杰罗姆》，约 1630-1635 年。我喜欢他刻意让头部在背景前突出的方式。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_1040_counterchange_paintings_vanHonthorst_FHD-20241105171621-98nplo5.jpg" alt="" title="Candle lighting has actually been invented by Gerard van Honthorst. The denial of St Peter, c.1612-1620. 蜡烛照明实际上是由 Gerard van Honthorst 发明的。《圣彼得的否认》，约 1612-1620 年。" loading="lazy">​</p>
+<p>Many DPs use classical paintings as a source of inspiration.</p>
+<p>许多 DP 都以古典绘画作为灵感来源。</p>
+<p>It does not mean we have to use <em>counterchange</em> on every shot. Of course not. But when it comes to composition and light, <em>it</em> is a tool you can use.</p>
+<p>这并不意味着我们必须在每次拍摄时都使用​<em>反光</em>​。当然不是。但当涉及到构图和光线时，<em>这</em>是一个你可以使用的工具。</p>
+<h4 id="宠物的秘密生活-the-secret-life-of-pets">宠物的秘密生活 The secret life of pets</h4>
+<p>I have picked a couple of shots which could have been improved with some counterchange.</p>
+<p>我挑选了一些可以通过一些调整得到改进的镜头。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_1050_counterchange_pets_FHD-20241105171621-gq3lay8.jpg" alt="" title="I miss counterchange on this shot. It would have made the shot more interesting. 我错过了这张照片的反击。这会让照片更有趣。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_1060_counterchange_pets_FHD-20241105171621-q32cl18.jpg" alt="" title="This shot has the same issue : bright on bright, dark on dark. It is easy to read but we could have tried something different. 这张照片也有同样的问题：亮处亮，暗处暗。虽然很容易辨认，但我们可以尝试不同的方法。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_1070_counterchange_pets_FHD-20241105171621-40irx36.jpg" alt="" title="This shot has actually some counterchange ! Even if I had never heard of this concept before... 这张照片实际上有一些反转！即使我以前从未听说过这个概念……" loading="lazy">​</p>
+<p>These shots still look good though.</p>
+<p>但这些镜头看起来仍然不错。</p>
+<h3 id="平衡-balance">平衡 Balance</h3>
+<p>Balance is essential in cinematography. <strong>We need our lights to be in correct proportions.</strong>  I hate when the rim has the same intensity as the key. It is all about finding the right balance.</p>
+<p>平衡在电影摄影中至关重要。<strong>我们需要灯光保持正确的比例。</strong>  我讨厌边缘与主光强度相同。关键在于找到正确的平衡。</p>
+<blockquote>
+<p><strong>Grant Freckelton</strong> on Lego Batman used to tell us : “​<em>You guys have too many light sources at the same intensity. You cannot pick one above the others.</em> ​”</p>
+<p><strong>乐高蝙蝠侠的格兰特·弗雷克尔顿</strong>曾经告诉我们：“<em>你们有太多强度相同的光源。你们无法从中挑选出一个。</em>  ”</p>
+<p><strong>Too often our lights cancel each other</strong> (as seen in <a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#11-color-and-lights">Chapter 2</a>).</p>
+<p><strong>我们的灯光常常会互相抵消</strong><a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#11-color-and-lights">（如第 2 章</a>所示）。</p>
+</blockquote>
+<h4 id="明星-the-star">明星 The Star</h4>
+<p>Our next example comes from the movie <em>The Star</em> (Director : <strong><a href="https://www.imdb.com/name/nm3302450/">Timothy Reckart</a></strong>, Art Director : ​<strong>Sean Eckols</strong>​). I have set the Master Lighting for this sequence and worked with a couple of artists to polish the shots.</p>
+<p>我们的下一个例子来自电影 <em>《明星》</em> （导演：<strong><a href="https://www.imdb.com/name/nm3302450/">Timothy Reckart</a></strong>，艺术总监：<strong>Sean Eckols</strong>）。我为这个序列设置了主照明，并与几位艺术家合作完善了镜头。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_560_balance_the_star_HD-20241115020230-f0150fh.mp4" data-src="assets/060_lightingPrinciples_560_balance_the_star_HD-20241115020230-f0150fh.mp4"></video></p>
+<p>Look at Bo the donkey on these shots. He is equally lit from the left and the right side. I find it very disturbing, it almost looks like a fake rim with incandescence.</p>
+<p>看看这些照片中的驴子 Bo。他的左右两侧的光照都一样。我觉得这很令人不安，它看起来几乎像一个带有白炽光的假边缘。</p>
+<p><strong>I am not blaming the lighting artist here.</strong>   This show has been very complicated in terms of quotas. This rim has been weirdly approved by people who did not know much about the sequence’s look.</p>
+<p><strong>我并不是在责怪灯光师。</strong> 这场演出在配额方面非常复杂。奇怪的是，这个边缘得到了那些对场景外观不太了解的人的认可。</p>
+<h4 id="电子世界争霸战-tron-legacy">《电子世界争霸战》 Tron Legacy</h4>
+<p><strong>It is generally recommended to avoid any symmetrical lighting.</strong>  It (almost) never looks good. I guess that on the next example from <em>Tron Legacy</em> (Director : ​**<a href="https://www.imdb.com/name/nm2676052/">Joseph Kosinski</a><strong>​, DP : ​</strong>Claudio Miranda**​), they did not have much of a choice because of the art direction. But it really does not help selling the CG character. It makes him boring and look even more CG.</p>
+<p><strong>通常建议避免使用任何对称照明</strong> <strong>。</strong>  它（几乎）从来都不是好看的。我猜想在下一个来自 <em>《创：战纪》</em> （导演：<strong><a href="https://www.imdb.com/name/nm2676052/">约瑟夫·科辛斯基</a></strong>，摄影指导：<strong>克劳迪奥·米兰达</strong>）的例子中，由于艺术指导的原因，他们没有太多选择。但它确实无助于塑造 CG 角色。它让他变得无聊，看起来更像 CG。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_580_balance_tron_legacy_HD-20241115020252-xud1ey7.mp4" data-src="assets/060_lightingPrinciples_580_balance_tron_legacy_HD-20241115020252-xud1ey7.mp4"></video></p>
+<blockquote>
+<p>All these comments on Tron Legacy come from Sandip and Matthias’ masterclass.</p>
+<p>所有关于《创：战纪》的评论均来自 Sandip 和 Matthias 的大师班。</p>
+<p>It was fascinating to see them commenting those shots.</p>
+<p>看到他们评论这些镜头真是令人着迷。</p>
+</blockquote>
+<h4 id="行星-51-planet-51">行星 51 Planet 51</h4>
+<p>First time I heard about balance was on<em>Planet 51</em> (Director : ​<strong>Jorge Blanco</strong>​). I had equally lit the character from left and right in one of my shots. Thanks to my lighting supervisor, ​<strong>Barbara Meyers</strong>​, I reduced the intensity from the rim right screen. Here is the shot :</p>
+<p>我第一次听说平衡是在 <em>《星球 51》</em> （导演：<strong>Jorge Blanco</strong>）中。在我的一个镜头中，我从左右两侧均匀地照亮了角色。感谢我的灯光主管<strong>Barbara Meyers</strong>，我降低了屏幕右侧边缘的强度。镜头如下：</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_590_balance_planet51_HD-20241115020313-ieay8j1.mp4" data-src="assets/060_lightingPrinciples_590_balance_planet51_HD-20241115020313-ieay8j1.mp4"></video></p>
+<p><strong>But it dos not mean that symmetrical lighting is not an option.</strong>  There is actually a shot of mine where the character is equally lit from left and right side.</p>
+<p><strong>但这并不意味着对称照明不是一种选择。</strong> 实际上，我拍摄的一张镜头中，角色的左右两侧都受到同等程度的照明。</p>
+<h4 id="乐高蝙蝠侠-lego-batman-2">乐高蝙蝠侠 Lego Batman</h4>
+<p>On <em>Lego Batman</em> (Director : ​<strong>Chris McKay</strong>​, PD : ​<strong>Grant Freckelton</strong>​), we actually enhanced the rims from <strong>both</strong> sides. But there is actually an explanation for this. Let’s have a look at the shot :</p>
+<p>在 <em>《乐高蝙蝠侠》</em> （导演：<strong>克里斯·麦凯</strong>，制片人：<strong>格兰特·弗雷克尔顿）</strong> 中，我们实际上从<strong>两侧</strong>增强了轮辋。但这其实是有原因的。让我们看看这个镜头：</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_600_balance_lego_batman_HD-20241115020334-pd2996r.mp4" data-src="assets/060_lightingPrinciples_600_balance_lego_batman_HD-20241115020334-pd2996r.mp4"></video></p>
+<p><strong>Main difference between those two clips is the art direction.</strong>  <em>Planet 51</em> has more a  <strong>natural look,</strong>  compared to <em>Lego Batman</em> which is <strong>very stylized.</strong>   Everything is symmetrical in the <em>Lego Batman</em> shot : the framing, the set dressing and the colors. <strong>So it makes only sense that the lighting reinforces that.</strong>   Did we go a bit too far on the rim lighting ? Maybe…</p>
+<p><strong>这两个片段的主要区别在于艺术指导。</strong>  与<strong>非常风格化****的</strong>乐<em>高蝙蝠侠相比，Planet 51</em>看起来更<strong>自然</strong> <em>。乐高蝙蝠侠</em> 镜头中的一切都是对称的：取景、布景和颜色。<strong>因此，灯光强化这一点是合情合理的。</strong> 我们在边缘照明方面是否做得有点过头了？也许……</p>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p>We have seen in detail two objectives of lighting out of six. Therefore my list of lighting principles is clearly incomplete. But I have put the ones I use the most in production. The four remaining lighting objectives will be described in the next version of this book.</p>
+<p>我们已经详细了解了照明的六个目标中的两个。因此，我的照明原则列表显然是不完整的。但我列出了我在生产中最常用的原则。剩下的四个照明目标将在本书的下一版中描述。</p>
+<p>Lighting principles are cultural. And they are a very important part of the job. So do not hesitate to ask during an interview what is the lighting process of the department. It may help you when it comes to take a decision.</p>
+<p>照明原则是一种文化。它们是工作中非常重要的一部分。因此，在面试时不要犹豫询问部门的照明流程是什么。这可能会帮助您做出决定。</p>
+<p>During my interview at Animal, I asked <strong>Craig</strong> about his process. I loved his answer :</p>
+<p>在 Animal 的面试中，我向<strong>Craig</strong>询问了他的创作过程。我很喜欢他的回答：</p>
+<blockquote>
+<p>We want everyone to work at the best of his abilities. Each lighting artist, lead, senior or mid, should feel responsible for their shots.</p>
+<p>我们希望每个人都能尽最大努力。每位灯光师，无论是首席、资深还是中级，都应该对自己的镜头负责。</p>
+</blockquote>
+<h2 id="来源-sources">来源 Sources</h2>
+<p>This is actually the shortest chapter of my book when it should be one of the longest. So if you wish to read more on this topic, please do not hesitate to consult the following links.</p>
+<p>这实际上是我书中最短的一章，但它应该是最长的一章之一。因此，如果您想阅读更多关于这个主题的内容，请随时查阅以下链接。</p>
+<h3 id="文章和博客-articles-and-blogs">文章和博客 Articles and Blogs</h3>
+<ul>
+<li><a href="http://www.expandedcinematography.com/legend-of-the-guardians.html">Craig Welsh’s blog</a>, lighting supervisor at Animal Logic. Best blog ever.</li>
+<li><a href="http://www.expandedcinematography.com/legend-of-the-guardians.html">Craig Welsh 的博客</a>，Animal Logic 的灯光主管。有史以来最好的博客。</li>
+<li><a href="http://herbertheinsche.com/cinematography/">Herbert Heinsche’s website</a>, lighting lead at Animal Logic.</li>
+<li><a href="http://herbertheinsche.com/cinematography/">Herbert Heinsche 的网站</a>，Animal Logic 的照明主管。</li>
+<li><a href="http://collider.com/best-shot-films-of-all-time-cinematography/">The 100 best-shot films of all time revealed by ASC</a>.</li>
+<li><a href="http://collider.com/best-shot-films-of-all-time-cinematography/">ASC 公布了有史以来 100 部最佳电影</a>。</li>
+<li>A blog from a <a href="http://mattscottvisuals.com/">Tasmanian cinematographer</a>. Pretty cool !</li>
+<li><a href="http://mattscottvisuals.com/">来自塔斯马尼亚电影摄影师</a>的博客。很酷！</li>
+<li><a href="https://cinematography.net/LightingTOC.htm">Cinematography forum</a>.</li>
+<li><a href="https://cinematography.net/LightingTOC.htm">电影摄影论坛</a>。</li>
+<li>Some great resources from this website : <a href="https://moviola.com/">Moviola</a> and <a href="https://www.provideocoalition.com/">ProVideo</a>.</li>
+<li>此网站有一些很棒的资源：<a href="https://moviola.com/">Moviola</a>和<a href="https://www.provideocoalition.com/">ProVideo</a>。</li>
+<li>Forum of <a href="https://www.rogerdeakins.com/">Roger Deakins</a> and <a href="http://www.teamdeakins.libsyn.com/">his podcast</a>.</li>
+<li><a href="https://www.rogerdeakins.com/">罗杰·迪金斯</a>和<a href="http://www.teamdeakins.libsyn.com/">他的播客</a>的论坛。</li>
+<li><a href="https://luxartists.net/bradford-young/">DP Bradford Young</a> and his <a href="https://www.blackwing7.com/">tunable cine lenses</a>.</li>
+<li><a href="https://luxartists.net/bradford-young/">摄影指导布拉德福德杨</a>和他的<a href="https://www.blackwing7.com/">可调节电影镜头</a>。</li>
+<li><a href="https://www.youtube.com/channel/UCWq-qJSudqKrzquTVep9Jwg">The Royal Ocean Film Society</a>.</li>
+<li><a href="https://www.youtube.com/channel/UCWq-qJSudqKrzquTVep9Jwg">皇家海洋电影协会</a>。</li>
+<li><a href="https://theasc.com/magazine/feb06/munich/page1.html#">ASC website</a> : a really interesting article about Munich.</li>
+<li><a href="https://theasc.com/magazine/feb06/munich/page1.html#">ASC 网站</a>：一篇关于慕尼黑的非常有趣的文章。</li>
+<li><a href="https://ascmag.com/articles/making-the-lion-king">ASC mag</a> is a very interesting resource.</li>
+<li><a href="https://ascmag.com/articles/making-the-lion-king">ASC mag</a>是一个非常有趣的资源。</li>
+<li><a href="https://nofilmschool.com/2015/07/practical-light-primer-how-practical-lighting-bring-cinematography-to-life">No film school</a> : article about practical lighting.</li>
+<li><a href="https://nofilmschool.com/2015/07/practical-light-primer-how-practical-lighting-bring-cinematography-to-life">没有电影学校</a>：有关实用照明的文章。</li>
+<li><a href="https://mattmulcahey.wordpress.com/category/etc/">Deep fried movies</a>.</li>
+<li><a href="https://mattmulcahey.wordpress.com/category/etc/">油炸电影</a>。</li>
+<li><a href="https://filmmakeriq.com/lessons/lighting-film-noir/">Lighting for Film Noir</a> by FilmmakerIQ.</li>
+<li><a href="https://filmmakeriq.com/lessons/lighting-film-noir/">FilmmakerIQ 为黑色电影提供灯光</a>。</li>
+<li><a href="http://evanerichards.com/2018">Cinematography Evan E. Richards</a>.</li>
+<li><a href="http://evanerichards.com/2018">摄影：Evan E. Richards</a>。</li>
+<li><a href="http://floobynooby.blogspot.ca/2011/04/cinematography-of-blade-runner.html">Cinematography Blade Runner</a>.</li>
+<li><a href="http://floobynooby.blogspot.ca/2011/04/cinematography-of-blade-runner.html">电影摄影 银翼杀手</a>。</li>
+<li><a href="http://www.linussandgren.com/">Linus Sandgren</a>, DP of First Man and La La Land.</li>
+<li><a href="http://www.linussandgren.com/">莱纳斯·桑德格伦 (Linus Sandgren)</a>，《登月第一人》和《爱乐之城》的摄影指导。</li>
+<li><a href="https://fstoppers.com/lighting/deconstructing-cinematography-scenes-blade-runner-205209">Analysis of Blade Runner</a>.</li>
+<li><a href="https://fstoppers.com/lighting/deconstructing-cinematography-scenes-blade-runner-205209">银翼杀手 分析</a>。</li>
+<li><a href="https://www.kodak.com/BE/fr/motion/blog/blog_post/?contentid=4295013233">Kodak blog on The Lighthouse</a>.</li>
+<li><a href="https://www.kodak.com/BE/fr/motion/blog/blog_post/?contentid=4295013233">柯达关于灯塔的博客</a>。</li>
+<li><a href="https://cinegleaner.postach.io/post/revolutionary-road">Cinematography Study</a>.</li>
+<li><a href="https://cinegleaner.postach.io/post/revolutionary-road">电影摄影研究</a>。</li>
+<li><a href="https://cinegleaner.postach.io/">Film lighting techniques</a>.</li>
+<li><a href="https://cinegleaner.postach.io/">电影灯光技巧</a>。</li>
+<li><a href="https://filmmakeriq.com/lessons/lighting-film-noir/">Interesting study of Sicario Cinematography</a>.</li>
+<li><a href="https://filmmakeriq.com/lessons/lighting-film-noir/">对 Sicario 电影摄影的有趣研究</a>。</li>
+<li><a href="https://trianarts.com/guillermo-munoz-vera-el-realismo-mas-cercano-al-hiperrealismo/#sthash.nvclOsG1.dpbs">trianarts</a> about hyper realism.</li>
+<li><a href="https://trianarts.com/guillermo-munoz-vera-el-realismo-mas-cercano-al-hiperrealismo/#sthash.nvclOsG1.dpbs">关于超现实主义的trianarts</a>。</li>
+<li><a href="http://methodonline.com/?eclecticon_project=lighting-101">Yan Ostretsov Lighting 101</a>.</li>
+<li><a href="http://methodonline.com/?eclecticon_project=lighting-101">Yan Ostretsov 照明 101</a>。</li>
+<li><a href="http://www.livres-cinema.info/livre/1035/lecons-de-mise-en-scene">Eisenstein et la mise en scene</a> (this book is only available in French I think).</li>
+<li><a href="http://www.livres-cinema.info/livre/1035/lecons-de-mise-en-scene">Eisenstein et la mise en scene</a>（我认为这本书只有法语版本）。</li>
+<li><a href="https://thefilmstage.com/christopher-doyle-on-moving-on-from-wong-kar-wai-constant-reinvention-and-the-strange-journey-of-life/">Christopher Doyle’s interview</a> by the Film Stage.</li>
+<li>杜可风接受电影舞台<a href="https://thefilmstage.com/christopher-doyle-on-moving-on-from-wong-kar-wai-constant-reinvention-and-the-strange-journey-of-life/">的采访。</a></li>
+<li>And our friends from the <a href="https://lollypopman.com/lighting-club/">Lighting Club</a>.</li>
+<li>还有我们来自<a href="https://lollypopman.com/lighting-club/">灯光俱乐部</a>的朋友们。</li>
+</ul>
+<h3 id="视频和播客-videos-and-podcasts">视频和播客 Videos and Podcasts</h3>
+<ul>
+<li><a href="http://collider.com/best-shot-films-of-all-time-cinematography/">Lighting is savage</a>.</li>
+<li><a href="http://collider.com/best-shot-films-of-all-time-cinematography/">灯光很野蛮</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=iYTjebUHX9o">Secrets from a lighting artist</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=iYTjebUHX9o">灯光艺术家的秘密</a>。</li>
+<li>The <a href="https://www.youtube.com/channel/UCTHQHKntvmERgGeePf-NmtA/videos">LightDark Academy</a>.</li>
+<li><a href="https://www.youtube.com/channel/UCTHQHKntvmERgGeePf-NmtA/videos">光明黑暗</a>学院。</li>
+<li>A very interesting <a href="https://www.youtube.com/channel/UC7gBcKzHKc0oOR5-XiWdlFQ">cinematography youTube channel</a> and one about <a href="https://www.youtube.com/channel/UC-Ya9gBlwOhRwtloTn1hvbA">the film industry</a>.</li>
+<li>一个非常有趣的<a href="https://www.youtube.com/channel/UC7gBcKzHKc0oOR5-XiWdlFQ">电影摄影 YouTube 频道</a>和一个关于<a href="https://www.youtube.com/channel/UC-Ya9gBlwOhRwtloTn1hvbA">电影行业的</a>频道。</li>
+<li><a href="https://www.youtube.com/channel/UC-Ya9gBlwOhRwtloTn1hvbA">CookeOpticsTV</a> about the work of <a href="https://www.youtube.com/watch?v=ZVmmTEmrt-E">Vittorio Storaro</a>.</li>
+<li><a href="https://www.youtube.com/channel/UC-Ya9gBlwOhRwtloTn1hvbA">CookeOpticsTV介绍了</a>​<a href="https://www.youtube.com/watch?v=ZVmmTEmrt-E">Vittorio Storaro</a>的作品。</li>
+<li><a href="https://www.youtube.com/channel/UCGZ0LgTmAJn9Banetdr_ZFg">Indy Mogul</a> is an interesting channel on YouTube.</li>
+<li><a href="https://www.youtube.com/channel/UCGZ0LgTmAJn9Banetdr_ZFg">Indy Mogul</a>是 YouTube 上一个有趣的频道。</li>
+<li><a href="https://www.youtube.com/watch?v=K9vlrl_aVsE">Hugo’s Book Club</a> about lighting books for VFX artists.</li>
+<li><a href="https://www.youtube.com/watch?v=K9vlrl_aVsE">Hugo 读书俱乐部</a>提供有关视觉特效艺术家灯光方面的书籍。</li>
+<li><a href="https://www.youtube.com/channel/UCkT176vXYpP58e2BVNOPfrg">Go Creative Show podcast</a>. Really nice !</li>
+<li><a href="https://www.youtube.com/channel/UCkT176vXYpP58e2BVNOPfrg">Go Creative Show 播客</a>。非常棒！</li>
+<li>A couple of Pixar videos: <a href="https://www.youtube.com/watch?v=JR6cmASjuuI">Sharon Calahan</a>, <a href="https://www.youtube.com/watch?v=vp-xV8FEmYA&amp;fbclid=IwAR0opAOd7jzdKk9C6KKfLp0c2knGSlRRM-nZ3LuJoeq10a3BC0JoVP2ejUc">Onward analysis</a>.</li>
+<li>一些皮克斯的视频：<a href="https://www.youtube.com/watch?v=JR6cmASjuuI">Sharon Calahan</a>，<a href="https://www.youtube.com/watch?v=vp-xV8FEmYA&amp;fbclid=IwAR0opAOd7jzdKk9C6KKfLp0c2knGSlRRM-nZ3LuJoeq10a3BC0JoVP2ejUc">Onward 分析</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=AcZ2OY5-TeM&amp;feature=youtu.be">The Real Fake Cameras of Tory Story 4</a> and <a href="https://www.youtube.com/watch?v=nvSUbzbmfc4">Imperfect lens of Wall-E</a> (also available on <a href="https://www.dailymotion.com/video/x2n8i7t">Dailymotion</a>).</li>
+<li><a href="https://www.youtube.com/watch?v=AcZ2OY5-TeM&amp;feature=youtu.be">《Tory Story 4》中的真实假相机</a>和<a href="https://www.youtube.com/watch?v=nvSUbzbmfc4">《Wall-E》的不完美镜头</a>（也可在<a href="https://www.dailymotion.com/video/x2n8i7t">Dailymotion</a>上找到）。</li>
+<li><a href="https://soundcloud.com/soundstageaccess/ep-28-patrick-lin-cinematographer-toy-story-4-inside-out-ratatouille">Sound Stage Access with Patrick Lin from Pixar.</a></li>
+<li><a href="https://soundcloud.com/soundstageaccess/ep-28-patrick-lin-cinematographer-toy-story-4-inside-out-ratatouille">与皮克斯的 Patrick Lin 一起进入音场。</a></li>
+<li><a href="https://www.twitch.tv/videos/587732691">M3Conference with Erik Smitt, DP at Pixar.</a></li>
+<li><a href="https://www.twitch.tv/videos/587732691">M3Conference 与 Pixar 摄影指导 Erik Smitt 合作。</a></li>
+<li><a href="https://www.hurlbutacademy.com/illumination-experience-workshop/">Hurlbut Academy</a> and its playlist <a href="https://www.youtube.com/channel/UCjHg96xQd03z-xXgMBRwYzw">The Look Of</a>.</li>
+<li><a href="https://www.hurlbutacademy.com/illumination-experience-workshop/">Hurlbut Academy</a>及其播放列表<a href="https://www.youtube.com/channel/UCjHg96xQd03z-xXgMBRwYzw">The Look Of</a>。</li>
+<li><a href="https://filmmakeriq.com/lessons/lighting-film-noir/">Mitch Martinez 4k embers stock footage</a>.</li>
+<li><a href="https://filmmakeriq.com/lessons/lighting-film-noir/">米奇·马丁内斯 4k 余烬素材片段</a>。</li>
+<li><a href="https://www.youtube.com/playlist?list=PLTgW_tmZy--VY0BX4Myv--P-SrULZ-NKd">Rencontres Confinées 2020</a>.</li>
+<li><a href="https://www.youtube.com/playlist?list=PLTgW_tmZy--VY0BX4Myv--P-SrULZ-NKd">2020 年限定见面会</a>。</li>
+<li>Interesting video about <a href="http://nofilmschool.com/2017/07/watch-stanley-kubrick-and-case-practical-lighting">Kubrick and Practical Lighting</a>.</li>
+<li><a href="http://nofilmschool.com/2017/07/watch-stanley-kubrick-and-case-practical-lighting">有关库布里克和实用照明</a>的有趣视频。</li>
+<li><a href="https://www.youtube.com/watch?v=12SSiXdBHMo">Documentary about cinematography</a> (Matthias Menz shared this link with me).</li>
+<li><a href="https://www.youtube.com/watch?v=12SSiXdBHMo">关于电影摄影的纪录片</a>（Matthias Menz 与我分享了此链接）。</li>
+<li><a href="https://www.youtube.com/watch?v=om6uEktFodA">Design Cinema about Cinematic Lighting Video</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=om6uEktFodA">关于电影灯光视频的影院设计</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=MhOMCtHHN3o">Light &amp; Shadow Documentary</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=MhOMCtHHN3o">光影纪录片</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=1cxyEX6ATqM">Visions of light documentary</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=1cxyEX6ATqM">光之幻象纪录片</a>。</li>
+<li><a href="https://www.youtube.com/watch?v=W7yGeSbgZis">Lighting for Storytelling</a> by Richard Yot.</li>
+<li><a href="https://www.youtube.com/watch?v=W7yGeSbgZis">由理查德·约特 (Richard Yot) 设计的用于讲故事的灯光</a>。</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a></li>
+<li><a href="#%E8%BF%9E%E7%BB%AD%E6%80%A7-continuity">连续性 Continuity</a>
+<ul>
+<li><a href="#cg-%E7%A4%BA%E4%BE%8B-cg-examples">CG 示例 CG examples</a>
+<ul>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0-lego-batman">乐高蝙蝠侠 Lego Batman</a></li>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E7%9A%84%E6%95%85%E4%BA%8B%E8%AE%B2%E8%BF%B0-storytelling-on-lego-batman">乐高蝙蝠侠的故事讲述 Storytelling on Lego Batman</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9E%E6%99%AF%E7%A4%BA%E4%BE%8B-live-action-examples">实景示例 Live-action examples</a>
+<ul>
+<li><a href="#%E9%9B%A8%E6%9E%9C-hugo">雨果 Hugo</a></li>
+<li><a href="#%E6%9E%81%E9%80%9F%E8%B5%9B%E8%BD%A6%E6%89%8B-speed-racer">极速赛车手 Speed Racer</a></li>
+<li><a href="#%E7%8B%AE%E5%AD%90%E7%8E%8B-the-lion-king">狮子王 The Lion King</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E4%BD%A0%E7%9A%84%E9%BE%99-how-to-train-your-dragon">如何训练你的龙 How to train your dragon</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%BC%95%E5%AF%BC%E8%A7%82%E4%BC%97%E7%9A%84%E8%A7%86%E7%BA%BF-directing-the-viewers-eye">引导观众的视线 Directing the viewer’s eye</a>
+<ul>
+<li><a href="#%E5%AF%B9%E6%AF%94-contrast">对比 Contrast</a>
+<ul>
+<li><a href="#%E6%B1%89%E5%B0%BC%E6%8B%94-hannibal">汉尼拔 Hannibal</a></li>
+<li><a href="#%E5%B7%A7%E5%85%8B%E5%8A%9B-chocolat">巧克力 Chocolat</a></li>
+</ul>
+</li>
+<li><a href="#%E8%B4%9F%E7%A9%BA%E9%97%B4-negative-space">负空间 Negative space</a>
+<ul>
+<li><a href="#%E5%BF%8D%E8%80%85%E7%A5%9E%E9%BE%9F-ninjago">忍者神龟 Ninjago</a></li>
+<li><a href="#%E4%B8%83%E5%AE%97%E7%BD%AA-se7en">七宗罪 Se7en</a></li>
+<li><a href="#%E5%BD%B0-akira">彰 Akira</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%A4%E4%B8%AA%E8%A7%92%E8%89%B2%E4%B9%8B%E9%97%B4%E7%9A%84%E6%98%8E%E4%BA%AE%E7%89%A9%E4%BD%93-bright-object-between-two-characters">两个角色之间的明亮物体 Bright object between two characters</a>
+<ul>
+<li><a href="#%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E9%87%8D%E8%A3%85%E4%B8%8A%E9%98%B5-matrix-reloaded">黑客帝国重装上阵 Matrix Reloaded</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E5%AB%8C%E7%96%91%E4%BA%BA-usual-suspects">常见嫌疑人 Usual Suspects</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BD%AE%E5%BB%93-silhouette">轮廓 Silhouette</a>
+<ul>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E5%89%AA%E5%BD%B1-lego-batman-silhouette">乐高蝙蝠侠剪影 Lego Batman Silhouette</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E4%BA%BA%E5%89%AA%E5%BD%B1-third-man-silhouette">第三人剪影 Third man Silhouette</a></li>
+<li><a href="#%E6%AF%81%E7%81%AD%E4%B9%8B%E8%B7%AF%E5%89%AA%E5%BD%B1-road-to-perdition-silhouette">毁灭之路剪影 Road to perdition Silhouette</a></li>
+<li><a href="#%E5%AE%A2%E4%B8%B2%E7%85%A7%E6%98%8E-cameo-lighting">客串照明 Cameo Lighting</a></li>
+</ul>
+</li>
+<li><a href="#%E6%99%95%E5%BD%B1-vignetting">晕影 Vignetting</a>
+<ul>
+<li><a href="#%E5%B7%B4%E9%87%8C%E6%9E%97%E7%99%BB-barry-lindon">巴里·林登 Barry Lindon</a></li>
+<li><a href="#%E5%A6%82%E4%B8%8B-it-follows">如下 It follows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%A1%A5%E5%85%85%E6%9E%84%E5%9B%BE-complementing-composition">补充构图 Complementing Composition</a>
+<ul>
+<li><a href="#%E5%8F%8D%E5%8F%98%E9%9D%A9-counterchange">反变革 Counterchange</a>
+<ul>
+<li><a href="#%E9%97%B4%E8%B0%8D%E4%B9%8B%E6%A1%A5-bridge-of-spies">间谍之桥 Bridge of spies</a></li>
+<li><a href="#%E9%9D%A9%E5%91%BD%E4%B9%8B%E8%B7%AF-revolutionary-road">革命之路 Revolutionary road</a></li>
+<li><a href="#%E5%8F%A4%E5%85%B8%E7%BB%98%E7%94%BB-classical-paintings">古典绘画 Classical paintings</a></li>
+<li><a href="#%E5%AE%A0%E7%89%A9%E7%9A%84%E7%A7%98%E5%AF%86%E7%94%9F%E6%B4%BB-the-secret-life-of-pets">宠物的秘密生活 The secret life of pets</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B9%B3%E8%A1%A1-balance">平衡 Balance</a>
+<ul>
+<li><a href="#%E6%98%8E%E6%98%9F-the-star">明星 The Star</a></li>
+<li><a href="#%E7%94%B5%E5%AD%90%E4%B8%96%E7%95%8C%E4%BA%89%E9%9C%B8%E6%88%98-tron-legacy">《电子世界争霸战》 Tron Legacy</a></li>
+<li><a href="#%E8%A1%8C%E6%98%9F-51-planet-51">行星 51 Planet 51</a></li>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0-lego-batman-2">乐高蝙蝠侠 Lego Batman</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+<li><a href="#%E6%9D%A5%E6%BA%90-sources">来源 Sources</a>
+<ul>
+<li><a href="#%E6%96%87%E7%AB%A0%E5%92%8C%E5%8D%9A%E5%AE%A2-articles-and-blogs">文章和博客 Articles and Blogs</a></li>
+<li><a href="#%E8%A7%86%E9%A2%91%E5%92%8C%E6%92%AD%E5%AE%A2-videos-and-podcasts">视频和播客 Videos and Podcasts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-Master-Lighting/">
+              <h3 class="post-title">
+                CG Cinematography 第 5 章：大师级灯光
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

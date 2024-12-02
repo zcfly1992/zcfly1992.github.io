@@ -1,0 +1,1002 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> CG Cinematography 第 9 章：合成 | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=" CG Cinematography 第 9 章：合成 | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Chapter 9: Compositing - Chris Brejon - Chris Brejon
+https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/
+C..." />
+    <meta name="keywords" content="composite,CG Cinematography" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               CG Cinematography 第 9 章：合成
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-24
+              </span>
+              <span>
+                67 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/K5o7esmZbX/" class="post-tag">
+                  # composite
+                </a>
+              
+                <a href="https://zcfly1992.github.io/UC8oB5Mlnn/" class="post-tag">
+                  # CG Cinematography
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0080_minions_night_comp_FHD-20241105171750-s6d7lej.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>Chapter 9: Compositing - Chris Brejon - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/">https://chrisbrejon.com/cg-cinematography/chapter-9-compositing/</a></li>
+<li>CG Cinematography Compositing describes the sometimes painful yet necessary cohabitation between lighting and compositing. Walking on eggshells here.</li>
+</ul>
+<hr>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p>As a lighting artist, I know this is a controversial and sensitive subject. Compositing in a feature CG animation film is quite different to what’s usually called compositing in VFX or just straight up live action.</p>
+<p>作为一名灯光艺术家，我知道这是一个有争议且敏感的话题。CG动画电影中的合成与通常所说的VFX合成或直接的实景拍摄有很大不同。</p>
+<p>In VFX, it is compulsory since you have to use a film plate to light and comp the shots. But what about animated features ? What would be a proper use of the compositing tool ?</p>
+<p>在 VFX 中，这是必需的，因为您必须使用胶片板来照明和合成镜头。但是动画片呢？合成工具的正确用法是什么？</p>
+<blockquote>
+<p>Please keep in mind that I am a lighting artist. I do open Nuke daily and understand how the software works. <strong>But this does not make me a compositing artist per se.</strong> <span data-type="text" style="color: var(--b3-font-color12);"> </span>And remember that I only talk about PBR cartoon movies for Hollywood.</p>
+<p>请记住，我是一名灯光艺术家。我每天都会打开 Nuke，了解该软件的工作原理。<strong>但这并不能使我成为一名合成艺术家。</strong> 请记住，我只谈论好莱坞的 PBR 卡通电影。</p>
+</blockquote>
+<h2 id="为什么要做合成-why-doing-compositing">为什么要做合成？ Why doing compositing ?</h2>
+<p>I am not trying to start a controversy here. But one may ask this question : since there has been a huge improvement of rendering techniques with PBR and path tracing, why would you want to tweak your renders in a compositing software ? How do we define compositing in the context of a full CG animation film ?  I personally see two reasons. The natural division line would be :</p>
+<p>我并不是想在这里挑起争论。但有人可能会问：既然 PBR 和路径追踪的渲染技术已经有了巨大的改进，为什么还要在合成软件中调整渲染？在完整的 CG 动画电影中，我们如何定义合成？我个人认为有两个原因。自然的分界线是：</p>
+<ol>
+<li>
+<p><strong>Everything that is not achievable by the render engine.</strong></p>
+<p><strong>渲染引擎无法实现的一切。</strong></p>
+</li>
+<li>
+<p><strong>All the things we do not have time nor money to do.</strong></p>
+<p><strong>所有我们没有时间或金钱去做的事情。</strong></p>
+</li>
+</ol>
+<p>It is all about the desired flexibility later down the pipe. Rule of thumb is  <strong>the more you leave to compensate in comp, the cheaper the movie will tend to look.</strong>  Please note the use of the verb “​<em>compensate</em>​“. If your art direction is based and planned on compositing, like ​<em>Spiderverse</em>​, it may look perfectly fine.</p>
+<p>这完全取决于后期所需的灵活性。经验法则是，<strong>您在合成中留下的补偿越多，电影看起来就越便宜。</strong> 请注意动词“​<em>补偿</em>​”的用法。如果您的艺术指导基于合成并计划在合成上，例如​ <em>《蜘蛛侠：平行宇宙</em>​》 ，那么它可能看起来非常好。</p>
+<blockquote>
+<p>I have seen both cultures : some studios just love heavy compositing work to avoid any extra rendering and some VFX supervisors just want to nail it in 3d to avoid any compositing tweaks.</p>
+<p>我见识过这两种文化：一些工作室只是喜欢繁重的合成工作，以避免任何额外的渲染，而一些视觉特效主管只想在 3D 中完成它，以避免任何合成调整。</p>
+<p>There is probably some middle ground to find here.</p>
+<p>这里或许可以找到一些中间立场。</p>
+</blockquote>
+<h2 id="在-3d-中我们不能做的事情-what-we-cannot-do-in-3d">在 3D 中我们“不能”做的事情 What we “cannot” do in 3d</h2>
+<ol>
+<li>
+<p><strong>Artistic direction.</strong>  <em><a href="https://www.dailymotion.com/video/x2icqx7">Feast</a></em> and <em><a href="https://www.youtube.com/watch?v=ApXoWvfEYVU">Spider-man</a></em> had a massive use of <em>Nuke</em> to get their amazing look.</p>
+<p><strong>艺术指导。</strong> <a href="https://www.dailymotion.com/video/x2icqx7">Feast</a> 和*<a href="https://www.youtube.com/watch?v=ApXoWvfEYVU">Spider-man</a><em>大量使用</em>Nuke来获得令人惊叹*的外观。</p>
+</li>
+<li>
+<p><strong>Grading.</strong>  Exposure adjustments, gamma and saturation are generally done in a compositing software.</p>
+<p><strong>分级。</strong>  曝光调整、伽马和饱和度通常在合成软件中完成。</p>
+</li>
+<li>
+<p><strong>Masking.</strong>   Not an ideal solution because of stereo compositing but it can be a life saver too.</p>
+<p><strong>遮罩。</strong> 由于立体合成，这不是一个理想的解决方案，但它也可以挽救生命。</p>
+</li>
+<li>
+<p><strong>Projections.</strong>  2d projections on a card or a sphere can be really useful and accurate. A quick setup in <em>Nuke</em> can do miracles.</p>
+<p><strong>投影。</strong> 卡片或球体上的 2d 投影确实非常有用且准确。在<em>Nuke</em>中快速设置即可创造奇迹。</p>
+</li>
+<li>
+<p><strong>International versions.</strong>   We avoid rendering the shot for each country if some writing is present. We’d rather use a <em><a href="https://learn.foundry.com/nuke/content/reference_guide/transform_nodes/stmap.html">ST map</a></em> setup in compositing.</p>
+<p><strong>国际版本。</strong> 如果存在一些文字，我们会避免为每个国家/地区渲染镜头。我们宁愿在合成中使用*<a href="https://learn.foundry.com/nuke/content/reference_guide/transform_nodes/stmap.html">ST 地图</a>*设置。</p>
+</li>
+<li>
+<p><strong>Transitions.</strong>   Some stylized effects between shots can be asked and should be done in compositing.</p>
+<p><strong>过渡。</strong> 镜头之间可能需要一些风格化的效果，这些效果应该在合成时完成。</p>
+</li>
+<li>
+<p><strong>Continuity.</strong>   It is easy to lose track on a feature and any colorimetric discrepancies should be fixed in compositing. Or during the <em>Digital Intermediate</em> (​<em>DI</em>​).</p>
+<p><strong>连续性。</strong> 很容易丢失对某一特征的跟踪，任何色度差异都应在合成过程中修复。或者在​<em>数字中间片</em>​(<em>DI</em> ) 期间。</p>
+</li>
+</ol>
+<h2 id="在-3d-中我们不应该做的事情-what-we-should-not-do-in-3d">在 3D 中我们“不应该”做的事情 What we “SHOULD not” do in 3d</h2>
+<ol>
+<li>
+<p><strong>Animated lights.</strong>  Any source of light with animated exposure or color during the shot should be kept as an LPE. I can guarantee this : <strong>there</strong> <em><strong>will</strong></em>  <strong>be animation notes until final delivery.</strong>  It is a safety net. There’s no contest here.</p>
+<p><strong>动画灯光。</strong> 拍摄期间任何具有动画曝光或颜色的光源都应保留为 LPE。我可以保证：<em><strong>直到最终交付时都会</strong></em>​<strong>有动画说明。</strong> 这是一个安全网。这里没有竞争。</p>
+</li>
+<li>
+<p><strong>Delivery.</strong>  If you work in an <em>ACES</em> workflow, you may want to deliver in <em>ACES2065-1 (AP0)</em>  which is not recommended directly from the render engine.</p>
+<p><strong>交付。</strong> 如果您使用<em>ACES</em>工作流程，您可能希望使用<em>ACES2065-1 (AP0)</em> 进行交付，但不建议直接从渲染引擎进行交付。</p>
+</li>
+<li>
+<p><strong>Merging layers.</strong>  If you are rendering separated passes, like beauty, haze and volumetric, you’ll obviously need a compositing software to merge them back together. Even if <em>Katana</em> or <em>Guerilla</em> have this feature.</p>
+<p><strong>合并图层。</strong> 如果您要渲染分离的通道，如美感、雾度和体积，您显然需要一个合成软件将它们合并在一起。即使<em>Katana</em>或<em>Guerilla</em>有此功能。</p>
+</li>
+<li>
+<p><strong>Expensive processes.</strong>  In some render engines like ​<em>Arnold</em>​, depth-of-field (DOF) or denoising can be expensive and it may be cheaper to run them in comp, although it is debatable.</p>
+<p><strong>昂贵的过程。</strong> 在某些渲染引擎（如<em>Arnold）</em> 中，景深 (DOF) 或去噪可能非常昂贵，在 comp 中运行它们可能更便宜，尽管这有争议。</p>
+</li>
+<li>
+<p><strong>Lens effect.</strong>   Chromatic aberration, lens distortion, lens breathing, glow and flares are (<a href="https://dl.acm.org/citation.cfm?id=3338881">almost</a>) never rendered in 3d.</p>
+<p><strong>镜头效果。</strong> 色差、镜头失真、镜头呼吸、辉光和眩光<a href="https://dl.acm.org/citation.cfm?id=3338881">几乎</a>从不会在 3D 中呈现。</p>
+</li>
+</ol>
+<p><strong>All these choices really depend on budget, time and culture.</strong></p>
+<p><strong>所有这些选择实际上都取决于预算、时间和文化。</strong></p>
+<blockquote>
+<p>I would like to add that <strong>3d DOF can be a time and money saver.</strong>  If the DOF is set in layout, like on ​<em>Lego Batman</em>​, it can save tons of work for other departments. You don’t spend any time or energy in set dressing or animation when elements are out-of-focus.</p>
+<p>我想补充一点，<strong>3D DOF 可以节省时间和金钱。</strong> 如果 DOF 是在布局中设置的，就像<em>乐高蝙蝠侠</em> 一样，它可以为其他部门节省大量工作。当元素失焦时，您无需花费任何时间或精力进行布景或动画制作。</p>
+</blockquote>
+<h2 id="风格选择-stylistic-choices">风格选择 Stylistic choices</h2>
+<p>This is probably the best reason to use any kind of compositing in a full CG movie. Granted, with LUTs, modern render engines can do pretty much anything.</p>
+<p>这可能是在完整的 CG 电影中使用任何类型合成的最佳理由。当然，有了 LUT，现代渲染引擎几乎可以做任何事情。</p>
+<p>In modern digital times, many people think of the compositing phase as what the developing of an image used to be, back in the film days where you used chemicals to reveal the image on tape.</p>
+<p>在现代数字时代，许多人认为合成阶段就像过去的图像显影一样，就像胶片时代使用化学品在磁带上显示图像一样。</p>
+<h3 id="胶片冲洗-film-developing">胶片冲洗 Film developing</h3>
+<p>The beauty of this process was the fact that the technique of film development was so refined, you could have your own recipe to make the final image stylized and expressive in your own personal way.</p>
+<p>这一过程的美妙之处在于，胶片冲洗技术非常精湛，你可以拥有自己的秘诀，让最终的图像以你自己的方式风格化、富有表现力。</p>
+<p>For example in <em><a href="https://ascmag.com/articles/flashback-seven-1995">Seven</a></em> (Director : ​<strong>David Fincher</strong>​, DP : ​<strong>Darius Khondji</strong>​), they used different metals (silver being one of them) in the mix to make the black tones of the image extra deep and gritty. This process is known as <a href="https://en.wikipedia.org/wiki/Bleach_bypass">Bleach bypass</a>.</p>
+<p>例如在*<a href="https://ascmag.com/articles/flashback-seven-1995">《七宗罪》</a>* （导演：​<strong>大卫·芬奇</strong>​，摄影指导：​<strong>达利斯·康吉</strong>​）中，他们混合使用了不同的金属（银是其中之一），使图像的黑色调格外深沉和粗糙。这个过程被称为<a href="https://en.wikipedia.org/wiki/Bleach_bypass">漂白效果</a>。</p>
+<p>Now if we want to trace parallels between traditional film making and computer graphics, we have on one hand the shooting, which would be the rendering and on the other hand, the development, which would be the compositing. There is an art form in both, slightly different but pretty much the same in their fundamentals.</p>
+<p>现在，如果我们要追溯传统电影制作和计算机图形学之间的相似之处，一方面是拍摄，也就是渲染，另一方面是开发，也就是合成。两者都是一种艺术形式，虽然略有不同，但其基本原理基本相同。</p>
+<h3 id="沉重的外表-heavy-looks">沉重的外表 Heavy looks</h3>
+<p>Now, while adjusting color and contrast is quite common for a compositing task, it’s rather on the subtle spectrum of image stylizing. Although there are some more extreme effects which can only be achieved in comp.</p>
+<p>现在，虽然调整颜色和对比度对于合成任务来说相当常见，但它更像是一种微妙的图像风格化。尽管有些更极端的效果只能在合成中实现。</p>
+<p>For example, <em><a href="https://youtu.be/8DGY1Ku8x0U">300</a></em> (Director : ​<strong>Zack Snyder</strong>​, Art director : ​<strong>Grant Freckelton</strong>​) or <em><a href="https://vimeo.com/36873453">Sin City</a></em> (Director and Cinematography : ​<strong>Robert Rodriguez</strong>​). And of course <em><a href="https://www.youtube.com/watch?v=ApXoWvfEYVU">Spider-Man : into the Spider-Verse</a></em> (Directors : Bob Persichetti, Peter Ramsey and Rodney Rothman).</p>
+<p>例如​*<a href="https://youtu.be/8DGY1Ku8x0U">《300勇士》</a>* ​（导演：​<strong>扎克·施奈德</strong>​，艺术总监：​<strong>格兰特·弗雷克尔顿</strong>​）或​*<a href="https://vimeo.com/36873453">《罪恶之城》</a>* ​（导演兼摄影师：​<strong>罗伯特·罗德里格兹</strong>​）。当然还有​*<a href="https://www.youtube.com/watch?v=ApXoWvfEYVU">《蜘蛛侠：平行宇宙》</a>* ​（导演：鲍勃·佩尔西切蒂、彼得·拉姆齐和罗德尼·罗斯曼）。</p>
+<p>I haven’t worked on any stylized movie like the ones listed above but for a PBR cartoon movie, <strong>my best results have always been when my render view was as close as possible to the final result.</strong></p>
+<p>我没有制作过任何像上面列出的风格化电影，但对于 PBR 卡通电影，<strong>我的最佳效果始终是我的渲染视图尽可能接近最终结果。</strong></p>
+<h3 id="原始照明-raw-lighting">原始照明？ Raw lighting ?</h3>
+<blockquote>
+<p>Many supervisors like when the lighting is less contrasted than the final result. It can help for sampling, render times and add some flexibility later in compositing. <strong>It is a production choice and it depends on your look.</strong>   Compositing has this great advantage of being flexible and 3D rendering can be expensive. So rather than being dogmatic, we should adapt to our production constraints, especially if the director is rather uncertain about the look.</p>
+<p>许多主管喜欢灯光对比度低于最终结果。这可以帮助采样、渲染时间，并在后期合成时增加一些灵活性。<strong>这是一个制作选择，取决于您的外观。</strong> 合成具有灵活性的一大优势，而 3D 渲染可能很昂贵。因此，我们不应该教条主义，而应该适应我们的制作限制，特别是当导演对外观相当不确定时。</p>
+</blockquote>
+<p>As a lighting artist I do not want to guess what the final result will be. <strong>What I see in my Render View is what I get.</strong>  This allows me to push my lighting as best as I can. Only rule : make sure to have enough range in your render.</p>
+<p>作为一名灯光艺术家，我不想猜测最终结果会是什么。<strong>我在渲染视图中看到的就是我得到的。</strong> 这使我能够尽可能地推动我的照明。唯一的规则：确保渲染中有足够的范围。</p>
+<blockquote>
+<p>I clearly remember Pascal or Craig doing the Quality Check (QC) of our renders. They would increase and decrease by five stops or even play with the gamma to check the range. That is the most important thing : to have enough range !</p>
+<p>我清楚地记得 Pascal 或 Craig 对我们的渲染进行质量检查 (QC)。他们会增加或减少五档，甚至使用伽马来检查范围。这是最重要的事情：要有足够的范围！</p>
+</blockquote>
+<p>Many lighting artists make this comparison with photography : we shoot/render in raw/flat and we give the filmic look in post. That is not my personal belief. Nonetheless I do agree that each stage of a movie production should be an improvement of the previous one. And it is definitely the case for compositing.</p>
+<p>许多灯光艺术家将其与摄影进行比较：我们以原始/平面形式拍摄/渲染，并在后期制作中呈现电影效果。这不是我个人的看法。尽管如此，我确实同意电影制作的每个阶段都应该比前一个阶段有所改进。合成肯定也是如此。</p>
+<h2 id="生产实例-production-examples">生产实例 Production examples</h2>
+<h3 id="乐高蝙蝠侠的深度运用-depth-usage-on-lego-batman">乐高蝙蝠侠的深度运用 Depth usage on Lego Batman</h3>
+<p>Gotham City in flames just looks great in the following shots. Most of its visual design has been achieved in compositing. It would have been pretty much impossible to reach in 3d. Maybe with a volumetric box and some incandescence, but render times would have been crazy.</p>
+<p>火光冲天的哥谭市在以下镜头中看起 来棒极了。它的大部分视觉设计都是在合成中实现的。这在 3D 中几乎是不可能实现的。也许可以用体积盒和一些白炽灯来实现，但渲染时间会非常长。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0010_lego_batman_depth_HD-20241113162354-xo7j8gk.mp4" data-src="assets/090_compositing_0010_lego_batman_depth_HD-20241113162354-xo7j8gk.mp4"></video></p>
+<p>Gotham City just looks amazing.</p>
+<p>哥谭市看上去棒极了。</p>
+<h3 id="动画灯光-animated-lights">动画灯光 Animated lights</h3>
+<p>Here is a very interesting example of LPE animation. Grant wanted to play the silhouette at the end of the shot to accentuate the line of dialog “​<em>Batman works alone</em>​“. The lighting artist actually turned off the warm key light from the beginning of the shot to emphasize the silhouette. Very bold choice ! I have never seen anything quite like it !</p>
+<p>这是一个非常有趣的 LPE 动画示例。格兰特想在镜头结束时播放剪影，以强调“<em>蝙蝠侠独自工作</em>”这句对话。灯光师实际上从镜头一开始就关闭了暖色调的主光，以强调剪影。非常大胆的选择！我从未见过这样的事情！</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0020_lego_batman_lpe_HD-20241113162711-1cyppsh.mp4" data-src="assets/090_compositing_0020_lego_batman_lpe_HD-20241113162711-1cyppsh.mp4"></video></p>
+<p>Silhouette and complementary scheme.</p>
+<p>轮廓和互补方案。</p>
+<h3 id="playmobil-上的皮肤脱落-skin-despill-on-playmobil">Playmobil 上的皮肤脱落 Skin despill on Playmobil</h3>
+<p>Once again we are back to <a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#13-the-green-problem">the green color issue</a>. On ​<em>Playmobil</em>​, we had a sequence happening with plenty of grass which was bouncing a great amount of green color on the character’s faces. We thought the best decision was to fix the skin tones like in VFX.</p>
+<p>我们又回到了<a href="https://chrisbrejon.com/cg-cinematography/chapter-2-color-theory/#13-the-green-problem">绿色问题</a>。在<em>Playmobil</em>上，我们有一个场景，有很多草，在角色的脸上反射了大量的绿色。我们认为最好的决定是像在 VFX 中一样修复肤色。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0030_playmobil_despill_HD-20241115024826-7ychd26.mp4" data-src="assets/090_compositing_0030_playmobil_despill_HD-20241115024826-7ychd26.mp4"></video></p>
+<p>Use of compositing was minimalist on this movie.</p>
+<p>这部电影对合成技术的运用非常简单。</p>
+<p>This technique called <em><a href="https://www.youtube.com/watch?v=pO9Nn9fHGTg">Green Screen Despill</a></em> is very common in VFX because of green screens. In a live-action film, you not only have to remove the green screen from the plate but also have to take care of the green bleeding on the skin tones. We generally use a <em>Hue Correct</em> for this task.</p>
+<p><em><a href="https://www.youtube.com/watch?v=pO9Nn9fHGTg">这种称为“绿屏溢色”</a></em> 的技术在 VFX 中非常常见，因为绿屏的存在。在真人电影中，您不仅要从底片上取下绿屏，还要处理肤色上的绿色渗色。我们通常使用<em>色相校正</em>来完成这项任务。</p>
+<h3 id="乐高蝙蝠侠上的卡片投影-card-projection-on-lego-batman">乐高蝙蝠侠上的卡片投影 Card projection on Lego Batman</h3>
+<p>One of my last shots on ​<em>Lego Batman</em>​. We were in crunch time and had to deliver renders pretty fast. When I was lighting it, the <em>NO MORE CRIME</em> sequence was not ready yet.</p>
+<p><em>这是我为乐高蝙蝠侠</em> 拍摄的最后一张照片。我们正处于关键时刻，必须非常快地交付渲染图。当我为它打光时，<em>NO MORE CRIME</em>序列尚未准备好。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0040_lego_batman_card_HD-20241115024848-9ua677o.mp4" data-src="assets/090_compositing_0040_lego_batman_card_HD-20241115024848-9ua677o.mp4"></video></p>
+<p>Buildings in the far background were also placed in Nuke.</p>
+<p>远处背景中的建筑物也被放置在 Nuke 中。</p>
+<p>Best decision was to integrate it in compositing. I had to place the card carefully to match the screen geometry location for stereo. I used the point visualization in Nuke to get it accurately. Otherwise I would just have been guessing.</p>
+<p>最好的决定是将其集成到合成中。我必须小心地放置卡以匹配立体的屏幕几何位置。我使用 Nuke 中的点可视化来准确获取它。否则我就只能猜测了。</p>
+<h3 id="爱宠大机密中的-st-地图-st-map-on-the-secret-life-of-pets">《爱宠大机密》中的 ST 地图 ST map on The secret life of pets</h3>
+<p>Mapping screens is a very common example in 3d and most of the time image sequences are a pain to render in 3d. You generally have to :</p>
+<p>映射屏幕是 3D 中非常常见的例子，大多数时候图像序列在 3D 中渲染起来很麻烦。您通常必须：</p>
+<ul>
+<li>
+<p>Find the correct formula to make it work :  “_%d”, “_$03f”, “_####”… You never really know.</p>
+<p>找到正确的公式使其发挥作用：“<em>%d”、“</em>$03f”、“_####”……你永远不知道。</p>
+</li>
+<li>
+<p>Offset the sequence as it never starts at the right frame.</p>
+<p>偏移序列，因为它永远不会从正确的帧开始。</p>
+</li>
+<li>
+<p>Use the right color space : is it in linear ? Is the LUT baked in ?</p>
+<p>使用正确的色彩空间：是线性的吗？LUT 是否已嵌入？</p>
+</li>
+<li>
+<p>If the sequence gets updated, you have to render again. Painful.</p>
+<p>如果序列更新，则必须再次渲染。很痛苦。</p>
+</li>
+</ul>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/The Secret Life of Pets - Taking A Shortcut Scene  Fandango Family-20241115024937-iudipog.mp4" data-src="assets/The Secret Life of Pets - Taking A Shortcut Scene  Fandango Family-20241115024937-iudipog.mp4"></video></p>
+<p>A proper solution is to do all of this in <em>Nuke</em> with a <em><a href="http://help.thefoundry.co.uk/nuke/content/reference_guide/transform_nodes/stmap.html%EF%BB%BF">ST Map</a></em> and a UV pass, like this Times Square’s billboard shot from <em>The Secret Life of Pets</em> (Director : ​<strong>Chris Renaud</strong>​).</p>
+<p>一个合适的解决方案是使用*<a href="http://help.thefoundry.co.uk/nuke/content/reference_guide/transform_nodes/stmap.html%EF%BB%BF">ST Map</a><em>和 UV 通道在</em>Nuke*中完成所有这些操作，就像这张从​ <em>《宠物的秘密生活》</em> ​（导演：​<strong>Chris Renaud</strong>​）中拍摄的时代广场广告牌一样。</p>
+<h3 id="小黄人身上的热变形-heat-distortion-on-minions">小黄人身上的热变形 Heat distortion on Minions</h3>
+<p>Heat distortion is actually quite common. It happens at least on a couple of sequences per movie : it can be motivated by a desert, some lava or a motor engine.</p>
+<p>热变形其实很常见。每部电影至少会出现几个场景：沙漠、熔岩或发动机都可能引发热变形。</p>
+<p>We did the heat distortion in <em>Nuke</em> in this sequence of <em>Minions</em> (Director : ​<strong>Pierre Coffin</strong>​). It would be impossible to achieve this effect in lighting and really adds something to the sequence I think.</p>
+<p><em>在《小黄人</em>》 （导演：<strong>皮埃尔·科芬</strong>）的这个片段中，我们在<em>核弹</em>中实现了热变形。在灯光下不可能实现这种效果，我认为它确实为这个片段增添了一些东西。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Minions 2-10 Movie CLIP - One Evil Family 2015 HD-20241115025036-axlztyn.mp4" data-src="assets/Minions 2-10 Movie CLIP - One Evil Family 2015 HD-20241115025036-axlztyn.mp4"></video></p>
+<blockquote>
+<p>There are some great <a href="https://vimeo.com/87174187">tutorials</a> out there for you to check.</p>
+<p>这里有一些很棒的<a href="https://vimeo.com/87174187">教程</a>供您查看。</p>
+</blockquote>
+<h2 id="我们没有时间在-3d-中做什么-what-we-do-not-have-time-to-do-in-3d">我们没有时间在 3D 中做什么 What we do not have time to do in 3d</h2>
+<ol>
+<li>
+<p><strong>If you cannot re-render.</strong>  That is probably the main reason to do compositing. Rendering takes time and you may not be able to afford to render more than a couple of iterations.  <strong>Last minute notes during crunch time should be done in Nuke.</strong></p>
+<p><strong>如果您无法重新渲染。</strong> 这可能是进行合成的主要原因。渲染需要时间，您可能无法承受超过几次迭代的渲染。<strong>关键时刻的最后一分钟笔记应该在Nuke中完成。</strong></p>
+</li>
+<li>
+<p><strong>Quick tests</strong>​. Rendering can be very long, even interactively. A process I have seen since <em>Planet 51</em> (Director : ​<strong>Jorge Blanco</strong>​, Lighting : ​<strong>Barbara Meyers</strong>​) would be to render the lights separately and play with them in Nuke. Animation aesthetics are usually stylized, and as such, it requires quite some exploring until the right look is found. For quick turn around and several iterations of experimental features, the compositing software provides an invaluable tool.</p>
+<p><strong>快速测试</strong>​。渲染可能非常长，即使是交互式的。自​<em>Planet 51</em>​（导演：​<strong>Jorge Blanco</strong>​，灯光：​<strong>Barbara Meyers</strong>​）以来，我看到的一个过程是单独渲染灯光并在 Nuke 中处理它们。动画美学通常是风格化的，因此，需要进行相当多的探索才能找到合适的外观。对于快速周转和多次迭代实验功能，合成软件提供了一个非常宝贵的工具。</p>
+</li>
+<li>
+<p><strong>Uncertain directors.</strong>  Compositing gives flexibility with clients and directors who are indecisive and <strong>it may just save your production.</strong></p>
+<p><strong>不确定的导演。</strong> 合成可以为犹豫不决的客户和导演提供灵活性，甚至<strong>可能挽救您的作品。</strong></p>
+</li>
+<li>
+<p><strong>Production constraints.</strong>  I really want to emphasize this : comp can save your show since it is really fast to do corrections.</p>
+<p><strong>制作限制。</strong> 我真的想强调这一点：comp 可以拯救你的节目，因为它可以非常快地进行修正。</p>
+</li>
+</ol>
+<h2 id="生产实例-production-examples-2">生产实例 Production examples</h2>
+<h3 id="乐高蝙蝠侠上的核弹投影-nuke-projection-on-lego-batman">乐高蝙蝠侠上的核弹投影 Nuke projection on Lego Batman</h3>
+<p>I had to tackle a couple of last minute notes in compositing in the next shot :</p>
+<p>在下一个镜头的合成中，我必须处理几个最后一刻的注意事项：</p>
+<ul>
+<li>Smoke at the beginning of the shot was shifted towards blue in <em>Nuke</em> for continuity purposes.</li>
+<li>为了保持连续性，在<em>Nuke</em>中，镜头开始时的烟雾被移至蓝色。</li>
+<li>At the end of the shot, the sun and its reflection in the water were also added in compositing.</li>
+<li>在镜头的最后，太阳和它在水中的倒影也被添加到合成中。</li>
+</ul>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0050_lego_batman_sun_HD-20241115025104-psaadk8.mp4" data-src="assets/090_compositing_0050_lego_batman_sun_HD-20241115025104-psaadk8.mp4"></video></p>
+<p>Two render layers in this shot : beauty and volumetric.</p>
+<p>这张照片中有两个渲染层：美观和体积。</p>
+<p>It would have been difficult and time consuming to achieve these effects in 3d and ​<strong>the shot was already rendered in stereo anyway</strong>​. Sometimes the shorter path is the right one. Just deliver !</p>
+<p>在 3D 中实现这些效果会很困难且耗时，而且​<strong>镜头本来就已经以立体方式渲染了</strong>​。有时较短的路径是正确的。只需交付！</p>
+<h3 id="小黄人电影的夜班-night-shift-on-the-minions-movie">小黄人电影的夜班 Night shift on the Minions movie</h3>
+<p>I have picked our next example from the <em>Minions movie</em> (Director : ​<strong>Pierre Coffin</strong>​, Lighting : ​<strong>Nicolas Brack</strong>​). We lit the following night sequence quite realistically using warm street lights as our main source. <strong>Unfortunately, a “change” in art direction occurred and the whole sequence was already rendered.</strong>  A blue grade was applied to get closer to the original intention.</p>
+<p>​<em>我从电影《小黄人》</em> ​（导演：​<strong>皮埃尔·科芬</strong>​，灯光：​<strong>尼古拉斯·布拉克</strong>​）中选取了下一个例子。我们使用暖色路灯作为主要光源，非常逼真地照亮了以下夜间场景。<strong>不幸的是，艺术指导发生了“变化”，整个场景已经渲染完毕。</strong> 应用了蓝色等级以更接近原始意图。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0060_minions_night_comp_FHD-20241105171750-ovo055d.jpg" alt="" title="We lit this sequence using warm street lights as our main source. 我们使用温暖的路灯作为主要光源来照亮这个序列。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0070_minions_night_comp_FHD-20241105171750-4547d74.jpg" alt="" title="The whole sequence was shifted towards blue in comp. 整个序列在合成中向蓝色移动。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0080_minions_night_comp_FHD-20241105171750-s6d7lej.jpg" alt="" title="The color keys by Clément Griselain are indeed blue. Clément Griselain 的色键确实是蓝色的。" loading="lazy">​</p>
+<p>This was my last shot on Minions. It got modified once I was on holidays.</p>
+<p>这是我拍摄《小黄人》的最后一张照片。我休假的时候对它进行了修改。</p>
+<p>Based on my memories, I have tried to reverse back the shot to its original state with the street lights being warmer. For the record color keys from <a href="http://clementgriselain.blogspot.com/">Clément Griselain</a> were indeed blue.</p>
+<p>根据我的记忆，我尝试将镜头倒回到原来的状态，让路灯的颜色更暖。据记录， <a href="http://clementgriselain.blogspot.com/">Clément Griselain</a> 的色调确实是蓝色的。</p>
+<h2 id="核弹脚本-nuke-scripts">核弹脚本 Nuke scripts</h2>
+<p>Nuke scripts on a Full CG PBR movie do <strong>NOT</strong> have to be complicated. There is a strong belief that complicated setups are just better, like they have been done by geniuses or comp masters. And these scripts, for some reason, they just impress people. I personally think the contrary : <strong>I am much more impressed by simple setups.</strong>   So please, do <strong>NOT</strong> make your nuke script look like this :</p>
+<p>全 CG PBR 电影中的核脚本不必<strong>太</strong>复杂。人们坚信复杂的设置更好，就像天才或计算机大师完成的那样。而这些脚本，出于某种原因，它们给人留下了深刻的印象。我个人认为恰恰相反：<strong>简单的设置给我留下了更深刻的印象。</strong> 所以请<strong>不要</strong>让你的核脚本看起来像这样：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0090_nuke_mess_FHD-20241105171750-8wzeoc5.jpg" alt="" title="This example was found on internet but I have seen similar setups in production. 这个例子是在互联网上找到的，但我在生产中也看到过类似的设置。" loading="lazy">​</p>
+<p>Maybe the artist was in a rush and did not have time to clean his script. I am not here to judge.</p>
+<p>也许艺术家当时很匆忙，没有时间整理剧本。我无意评判。</p>
+<p>On many shows, I have opened nuke scripts that looked like spider webs. I really felt like it was a complete waste of time and I sometimes wondered if the artist knew what he was doing. Many times I had to clean the script myself and ended up turning off 90% of the nodes.  <strong>In my experience, it has ALWAYS looked better after the cleaning.</strong>  Some artists just add color correctors one after another without checking. Sometimes these nodes just cancel each other. It is crazy.</p>
+<p>在许多节目中，我打开的核脚本看起来像蜘蛛网一样。我真的觉得这完全是在浪费时间，有时我甚至怀疑艺术家是否知道自己在做什么。很多时候我不得不自己清理脚本，最后关掉了 90% 的节点。<strong>根据我的经验，清理后效果总是会更好。</strong> 有些艺术家只是接二连三地添加色彩校正器，而没有检查。有时这些节点会相互抵消。这太疯狂了。</p>
+<blockquote>
+<p><a href="http://www.alexfry.com/">Alex Fry</a>, compositing supervisor at Animal Logic, probably one of the best artist and technician I have ever met, once told me about compositing : “<strong>The more you cheat, the more it will feel cheated.”</strong></p>
+<p>Animal Logic 的合成主管 <a href="http://www.alexfry.com/">Alex Fry</a> 可能是我见过的最优秀的艺术家和技术人员之一，他曾经这样跟我谈论合成：“<strong>你作弊越多，你就越有被作弊的感觉。”</strong></p>
+<p>I completely agree with him.</p>
+<p>我完全同意他的观点。</p>
+</blockquote>
+<h2 id="综合最佳实践-compositing-good-practices">综合最佳实践 Compositing good practices</h2>
+<h3 id="线性合成-linear-compositing">线性合成 Linear Compositing</h3>
+<p>Just like rendering, compositing should be done in linear. <a href="https://cinematiccolor.org/">Cinematic Color</a> explains pretty well what best practices are.</p>
+<p>就像渲染一样，合成也应该以线性方式进行。<a href="https://cinematiccolor.org/">Cinematic Color</a> 很好地解释了最佳实践是什么。</p>
+<blockquote>
+<p>The benefits of scene-linear compositing are numerous; similar to the benefits found in rendering, shading and lighting. All operations which blend energy with spatially neighboring pixels (motion blur, defocus, image distortion, resizing, etc) have more physically plausible (aka realistic) results by default. Anti-aliasing works better, light mixing preserves the appearance of the original renders and most importantly, even simple compositing operations such as “over” produce more realistic results, particularly on semi-transparent elements (hair, volumetrics, fx elements, etc).</p>
+<p>场景线性合成的好处很多；类似于渲染、着色和照明中的好处。默认情况下，所有将能量与空间相邻像素混合的操作（运动模糊、散焦、图像失真、调整大小等）都会产生更符合物理原理（即更逼真）的结果。抗锯齿效果更好，光线混合保留了原始渲染的外观，最重要的是，即使是简单的合成操作（例如“over”）也能产生更逼真的结果，尤其是在半透明元素（头发、体积、fx 元素等）上。</p>
+</blockquote>
+<h3 id="评分和记录-grading-and-log">评分和记录 Grading and Log</h3>
+<p>I clearly remember that  <strong>it was forbidden to use the Nuke saturation node onLego Batman.</strong>  We had our own grading node and I was not sure why. After reading <a href="https://cinematiccolor.org/">Cinematic Color</a> and this brilliant post on the <a href="https://acescentral.com/t/why-grading-in-log-instead-of-linear/2228/6">acescentral</a> forum, I finally understood the reason :  <strong>some grading operations behave better with a logarithmic transfer function.</strong></p>
+<p>我清楚地记得，在 <strong>《乐高蝙蝠侠》中禁止使用 Nuke 饱和度节点。</strong> 我们有自己的分级节点，但我不知道为什么。在阅读了<a href="https://cinematiccolor.org/">Cinematic Color和</a>​<a href="https://acescentral.com/t/why-grading-in-log-instead-of-linear/2228/6">acescentral</a>论坛上的这篇精彩帖子后，我终于明白了原因：<strong>某些分级操作在使用对数传递函数时效果更好。</strong></p>
+<p>It is absolutely essential that good grading practices inherited from colorists make their way to animation studios. I cannot explain the reason any better than <strong><a href="https://www.imdb.com/name/nm4592373/">Daniele</a></strong> <strong><a href="https://twitter.com/sir_daniele?lang=en">Siragusano</a></strong>, so let’s just quote him :</p>
+<p>动画工作室绝对有必要借鉴调色师的良好调色实践。我无法比**<a href="https://www.imdb.com/name/nm4592373/">Daniele</a>** **<a href="https://twitter.com/sir_daniele?lang=en">Siragusano</a>**更好地解释原因，所以我们就引用他的话吧：</p>
+<blockquote>
+<p><strong>The ideal space for an operation depends on what you want to simulate.</strong>  If you are after modelling physical phenomena, then some sort of scene linear is probably the right domain. If you want to model perceptual phenomena, then typically a perceptual space  (like a <em>quasi-log</em> or ​<em>opponent space</em>​) is the right thing.</p>
+<p><strong>操作的理想空间取决于您想要模拟的内容。</strong> 如果您想要模拟物理现象，那么某种场景线性可能是正确的领域。如果您想要模拟感知现象，那么通常感知空间（如<em>准对数</em>或​<em>对手空间</em>​）是正确的选择。</p>
+</blockquote>
+<p>You may have noticed that <em><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/#resolve-and-aces">Resolve</a><em>​<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/#resolve-and-aces"> does it by default</a> (in ​</em>Project Settings -&gt;Color Management -&gt;Color science</em>​) but <em>Nuke</em> doesn’t. It is probably because most of the compositing operations such as merging layers, depth-of-field and lens effects should be done in “linear”.</p>
+<p>您可能已经注意到，<em><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/#resolve-and-aces">Resolve</a><em>​<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/#resolve-and-aces">默认会执行此操作</a>（在 <em>“项目设置”-&gt;“颜色管理”-&gt;“颜色科学”</em> 中），但</em>Nuke</em>不会。这可能是因为大多数合成操作（例如合并图层、景深和镜头效果）应该以“线性”方式完成。</p>
+<p>Here is an example of grading on <a href="https://opencolorio.org/downloads.html">a linear exr</a> from <em>Cloudy with a chance of meatballs</em> (Directors : <strong><a href="https://www.imdb.com/name/nm0520488/?ref_=ttfc_fc_dr1">Phil Lord</a></strong> and <strong><a href="https://www.imdb.com/name/nm0588087/?ref_=ttfc_fc_dr2">Christopher Miller</a></strong>) :</p>
+<p><em>以下是《天降美食》中可能出现肉丸</em>的<a href="https://opencolorio.org/downloads.html">线性 exr</a>分级示例（导演：<strong><a href="https://www.imdb.com/name/nm0520488/?ref_=ttfc_fc_dr1">Phil Lord</a><strong>和</strong><a href="https://www.imdb.com/name/nm0588087/?ref_=ttfc_fc_dr2">Christopher Miller</a></strong>）：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0100_sony_cloudy_original_FHD-20241105171750-mzydao8.jpg" alt="" title="Here is an original frame from Cloudy with a chance of meatballs. It is available on the OCIO website. 这是 Cloudy 的原创框架，可能会出现肉丸。可在 OCIO 网站上找到。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0110_sony_cloudy_saturation_lin_FHD-20241105171750-ooxlax6.jpg" alt="" title="I have used a color corrector in Nuke with a saturation at 3. I know this is quite extreme but I want to make this example obvious. 我在 Nuke 中使用了饱和度为 3 的色彩校正器。我知道这很极端，但我想让这个例子显而易见。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0120_sony_cloudy_saturation_log_FHD-20241105171750-p6av80c.jpg" alt="" title="Here is the same color corrector with a conversion from 'lnf' to 'lmf' before it. And the inverse conversion right after it. See how the colors hold much better ? 这是相同的颜色校正器，之前进行了从“lnf”到“lmf”的转换。之后进行了逆转换。看看颜色保持得如何好得多？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0130_cloudy_vector_scopes_FHD-20241105171750-cdpclhr.jpg" alt="" title="You can actually tell just by the vector scope. Without the logarithmic conversion, you can get some nasty negative values. 实际上，你只需通过矢量示波器就能知道。如果不进行对数转换，你可能会得到一些令人讨厌的负值。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0140_cloudy_graph_nodes_FHD-20241105171750-zrj99nh.jpg" alt="" title="I have used the node OCIOColorSpace. In this case it was from 'lnf' to 'lmf'. But it could have been from 'linear' to 'cineon'. 我使用了节点 OCIOColorSpace。在这种情况下，它是从“lnf”到“lmf”。但它可能是从“linear”到“cineon”。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0150_cloudy_graph_nodes_FHD-20241105171750-su0p7kh.jpg" alt="" title="A similar setup in the ACES ecosystem : from 'ACEScg' to 'ACEScc'. It could also be 'ACEScct'. ACES 生态系统中的类似设置：从“ACEScg”到“ACEScc”。它也可以是“ACEScct”。" loading="lazy">​</p>
+<p>Saturating with a logarithmic transfer function is quite common for colorists.</p>
+<p>对于调色师来说，使用对数传递函数进行饱和是很常见的。</p>
+<p>The main issue we are facing here is that Nuke is not a grading software, contrary to Resole or <a href="https://www.filmlight.ltd.uk/products/baselight/overview_bl.php">Baselight</a>. So we are doing stuff here that is a bit against its nature. Something worth mentioning is that the current trend is about <strong>color space aware tools,</strong>  like in Resolve 17.</p>
+<p>我们面临的主要问题是，与 Resole 或<a href="https://www.filmlight.ltd.uk/products/baselight/overview_bl.php">Baselight</a>相反，Nuke 不是调色软件。所以我们在这里做的事情有点违背它的本质。值得一提的是，目前的趋势是​<strong>色彩空间感知工具</strong>​，比如 Resolve 17。</p>
+<h3 id="哪个工作空间-which-working-space">哪个工作空间？ Which working space ?</h3>
+<p>The very notion of “​<em>working space</em>​” is <a href="https://community.acescentral.com/t/a-single-fixed-output-transform-vs-a-choose-your-own-approach/3440/3">slowly becoming obsolete</a>, which I find fascinating. I can only quote Daniele Siragusano with this very interesting comment :</p>
+<p>​ <em>“工作空间</em>​”这个概念本身<a href="https://community.acescentral.com/t/a-single-fixed-output-transform-vs-a-choose-your-own-approach/3440/3">正在逐渐过时</a>，我觉得这很有趣。我只能引用 Daniele Siragusano 的这句非常有趣的评论：</p>
+<blockquote>
+<p>The same is true for a unified working space. Why should we do all operations in ACEScct ? Maybe I want to do a CAT in LMS, a photoshop blend mode in another space and then a saturation operation in a CAM-ish space. <strong>In the mid-term future, the concept of aworking spacewill be obsolete.</strong></p>
+<p>统一工作空间也是如此。为什么我们要在 ACEScct 中执行所有操作？也许我想在 LMS 中执行 CAT，在另一个空间中执行 photoshop 混合模式，然后在 CAM-ish 空间中执行饱和操作。<strong>在中期未来，工作空间的概念将会过时。</strong></p>
+</blockquote>
+<p>So, we may certainly pick the radiometric domain to perform an exposure adjustment, another domain to perform a “​<em>sharpen</em>​” and some other one to add or remove saturation. As Daniele explained above, <strong>it really depends on what you want to achieve.</strong>  Baselight has eight different ways to modify saturation and I agree that saturating in ACEScct may not be ideal in some cases, especially with red tones.</p>
+<p>因此，我们当然可以选择辐射域来执行曝光调整，另一个域来执行“​<em>锐化</em>​”，另一个域来添加或删除饱和度。正如 Daniele 上面解释的那样，<strong>这实际上取决于您想要实现的目标。</strong> Baselight有八种不同的方法来修改饱和度，我同意 ACEScct 中的饱和度在某些情况下可能并不理想，尤其是红色调。</p>
+<p>As a friendly reminder, I would list these three advices :</p>
+<p>为了提醒大家，我列出以下三条建议：</p>
+<ul>
+<li>As always, <strong>best is to try for yourself</strong>  and see what suits best your needs.</li>
+<li>与往常一样，<strong>最好的方法是亲自尝试</strong>，看看什么最适合您的需求。</li>
+<li>You should not “force yourself” into a grading workflow because of what I wrote.</li>
+<li>您不应该因为我所写的内容而“强迫自己”进入评分工作流程。</li>
+<li>The important thing is to be comfortable with your own workflow and  <strong>understand the ins and outs.</strong></li>
+<li>重要的是，你要熟悉自己的工作流程，并<strong>了解其中的细节。</strong></li>
+</ul>
+<h3 id="nuke-中的光辉-glow-in-nuke">Nuke 中的光辉 Glow in Nuke</h3>
+<p>It was actually the same thing with the Nuke glow on ​<em>Lego Batman</em>​. Completely forbidden to use the native glow from Nuke. It just looks cheap and wrong.</p>
+<p><em>这实际上和乐高蝙蝠侠</em> 的核辐射是一样的。完全禁止使用核辐射的原生辐射。它看起来很廉价，而且不合适。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0100_sony_cloudy_original_FHD-20241105171750-mzydao8.jpg" alt="" title="Here is an original frame from Cloudy with a chance of meatballs. It is available on the OCIO website. 这是 Cloudy 的原创框架，可能会出现肉丸。可在 OCIO 网站上找到。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0160_cloudy_glow_nuke_FHD-20241105171750-821mskl.jpg" alt="" title="I have used the glow from Nuke on this frame. You can tweak it as much as you want, it will never look good. Reason is simple : it is not exponential. 我在这个框架上使用了 Nuke 的光晕。你可以随意调整它，但它永远不会看起来好看。原因很简单：它不是指数级的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0170_cloudy_lens_node_FHD-20241105171750-ceotjfd.jpg" alt="" title="Using a camera lens node with an exponential falloff in the glow is a much better choice. 使用光晕呈指数衰减的相机镜头节点是更好的选择。" loading="lazy">​</p>
+<p>Using Nuke’s native glow should be forbidden. Really.</p>
+<p>应该禁止使用 Nuke 的原生光辉。真的。</p>
+<blockquote>
+<p>If you develop a library for your lens effects, vignettes and grading nodes; and make them available through gizmos, you will achieve consistency.</p>
+<p>如果您为镜头效果、晕影和分级节点开发一个库；并通过小装置提供它们，您将实现一致性。</p>
+</blockquote>
+<h2 id="曝光控制-exposure-control">曝光控制 Exposure Control</h2>
+<p><strong>Exposure is not something to take slightly.</strong>   It has a huge impact on our renders for post-process operations such as anti-aliasing, denoise or glow. Here is a list of tricks to test your exposure range.</p>
+<p><strong>曝光不是可以小题大做的事情。</strong>   它对我们的渲染后期处理操作（如抗锯齿、去噪或发光）有很大影响。以下是测试曝光范围的技巧列表。</p>
+<h3 id="通过镜头效果控制曝光-exposure-control-by-lens-effect">通过镜头效果控制曝光 Exposure control by Lens effect</h3>
+<p><em><em>Use a “<strong>​</strong></em>Gotham Lens Node</em>**​ <strong>” on your render.</strong>  Have you read <a href="https://www.fxguide.com/featured/the-batman-movie-keeping-it-real/">this brilliant article</a> about the Gotham Procedural Lens Flares ? I had the chance to use this node designed by <strong><a href="http://www.alexfry.com/">Alex Fry</a></strong> on <em>Lego Batman</em> and it is the <strong>BEST</strong> one I have ever seen.</p>
+<p><em><em>在渲染中使用“<strong>​</strong></em>Gotham Lens Node</em>** ”。你读过<a href="https://www.fxguide.com/featured/the-batman-movie-keeping-it-real/">这篇关于 Gotham Procedural Lens Flares 的精彩文章</a>吗？我有机会在<em>Lego Batman</em>上使用**<a href="http://www.alexfry.com/">Alex Fry</a><strong>设计的这个节点，这是我见过的</strong>最好的节点。**</p>
+<p><a href="https://www.expandedcinematography.com/the-cinematography-of-the-lego-movie.html#lens">What is a lens node supposed to do ?</a>  Most of the things from a camera lens :</p>
+<p><a href="https://www.expandedcinematography.com/the-cinematography-of-the-lego-movie.html#lens">镜头节点的作用是什么？</a>  相机镜头的大部分功能如下：</p>
+<ul>
+<li>
+<p><a href="http://www.nukepedia.com/gizmos/filter/expoglow">Exponential Glow</a> <a href="http://www.nukepedia.com/gizmos/filter/expoglow">指数辉光</a></p>
+<p><a href="http://www.joeraasch.com/creating-lens-flares-in-nuke/">Lens Flare</a> <a href="http://www.joeraasch.com/creating-lens-flares-in-nuke/">镜头光晕</a></p>
+</li>
+<li>
+<p><a href="https://taukeke.com/2015/01/distort-cg-render-using-nuke-lens-distortion/">Lens Distortion</a> <a href="https://taukeke.com/2015/01/distort-cg-render-using-nuke-lens-distortion/">镜头失真</a></p>
+<p>Camera Vertical Blur 相机垂直模糊</p>
+</li>
+<li>
+<p><a href="https://satheeshnuketutorials.blogspot.ca/2012/08/chromatic-aberration.html">Chromatic Aberration</a> <a href="https://satheeshnuketutorials.blogspot.ca/2012/08/chromatic-aberration.html">色差</a></p>
+<p><a href="http://www.bjorkvisuals.com/tools/the-foundrys-nuke/gizmos">Light Wrap</a> <a href="http://www.bjorkvisuals.com/tools/the-foundrys-nuke/gizmos">轻包裹</a></p>
+</li>
+<li>
+<p><a href="https://wesheo.wordpress.com/vignette-tool-for-nuke/">Vignetting</a> <a href="https://wesheo.wordpress.com/vignette-tool-for-nuke/">晕影</a></p>
+<p><a href="https://www.slrlounge.com/diffraction-aperture-and-starburst-effects/">Starburst or Glint</a> <a href="https://www.slrlounge.com/diffraction-aperture-and-starburst-effects/">星爆或闪烁</a></p>
+</li>
+</ul>
+<p><strong>On Lego Batman, I never tweaked nor modified the node.</strong>  The Lens Node did not have any exposed parameter anyway : it was just a node you would put at the end of your Nuke tree and connect your shot’s camera to it.</p>
+<p><strong>在《乐高蝙蝠侠》中，我从未调整或修改过节点。</strong> 无论如何，镜头节点没有任何公开的参数：它只是一个放在 Nuke 树末端并将镜头的相机连接到它的节点。</p>
+<p><strong>If my shot did not have enough glow nor flare in the shot, it would mean that there was not enough energy in my lighting.</strong>  Basically we used the node as an Exposure and Energy check. I personally think this is genius.</p>
+<p><strong>如果我的镜头中没有足够的光晕或眩光，则意味着我的灯光能量不足。</strong>  基本上，我们使用节点作为曝光和能量检查。我个人认为这是天才之举。</p>
+<p><strong>Don’t arbitrarily tweak the glow, tweak your light’s exposure instead.</strong>   It does not make sense to tweak the intensity, color or saturation of a glow on every single shot of a movie. It is pretty much incorrect and very time consuming.</p>
+<p><strong>不要随意调整光晕，而是调整灯光的曝光度。</strong>   在电影的每个镜头中调整光晕的强度、颜色或饱和度是没有意义的。这几乎是错误的，而且非常耗时。</p>
+<p>Glow should never be applied through a mask. A glow and other camera lens effects are applied on the whole image like in real life : <strong>All parts of Gotham Lens operate linearly on all values in the image, without any keys or clips.</strong>  I think we used the Gotham Lens Effect without any tweaking on 90% of the shots of Lego Batman. We only tweaked the node for storytelling purpose.</p>
+<p>绝不应该通过遮罩应用光晕。光晕和其他相机镜头效果会像在现实生活中一样应用于整个图像：<strong>Gotham Lens 的所有部分都对图像中的所有值进行线性操作，没有任何键或剪辑。</strong> 我认为我们在 90% 的乐高蝙蝠侠镜头上使用了 Gotham Lens Effect，没有进行任何调整。我们只是为了讲故事而调整了节点。</p>
+<h4 id="乐高蝙蝠侠示例-lego-batman-example">乐高蝙蝠侠示例 Lego Batman example</h4>
+<p>It is a win-win for everybody : supervisors are happy because they have a proper way to check the render exposure and artists are happy because they do not fiddle around their glow. If you are short on time (and we always are !) lens nodes will guarantee a correct amount of glow on your shots in no time. I cannot resist the urge to share with you this video  from <a href="https://www.fxguide.com/featured/the-batman-movie-keeping-it-real/">fx guide</a> :</p>
+<p>这对每个人来说都是双赢的：主管很高兴，因为他们有合适的方法来检查渲染曝光度，艺术家也很高兴，因为他们不用再摆弄他们的光晕了。如果你时间紧迫（我们总是这样！）镜头节点将保证你的镜头在短时间内获得正确的光晕量。我忍不住想和你分享这个来自<a href="https://www.fxguide.com/featured/the-batman-movie-keeping-it-real/">fx guide</a>的视频：</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_350_lens_node_720p-20241115025148-bhky2m6.mp4" data-src="assets/090_compositing_350_lens_node_720p-20241115025148-bhky2m6.mp4"></video></p>
+<p>Warner Bros. Pictures and Warner Animation Group, in association with LEGO System A/S, a Lin Pictures / Lord Miller / Vertigo Entertainment production</p>
+<p>华纳兄弟影业和华纳动画集团与 LEGO System A/S 联合出品，由 Lin Pictures / Lord Miller / Vertigo Entertainment 出品</p>
+<p>I actually wrote to <strong>Alex</strong> to ask him a bit on the conception of this  node. I was eager to know if there was a scientific approach to the node. Can you calculate the amount of glow on a specific value of pixel or is it mostly a visual approach ? Here is his answer :</p>
+<p>我实际上写信给​<strong>Alex</strong>​，向他询问了这个节点的概念。我很想知道是否有科学的方法来实现这个节点。你能计算出特定像素值的发光量吗？还是主要是视觉方法？以下是他的回答：</p>
+<blockquote>
+<p><strong>Alex Fry</strong> : Just a  lot of tweaking. Through first few weeks of it being used in production I was in dailies, paying attention to any of the shot comments that had anything to do with the lens, and tweaking values till I found the middle ground that produced the least notes. There were no if/or conditions, or anything driven by thresholds, it was all completely linear.<br>
+After a while the balance was found, and it generally didn’t need to be touched by artists. (There were still some exceptions though).</p>
+<p><strong>Alex Fry</strong>​：只是进行了很多调整。在投入制作的最初几周里，我一直在关注与镜头有关的任何镜头评论，并调整值，直到找到产生最少注释的中间值。没有 if/or 条件，也没有任何由阈值驱动的东西，一切都是完全线性的。<br>
+过了一段时间，平衡就找到了，而且通常不需要艺术家来触及它。（不过还是有一些例外）。</p>
+</blockquote>
+<h4 id="曝光和夹紧示例-exposure-and-clamping-example">曝光和夹紧示例 Exposure and clamping example</h4>
+<p>Let’s take a simple example :</p>
+<p>让我们举一个简单的例子：</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0180_squares_no_effect_FHD-20241105171750-yc2atr9.jpg" alt="" title="Let's take these three constant in Nuke. They look pretty similar, right ? 让我们在 Nuke 中取这三个常量。它们看起来很相似，对吧？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0190_squares_lens_effect_FHD-20241105171750-2f8j8d5.jpg" alt="" title="Well they're not ! And without the Lens Effect, how could I have tell ? Where do these crazy colors come from ? 事实并非如此！如果没有镜头效果，我怎么能看出来呢？这些疯狂的颜色是从哪里来的？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0200_squares_expo_down_FHD-20241105171750-tk3xsnr.jpg" alt="" title="If we reduce the exposure by three stops, we can actually see what's going on. 如果我们将曝光度减少三档，我们就能真正看到发生了什么。" loading="lazy">​</p>
+<p>I generally use simple examples for clarity.</p>
+<p>为了清楚起见，我一般使用简单的例子。</p>
+<p>This is why clamping our renders can be issue. Because you will be losing the ratio between <strong>Red</strong>, <strong>Green</strong> and <strong>Blue</strong>. So instead of having a nice warm blooming effect, the clamping makes it desaturated.</p>
+<p>这就是为什么限制我们的渲染可能会有问题。因为您将失去<strong>红色</strong>、<strong>绿色</strong>和<strong>蓝色</strong>之间的比例。因此，限制会使它失去饱和度，而不是产生漂亮的暖色绽放效果。</p>
+<p>Last thing about the lens node, it is not available as it is property of  Animal Logic. But you can totally do your own. <strong>Alex</strong> gives us some clues in the article “​ <em>[…] using raw Nuke nodes, really just an exotic combination of Convolves, Blurs, Transforms and Vector warps</em>​.”</p>
+<p>关于镜头节点的最后一件事，由于它是 Animal Logic 的财产，因此不可用。但你完全可以自己做。Alex<strong>在</strong>文章“ ​ <em>[…] 使用原始 Nuke 节点，实际上只是卷积、模糊、变换和矢量扭曲的奇特组合</em>​”中给了我们一些线索。</p>
+<blockquote>
+<p>We had <a href="https://www.expandedcinematography.com/industrialised-cinematography.html#realistic">some issues</a> doing lens distortion in 3d on <em>Lego Batman</em> but it got fixed during production by the developers. And I recently read <a href="https://dl.acm.org/citation.cfm?id=3338881">this paper from Animal</a> about 3d lens flares on Lego 2 ! Mind-blowing !</p>
+<p>我们在制作 <em>《乐高蝙蝠侠》</em> 的 3D 镜头失真时遇到了<a href="https://www.expandedcinematography.com/industrialised-cinematography.html#realistic">一些问题</a>，但开发人员在制作过程中修复了这个问题。我最近读了<a href="https://dl.acm.org/citation.cfm?id=3338881">Animal 的这篇</a>关于《乐高 2》的 3D 镜头眩光的论文！令人震惊！</p>
+</blockquote>
+<h3 id="通过-dof-控制曝光-exposure-control-by-dof">通过 DOF 控制曝光 Exposure control by DOF</h3>
+<p>There is another solution to control the energy of your render and  that’s depth-of-field. We noticed it on <em>Playmobil</em>and it is confirmed  by <strong>Jeremy Selan</strong> in ​<em>Cinematic Color</em>​.</p>
+<p>还有另一种控制渲染能量的解决方案，那就是景深。我们在<em>Playmobil上注意到了这一点，</em> ​<strong>Jeremy Selan</strong>在<em>Cinematic Color</em>中也证实了这一点。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0210_bridge_cinematic_color_FHD-20241105171750-vu5oaav.jpg" alt="" title="This image helps illustrate the energy implications of using different linearization philosophies. Pay particular attention to the appearance of the string of lights on the top of the bridge span. How much energy is represented in those pixels ? 这幅图有助于说明使用不同线性化理念对能源的影响。请特别注意桥跨顶部灯串的外观。这些像素代表了多少能量？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0220_bridge_cinematic_color_FHD-20241105171750-0yhdcwd.jpg" alt="" title="Applying a defocus in scene-linear reveals a bokeh effect on each of the bridge span lights, mimicking the visual look of having performed this defocus during camera acquisition. This is because the pixel values are proportional to the light in the original scene, and thus specular pixels have sufficient energy to remain visible when blended with their neighbors. 在场景线性中应用散焦会在每盏桥跨灯光上呈现散景效果，模仿在相机采集期间执行此散焦的视觉效果。这是因为像素值与原始场景中的光成比例，因此镜面像素在与相邻像素混合时具有足够的能量以保持可见。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0230_bridge_cinematic_color_FHD-20241105171750-j9ot9v5.jpg" alt="" title="Applying the same defocus in display-linear tends to de-emphasize the specular highlights. This is because [...] the highlights have already been tone rendered for a lower dynamic range display and thus do not have physically-plausible amounts of energy. 在显示线性中应用相同的散焦往往会淡化镜面高光。这是因为 [...] 高光已经针对较低动态范围的显示器进行了色调渲染，因此不具有物理上合理的能量。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0240_spheres_dof_guerilla_FHD-20241105171750-g2dbx7d.jpg" alt="" title="I have done this quick render in Guerilla. Two spheres with incandescence. How can you tell if the emission values are correct ? 我在 Guerilla 中完成了这个快速渲染。两个球体具有白炽度。如何判断发射值是否正确？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0250_spheres_dof_guerilla_FHD-20241105171750-d2xpkmn.jpg" alt="" title="Same scene rendered with a crazy amount of depth-of-field. Great way to check the energy, right ? 同一场景渲染了惊人的景深。这是检查能量的好方法，对吧？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0260_spheres_dof_guerilla_FHD-20241105171750-yoex4kc.jpg" alt="" title="Similar example here. Two spheres on a plane. 这里有类似的例子。平面上的两个球体。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0270_spheres_dof_guerilla_FHD-20241105171750-izo7cjz.jpg" alt="" title="I just love CG depth-of-field. It just brings us closer to the virtual movie-set Jeremy Selan was talking about. 我就是喜欢 CG 景深。它让我们更接近 Jeremy Selan 所说的虚拟电影场景。" loading="lazy">​</p>
+<p>Great example from Cinematic Color.</p>
+<p>来自电影色彩 (Cinematic Color) 的绝佳示例。</p>
+<p>Otherwise, you can also :</p>
+<p>否则，您也可以：</p>
+<ul>
+<li>
+<p><strong>Play with the exposure in Nuke or RV.</strong>  What happens if you decrease the exposure by 5 stops ? What is the brightest pixel of your render ?</p>
+<p><strong>在 Nuke 或 RV 中调整曝光。</strong> 如果将曝光度降低 5 级会发生什么？渲染中最亮的像素是什么？</p>
+</li>
+<li>
+<p>Do not hesitate to<strong>look at the luminance channel of your render.</strong> Color definitely messes with our perception. Just get rid of it !</p>
+<p>不要犹豫，<strong>看看渲染的亮度通道。</strong> 颜色肯定会扰乱我们的感知。把它去掉吧！</p>
+</li>
+<li>
+<p>I also sometimes<strong>squint my eyes.</strong>  It will help you to better see the contrast.</p>
+<p>我有时也会<strong>眯起眼睛。</strong> 这样能帮助你更好地看到对比。</p>
+</li>
+<li>
+<p><strong>Or look at your shot in thumbnail mode.</strong> A smaller scale will help to focus on the bigger picture.</p>
+<p><strong>或者以缩略图模式查看您的照片。</strong> 较小的比例将有助于聚焦更大的画面。</p>
+</li>
+<li>
+<p>And finally you may<strong>flip your render.</strong> Desperate times call for desperate measures.</p>
+<p>最后，你可以<strong>翻转渲染。</strong> 危急时刻，必须采取紧急措施。</p>
+</li>
+</ul>
+<h2 id="唯一的规则-the-only-rule">唯一的规则 The only rule</h2>
+<p>I have been thinking a lot on the relationship between lighting and compositing and their responsibilities. The only rule I could come with is : <strong>lighting and compositing must go in the same direction, not fight against each other.</strong>  You need to make sure that your lighting and your compositing are <strong>CONSISTENT.</strong>   Don’t make your characters darker in Guerilla to finally make them brighter in Nuke. Rolling back the values from your Nuke script to your render engine ​<strong>will always help</strong>​.</p>
+<p>我一直在思考照明和合成之间的关系以及它们各自的职责。我能想到的唯一规则是：<strong>照明和合成必须朝着同一个方向发展，而不是互相冲突。</strong> 你需要确保你的照明和合成是<strong>一致的。</strong>   不要让你的角色在 Guerilla 中变暗，最后在 Nuke 中变亮。将 Nuke 脚本中的值回滚到渲染引擎​<strong>总是有帮助的</strong>​。</p>
+<p>On ​<em>Lego Batman</em>​, most of my compositing scripts would look like this : volumetric over Beauty + Lens effect ! I tried really hard to nail most of my look in CG.</p>
+<p>在 <em>《乐高蝙蝠侠》</em> 中，我的大部分合成脚本看起来都是这样的：体积叠加在美感 + 镜头效果上！我非常努力地在 CG 中完成大部分外观。</p>
+<blockquote>
+<p><strong>Barbara Meyers</strong>​, lighting supervisor on Planet 51, used to tell me : “You should push your lighting as far as you can. Go as close as you can to the final result in lighting”.</p>
+<p><strong>Planet 51 的灯光主管Barbara Meyers</strong>曾经告诉我：“你应该尽可能地发挥灯光的作用。让灯光尽可能接近最终效果。”</p>
+<p>Funnily enough, ten years later, I did the exact same thing on Lego Batman. From Maya directly to DI (on a couple of shots) !</p>
+<p>有趣的是，十年后，我在《乐高蝙蝠侠》上做了同样的事情。从 Maya 直接到 DI（在几个镜头上）！</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0280_nuke_mess_FHD-20241105171750-9n185v0.jpg" alt="" title="Yep, that's a bit extreme... 是啊，有点极端……" loading="lazy">​</p>
+<p>It’s kind of a challenge, really.</p>
+<p>这确实是一种挑战。</p>
+<p>You can actually achieve that when you have a great render engine, some good-looking assets and a solid validation process. Fortunately, we had these three things on Lego Batman. Without Glimpse, Grant and Craig, it would not have been possible to do it this way.</p>
+<p>如果你拥有出色的渲染引擎、一些好看的资产和可靠的验证流程，你实际上可以实现这一点。幸运的是，我们在《乐高蝙蝠侠》中拥有这三样东西。如果没有 Glimpse、Grant 和 Craig，我们就不可能以这种方式做到这一点。</p>
+<blockquote>
+<p>I remember that our TD, Manuel Macha, told me one day : “You use Glimpse as it was designed to.”  So I guess Lego Batman was meant for this kind of process and ​<strong>I am not saying this approach should be applied blindly on EVERY production</strong>​. But it is worth thinking about it and asking ourselves : what do I want to do in compositing ?</p>
+<p>我记得我们的 TD Manuel Macha 有一天告诉我：“你可以按照 Glimpse 的设计来使用它。”所以我猜想乐高蝙蝠侠就是为这种流程而设计的，​<strong>我并不是说这种方法应该盲目地应用于每一个作品</strong>​。但值得思考并问自己：我想在合成中做什么？</p>
+</blockquote>
+<h3 id="数字中间片-di-digital-intermediate-di">数字中间片 (DI) Digital Intermediate (DI)</h3>
+<p>I really want to make it clear : Lego Batman was done with a big budget, surfacing was close to perfection (only one plastic shader may help), Glimpse was just fantastic in his look and artistic direction was consistent (no last-minute changes) ! This happens very rarely.  <strong>It would be a mistake to apply this process on a small budget with artistic uncertainties.</strong></p>
+<p>我真的想说清楚：乐高蝙蝠侠的制作预算很大，表面处理近乎完美（只有一个塑料着色器可能有帮助），Glimpse 的外观非常棒，艺术指导也始终如一（没有最后一刻的更改）！这种情况很少发生。<strong>在预算有限且艺术不确定的情况下应用此流程将是一个错误。</strong></p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Digital_intermediate">Digital intermediate</a> is a motion picture finishing process which classically involves digitizing a <a href="https://en.wikipedia.org/wiki/Motion_picture">motion picture</a> and manipulating the color and other image characteristics.</p>
+<p><a href="https://en.wikipedia.org/wiki/Digital_intermediate">数字中间片</a>是电影的精加工过程，通常涉及<a href="https://en.wikipedia.org/wiki/Motion_picture">电影的</a>数字化以及色彩和其他图像特征的处理。</p>
+</blockquote>
+<p>Animal Logic also has a another advantage : Digital Intermediate is in-house. And this makes a big difference ! I sometimes feel that part of the traditional compositing work on Lego Batman (like restoring natural colors to the characters) was <a href="https://www.digitalmediaworld.tv/post/1459-the-lego-batman-movie-packs-a-punch-with-filmlight-s-baselight">actually done in DI</a>.</p>
+<p>Animal Logic 还有另一个优势：数字中间片是内部的。这有很大的不同！我有时觉得《乐高蝙蝠侠》的部分传统合成工作（如恢复角色的自然色彩）<a href="https://www.digitalmediaworld.tv/post/1459-the-lego-batman-movie-packs-a-punch-with-filmlight-s-baselight">实际上是在 DI 中完成的</a>。</p>
+<p>It is like if each step was shifted in a way : lighting was done in Nuke using LPE and compositing was done in DI using AOVs. I thought this workflow was quite interesting and new.</p>
+<p>就好像每个步骤都以某种方式转移了：照明是在 Nuke 中使用 LPE 完成的，合成是在 DI 中使用 AOV 完成的。我认为这个工作流程非常有趣和新颖。</p>
+<blockquote>
+<p>If you are laying the groundwork for a sequence, it’s really not a good idea to start with heavy tweaks in comp. Especially because we’re still in the <em>lighting</em>process ! So avoid it at all cost at this stage at least.</p>
+<p>如果你正在为一个序列打下基础，那么一开始就进行大量调整确实不是一个好主意。尤其是因为我们仍然处于<em>照明</em>过程中！所以至少在这个阶段要不惜一切代价避免它。</p>
+</blockquote>
+<h2 id="合成约束-compositing-constraints">合成约束 Compositing constraints</h2>
+<blockquote>
+<p>I had both experiences : I have seen compositing artists saving sequences and some destroying them. It actually depends on numerous factors.</p>
+<p>我有过这两种经历：我见过合成艺术家保存序列，也见过有人毁掉它们。这实际上取决于许多因素。</p>
+</blockquote>
+<p>According to a friend of mine who is a Compositing Supervisor, here is an interesting guideline :</p>
+<p>据我的一位合成主管朋友说，这里有一个有趣的指导方针：</p>
+<blockquote>
+<p>When reviewing a compositing shot, first thing to check should be its adequacy with the lighting.</p>
+<p>当审查合成镜头时，首先要检查的是其光照是否适宜。</p>
+<p>I completely agree on this.</p>
+<p>我完全同意这一点。</p>
+</blockquote>
+<p>If the look is massively changed  during the compositing phase, it can either be because of :</p>
+<p>如果在合成阶段外观发生巨大变化，则可能是因为：</p>
+<ul>
+<li>The lighting sucked or was not respecting continuity. <strong>Yes it happens.</strong></li>
+<li>灯光太差或不尊重连续性。<strong>是的，这种情况确实发生。</strong></li>
+<li>There has been a change of art direction. And yes it happens a lot.</li>
+<li>艺术指导已经改变。是的，这种事经常发生。</li>
+</ul>
+<p>It is also true that compositing is probably  <strong>the most heavily commented process</strong> in the whole chain. The reason is pretty simple : there is no department after compositing to fix the image. Because it is the final image, everybody feels legitimate to give their opinion.</p>
+<p>合成可能是整个流程中<strong>评论最多的过程</strong> <strong>，</strong> 这也是事实。原因很简单：合成后没有部门来修复图像。因为这是最终图像，所以每个人都觉得有权发表意见。</p>
+<p>It is quite common that a compositing artist faces these critics :</p>
+<p>合成艺术家面临这些批评是很常见的：</p>
+<blockquote>
+<p>I wish you had put less DOF so we see my set better. Because of vignetting, we do not see the secondary animation I had put in the character’s hand, right next to the screen border. I thought particles would be more visible and present in this shot.</p>
+<p>我希望你把景深设置得少一点，这样我们才能更好地看到我的布景。由于晕影，我们看不到我放在角色手上的次级动画，就在屏幕边框旁边。我以为在这个镜头中粒子会更明显、更明显。</p>
+</blockquote>
+<p>All of these comments are ego-related. We are not the directors of the movie and we do not work for our demo reel. <strong>Our skills are at the service of the movie.</strong>  So it is completely necessary to accept that our work will be modified. And not in the way we expected or hoped.</p>
+<p>所有这些评论都与自我有关。我们不是电影的导演，我们也不是为了我们的样片而工作。<strong>我们的技能是为电影服务的。</strong> 因此，完全有必要接受我们的作品将被修改的事实。而且不是以我们预期或希望的方式。</p>
+<h2 id="生产实例-production-examples-3">生产实例 Production examples</h2>
+<h3 id="shoji-在大师中出镜-shoji-screens-on-the-master">Shoji 在《大师》中出镜 Shoji screens on The Master</h3>
+<p>On the short “​*<a href="https://youtu.be/1LqnoYdg2bM?t=193">The Master</a>*​“, we had some walls made of translucent paper, <a href="http://wasoudesign.com/shoji-screen/">Shōji</a> screens, like in a traditional dojo. One retake we got during review was to make the paper wall brighter. How would you achieve that ?</p>
+<p>在短片《​*<a href="https://youtu.be/1LqnoYdg2bM?t=193">大师</a>*​》中，我们用半透明的纸做了一些墙壁，就像传统道场里的<a href="http://wasoudesign.com/shoji-screen/">屏风</a>一样。我们在审查期间得到的一个重拍是让纸墙更亮。你是如何实现这一点的？</p>
+<ol>
+<li><strong>Lighting ?</strong>  We could create a light only for the screens. <strong>BUT</strong> you would have to deal with some light-linking and that would complicate you setup for nothing.</li>
+<li><strong>照明？</strong> 我们可以只为屏幕创建灯光。<strong>但</strong>您必须处理一些灯光链接，而这会使您的设置变得毫无意义的复杂。</li>
+<li><strong>Compositing ?</strong>  We could use <a href="https://github.com/MercenariesEngineering/openexrid">DeepOpenEXRId</a> to color correct the shoji screens. <strong>BUT</strong> that would not brighten the Global Illumination nor the reflections. A shame.</li>
+<li><strong>合成？</strong> 我们可以使用<a href="https://github.com/MercenariesEngineering/openexrid">DeepOpenEXRId</a>来校正障子屏风的颜色。<strong>但这</strong>不会使全局照明和反射变亮。真遗憾。</li>
+<li><strong>Surfacing ?</strong> We could tweak the shader to add a bit more SSS or brighten a bit the albedo. ​<strong>YES</strong>​, this seems like a legit way to do it.</li>
+<li><strong>浮出水面？</strong> 我们可以调整着色器以添加更多 SSS 或稍微增加反照率。​<strong>是的</strong>​，这似乎是一种合法的方法。</li>
+</ol>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0290_shoji_guerilla_FHD-20241105171750-gqlku3e.jpg" alt="" title="A shoji screen with SSS betwen two grey walls. Nothing fancy here. What if the director wants the translucent paper to be brighter ? 两面灰色墙壁之间有一块带 SSH 的障子屏风。这里没什么特别的。如果导演想让半透明的纸更亮怎么办？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0300_shoji_guerilla_FHD-20241105171750-ezevhrt.jpg" alt="" title="Yes, you can use Deep Id to color correct the shoji screen. No harm done, right ? 是的，您可以使用 Deep Id 来校正障子屏的色彩。不会造成任何损害，对吧？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0310_shoji_guerilla_FHD-20241105171750-z2ngsrn.jpg" alt="" title="Except it should look like this ! I have tweaked the shader to match the desired look. Guerilla Render did the rest of the job. 但它看起来应该是这样的！我已经调整了着色器以匹配所需的外观。Guerilla Render 完成了其余的工作。" loading="lazy">​</p>
+<p>This may seem like a trivial example. But it’s not.</p>
+<p>这看上去可能是一个微不足道的例子。但事实并非如此。</p>
+<p>It took me 10 seconds to apply the color corrector in Nuke and about 15 minutes to find the right values to match it in Guerilla. I am really not a big fan of comp shenanigans except for quick fixes.</p>
+<p>我花了 10 秒钟在 Nuke 中应用颜色校正器，花了大约 15 分钟在 Guerilla 中找到与之匹配的正确值。除了快速修复之外，我真的不喜欢合成恶作剧。</p>
+<p>In my personal experience, I have always found the long-term solutions much more rewarding. When you are just piling up small fixes one after another, it will eventually blow in your face. I highly recommend to<strong>nail the renders in CG to get proper results.</strong></p>
+<p>就我个人经验而言，我始终认为长期解决方案更有价值。当你只是一桩接一桩地堆积小修复时，它最终会给你带来毁灭性的后果。我强烈建议<strong>在 CG 中完成渲染以获得正确的结果。</strong></p>
+<h3 id="银翼杀手-2049的设定延伸-set-extension-on-blade-runner-2049">《银翼杀手 2049》的设定延伸 Set extension on Blade Runner 2049</h3>
+<p>Here is an example of set extension : Blade Runner 2049 (Director : <strong><a href="https://www.imdb.com/name/nm0898288/">Denis Villeneuve</a></strong>, DP : <strong><a href="https://www.imdb.com/name/nm0005683/">Roger Deakins</a></strong>). I am amazed on how close the final result is to the actual shoot. That is a complete different approach from ​*<a href="https://www.imdb.com/title/tt1392190/">Mad Max : Fury Road</a>*​. Here are <a href="https://www.artofvfx.com/blade-runner-2049-richard-hoover-vfx-supervisor-framestore/">two</a> <a href="https://vfxblog.com/2018/01/31/blade-runner-2049-las-vegas-framestore/">articles</a> if you want to read more on the subject.</p>
+<p>以下是场景扩展的示例：《银翼杀手 2049》（导演：<strong><a href="https://www.imdb.com/name/nm0898288/">丹尼斯·维伦纽瓦</a></strong>，摄影指导：**<a href="https://www.imdb.com/name/nm0005683/">罗杰·迪金斯）。我对最终结果与实际拍摄结果的接近程度感到惊讶。这与</a><em><em>​</em><a href="https://www.imdb.com/title/tt1392190/">《疯狂的麦克斯：狂暴之路》</a></em> 完全不同。如果您想阅读更多关于这个主题的文章，这里有<a href="https://www.artofvfx.com/blade-runner-2049-richard-hoover-vfx-supervisor-framestore/">两篇</a> <a href="https://vfxblog.com/2018/01/31/blade-runner-2049-las-vegas-framestore/">文章。</a></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0320_bladeRunner_Framestore_FHD-20241105171750-t740gqt.jpg" alt="" title="The orange filter Roger used to shoot Vegas was established during the statuary sequence. John and I thought it was equivalent to a Kodak 23a correction filter we used at Robert Able. Its properties are that it gets very yellow when bright and orange when dark and eliminates all the blue wavelength of light. 罗杰拍摄《维加斯》时使用的橙色滤镜是在拍摄雕像片段时建立的。约翰和我认为它相当于我们在罗伯特·艾伯尔使用的柯达 23a 校正滤镜。它的属性是，在明亮时会变得非常黄，在黑暗时会变得橙色，并消除所有蓝色波长的光。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0330_bladeRunner_Framestore_FHD-20241105171750-v3lv4qn.jpg" alt="" title="Between the orange filter and the amount of haze we had a very difficult time making our images right. There was endless discussion about what was needed to make the images feel real. It became apparent that part of the problem is one of perception. We are not used to seeing things in a orange sand storm [...]. The best reference we had were Internet photos of a Sydney sand storm. We studied every aspect of the specular, diffuse and ambient levels of these images to exhaustion. 由于橙色滤镜和雾霾，我们很难拍出合适的照片。我们无休止地讨论如何才能让照片看起来真实。显然，问题的一部分在于感知。我们不习惯在橙色沙尘暴中看东西 [...]。我们最好的参考资料是互联网上悉尼沙尘暴的照片。我们研究了这些图像的镜面反射、漫反射和环境光的各个方面，直到筋疲力尽。" loading="lazy">​</p>
+<p>Both frames look so close in terms of look.</p>
+<p>从外观上看，这两个框架非常接近。</p>
+<p>Sometimes, for artistic, technical or political reasons, you have to split the characters from the background or even the sky, but the idea is the same : simple and efficient.<strong>Less human time, more computer time.</strong> Let the computer do the heavy work !</p>
+<p>有时，出于艺术、技术或政治原因，您必须将人物从背景甚至天空中分离出来，但想法是一样的：简单而高效。<strong>减少人力，增加计算机时间。</strong> 让计算机完成繁重的工作！</p>
+<h2 id="光路表达式-light-path-expression">光路表达式 Light Path Expression</h2>
+<p>Now, this might sound slightly controversial (especially for old timers), but there’s quite a few things done in Nuke that are considered <em>lighting.</em> The most obvious example of this are <a href="http://guerillarender.com/doc/2.0/User%20Guide_Rendering_Light%20Path%20Expression.html">Light Path Expressions</a>.</p>
+<p>现在，这可能听起来有点争议（尤其是对于老手来说），但 Nuke 中有很多东西被认为是<em>照明。</em> 最明显的例子是<a href="http://guerillarender.com/doc/2.0/User%20Guide_Rendering_Light%20Path%20Expression.html">光路表达式</a>。</p>
+<p>I find it quite satisfactory when I render the lights of my shot as LPE and I get to play with them to find the right balance for my lighting. It’s basically baking all of your lighting and bringing them into a software that will give you great flexibility, with great quality and very very fast.</p>
+<p>当我将镜头中的灯光渲染为 LPE 时，我发现它非常令人满意，我可以玩弄它们来找到适合我的灯光的平衡。它基本上是烘焙你所有的灯光，并将它们带入一个软件中，这将为你提供极大的灵活性、出色的质量和非常快的速度。</p>
+<blockquote>
+<p>Some scenes on Ninjago were so heavy that I could not render interactively. I would just throw dozens of area lights in some strategic places and render on the farm. Then I would do all the color and exposure work in Nuke.</p>
+<p>Ninjago 上的一些场景太过繁重，我无法进行交互式渲染。我只能在一些战略位置投射数十个区域光，然后在农场上进行渲染。然后我会在 Nuke 中完成所有颜色和曝光工作。</p>
+</blockquote>
+<p>Since the arrival of LPE, it has become almost the norm that lighting begins with a basic lighting setup done as quickly as possible, as close as it should be and then balance and search for your look in the comp software. You just have to limit yourself to modify exposure and RGB values, and then <strong>you can send those back to your lighting software.</strong></p>
+<p>自从 LPE 问世以来，灯光几乎已经成为常态，首先要尽快完成基本灯光设置，尽可能接近实际效果，然后在合成软件中平衡和寻找您想要的外观。您只需限制自己修改曝光和 RGB 值，然后就<strong>可以将它们发送回您的灯光软件。</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/090_compositing_0340_lpe_template_FHD-20241105171750-cirwa62.jpg" alt="" title="I used this kind of basic template on Lego. You just add lights by merging them in &quot;plus&quot;. Simple and efficient. And watch out for your alpha ! 我在乐高上使用了这种基本模板。你只需通过在“加号”中合并它们来添加灯光。简单而高效。注意你的 alpha！" loading="lazy">​</p>
+<p>I’m basically doing lighting in real-time.</p>
+<p>我基本上是在实时进行照明。</p>
+<p>Compositing is the perfect process for templates. The one that makes more sense in my opinion would be with Light Path Expressions (LPE). Therefore you would have the flexibility to adjust the lighting in real-time without breaking any albedo nor GI process.</p>
+<p>合成是模板的完美流程。我认为更有意义的是使用光路表达式 (LPE)。因此，您可以灵活地实时调整照明，而不会破坏任何反照率或 GI 流程。</p>
+<h2 id="lpe-和-aov-lpe-and-aovs">LPE 和 AOV LPE and AOVs</h2>
+<p>What should we do when an element is lacking specular ? The cleanest and best solution is sending back the asset to surfacing. Problem is, we don’t always have the time to do that.</p>
+<p>当元素缺少镜面反射时，我们该怎么办？最干净、最好的解决方案是将资产送回表面。问题是，我们并不总是有时间这样做。</p>
+<p>Let’s say in a sequence with 18 shots, all of them look fantastic, but in 3 of them the ground is lacking information in the specular and it looks quite dull and boring due to camera and light angle combination. How can we fix this ?</p>
+<p>假设在一个包含 18 个镜头的序列中，所有镜头看起来都很棒，但其中 3 个镜头的地面缺少镜面反射信息，并且由于相机和光线角度组合的原因，地面看起来相当暗淡和无趣。我们该如何解决这个问题？</p>
+<ul>
+<li><strong>Adding a light :</strong>  this is probably the cleanest solution but you will need a new render.</li>
+<li><strong>添加灯光：</strong> 这可能是最干净的解决方案，但您需要新的渲染。</li>
+<li><strong>Surfacing fix :</strong>  can either be done by the lighting artist or a surfacing artist. This may require an interaction with the surfacing department, which may cause delays or misunderstandings. You will need a new render as well.</li>
+<li><strong>表面修复：</strong> 可以由灯光师或表面师完成。这可能需要与表面部门进行互动，这可能会导致延误或误解。您还需要新的渲染。</li>
+<li><strong>Specular AOV :</strong>  sometimes the specular AOV will provide the information you’re missing. I would only use this solution if I cannot render again.</li>
+<li><strong>镜面反射 AOV：</strong> 有时镜面反射 AOV 会提供您缺失的信息。如果我无法再次渲染，我才会使用此解决方案。</li>
+</ul>
+<blockquote>
+<p><em>If a majority of your shots requires some kind of surface fix, it should totally go back to surfacing. A common mistake is to believe that going back is a waste of money. Until you see a bunch of comp artists trying to color correct several elements between several shots, and struggle in keeping some sort of consistency.</em></p>
+<p><em>如果你的大部分镜头都需要某种表面修复，那么就应该完全恢复到表面效果。一个常见的错误是认为恢复是浪费钱。直到你看到一群合成艺术家试图在几个镜头之间校正几个元素的颜色，并努力保持某种一致性。</em></p>
+</blockquote>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p><strong>I want to clearly state that I am not against Compositing.</strong>  It is an amazing tool that has to be used properly. But it is so powerful and so easy to use that it can become quite a dangerous mix. I have seen so many artists tweaking their shots and throwing color corrector after color corrector ! My personal favorite being : grade up, grade down and then grade off to turn off the pass.</p>
+<p><strong>我想明确地说明，我并不反对合成</strong> <strong>。</strong> 它是一种很棒的工具，必须正确使用。但它功能强大且易于使用，因此可能会成为一种相当危险的组合。我见过很多艺术家调整他们的镜头，使用一个又一个的色彩校正器！我个人最喜欢的是：调高、调低，然后关闭调色以关闭通道。</p>
+<blockquote>
+<p>I am not saying that compositing is easy. The tool is probably easier than any 3d package. <strong>But its difficulty lies within the subtlety it requires.</strong></p>
+<p>我并不是说合成很容易。该工具可能比任何 3D 软件包都容易。<strong>但它的难度在于它需要的微妙之处。</strong></p>
+</blockquote>
+<p>I found out in time that the most important thing is the final pixels on screen. I’m a happy spectator when something looks beautiful, meaningful and can’t figure out if the comper used LPEs, AOVs, if surfacing fixed a shot, or two, or none, if the vignette is fake and done with a roto. Why ? Because <strong>it was done with taste, consistency and subtlety.</strong>  And most important of all, to support the story and the emotions on screen.</p>
+<p>我及时发现，最重要的是屏幕上的最终像素。当某些东西看起来美丽而有意义时，我会很高兴，并且无法弄清楚合成器是否使用了 LPE、AOV，是否修复了一个镜头、两个镜头或一个镜头都没有，是否小插图是假的并且是用 roto 完成的。为什么？因为<strong>它做得很有品味、一致性和微妙性。</strong> 最重要的是，它支持了屏幕上的故事和情感。</p>
+<p>I’ve seen all kinds of horrors done with all kinds of techniques. I’ve seen compers bury a sequence and I’ve seen incredibly boring renders that were technically correct. <strong>So there is no technique that will replace vision, taste, talent, direction and love for the craft.</strong></p>
+<p>我见过各种恐怖片，都是用各种技术制作的。我见过合成器埋没了某个片段，也见过技术上无误但极其无聊的渲染。<strong>所以，没有任何技术可以取代视野、品味、天赋、方向和对工艺的热爱。</strong></p>
+<h2 id="来源-sources">来源 Sources</h2>
+<p>If you want to dig more on the subject here are some links :</p>
+<p>如果你想进一步了解这个主题，这里有一些链接：</p>
+<ul>
+<li>
+<p>**<a href="https://www.benmcewan.com/">Ben Mc Ewan</a>**​<a href="https://www.benmcewan.com/">‘s blog about compositing</a>.</p>
+<p>**<a href="https://www.benmcewan.com/">Ben Mc Ewan</a>**​<a href="https://www.benmcewan.com/">的有关合成的博客</a>。</p>
+</li>
+<li>
+<p><a href="https://www.expandedcinematography.com/industrialised-cinematography.html#realistic">Industrialised Cinematography</a> by ​<strong>Craig Welsh</strong>​.</p>
+<p><strong>克雷格·威尔士 (Craig Welsh)</strong> 的<a href="https://www.expandedcinematography.com/industrialised-cinematography.html#realistic">工业化电影摄影</a>。</p>
+</li>
+<li>
+<p><a href="https://dl.acm.org/citation.cfm?id=3338881">Physically based lens flare rendering in “</a>​*<a href="https://dl.acm.org/citation.cfm?id=3338881">The Lego Movie 2</a>*​<a href="https://dl.acm.org/citation.cfm?id=3338881">“</a>.</p>
+<p>*<a href="https://dl.acm.org/citation.cfm?id=3338881">《乐高电影 2</a>*​<a href="https://dl.acm.org/citation.cfm?id=3338881">》中基于物理的镜头光晕渲染</a>。</p>
+</li>
+<li>
+<p>*<a href="https://ascmag.com/articles/flashback-seven-1995">Seven:</a>*​<a href="https://ascmag.com/articles/flashback-seven-1995"> Sins of a Serial Killer</a>.</p>
+<p>*<a href="https://ascmag.com/articles/flashback-seven-1995">七：</a>*​<a href="https://ascmag.com/articles/flashback-seven-1995">连环杀手的罪行</a>。</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Bleach_bypass">Bleach bypass</a> definition.</p>
+<p><a href="https://en.wikipedia.org/wiki/Bleach_bypass">漂白绕过</a>定义。</p>
+</li>
+<li>
+<p><em><a href="https://www.youtube.com/watch?v=pO9Nn9fHGTg">Green Screen Despill</a></em> technique.</p>
+<p>*<a href="https://www.youtube.com/watch?v=pO9Nn9fHGTg">绿屏消除溢色</a>*技术。</p>
+</li>
+<li>
+<p><a href="http://help.thefoundry.co.uk/nuke/content/reference_guide/transform_nodes/stmap.html%EF%BB%BF">ST map</a> technique in Nuke.</p>
+<p>Nuke 中的<a href="http://help.thefoundry.co.uk/nuke/content/reference_guide/transform_nodes/stmap.html%EF%BB%BF">ST 图技术。</a></p>
+</li>
+<li>
+<p><strong><a href="http://clementgriselain.blogspot.com/">Clément Griselain</a></strong>‘s blog.</p>
+<p>**<a href="http://clementgriselain.blogspot.com/">Clément Griselain</a>**的博客。</p>
+</li>
+<li>
+<p><strong><a href="http://www.alexfry.com/">Alex Fry</a></strong>‘s website (compositing supervisor at Animal Logic).</p>
+<p>**<a href="http://www.alexfry.com/">Alex Fry</a>**的网站（Animal Logic 的合成主管）。</p>
+</li>
+<li>
+<p><a href="https://www.chrisfryer.co.uk/post/cf_animorph">cf_animorph</a> by <strong>Chris Fryer</strong></p>
+<p><strong>Chris Fryer</strong>的<a href="https://www.chrisfryer.co.uk/post/cf_animorph">cf_animorph</a></p>
+</li>
+<li>
+<p><a href="https://cinematiccolor.org/">Cinematic Color</a> guide. A must-read !</p>
+<p><a href="https://cinematiccolor.org/">电影色彩</a>指南。必读！</p>
+</li>
+<li>
+<p><a href="https://acescentral.com/t/why-grading-in-log-instead-of-linear/2228/6">Why grading in log instead of linear</a> from ACEScentral.</p>
+<p><a href="https://acescentral.com/t/why-grading-in-log-instead-of-linear/2228/6">为什么按照 ACEScentral 的对数而不是线性进行分级</a>。</p>
+</li>
+<li>
+<p><a href="https://opencolorio.org/downloads.html">Download link</a> from OCIO website.</p>
+<p><a href="https://opencolorio.org/downloads.html">来自 OCIO 网站的下载链接</a>。</p>
+</li>
+<li>
+<p><a href="https://www.fxguide.com/featured/the-batman-movie-keeping-it-real/">The batman movie : keeping it real</a> article from fxguide.</p>
+<p><a href="https://www.fxguide.com/featured/the-batman-movie-keeping-it-real/">蝙蝠侠电影：保持真实，</a>来自 fxguide 的文章。</p>
+</li>
+<li>
+<p><a href="https://www.expandedcinematography.com/the-cinematography-of-the-lego-movie.html#lens">The Cinematography of the Lego Movie</a> by ​<strong>Craig Welsh</strong>​.</p>
+<p><strong>克雷格威尔士</strong>的<a href="https://www.expandedcinematography.com/the-cinematography-of-the-lego-movie.html#lens">乐高大电影摄影</a>。</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Digital_intermediate">Digital intermediate</a> definition.</p>
+<p><a href="https://en.wikipedia.org/wiki/Digital_intermediate">数字中间</a>定义。</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Motion_picture">Motion picture</a> definition.</p>
+<p><a href="https://en.wikipedia.org/wiki/Motion_picture">运动图像</a>清晰度。</p>
+</li>
+<li>
+<p><a href="https://www.digitalmediaworld.tv/post/1459-the-lego-batman-movie-packs-a-punch-with-filmlight-s-baselight">The LEGO Batman Movie Packs a Punch with FilmLight’s Baselight</a>.</p>
+<p><a href="https://www.digitalmediaworld.tv/post/1459-the-lego-batman-movie-packs-a-punch-with-filmlight-s-baselight">《乐高蝙蝠侠》电影借助 FilmLight 的 Baselight 带来震撼效果</a>。</p>
+</li>
+<li>
+<p><a href="https://github.com/MercenariesEngineering/openexrid">DeepOpenEXRId</a> by Mercenaries Engineering.</p>
+<p>由 Mercenaries Engineering 开发的<a href="https://github.com/MercenariesEngineering/openexrid">DeepOpenEXRId 。</a></p>
+</li>
+<li>
+<p><a href="https://www.artofvfx.com/blade-runner-2049-richard-hoover-vfx-supervisor-framestore/">BLADE RUNNER 2049: Richard Hoover – VFX Supervisor – Framestore</a>.</p>
+<p><a href="https://www.artofvfx.com/blade-runner-2049-richard-hoover-vfx-supervisor-framestore/">银翼杀手 2049：理查德·胡佛 — 视觉特效总监 — Framestore</a>。</p>
+</li>
+<li>
+<p><a href="https://vfxblog.com/2018/01/31/blade-runner-2049-las-vegas-framestore/">How the orange haze of Blade Runner 2049’s Las Vegas meant 13 hour renders</a>.</p>
+<p><a href="https://vfxblog.com/2018/01/31/blade-runner-2049-las-vegas-framestore/">《银翼杀手 2049》的拉斯维加斯的橙色雾霾意味着需要 13 个小时的渲染</a>。</p>
+</li>
+<li>
+<p><a href="http://guerillarender.com/doc/2.0/User%20Guide_Rendering_Light%20Path%20Expression.html">Light Path Expressions</a> in Guerilla Render.</p>
+<p>Guerilla Render 中的<a href="http://guerillarender.com/doc/2.0/User%20Guide_Rendering_Light%20Path%20Expression.html">光路表达式。</a></p>
+</li>
+<li>
+<p><a href="https://www.artstation.com/artwork/e0G8ZZ">Lego render with no comp</a>… by ​<strong>Steffen Hampel</strong>​.</p>
+<p><a href="https://www.artstation.com/artwork/e0G8ZZ">无需计算机的乐高渲染</a>...作者：​<strong>Steffen Hampel</strong>​。</p>
+</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E5%90%88%E6%88%90-why-doing-compositing">为什么要做合成？ Why doing compositing ?</a></li>
+<li><a href="#%E5%9C%A8-3d-%E4%B8%AD%E6%88%91%E4%BB%AC%E4%B8%8D%E8%83%BD%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85-what-we-cannot-do-in-3d">在 3D 中我们“不能”做的事情 What we “cannot” do in 3d</a></li>
+<li><a href="#%E5%9C%A8-3d-%E4%B8%AD%E6%88%91%E4%BB%AC%E4%B8%8D%E5%BA%94%E8%AF%A5%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85-what-we-should-not-do-in-3d">在 3D 中我们“不应该”做的事情 What we “SHOULD not” do in 3d</a></li>
+<li><a href="#%E9%A3%8E%E6%A0%BC%E9%80%89%E6%8B%A9-stylistic-choices">风格选择 Stylistic choices</a>
+<ul>
+<li><a href="#%E8%83%B6%E7%89%87%E5%86%B2%E6%B4%97-film-developing">胶片冲洗 Film developing</a></li>
+<li><a href="#%E6%B2%89%E9%87%8D%E7%9A%84%E5%A4%96%E8%A1%A8-heavy-looks">沉重的外表 Heavy looks</a></li>
+<li><a href="#%E5%8E%9F%E5%A7%8B%E7%85%A7%E6%98%8E-raw-lighting">原始照明？ Raw lighting ?</a></li>
+</ul>
+</li>
+<li><a href="#%E7%94%9F%E4%BA%A7%E5%AE%9E%E4%BE%8B-production-examples">生产实例 Production examples</a>
+<ul>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%BF%90%E7%94%A8-depth-usage-on-lego-batman">乐高蝙蝠侠的深度运用 Depth usage on Lego Batman</a></li>
+<li><a href="#%E5%8A%A8%E7%94%BB%E7%81%AF%E5%85%89-animated-lights">动画灯光 Animated lights</a></li>
+<li><a href="#playmobil-%E4%B8%8A%E7%9A%84%E7%9A%AE%E8%82%A4%E8%84%B1%E8%90%BD-skin-despill-on-playmobil">Playmobil 上的皮肤脱落 Skin despill on Playmobil</a></li>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E4%B8%8A%E7%9A%84%E5%8D%A1%E7%89%87%E6%8A%95%E5%BD%B1-card-projection-on-lego-batman">乐高蝙蝠侠上的卡片投影 Card projection on Lego Batman</a></li>
+<li><a href="#%E7%88%B1%E5%AE%A0%E5%A4%A7%E6%9C%BA%E5%AF%86%E4%B8%AD%E7%9A%84-st-%E5%9C%B0%E5%9B%BE-st-map-on-the-secret-life-of-pets">《爱宠大机密》中的 ST 地图 ST map on The secret life of pets</a></li>
+<li><a href="#%E5%B0%8F%E9%BB%84%E4%BA%BA%E8%BA%AB%E4%B8%8A%E7%9A%84%E7%83%AD%E5%8F%98%E5%BD%A2-heat-distortion-on-minions">小黄人身上的热变形 Heat distortion on Minions</a></li>
+</ul>
+</li>
+<li><a href="#%E6%88%91%E4%BB%AC%E6%B2%A1%E6%9C%89%E6%97%B6%E9%97%B4%E5%9C%A8-3d-%E4%B8%AD%E5%81%9A%E4%BB%80%E4%B9%88-what-we-do-not-have-time-to-do-in-3d">我们没有时间在 3D 中做什么 What we do not have time to do in 3d</a></li>
+<li><a href="#%E7%94%9F%E4%BA%A7%E5%AE%9E%E4%BE%8B-production-examples-2">生产实例 Production examples</a>
+<ul>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E4%B8%8A%E7%9A%84%E6%A0%B8%E5%BC%B9%E6%8A%95%E5%BD%B1-nuke-projection-on-lego-batman">乐高蝙蝠侠上的核弹投影 Nuke projection on Lego Batman</a></li>
+<li><a href="#%E5%B0%8F%E9%BB%84%E4%BA%BA%E7%94%B5%E5%BD%B1%E7%9A%84%E5%A4%9C%E7%8F%AD-night-shift-on-the-minions-movie">小黄人电影的夜班 Night shift on the Minions movie</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%B8%E5%BC%B9%E8%84%9A%E6%9C%AC-nuke-scripts">核弹脚本 Nuke scripts</a></li>
+<li><a href="#%E7%BB%BC%E5%90%88%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5-compositing-good-practices">综合最佳实践 Compositing good practices</a>
+<ul>
+<li><a href="#%E7%BA%BF%E6%80%A7%E5%90%88%E6%88%90-linear-compositing">线性合成 Linear Compositing</a></li>
+<li><a href="#%E8%AF%84%E5%88%86%E5%92%8C%E8%AE%B0%E5%BD%95-grading-and-log">评分和记录 Grading and Log</a></li>
+<li><a href="#%E5%93%AA%E4%B8%AA%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4-which-working-space">哪个工作空间？ Which working space ?</a></li>
+<li><a href="#nuke-%E4%B8%AD%E7%9A%84%E5%85%89%E8%BE%89-glow-in-nuke">Nuke 中的光辉 Glow in Nuke</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9B%9D%E5%85%89%E6%8E%A7%E5%88%B6-exposure-control">曝光控制 Exposure Control</a>
+<ul>
+<li><a href="#%E9%80%9A%E8%BF%87%E9%95%9C%E5%A4%B4%E6%95%88%E6%9E%9C%E6%8E%A7%E5%88%B6%E6%9B%9D%E5%85%89-exposure-control-by-lens-effect">通过镜头效果控制曝光 Exposure control by Lens effect</a>
+<ul>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E7%A4%BA%E4%BE%8B-lego-batman-example">乐高蝙蝠侠示例 Lego Batman example</a></li>
+<li><a href="#%E6%9B%9D%E5%85%89%E5%92%8C%E5%A4%B9%E7%B4%A7%E7%A4%BA%E4%BE%8B-exposure-and-clamping-example">曝光和夹紧示例 Exposure and clamping example</a></li>
+</ul>
+</li>
+<li><a href="#%E9%80%9A%E8%BF%87-dof-%E6%8E%A7%E5%88%B6%E6%9B%9D%E5%85%89-exposure-control-by-dof">通过 DOF 控制曝光 Exposure control by DOF</a></li>
+</ul>
+</li>
+<li><a href="#%E5%94%AF%E4%B8%80%E7%9A%84%E8%A7%84%E5%88%99-the-only-rule">唯一的规则 The only rule</a>
+<ul>
+<li><a href="#%E6%95%B0%E5%AD%97%E4%B8%AD%E9%97%B4%E7%89%87-di-digital-intermediate-di">数字中间片 (DI) Digital Intermediate (DI)</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%88%E6%88%90%E7%BA%A6%E6%9D%9F-compositing-constraints">合成约束 Compositing constraints</a></li>
+<li><a href="#%E7%94%9F%E4%BA%A7%E5%AE%9E%E4%BE%8B-production-examples-3">生产实例 Production examples</a>
+<ul>
+<li><a href="#shoji-%E5%9C%A8%E5%A4%A7%E5%B8%88%E4%B8%AD%E5%87%BA%E9%95%9C-shoji-screens-on-the-master">Shoji 在《大师》中出镜 Shoji screens on The Master</a></li>
+<li><a href="#%E9%93%B6%E7%BF%BC%E6%9D%80%E6%89%8B-2049%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%BB%B6%E4%BC%B8-set-extension-on-blade-runner-2049">《银翼杀手 2049》的设定延伸 Set extension on Blade Runner 2049</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%89%E8%B7%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F-light-path-expression">光路表达式 Light Path Expression</a></li>
+<li><a href="#lpe-%E5%92%8C-aov-lpe-and-aovs">LPE 和 AOV LPE and AOVs</a></li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+<li><a href="#%E6%9D%A5%E6%BA%90-sources">来源 Sources</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-Character-Lighting/">
+              <h3 class="post-title">
+                 CG Cinematography 第 8.5 章：角色照明
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

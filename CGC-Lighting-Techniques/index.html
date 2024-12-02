@@ -1,0 +1,1046 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> CG Cinematography 第 7 章：照明技术 | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=" CG Cinematography 第 7 章：照明技术 | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Chapter 7: Lighting Techniques - Chris Brejon - Chris Brejon
+https://chrisbrejon.com/cg-cinematography/chapter-7-lighti..." />
+    <meta name="keywords" content="Lighting,CG Cinematography" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               CG Cinematography 第 7 章：照明技术
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-24
+              </span>
+              <span>
+                65 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/zwKy4lMn1V/" class="post-tag">
+                  # Lighting
+                </a>
+              
+                <a href="https://zcfly1992.github.io/UC8oB5Mlnn/" class="post-tag">
+                  # CG Cinematography
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0370_volumetrics_lego_batman_FHD-20241105171640-y5xm1jm.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>Chapter 7: Lighting Techniques - Chris Brejon - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/cg-cinematography/chapter-7-lighting-techniques/">https://chrisbrejon.com/cg-cinematography/chapter-7-lighting-techniques/</a></li>
+<li>CG Cinematography Lighting Techniques focus specifically on lighting tricks for Computer-generated imagery. My very personal recipe on some hot topics.</li>
+</ul>
+<hr>
+<h2 id="cg问题-the-cg-issue">CG问题 The CG issue</h2>
+<p>We are going to review some techniques related to our medium. 3d softwares give us a tremendous amount of freedom but bring as well some constraints. How should we deal with those in an efficient way ? Should we put some limits ? <strong>It is not because you can create as many lights as you want that you should.</strong>  With great power comes great responsibility.</p>
+<p>我们将回顾一些与我们的媒介相关的技术。3D 软件给了我们极大的自由，但也带来了一些限制。我们应该如何有效地处理这些问题？我们应该设置一些限制吗？<strong>并不是因为你可以创建任意数量的灯光，你就应该这样做。</strong> 能力越大，责任越大。</p>
+<h2 id="什么是作弊-what-is-cheating">什么是作弊？ What is cheating ?</h2>
+<p>It is actually a pretty hard question to answer to. Because <strong>cheating does not have the same definition at Illumination, Animal Logic or Ilion.</strong>  It really depends on the studio and your supervisor : it is cultural.</p>
+<p>这其实是一个很难回答的问题。因为<strong>作弊在 Illumination 、Animal Logic或 Ilion的定义并不相同。</strong> 这实际上取决于工作室和你的主管：这是一种文化。</p>
+<blockquote>
+<p>If I look into a dictionary, cheating means <strong>acting dishonestly to gain an advantage.</strong></p>
+<p>如果我查一下字典，作弊的意思是<strong>采取不诚实的行为来获取优势。</strong></p>
+</blockquote>
+<p>But what does <em>cheating</em> mean in CG ? Does it mean I acted dishonestly ? In relation to what ? Reality ? Is using a blocker a cheat ? Is light-linking a cheat ? Or should we give artists the most adapted tools to their medium ?</p>
+<p><em>但是，在 CG 中，作弊</em>意味着什么？它是否意味着我行为不诚实？与什么有关？现实？使用阻断剂是作弊吗？光链接是作弊吗？或者我们应该为艺术家提供最适合其媒介的工具？</p>
+<blockquote>
+<p>I do not like this word because it makes me feel guilty for doing my job. <strong>No I did not cheat, I did what I had to do to make it look good.</strong></p>
+<p>我不喜欢这个词，因为它让我对自己的工作感到愧疚。<strong>不，我没有作弊，我只是做了我必须做的事情，让事情看起来不错。</strong></p>
+</blockquote>
+<h3 id="作弊示例-cheating-examples">作弊示例 Cheating examples</h3>
+<h4 id="着迷-spellbound">着迷 Spellbound</h4>
+<p>Let’s look at this <a href="https://theblondeatthefilm.com/2014/11/12/dial-m-for-murder-1954/">example</a> from <em>Spellbound</em> (Director : ​<strong>Alfred Hitchcock</strong>​, DP : <strong><a href="https://en.wikipedia.org/wiki/George_Barnes_(cinematographer)">George Barnes</a></strong>). Let’s see if you can spot the trick.</p>
+<p>让我们看看 <em>《爱德华大夫》</em>  (导演：<strong>阿尔弗雷德·希区柯克</strong>，摄影指导：<strong><a href="https://en.wikipedia.org/wiki/George_Barnes_(cinematographer)">乔治·巴恩斯</a></strong>)中的这个<a href="https://theblondeatthefilm.com/2014/11/12/dial-m-for-murder-1954/">例子</a>。看看你是否能发现其中的窍门。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Hokey Hitchcock 2- Gun Hand From 22Spellbound22 1945-20241115020441-ryaftay.mp4" data-src="assets/Hokey Hitchcock 2- Gun Hand From 22Spellbound22 1945-20241115020441-ryaftay.mp4" style="width: 1096px; height: 615px;"></video></p>
+<blockquote>
+<p>“​<em>Hitchcock […] couldn’t get clean focus on the gun and on Ingrid Bergman in the same frame. So he used a giant gun and a huge fake hand to get the effect that he wanted.</em> ​”</p>
+<p>“<em>希区柯克无法在同一画面中清晰对焦枪和英格丽·褒曼。所以他用一把巨大的枪和一只巨大的假手来达到他想要的效果。</em>  ”</p>
+</blockquote>
+<h4 id="指环王-lord-of-the-rings">指环王 Lord of the rings</h4>
+<p><strong>Peter Jackson</strong> used “​<em>forced perspective</em>​” a lot on <em>Lord of the rings</em> (DP : <strong><a href="https://www.imdb.com/name/nm0504226/?ref_=ttfc_fc_cr15">Andrew Lesnie</a></strong>). In the pass of Caradhras, he used a ring of 18-inch circumference when Frodo has fallen and the ring is lying in the snow.</p>
+<p><strong>彼得·杰克逊在</strong>​ <em>《指环王》</em> （摄影指导：<strong><a href="https://www.imdb.com/name/nm0504226/?ref_=ttfc_fc_cr15">安德鲁·莱斯尼</a></strong>）中大量运用了“<em>强制透视</em>” ，在卡拉德拉斯隘口，当弗罗多坠落，戒指落在雪中时，他用了一个周长为18英寸的戒指。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/LOTR The Fellowship of the Ring - Extended Edition - The Pass of Caradhras-20241115020543-h67cnh7.mp4" data-src="assets/LOTR The Fellowship of the Ring - Extended Edition - The Pass of Caradhras-20241115020543-h67cnh7.mp4"></video></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0010_trick_lotr_FHD-20241105171640-hhwhslx.jpg" alt="" title="Forced perspective in Lord of the Rings. This ring has actually a circumference of 18 inches. 《指环王》中的强制透视。这枚戒指的周长实际上为 18 英寸。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0020_trick_lotr_FHD-20241105171640-rjbjdm7.jpg" alt="" title="And it goes back to its regular size on the next shot. 下次拍摄时，它又恢复正常大小。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0030_trick_lotr_FHD-20241105171640-z6t1ycl.jpg" alt="" title="That's the magic of cinema ! 这就是电影的魔力！" loading="lazy">​</p>
+<p>The forced perspective trick is very well explained in the making-of.</p>
+<p>强制透视技巧在制作过程中得到了很好的解释。</p>
+<p>After seeing these examples, <strong>one would think that directors of photography cheat all the time on set.</strong>   Really ? Did they act dishonestly to gain an advantage ? I don’t think so. I would rather use the word : <strong>enhancing. DPs manipulate and control their environment to enhance the reality.</strong></p>
+<p>看过这些例子后，<strong>人们会认为摄影指导在片场总是在作弊。</strong> 真的吗？他们是否通过不诚实的行为来获取优势？我不这么认为。我宁愿使用这个词：<strong>增强。 摄影指导操纵和控制他们的环境以增强现实。</strong></p>
+<p>It is NOT a cheat, it is a trick or a gag. On set DPs would generally use those words a lot.  <strong>I know it may sound like a stupid detail but vocabulary in lighting is essential.</strong>  And similar tricks are also used in lighting ! Even for a “basic” daylight exterior, DPs will use reflectors, black flags and many other tools on set. <strong>We should be able to control every element. It’s what DPs do.</strong></p>
+<p>这不是作弊，而是一种伎俩或噱头。在片场，摄影指导通常会经常使用这些词。<strong>我知道这听起来可能像是一个愚蠢的细节，但灯光词汇是必不可少的。</strong> 类似的技巧也用于灯光！即使是“基本的”日光外景，摄影指导也会在片场使用反光板、黑旗和许多其他工具。<strong>我们应该能够控制每个元素。这就是摄影指导的工作。</strong></p>
+<blockquote>
+<p>Issue in CG is that many supervisors do not want to give control to their team. They have seen so many horrors and crazy setups that they want to lock everything. I don’t blame them. But sups have to find the right balance between control and safety. <strong>A good way to empower a team rather than controlling it is training.</strong></p>
+<p>CG 的问题是，许多主管不想将控制权交给他们的团队。他们见过太多恐怖和疯狂的设置，所以他们想把一切都锁起来。我不怪他们。但主管必须在控制和安全之间找到适当的平衡。<strong>培训是赋予团队权力而不是控制团队的好方法。</strong></p>
+<p>A team should not feel controlled by the CG police every time they add a light.</p>
+<p>团队不应该在每次添加灯光时都感到受到 CG 警察的控制。</p>
+</blockquote>
+<h4 id="一部著名的迪士尼电影-a-famous-disney-movie">一部著名的迪士尼电影 A famous Disney movie</h4>
+<p>One of the best stories I have ever heard. Get ready.</p>
+<p>这是我听过的最精彩的故事之一。做好准备吧。</p>
+<blockquote>
+<p>On a famous Disney movie, Rob Legato did a “trick” with a time lapse of a night sky. They went and shot a night sky out here in the Mojave desert. Rob also did a shoot with a light box and some paper with holes in it. Brought it into nuke and enhanced it, to something that was a bit more pleasing to the eye. Things like readability of the stars against a post dusk sky. He put them both in front of Jon Favreau in our review room and asked him to pick the one he liked best.</p>
+<p>在一部著名的迪斯尼电影中，罗伯·莱加托 (Rob Legato) 对夜空的延时拍摄做了一个“花招”。他们去莫哈维沙漠拍摄了夜空。罗伯还用灯箱和一些有孔的纸拍摄了照片。把它带进核弹里并增强效果，让它看起来更赏心悦目。比如在黄昏后的天空中，星星的清晰度。他把这两张照片放在我们审阅室里的乔恩·费儒面前，让他选出他最喜欢的一张。</p>
+</blockquote>
+<p>Here comes the best part !</p>
+<p>最精彩的部分来了！</p>
+<blockquote>
+<p>Without telling him what he had done and what was different. And Jon  picked the one he shot with a light box and his explanation was : <strong>the stars feel real to me. It’s how I remember seeing stars coming out  after dusk and getting brighter as the night goes on. It reminds me of my camping trips as a kid.</strong>    Rob then tells him it’s fake and everyone bursts out laughing, even Jon ! It was pretty amazing to watch and Rob didn’t say much. He didn’t have to. But capturing how people remember things and what they hold on to is an art.</p>
+<p>没有告诉他他做了什么，有什么不同。乔恩选了一张他用灯箱拍摄的照片，他的解释是：<strong>星星对我来说是真实的。我记得黄昏后星星会出来，随着夜幕降临，星星会越来越亮。这让我想起了小时候的露营旅行。</strong>  罗布告诉他这是假的，大家都笑了起来，甚至乔恩也是如此！看起来非常神奇，罗布也没多说什么。他没必要说。但捕捉人们如何记住事物以及他们坚持什么是一种艺术。</p>
+</blockquote>
+<p>And this brilliant conclusion.</p>
+<p>还有这个精彩的结论。</p>
+<blockquote>
+<p><strong>Our job is about perception more than reality.</strong>  Reality can be boring.  But people perceive things differently and that’s what DPS compare it to  when they gauge how “real “something is.</p>
+<p><strong>我们的工作更多的是感知，而不是现实。</strong> 现实可能很无聊。但人们对事物的看法不同，这就是 DPS 在衡量某事物的“真实性”时所比较的。</p>
+<p>Brilliant <a href="https://www.ted.com/talks/rob_legato_the_art_of_creating_awe?language=en#t-229726">Ted talk from Rob Legato</a> about this topic if you want to know more.</p>
+<p>如果您想了解更多，请观看<a href="https://www.ted.com/talks/rob_legato_the_art_of_creating_awe?language=en#t-229726">Rob Legato 关于这个话题的</a>精彩Ted 演讲。</p>
+</blockquote>
+<h4 id="蜘蛛侠平行宇宙-spider-man-into-the-spider-verse">蜘蛛侠:平行宇宙 Spider-man : Into the Spider-Verse</h4>
+<p>Loved the movie like everyone else. There is probably a project of this quality and originality every ten years or so. I just wanted to share a couple of screenshots from the making-of.</p>
+<p>和其他人一样喜欢这部电影。大概每十年左右就会出现一部如此高质量、如此独创的作品。我只想分享几张制作过程中的截图。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0040_spiderverse_trick_layout__FHD-20241105171640-qnabglk.jpg" alt="" title="You could wonder what does the layout of a shot like this look like? 您可能想知道这样的镜头的布局是什么样的？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0050_spiderverse_trick_layout_FHD-20241105171640-spt2g1r.jpg" alt="" title="Did they respect some kind of reality ? I love the expression &quot;STYLIZED LAYOUT&quot; by the way. 他们是否尊重某种现实？顺便说一句，我喜欢“风格化布局”这个表达。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0060_spiderverse_trick_layout_FHD-20241105171640-elxl07v.jpg" alt="" title="Not at all ! I have done a couple of movies in NYC and the skyline is not an easy thing to stylize. 一点也不！我在纽约拍过几部电影，天际线不是一件容易风格化的东西。" loading="lazy">​</p>
+<p>A strong art direction driving every department. Impressive !</p>
+<p>强大的艺术指导推动着每个部门。令人印象深刻！</p>
+<h4 id="其他示例-other-examples">其他示例 Other examples</h4>
+<blockquote>
+<p><strong>Andre Turpin</strong>​, DP of <em><a href="https://www.youtube.com/watch?v=Tb-E-WUJl44&amp;feature=emb_logo">Playmobil</a></em> : “<em>We use tricks as much as we can. We put lights on the walls, the ceiling and even the floor sometimes.”</em></p>
+<p>*<a href="https://www.youtube.com/watch?v=Tb-E-WUJl44&amp;feature=emb_logo">Playmobil</a>*的摄影指导​<strong>Andre Turpin</strong>​：“<em>我们尽可能地使用技巧。我们有时会在墙壁、天花板甚至地板上放置灯光。”</em></p>
+</blockquote>
+<blockquote>
+<p><strong>Aymeric Montouchet,</strong>  DP of <em><a href="https://www.youtube.com/watch?v=8a-EObAhYrg">Detroit: become human</a></em> : ​ <em>“The only thing we should not cheat in CG is the quadratic decay of light</em>​.”</p>
+<p>*<a href="https://www.youtube.com/watch?v=8a-EObAhYrg">底特律：成为人类</a>*的摄影指导<strong>Aymeric Montouchet</strong>表示：​ <em>“在 CG 中我们唯一不应该作弊的就是光的二次衰减</em>​。”</p>
+</blockquote>
+<h3 id="好技巧和坏技巧-good-and-bad-tricks">好技巧和坏技巧 Good and bad tricks</h3>
+<p>Now we have seen that “​<em>cheating</em>​” is a terrible word, we have to wonder about the main differences between CG and live action. I totally agree that we should work like Digital Directors of Photography. But let’s not forget that <strong>each medium has its own properties, rules and limitations.</strong>  I personally see two BIG differences between live-action and CG :</p>
+<p>现在我们已经知道“​<em>作弊</em>​”这个词很可怕，我们不得不思考 CG 和真人秀之间的主要区别。我完全同意我们应该像数字摄影导演一样工作。但我们不要忘记，<strong>每种媒介都有自己的属性、规则和限制。</strong> 我个人认为真人秀和 CG 之间有两个很大的区别：</p>
+<ol>
+<li>Render engines’ limitations aka <em>we are not doing spectral rendering.</em></li>
+<li>渲染引擎的局限性，也就是说<em>我们不进行光谱渲染。</em></li>
+<li>Sampling and render times aka <em>this is not real time.</em></li>
+<li>采样和渲染时间<em>并不是实时的。</em></li>
+</ol>
+<p>This is why I distinguish two types of tricks : good and bad. Render engines give us so many possibilities that it is very easy to do crazy stuff. <strong>We have to find a middle ground between the freedom we will give to the artists and the control we want to have on their methods.</strong></p>
+<p>这就是为什么我要区分两种技巧：好的和坏的。渲染引擎给了我们如此多的可能性，以至于我们很容易做出疯狂的事情。<strong>我们必须在给予艺术家的自由和我们希望对他们的方法进行控制之间找到一个中间地带。</strong></p>
+<p>Examples of good tricks :</p>
+<p>好的技巧示例：</p>
+<ol>
+<li>Add lights so the shot relies less on indirect lighting ? <strong>YES.</strong></li>
+<li>添加灯光，使拍摄更少依赖间接照明？<strong>可以。</strong></li>
+<li>Use a blocker to have some vignetting in a shot ? <strong>YES.</strong></li>
+<li>使用阻挡器可以让镜头中出现晕影吗？<strong>可以。</strong></li>
+<li>Use light-linking to make your character pop ? <strong>YES.</strong></li>
+<li>使用光链接让你的角色流行起来？<strong>可以。</strong></li>
+</ol>
+<p>Examples of bad tricks.  <strong>This is very personal by the way.</strong>  You may disagree and I am happy to know what you think.</p>
+<p>坏招数的例子。<strong>顺便说一句，这是非常个人的事情。</strong> 您可能不同意，我很高兴知道您的想法。</p>
+<ol>
+<li>Use light-linking to compensate for poor surfacing ? <strong>NO.</strong></li>
+<li>使用光连接来弥补不良的表面处理？<strong>不。</strong></li>
+<li>Remove the walls from shadow casters to get more light into the room ? <strong>NO.</strong></li>
+<li>移除墙壁上的阴影投射器，让更多的光线进入房间？<strong>不。</strong></li>
+<li>Start a Master Lighting with different lights for characters and sets ? <strong>NO.</strong></li>
+<li>开始使用不同灯光为角色和场景设置主照明吗？<strong>否。</strong></li>
+<li>Change the decay of a light. <strong>NO.</strong>  <em>It has to be quadratic. Except Sun and Sky obviously.</em></li>
+<li>改变光的衰减。<strong>不。</strong>  <em>必须是二次的。显然，太阳和天空除外。</em></li>
+<li>Use some ambient lighting. <strong>NO.</strong>  <em>This is just wrong.</em></li>
+<li>使用一些环境光。<strong>不。</strong>  <em>这是错误的。</em></li>
+<li>Have non-physical albedo values. <strong>NO.</strong>  <em>Luminance has to be between 0.03&lt;x&lt;0.9.</em></li>
+<li>具有非物理反照率值。<strong>不。</strong>  <em>亮度必须介于 0.03&lt;x&lt;0.9 之间。</em></li>
+</ol>
+<blockquote>
+<p>Ambient lighting has now (almost) disappeared thanks to PBR. The easiest way to describe it would be an EnvLight with no occlusion. I guess it is only <a href="https://youtu.be/jinIp-jGrbQ?t=464">used in video games</a>.</p>
+<p>由于 PBR，环境光现在（几乎）消失了。最简单的描述方式是没有遮挡的 EnvLight。我猜它只用于<a href="https://youtu.be/jinIp-jGrbQ?t=464">视频游戏</a>。</p>
+</blockquote>
+<h3 id="作弊态度-cheating-attitude">作弊态度 Cheating attitude</h3>
+<p>In the introduction, I was explaining that this book is more focused on PBR productions. So if you base things off a “​<em>ground truth</em>​” or reality, yes, we can use the word “​<em>cheat</em>​“. The software is essentially building a model in which to emulate light in the real world with things like decay, bounce, global illumination…</p>
+<p>在介绍中，我解释说这本书更侧重于 PBR 制作。因此，如果你以“<em>基本事实”或现实为基础，是的，我们可以使用“欺骗</em>​”这个词。该软件本质上是在构建一个模型，通过衰减、反射、全局照明等来模拟现实世界中的光线……</p>
+<p>But this word is so negative.  <strong>We should never make an artist feel guilty for having created a couple of extra lights.</strong>   And if you want your artists to work in a certain way, because of art direction or render times, it is totally understandable. But <strong>train them</strong> so they know.</p>
+<p>但这个词太消极了。<strong>我们不应该让艺术家因为多做了几盏灯而感到内疚。</strong> 如果你想让艺术家以某种方式工作，因为艺术指导或渲染时间，这是完全可以理解的。但<strong>要培训他们</strong>，让他们知道。</p>
+<blockquote>
+<p>My lead at Animal used to tell me : “Whatever works”. Is it that simple ? If you only care about your shot, yeah that would do the trick. But lighting for me is about finding viable solutions that you can easily share with the team. Lighting is about building physical environments that stand correctly.  <strong>If you start to remove walls, objects, link them together, exclude some others, what are you trying to achieve ?</strong>  You are just destroying the plausibility of the CG world.</p>
+<p>Animal 的领导曾经告诉我：“只要管用就行”。就这么简单吗？如果你只关心你的镜头，那当然可以。但对我来说，照明就是找到可行的解决方案，并轻松与团队分享。照明就是构建正确的物理环境。<strong>如果你开始移除墙壁、物体，将它们连接在一起，排除其他物体，你想达到什么目的？</strong> 你只是在破坏 CG 世界的可信度。</p>
+</blockquote>
+<h2 id="光衰-light-decay">光衰 Light decay</h2>
+<p>We have seen in a previous chapter that the <em>Sun</em> could either be a Spot or a Distant light. What visual difference does it make ? Actually a big one, because of the decay. The <a href="https://dl.acm.org/citation.cfm?id=3328063">Lighting design for stylized animation</a> paper explains pretty well <strong>light falloff.</strong></p>
+<p>我们在上一章中看到，<em>太阳</em>既可以是聚光灯，也可以是远光灯。这会带来什么视觉差异？实际上，差异很大，因为会衰减。<a href="https://dl.acm.org/citation.cfm?id=3328063">风格化动画的照明设计</a>论文很好地解释了<strong>光线衰减。</strong></p>
+<blockquote>
+<p>From <strong>Dave Walvoord</strong> : The natural falloff from light sources is another  way to add depth to shots.  The brightness of light diminishes in an  inverse squared manner […]. Therefore, if you want a lot of falloff  then a light should be placed close to the subject. This has the effect  of increasing depth between objects.  A light placed farther away has  less falloff and will compress the space.</p>
+<p><strong>Dave Walvoord</strong>表示：光源的自然衰减是增加镜头深度的另一种方式。光的亮度以平方反比的方式减弱 […]。因此，如果您想要大量的衰减，那么应该将灯光放置在靠近拍摄对象的位置。这会增加物体之间的深度。放置得较远的灯光衰减较少，会压缩空间。</p>
+<p>I personally prefer the term of decay. But it is very personal. Once again vocabulary is a very important part of our job.</p>
+<p>我个人更喜欢“衰败”这个词。但这非常个人化。再次强调，词汇是我们工作中非常重要的一部分。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0070_decay_depth_dragon_FHD-20241105171640-3yeqbhj.jpg" alt="" title="A light placed farther away has less falloff and will compress the space. 放置得较远的灯光衰减较少，并且会压缩空间。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0080_decay_depth_dragon_FHD-20241105171640-g4j89j1.jpg" alt="" title="If you want a lot of falloff then a light should be placed close to the subject. 如果想要大量的衰减，则应将灯光放置在靠近拍摄对象的位置。" loading="lazy">​</p>
+<p>Great explanation and examples in this pdf.</p>
+<p>这个 pdf 中有很棒的解释和示例。</p>
+<blockquote>
+<p>The characters and camera are in the exact same place, and only the  light is moved [in the renders above]. In the first image, the light is  far away from the characters and the depth between them is compressed.  In the second image the light is brought closer and there is a large  amount of falloff from Hiccup in the front to Stormfly in the back. This  produces the effect that the characters are farther away from each  other. This technique can be used to great effect to change the depth of  the shot.</p>
+<p>角色和相机处于完全相同的位置，只有光线移动（在上面的渲染图中）。在第一幅图中，光线距离角色很远，它们之间的深度被压缩。在第二幅图中，光线被拉近，从前面的 Hiccup 到后面的 Stormfly 有大量的衰减。这产生了角色彼此距离较远的效果。这种技术可以很好地用于改变镜头的深度。</p>
+</blockquote>
+<p>A supervisor once told me not to put any lights close to the character. I guess he is right if your goal is to tie the characters together. But it actually depends on what you want to achieve. Do you want to tie your characters together or do you want to separate them ? Both options are  possible.</p>
+<p>一位主管曾经告诉我不要在角色附近放置任何灯光。如果你的目标是将角色联系在一起，我想他是对的。但这实际上取决于你想要实现什么。你想将角色联系在一起还是想将它们分开？两种选择都是可能的。</p>
+<blockquote>
+<p>Many artists have asked me these questions about decay : how do you manage if you want to have a very strong light on an element but it does not illuminate too far behind it ? Is there a case where you want to force a faster attenuation of light than the quadratic ?</p>
+<p>许多艺术家都问过我关于衰减的问题：如果你想让一个元素上有一个非常强的灯光，但它不会照亮它后面太远的地方，你该怎么做？有没有一种情况，你想强制光的衰减速度比二次函数更快？</p>
+<p>Answer is pretty straight-forward : never.</p>
+<p>答案很简单：永远不会。</p>
+</blockquote>
+<h2 id="光链接-light-linking">光链接 Light-linking</h2>
+<p>Light-linking <strong>is when a light illuminates only certain objects.</strong>  It is NOT the same as shadow linking, when you remove some shadow casters from a light. <strong>A proper light-linking will keep all the shadow casters as they are.</strong></p>
+<p>灯光链接<strong>是指灯光仅照亮某些物体。</strong> 它不同于阴影链接，阴影链接是指从灯光中移除一些阴影投射器。<strong>正确的灯光链接将保持所有阴影投射器的原样。</strong></p>
+<p>I have tried to find an example where light-linking (in this case it is lighting in layering but that is essentially the same thing) is a bit extreme. The characters seem to be in a different world than the set.</p>
+<p>我曾尝试找一个灯光链接（在本例中是分层照明，但本质上是一样的）有点极端的例子。角色似乎身处与场景不同的世界。</p>
+<h3 id="链接至星报-linking-on-the-star">链接至星报 Linking on The Star</h3>
+<p>Since our workflow allowed it, there was basically light-linking on every shot of ​<em>The Star</em>​. Most of the time my job would be to clean things a bit and simplify light rigs.</p>
+<p><em>由于我们的工作流程允许， 《星星》</em> 的每一个镜头基本上都有灯光连接。大多数时候我的工作是清理一下东西，简化灯光装置。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/The Star 2017 - Prayers from Donkeys Scene 7-10  Movieclips-20241115020708-k5a01qi.mp4" data-src="assets/The Star 2017 - Prayers from Donkeys Scene 7-10  Movieclips-20241115020708-k5a01qi.mp4"></video></p>
+<p>I haven’t worked on this sequence but it kinda represents the limits of dramatic lighting without any lighting justification.</p>
+<p>我没有研究过这个序列，但它有点代表了没有任何照明依据的戏剧照明的极限。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0090_light_linking_star_FHD-20241105171640-cq64slg.jpg" alt="" title="This sequence has basically crazy rims all over the place. 这个序列基本上到处都是疯狂的边缘。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0100_light_linking_star_FHD-20241105171640-7lx7p7d.jpg" alt="" title="Yes, the characters pop but the rims are so harsh. 是的，角色很突出，但是边缘太粗糙了。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0110_light_linking_star_FHD-20241105171640-exmkzi5.jpg" alt="" title="Especially when it affects the neck of the donkey, Bo. How can it come from the bottom ? 尤其是牵扯到驴脖子的时候，博，怎么会从下面过来呢？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0120_light_linking_star_FHD-20241105171640-c308pr9.jpg" alt="" title="Same crazy rim from below on the goat. 山羊下方也有同样疯狂的边缘。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0130_light_linking_star_FHD-20241105171640-6rn19hn.jpg" alt="" title="A festival of rims. 轮辋的节日。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0140_light_linking_star_FHD-20241105171640-soc9mhu.jpg" alt="" title="If you look at Bo the donkey, he has a strong rim from the right. It does not look integrated at all. 如果你看看驴子博，你会发现他的右侧有一个很强的篮筐。看起来一点也不完整。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0150_light_linking_star_FHD-20241105171640-8z918n8.jpg" alt="" title="Bo looks like a sticker placed on top of the image. Bo 看起来就像是贴在图像顶部的贴纸。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0160_light_linking_star_FHD-20241105171640-z5z8jeg.jpg" alt="" title="How could a rim come from the bottom in this sequence ? 在这个序列中，轮辋怎么可能从底部出现？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0170_light_linking_star_FHD-20241105171640-goperlx.jpg" alt="" title="Both characters look so different from the set because of the many rims. The goat's face next to the pillar look completely off. 由于边框较多，两个角色看起来与场景完全不同。柱子旁边的山羊脸看起来完全不对劲。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0180_light_linking_star_FHD-20241105171640-w8xjge3.jpg" alt="" title="Again the rim from the bottom... 再次从底部边缘..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0190_light_linking_star_FHD-20241105171640-3kvtnum.jpg" alt="" title="Rims are driving the goat crazy. 轮圈让山羊疯狂。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0200_light_linking_star_FHD-20241105171640-jez8vcu.jpg" alt="" title="Look at the hooves compared to the floor. Way too bright ! In this case, just use a blocker to fade softly. 看看蹄子和地板的对比。太亮了！在这种情况下，只需使用阻光剂轻轻地褪色即可。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0210_light_linking_star_FHD-20241105171640-jvo25hb.jpg" alt="" title="Same thing here : complete mismatch between the hooves and the floor. 这里也是一样：蹄子和地板完全不匹配。" loading="lazy">​</p>
+<p>We did output 250 shots per week on this project.</p>
+<p>我们在这个项目上每周确实输出了 250 张照片。</p>
+<blockquote>
+<p>I have thought a lot about light-linking and right or wrong. In my opinion it does not make sense to say : <em>light-linking is crap</em> or ​<em>I hate light-linking</em>​. Every studio has its culture and its way of doing things.</p>
+<p><em>我对光链接及其正确与否思考了很多。在我看来，说“光链接是垃圾”</em> 或 <em>“我讨厌光链接”</em> 是没有意义的。每个工作室都有自己的文化和做事方式。</p>
+<p>The real question being : is it used properly ?</p>
+<p>真正的问题是：它是否被正确使用？</p>
+</blockquote>
+<h3 id="链接乐高蝙蝠侠-linking-on-lego-batman">链接乐高蝙蝠侠 Linking on Lego Batman</h3>
+<p>For example, I did plenty of light-linking on <em>Lego Batman</em> because the art direction was very graphic. I did not use any on <em>The secret life of pets</em> because of its natural look. The only conclusion I could come with is :  <strong>Light-linking is based on art direction.</strong>   Honestly, it would have been impossible to do Lego Batman without it.</p>
+<p>例如，我在 <em>《乐高蝙蝠侠》</em> 中用了很多光链接，因为艺术指导非常生动。我没有在 <em>《爱宠大机密》</em> 中使用任何光链接，因为它看起来很自然。我得出的唯一结论是：<strong>光链接基于艺术指导。</strong> 老实说，如果没有它，就不可能制作《乐高蝙蝠侠》。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/060_lightingPrinciples_600_balance_lego_batman_HD-20241115020334-pd2996r.mp4" data-src="assets/060_lightingPrinciples_600_balance_lego_batman_HD-20241115020334-pd2996r.mp4"></video></p>
+<p>I used light-linking on batman for his double rims. It was the easiest solution in this case. Otherwise the floor would have been way to bright.</p>
+<p>我使用灯光链接来制作蝙蝠侠的双圈。这是本例中最简单的解决方案。否则地板会太亮。</p>
+<p>I generally try to avoid light-linking.  <strong>I only use it if I do not have ANY other options.</strong>   But it does not mean that it is not a good solution. Depending on the art direction, you may have to rim your characters like crazy. In this case, YES, light-linking is the only solution.</p>
+<p>我一般会尽量避免使用光链接。<strong>只有在没有其他选择的情况下我才会使用它。</strong>  但这并不意味着它不是一个好的解决方案。根据艺术指导，你可能不得不疯狂地为角色添加边框。在这种情况下，是的，光链接是唯一的解决方案。</p>
+<p>But I would not start a Master Lighting using it by default.  <strong>When I begin a sequence, I use lights that affect everything.</strong>  It is only after dailies and based on the Supervisor’s comments that I will eventually use light-linking.</p>
+<p>但我不会默认使用它来开始主照明。<strong>当我开始一个序列时，我会使用影响一切的灯光。</strong> 只有在每日拍摄结束后，根据主管的评论，我才会最终使用灯光链接。</p>
+<h3 id="planet-51-上的极限光链接-extreme-light-linking-on-planet-51">Planet 51 上的极限光链接 Extreme light-linking on Planet 51</h3>
+<p>And if you ask me, below is the most extreme light-linking I have ever done in my life. I don’t think I have ever told anyone before. Chuck the astronaut has one sun for his body and one for his face.</p>
+<p>如果你问我，下面是我一生中做过的最极端的光链接。我想我以前从未告诉过任何人。宇航员查克的身体上有一颗太阳，脸上也有一颗。</p>
+<p>I was not able to get the proper look without doing it this way. But I guess it’s okay because I don’t think you can spot it. <strong>Visually it looks like one sun.</strong></p>
+<p>如果不这样做，我就无法得到正确的外观。但我想这没关系，因为我认为你看不到它。<strong>从视觉上看，它看起来像一个太阳。</strong></p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_180_planet51_light_linking_HD-20241115020816-qw12upu.mp4" data-src="assets/070_lightingTechniques_180_planet51_light_linking_HD-20241115020816-qw12upu.mp4"></video></p>
+<p>I was a mid artist and a bit desperate to get this shot approved.</p>
+<p>我是一名中级艺术家，非常希望这张照片能得到批准。</p>
+<blockquote>
+<p>One thing to keep in mind is that the <strong>rims cannot be stronger than the source.</strong>  Because of quadratic decay, the light fades with distance.</p>
+<p>需要记住的是，<strong>边缘的强度不能高于光源。</strong> 由于二次衰减，光线会随着距离的增加而减弱。</p>
+</blockquote>
+<h3 id="灯光链接规则-light-linking-rule">灯光链接规则 Light-linking rule</h3>
+<p>The only advice I could give you about light-linking is from my own experience. It is very personal so take it with a grain of salt. It actually took me a while to realize that.  <strong>I only do additive light-linking.</strong></p>
+<p>关于光链接，我能给你的唯一建议来自我自己的经验。这是非常个人化的建议，所以请谨慎对待。事实上，我花了一段时间才意识到这一点。<strong>我只做加法光链接。</strong></p>
+<p><strong>I always start with the lights affecting everything.</strong>  And then I would eventually add a couple of lights only on certain elements. <strong>I try to have the highest common denominator for my light rigs.</strong>  It is very rare for me to remove an object from a light influence.</p>
+<p><strong>我总是从影响一切的灯光开始。</strong> 然后我最终会只在某些元素上添加几盏灯。<strong>我试图为我的灯光装置找到最大的共同点。</strong> 我很少将物体从灯光影响中移除。</p>
+<h2 id="体积测量-volumetrics">体积测量 Volumetrics</h2>
+<h3 id="技术描述-technical-description">技术描述 Technical description</h3>
+<blockquote>
+<p><strong>Volumetric rendering refers to a technique for generating a visual representation of data that is contained in a three dimensional space (volume).</strong>   Examples of this are atmospheric effects such as smoke and fog […]. In marching cubes, data is  represented as voxels, but in the sense that we store some floating point value in a structured grid in three dimensions. <em>Volume rendering</em> is contrasted with <em>Surface rendering</em> because the data that is being rendered is coming from a three  dimensional data set rather than a two dimensional data set (a surface).</p>
+<p><strong>体积渲染是指生成三维空间（体积）中包含的数据的视觉表示的技术。</strong> 烟雾和雾等大气效果就是一个例子[…]。在行进立方体中，数据表示为体素，但从某种意义上说，我们将一些浮点值存储在三维结构化网格中。<em>体积渲染与表面渲染</em>形成对比，因为正在渲染的数据来自三维数据集，而不是二维数据集（表面）。</p>
+<p>Great explanation from this <a href="https://gamedev.stackexchange.com/questions/54949/what-is-volumetric-rendering">website</a>. Thanks guys !</p>
+<p><a href="https://gamedev.stackexchange.com/questions/54949/what-is-volumetric-rendering">这个网站</a>的解释很棒。谢谢大家！</p>
+</blockquote>
+<h3 id="容积法配方-volumetrics-recipe">容积法配方 Volumetrics Recipe</h3>
+<p>My personal preference to work on my volumetric is to render it interactively in my master layer.  <strong>It allows me to check easily its density and color.</strong>   If you tweak your volumetric shader with all the geometry in matte, you may get some surprises later in comp.</p>
+<p>我个人更喜欢在主层中以交互方式渲染体积。<strong>这样我可以轻松检查其密度和颜色。</strong> 如果您使用遮罩中的所有几何体调整体积着色器，您可能会在后期的合成中得到一些惊喜。</p>
+<ul>
+<li>I work interactively with everything in the scene.</li>
+<li>我与场景中的所有事物进行交互。</li>
+<li>But I render in separated passes for beauty and volumetric.</li>
+<li>但为了美观和体积，我使用不同的通道进行渲染。</li>
+<li>I generally start with my beauty lights affecting the volumetric.  <strong>It is easier to set the density this way.</strong></li>
+<li>我通常先从影响体积的美颜灯开始。<strong>这样设置密度比较容易。</strong></li>
+<li>Once I am happy with the density, I’ll see if I need to create special volumetric lights or not.</li>
+<li>一旦我对密度满意，我就会看看是否需要创建特殊的体积光。</li>
+</ul>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0240_master_beauty_FHD-20241105171640-clj98p1.jpg" alt="" title="Here is my beauty render without any volumetric. 这是我的没有任何体积的美丽渲染。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0250_master_sun_volumetrics_FHD-20241105171640-br36dxd.jpg" alt="" title="Here is the result with a volumetric box lit by the sun. 这是太阳照射体积盒的结果。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0260_master_sun_volumetrics_pass_FHD-20241105171640-cdaf9p4.jpg" alt="" title="The pass on its own looks a bit boring. Let's improve it. 这张传球本身看起来有点无聊。让我们改进它。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0270_master_noise_volumetrics_pass_FHD-20241105171640-7wb1nhv.jpg" alt="" title="I have created a special light with a noise for my volumetric. Rays make it more interesting. 我为我的体积创建了一个带噪音的特殊灯光。光线让它更有趣。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0280_master_noise_volumetrics_FHD-20241105171640-b96bnod.jpg" alt="" title="But let's not forget to render EVERYTHING interactively. Otherwise I won't be able to tell if its density is fine. 但别忘了以交互方式渲染所有内容。否则我将无法判断其密度是否合适。" loading="lazy">​</p>
+<p>I have forced the rays on purpose to make this example obvious.</p>
+<p>我故意强制使用射线以使该示例更加明显。</p>
+<blockquote>
+<p>My former lead Victor Pajot used to tell me : volumetrics pass always look nice (because of the black background). The real challenge is when you merge them with the beauty.</p>
+<p>我以前的领导 Victor Pajot 曾经告诉我：体积通道总是看起来很漂亮（因为背景是黑色的）。真正的挑战是当你将它们与美丽融合在一起时。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0290_window_guerilla_viewport_FHD-20241105171640-xxob15a.jpg" alt="" title="Here is a screenshot of a Guerilla scene. A simple Area Light and a window. 这是游击队场景的截图。一个简单的区域光和一扇窗户。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0300_window_beauty_FHD-20241105171640-nxoprvm.jpg" alt="" title="This is the render of the beauty. Nothing fancy or over-complicated here. 这是美丽的渲染。这里没有任何花哨或过于复杂的东西。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0310_window_beauty_volumetrics_FHD-20241105171640-72cg0sv.jpg" alt="" title="This is the same render in Guerilla after I added a volumetric box to the scene. I generally start by lighting my volumetric with my &quot;beauty&quot; lights. I render interactively with everything in it. It allows me to check its density easily. 这是我在场景中添加体积框后在 Guerilla 中的相同渲染。我通常先用“美感”灯照亮体积。我与其中的所有物体进行交互渲染。它让我可以轻松检查其密度。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0320_window_volumetrics_FHD-20241105171640-n47sf2b.jpg" alt="" title="Here is the volumetric render with the geometry as a matte (or black hole). If my volumetric is too bright or too dark, I would tweak its shader : density, color and asymmetry. It should be enough to get the proper look. 这是体积渲染，其中几何体为遮罩（或黑洞）。如果我的体积太亮或太暗，我会调整其着色器：密度、颜色和不对称性。这应该足以获得正确的外观。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0330_window_volumetrics_alpha_FHD-20241105171640-h2j7cdp.jpg" alt="" title="This is the alpha of the volumetric render. It looks like a z-depth. 这是体积渲染的 alpha。它看起来像 z 深度。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0340_window_beauty_over_volumetrics_FHD-20241105171640-b4g8j2x.jpg" alt="" title="If I merge the beauty and the volumetric renders in Nuke using an 'over', it looks very similar to my render in Guerilla. This is the technically correct way. If you want to use the alpha of your volumetric, you should use “over”. 如果我使用“over”在 Nuke 中合并美感渲染和体积渲染，它看起来与我在 Guerilla 中的渲染非常相似。这是技术上正确的方法。如果您想使用体积的 alpha，则应使用“over”。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0350_window_beauty_plus_volumetrics_FHD-20241105171640-pvmf5s3.jpg" alt="" title="If I merge them using 'plus', I will get more light because this is an additive process. I know it is not recommended but it can be useful. 如果我使用“加法”将它们合并，我会得到更多的光，因为这是一个添加过程。我知道不推荐这样做，但它很有用。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0360_window_beauty_volumetrics_rays_FHD-20241105171640-tcyc8be.jpg" alt="" title="If my volumetric has a storytelling purpose, I would create a special lights with a noise to get some extra rays. I have done here some light-linking : the blue area light only affects the geometry and the orange spot light only affects the volumetric. 如果我的体积有讲故事的目的，我会创建一个带有噪音的特殊灯光来获得一些额外的光线。我在这里做了一些光链接：蓝色区域光只影响几何体，橙色聚光灯只影响体积。" loading="lazy">​</p>
+<p>This example is not ideal but hopefully you get the idea.</p>
+<p>这个例子并不理想，但希望你能明白。</p>
+<blockquote>
+<p>Volumetric rendering is a bit technical and can possibly give headaches, even to senior artists. One of the <strong>most important parameter is the density of your volume. Because it will change greatly its look and its alpha.</strong></p>
+<p>体积渲染有点技术性，甚至可能让资深艺术家头疼。<strong>最重要的参数之一是体积的密度。因为它会极大地改变其外观和 alpha。</strong></p>
+<p>The Arnold website <a href="https://support.solidangle.com/display/AFMUG/Volume+Scattering">about</a> <a href="https://support.solidangle.com/display/AFMUG/Volume+Attributes">volumetrics</a> is very well written and easy to understand if you want to read more on the subject.</p>
+<p>如果您想了解更多有关该主题的内容， Arnold 网站<a href="https://support.solidangle.com/display/AFMUG/Volume+Scattering">关于</a> <a href="https://support.solidangle.com/display/AFMUG/Volume+Attributes">体积测量的</a>介绍非常详尽且易于理解。</p>
+</blockquote>
+<h3 id="体积合并-merge-of-volumetrics">体积合并 Merge of volumetrics</h3>
+<p>Should we merge in ‘​<em>over</em>​‘ or ‘​<em>plus</em>​‘ the volumetric pass ? I know that  <strong>‘over‘ is the correct way</strong> and we should definitely try to respect this. BUT production realities sometimes make it impossible. If I am in rush and my volumetric pass is too dense, I’ll do what I have to do.</p>
+<p>我们应该在“ <em>over</em> ”或“ <em>plus</em> ”体积通道中进行合并吗？我知道 <strong>“ over”是正确的方法，</strong> 我们绝对应该尝试尊重这一点。但生产现实有时会使这变得不可能。如果我很着急，并且我的体积通道太密集，我会做我必须做的事情。</p>
+<p>If you feel like your volumetric is darkening too much your beauty, you have several options :</p>
+<p>如果你觉得你的体积太暗，影响你的美丽，你有几种选择：</p>
+<ul>
+<li>Decrease the volumetric density (which will have an effect on its alpha).</li>
+<li>降低体积密度（这会对其 alpha 产生影响）。</li>
+<li>Increase the volumetric shader color.</li>
+<li>增加体积着色器颜色。</li>
+<li>Increase the light exposure.</li>
+<li>增加光照。</li>
+<li>If you cannot re-render, you may grade the volumetric pass. Rule of thumb would be to grade color (RGB) and alpha (A) at the same time to keep it consistent.</li>
+<li>如果无法重新渲染，您可以对体积通道进行分级。经验法则是同时对颜色 (RGB) 和 alpha (A) 进行分级以保持一致。</li>
+</ul>
+<blockquote>
+<p>On Lego  Batman, we used the depth pass. A lot. I am pretty sure half the shots have borders since the depth pass was not defocused nor anti-aliased. It is better to do the <a href="https://docs.arnoldrenderer.com/display/AFHUG/Fog">fog</a> effect in CG if possible.</p>
+<p>在《乐高蝙蝠侠》中，我们使用了深度通道。很多次。我很确定一半的镜头都有边框，因为深度通道没有散焦或抗锯齿。如果可能的话，最好在 CG 中制作<a href="https://docs.arnoldrenderer.com/display/AFHUG/Fog">雾</a>效。</p>
+<p>The art direction is so strong and edit so fast that you do not notice anything.</p>
+<p>艺术指导非常强，编辑速度非常快，你不会注意到任何东西。</p>
+</blockquote>
+<h3 id="使用体积法进行颜色分离-color-separation-with-volumetrics">使用体积法进行颜色分离 Color separation with volumetrics</h3>
+<p>In the previous paragraphs we have seen a technical description of the volumetrics rendering. But I really to emphasize the fact that <strong>volumetrics are also a wonderful tool for the cinematographer.</strong></p>
+<p>在前面的段落中，我们已经看到了体积渲染的技术描述。但我真的想强调的是，<strong>体积渲染对于电影摄影师来说也是一种很棒的工具。</strong></p>
+<p>It is funny how I have changed my mind about this topic. After ​<em>Pets</em>​, I would probably have said stuff like  <em>: do not create any special lights for this pass. It is really important that volumetric and beauty have a visual connection.</em></p>
+<p>有趣的是，我对这个话题的看法已经发生了改变。在<em>Pets</em>之后，我可能会说这样的话 <em>：不要为这个通道创建任何特殊灯光。体积和美感之间的视觉联系非常重要。</em></p>
+<p><strong>Grant</strong> and <strong>Craig</strong> really made me grow as an artist and helped me realize that  <strong>volumetrics (dust, fog and haze) are a tool for the cinematographer.</strong>  It will help you to direct the viewer’s eye, enhance drama, create depth, complement the composition or make a character pop.</p>
+<p><strong>Grant</strong>和<strong>Craig</strong>确实让我成长为一名艺术家，并帮助我意识到<strong>体积（灰尘、雾和霾）是电影摄影师的工具。</strong>  它将帮助您引导观众的视线、增强戏剧效果、创造深度、补充构图或使角色突出。</p>
+<p>I have been looking at the topic of volumetrics and its use in movies. Something I have been noticing (and that <strong>Grant</strong> uses perfectly) is the use of cold volumetrics to create depth.</p>
+<p>我一直在研究体积测量及其在电影中的应用。我注意到（而且<strong>Grant</strong>运用得非常好）冷体积测量可以创造深度。</p>
+<blockquote>
+<p>Even if it may not seem technically correct : <em>if my sun light is warm, so should be my volumetric, right ?</em>   <strong>I firmly believe that it is artistically correct to use cold volumetrics in most cases.</strong>  Or better said : to use a complementary scheme between the beauty lighting and the volumetric lighting.</p>
+<p>即使从技术角度看这似乎并不正确：*如果我的阳光是暖色的，那么我的体积也应该是暖色的，对吗？*​<strong>我坚信在大多数情况下使用冷体积在艺术上是正确的。</strong> 或者更好地说：在美丽照明和体积照明之间使用互补方案。</p>
+<p>Since the sun is warm, plenty of daylight sequences have cold volumetrics in them.</p>
+<p>由于太阳是温暖的，许多日光序列中都有冷体积。</p>
+</blockquote>
+<p>We will see examples of this trick in the following slides.</p>
+<p>我们将在下面的幻灯片中看到此技巧的示例。</p>
+<h3 id="体积测量示例-examples-of-volumetrics">体积测量示例 Examples of volumetrics</h3>
+<h4 id="乐高蝙蝠侠和体积测量-lego-batman-and-volumetrics">乐高蝙蝠侠和体积测量 Lego Batman and volumetrics</h4>
+<p>First example comes from<em>Lego Batman</em> (Director : ​<strong>Chris McKay</strong>​, PD : ​<strong>Grant Freckelton</strong>​). I just love this shot. <strong>Pay attention to the use of volumetric.</strong></p>
+<p>第一个例子来自 <em>《乐高蝙蝠侠》</em> （导演：<strong>克里斯·麦凯</strong>，导演：<strong>格兰特·弗雷克尔顿</strong>）。我非常喜欢这个镜头。<strong>注意体积的使用。</strong></p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_210_lego_batman_volumetric_HD-20241115020859-5lyqa48.mp4" data-src="assets/070_lightingTechniques_210_lego_batman_volumetric_HD-20241115020859-5lyqa48.mp4"></video></p>
+<p>I just love this shot.</p>
+<p>我就是喜欢这张照片。</p>
+<p>This is one of my favorite tricks : see how this blue volumetric helps to read the microwave ? There is no doubt about what batman is doing. <strong>Otherwise it would just be a dark microwave over a dark wall</strong> and it would be hard to read the action. It is the most perfect dramatic volumetric light to make the microwave pop. Awesome !</p>
+<p>这是我最喜欢的技巧之一：看看这个蓝色体积光如何帮助读取微波炉？毫无疑问蝙蝠侠在做什么。<strong>否则，它只是一堵黑墙上的黑色微波炉，</strong> 很难读取动作。这是最完美的戏剧体积光，使微波炉突出。太棒了！</p>
+<blockquote>
+<p>The choice of the blue color is not genuine neither. We are seeing here a perfect example of a <strong>complementary scheme :</strong>  the microwave area (foreground) is warm and the wall area (background) is cold. It helps splitting the character from the background and gives more depth to the image.</p>
+<p>选择蓝色也并非是出于本意。我们在这里看到的是一个完美的<strong>互补方案示例：</strong> 微波炉区域（前景）是温暖的，而墙壁区域（背景）是冷的。它有助于将人物与背景区分开来，并为图像增添更多深度。</p>
+<p>Once again do not hesitate to have a look at Herbert’s <a href="http://herbertheinsche.com/cinematography/depth/">website.</a></p>
+<p>请再次毫不犹豫地浏览一下赫伯特的<a href="http://herbertheinsche.com/cinematography/depth/">网站。</a></p>
+</blockquote>
+<p>I really believe that <strong>you do not necessarily need to look for a justification in this case.</strong>  Too often we associate haze and volumetrics with pollution but we can also create them for pure dramatic purpose. <strong>No one gives a damn why there is some volumetric in Bruce Wayne’s kitchen.</strong>   Really.</p>
+<p>我真的相信，<strong>在这种情况下你不一定需要寻找理由。</strong> 我们常常将雾霾和体积与污染联系起来，但我们也可以出于纯粹的戏剧目的而创造它们。<strong>没人在乎为什么布鲁斯·韦恩的厨房里会有体积。</strong> 真的。</p>
+<blockquote>
+<p>In dailies, the lighting artist would ask : “But where does this blue volumetric come from ?” ​<strong>Craig Welsh</strong>​, the lighting supervisor would reply : <strong>it comes from me !</strong></p>
+<p>在日常工作中，灯光艺术家会问：“但是这个蓝色体积是从哪里来的？”灯光总监<strong>克雷格威尔士</strong>会回答：<strong>它来自我！</strong></p>
+<p>We would burst out laughing after that.</p>
+<p>之后我们就会大笑起来。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0370_volumetrics_lego_batman_FHD-20241105171640-y5xm1jm.jpg" alt="" title="I love this shot done by Sucheta Bhatawadekar. The use of volumetric between the planes gives so much depth to the frame. 我喜欢 Sucheta Bhatawadekar 拍摄的这张照片。平面之间的体积感为画面增添了很大的深度。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0380_volumetrics_lego_batman_FHD-20241105171640-yu8zcmd.jpg" alt="" title="Nice trick from Grant : the impact is warm on the floor and cold in the volumetric rays. It gives a nice contrast of color. Grant 的绝招：效果在地板上是暖色，而在体积射线中是冷色。它形成了很好的色彩对比。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0390_volumetrics_lego_batman_FHD-20241105171640-aaoxjmp.jpg" alt="" title="The headlights of the batwing justify this blue volumetric behind batman. Another great complementary scheme. 蝙蝠翼的前灯衬托出蝙蝠侠身后的蓝色体积。另一个很棒的补充方案。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0400_volumetrics_lego_batman_FHD-20241105171640-9dvadwz.jpg" alt="" title="Volumetrics in the background give depth to the frame. Simple as that. 背景中的体积为画面增添了深度。就这么简单。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0410_volumetrics_lego_batman_FHD-20241105171640-ngrs87q.jpg" alt="" title="Volumetrics and silhouette go very well together. 体积和轮廓完美地融为一体。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0420_volumetrics_lego_batman_FHD-20241105171640-snw2z6o.jpg" alt="" title="I love the blue rim on the characters which remind us of the volumetric in the back. It ties the frame together. 我喜欢人物身上的蓝色边框，它让我们想起了背后的体积。它将整个框架连接在一起。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0430_volumetrics_lego_batman_FHD-20241105171640-tq8nk82.jpg" alt="" title="This strong blue volumetric adds drama to the frame. The red lights enhance the feeling of danger. 这种强烈的蓝色体积为画面增添了戏剧效果。红色灯光增强了危险感。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0440_volumetrics_lego_batman_FHD-20241105171640-oynuh96.jpg" alt="" title="Beautiful night lighting on the chemical plant of Gotham. No day for night. The use of volumetrics behind the plant reinforces its scale and silhouette. 哥谭市化工厂的夜景灯光十分美丽。夜晚不再是白天。工厂背后的体积感增强了工厂的规模和轮廓。" loading="lazy">​</p>
+<p>No need to overthink it really. Volumetrics are such a great tool.</p>
+<p>其实没必要想太多。体积测量法是一个非常棒的工具。</p>
+<h4 id="兰戈和体积-rango-and-volumetrics">兰戈和体积 Rango and volumetrics</h4>
+<p>Pay attention to the warm impacts from the sun and cold volumetric rays in this saloon sequence from <em>Rango</em> (Director : <strong><a href="https://www.imdb.com/name/nm0893659/?ref_=tt_ov_dr">Gore Verbinski</a></strong>, DP : ​**<a href="https://www.imdb.com/name/nm0005683/?ref_=ttfc_fc_cr12">Roger Deakins</a>**​) . It gives so much depth to the frame. Awesome !</p>
+<p>注意 <em>《兰戈》</em> （导演：<strong><a href="https://www.imdb.com/name/nm0893659/?ref_=tt_ov_dr">戈尔·维宾斯基</a></strong>，摄影指导：<strong><a href="https://www.imdb.com/name/nm0005683/?ref_=ttfc_fc_cr12">罗杰·迪金斯</a></strong>）的这个酒吧场景中太阳的温暖影响和冷体积射线。它给画面带来了如此多的深度。太棒了！</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Rango 2011 - Trouble at the Saloon 3-10  Movieclips-20241115020944-g47cy82.mp4" data-src="assets/Rango 2011 - Trouble at the Saloon 3-10  Movieclips-20241115020944-g47cy82.mp4"></video></p>
+<h4 id="指环王和体积测量-lord-of-the-rings-and-volumetrics">指环王和体积测量 Lord of the rings and volumetrics</h4>
+<p>Although <em>Lord of the rings</em> (Director : ​**<a href="https://www.imdb.com/name/nm0001392/?ref_=ttfc_fc_dr1">Peter Jackson</a><strong>​, DP : ​</strong><a href="https://www.imdb.com/name/nm0504226/?ref_=ttfc_fc_cr14">Andrew Lesnie</a>**​) does not have a sophisticated photography, it has plenty of examples of cold volumetrics for daylight scenes.</p>
+<p>尽管​ <em>《指环王》</em> ​（导演：​**<a href="https://www.imdb.com/name/nm0001392/?ref_=ttfc_fc_dr1">彼得·杰克逊</a><strong>​，摄影指导：​</strong><a href="https://www.imdb.com/name/nm0504226/?ref_=ttfc_fc_cr14">安德鲁·莱斯尼</a>**​）没有复杂的摄影，但它有大量用于日光场景的冷体积的例子。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0450_volumetrics_two_towers_FHD-20241105171640-or2ye21.jpg" alt="" title="The woods are a great location to justify blue rays of volumetric even if the sun is warm. 即使阳光很暖，树林也是证明体积蓝色射线的绝佳地点。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0460_volumetrics_two_towers_FHD-20241105171640-glmjonb.jpg" alt="" title="So is this stable... 那么这稳定吗..." loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0470_volumetrics_two_towers_FHD-20241105171640-hs3tgjf.jpg" alt="" title="I agree it is not the most subtle effect. 我同意这不是最微妙的效果。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0480_volumetrics_two_towers_FHD-20241105171640-ktbdsh4.jpg" alt="" title="But I think this sequence contains some good examples. 但我认为这个序列包含一些很好的例子。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0490_volumetrics_two_towers_FHD-20241105171640-lfrjf7z.jpg" alt="" title="Especially this shot. Warm on the face, cold in the back and some counterchange on top of that ! Neat ! 尤其是这张照片。脸上暖暖的，背上冷冷的，上面还有一些反差！太棒了！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0500_volumetrics_two_towers_FHD-20241105171640-p73x6gh.jpg" alt="" title="Interesting how these rays are really coming from a complete different direction than Aragorn's key light. 有趣的是，这些光线实际上来自与阿拉贡的主光完全不同的方向。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0510_volumetrics_two_towers_FHD-20241105171640-bazrcur.jpg" alt="" title="But I kind of buy it. It sets the mood and really helps to separate the characters from the background. 但我还是有点相信。它营造了气氛，确实有助于将人物与背景区分开来。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0520_volumetrics_two_towers_FHD-20241105171640-x3fy3g0.jpg" alt="" title="Especially since most of the image has brown materials : clothes, wood, fur... 尤其是因为图像的大部分都是棕色的材料：衣服、木头、毛皮……" loading="lazy">​</p>
+<p>More examples can also be found in the <a href="https://theasc.com/magazine/dec02/two/index.html#">Golden hall of Edoras</a> sequence.</p>
+<p><a href="https://theasc.com/magazine/dec02/two/index.html#">在埃多拉斯金色大厅</a>序列中也可以找到更多的例子。</p>
+<h4 id="银翼杀手和体积测量-blade-runner-and-volumetrics">《银翼杀手》和体积测量 Blade Runner and volumetrics</h4>
+<p>I could not speak about volumetrics without showing some images from <em>Blade Runner</em> (Director :  <strong><a href="https://en.wikipedia.org/wiki/Ridley_Scott">Ridley Scott</a></strong>, DP :  <strong><a href="https://en.wikipedia.org/wiki/Jordan_Cronenweth">Jordan Cronenweth</a></strong>). This is my favorite cinematography of all times.</p>
+<p>​<em>如果不展示一些《银翼杀手》</em> ​（导演：  <strong><a href="https://en.wikipedia.org/wiki/Ridley_Scott">雷德利·斯科特</a></strong>，摄影指导：  <strong><a href="https://en.wikipedia.org/wiki/Jordan_Cronenweth">乔丹·克罗宁韦斯</a></strong>）中的图像，我就无法谈论体积。这是我一直以来最喜欢的电影摄影。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0530_volumetrics_blade_runner_FHD-20241105171640-005ey8e.jpg" alt="" title="Blade Runner is a perfect example for the use of volumetrics. 《银翼杀手》是运用体积测量学的完美范例。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0540_volumetrics_blade_runner_FHD-20241105171640-ct6w61h.jpg" alt="" title="The composition and the contrast are just amazing. 其构图和对比令人惊叹。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0550_volumetrics_blade_runner_FHD-20241105171640-4da0vim.jpg" alt="" title="Staging and Composition at their best level. I love the detail of the hand in the beam of light. So graphic. 舞台和构图都达到了最佳水平。我喜欢光束中手的细节。太生动了。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0560_volumetrics_blade_runner_FHD-20241105171640-ft4e0i7.jpg" alt="" title="Use of silhouette, skip lighting and volumetrics. Perfectly balanced image. 使用轮廓、跳过照明和体积。完美平衡的图像。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0570_volumetrics_blade_runner_FHD-20241105171640-zz4mrz6.jpg" alt="" title="I cannot imagine the amount of smoke on set. Wide angle looks great here. 我无法想象片场烟雾的量。广角在这里看起来很棒。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0580_volumetrics_blade_runner_FHD-20241105171640-ewvftcq.jpg" alt="" title="My eye goes exactly where it should go. Love the window shadow in the volumetrics and the smokes in the back. So rich. 我的视线正好落在它应该去的地方。喜欢体积中的窗户阴影和背后的烟雾。太丰富了。" loading="lazy">​</p>
+<p>Some fans have watched this movie flipped horizontally and desaturated for study purpose.</p>
+<p>一些粉丝出于研究目的，将这部电影水平翻转并去饱和后进行了观看。</p>
+<h4 id="印第安纳琼斯和体积测量-indiana-jones-and-volumetrics">印第安纳琼斯和体积测量 Indiana Jones and volumetrics</h4>
+<p>In this chase sequence from <em>Indiana Jones and the Kingdom of the Crystal Skull</em> (Director : <strong><a href="https://www.imdb.com/name/nm0000229/?ref_=ttfc_fc_dr1">Steven Spielberg</a></strong>, DP : <strong><a href="https://www.imdb.com/name/nm0001405/?ref_=ttfc_fc_cr9">Janusz Kaminski</a></strong>) you can see some warm impacts from the sun on the plants and some slightly cold volumetric rays.</p>
+<p><em>在《夺宝奇兵：水晶头骨王国》</em> （导演：<strong><a href="https://www.imdb.com/name/nm0000229/?ref_=ttfc_fc_dr1">史蒂文·斯皮尔伯格</a></strong>，摄影指导：<strong><a href="https://www.imdb.com/name/nm0001405/?ref_=ttfc_fc_cr9">贾努兹·卡明斯基</a></strong>）的追逐序列中，你可以看到太阳对植物的一些温暖影响和一些略冷的体积射线。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Indiana Jones 4 7-10 Movie CLIP - Jeep Sword Fight 2008 HD-20241115021036-s6o7fle.mp4" data-src="assets/Indiana Jones 4 7-10 Movie CLIP - Jeep Sword Fight 2008 HD-20241115021036-s6o7fle.mp4"></video></p>
+<h4 id="更多体积示例-more-volumetrics-example">更多体积示例 More volumetrics example</h4>
+<p>There is a couple of examples of cold volumetrics that I wish to add like <em>Predator</em> (Director : <strong><a href="https://www.imdb.com/name/nm0001532/?ref_=tt_ov_dr">John McTiernan</a></strong>, DP : <strong><a href="https://www.imdb.com/name/nm0005791/?ref_=ttfc_fc_cr10">Donald McAlpine</a></strong>), <em>Tangled</em> (Director : <strong><a href="https://www.imdb.com/name/nm0397174/?ref_=ttfc_fc_dr2">Byron Howard</a></strong>, DP :  <strong><a href="https://www.imdb.com/name/nm3380796/?ref_=ttfc_fc_cr117">Mohit Kallianpur</a></strong>) and Donkey Skin (Director : <strong><a href="https://www.imdb.com/name/nm0218840/?ref_=ttfc_fc_dr1">Jacques Demy</a></strong>, DP : <strong><a href="https://www.imdb.com/name/nm0005669/?ref_=ttfc_fc_cr4">Ghislain Cloquet</a></strong>).</p>
+<p>我希望添加一些冷体积的例子，例如​ <em>《铁血战士》</em> ​（导演：<strong><a href="https://www.imdb.com/name/nm0001532/?ref_=tt_ov_dr">约翰·麦克蒂尔南</a></strong>，摄影指导：<strong><a href="https://www.imdb.com/name/nm0005791/?ref_=ttfc_fc_cr10">唐纳德·麦卡尔</a><strong>平）、 《魔​<em>发奇缘</em>​》 （导演：</strong><a href="https://www.imdb.com/name/nm0397174/?ref_=ttfc_fc_dr2">拜伦·霍华德</a></strong>，摄影指导：  <strong><a href="https://www.imdb.com/name/nm3380796/?ref_=ttfc_fc_cr117">莫希特·卡利安普尔</a></strong>）和《驴皮》（导演：<strong><a href="https://www.imdb.com/name/nm0218840/?ref_=ttfc_fc_dr1">雅克·德米</a></strong>，摄影指导：<strong><a href="https://www.imdb.com/name/nm0005669/?ref_=ttfc_fc_cr4">吉斯兰·克洛凯</a></strong>）。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0590_volumetrics_logan_FHD-20241105171640-jtp2r8f.jpg" alt="" title="Logan (DP : John Mathieson) uses the same technique. An orange volumetric behind Hugh Jackman's head helps directing the eye. 洛根 (摄影指导：约翰·马西森) 使用了同样的技巧。休·杰克曼头部后面的橙色立体物体有助于引导视线。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0600_volumetrics_oliver_twist_FHD-20241105171640-sci3310.jpg" alt="" title="Use of volumetrics to direct the viewer's eye in Oliver Twist (DP : Pawel Edelman). 在《雾都孤儿》（摄影指导：Pawel Edelman）中，使用体积来引导观众的视线。" loading="lazy">​</p>
+<p>More examples of cold volumetrics can also be seen in Tangled, Predator and Donkey Skin.</p>
+<p>在《魔发奇缘》、《铁血战士》和《驴皮》中也可以看到更多冷体积的例子。</p>
+<p>You may have noticed that I am a huge fan of volumetric effects, especially cold ones. But this obsession should not convert into a tic ! Volumetrics must be designed and applied thoroughly.</p>
+<p>你可能已经注意到我非常喜欢体积效果，尤其是冷色效果。但这种痴迷不应该变成一种习惯！体积效果必须经过彻底的设计和应用。</p>
+<h2 id="顶光-top-light">顶光 Top Light</h2>
+<p>The top light is a trick I have actually seen in many companies. In CG we often need to add a light coming from the top to reinforce the sky and give shape. Basically it is a <strong>Top Blue Light to reinforce the sky contribution.</strong></p>
+<p>顶光是我在许多公司见过的一种技巧。在 CG 中，我们经常需要添加来自顶部的灯光来增强天空并塑造形状。基本上，它是<strong>用于增强天空效果的顶部蓝光。</strong></p>
+<h3 id="planet-51-和-顶光-planet-51-and-top-light">Planet 51 和 顶光 Planet 51 and Top Light</h3>
+<p>On <em>Planet 51</em> (Director : ​<strong>Jorge Blanco</strong>​, Lighting Supervisor : ​<strong>Barbara Meyers</strong>​), we used the top light on probably 80% of the shots (interior and exterior) of the movie. This is probably the movie I have used it the most.</p>
+<p>在 <em>《星球 51》</em> （导演：<strong>Jorge Blanco</strong>，灯光总监：<strong>Barbara Meyers</strong>）中，我们在电影中大约 80% 的镜头（内部和外部）使用了顶灯。这可能是我用得最多的一部电影。</p>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_290_planet_51_topLight_HD-20241115021109-t9r270g.mp4" data-src="assets/070_lightingTechniques_290_planet_51_topLight_HD-20241115021109-t9r270g.mp4"></video></p>
+<p>Do you notice the blue specular on the nose and hair of these characters ? It does not come from the SkyLight. Theoretically it should. But very often in CG, Env Lights kinda flatten everything.</p>
+<p>你注意到这些角色鼻子和头发上的蓝色高光了吗？它不是来自 SkyLight。理论上它应该是。但在 CG 中，Env Lights 通常会使一切变得平坦。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0610_top_light_planet51_FHD-20241105171640-w96oyqg.jpg" alt="" title="You can clearly see how the top light is shaping the character's face in this frame. 您可以清楚地看到此画面中的顶光如何塑造人物的脸部。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0620_top_light_planet51_FHD-20241105171640-uqrc09b.jpg" alt="" title="Top light is not the same as a the rim light. Can you see those two in this frame ? 顶光与边缘光不同。你能在这幅画中看到这两个吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0630_top_light_planet51_FHD-20241105171640-9icode9.jpg" alt="" title="First time I ever heard 'top light' was on this shot, lit By Eduardo Suazo. The vehicle was going into the shadow because a building was blocking the sun. How do you give shape to a character when you are in shadow ? Top light is a great solution in this case. 我第一次听说“顶光”是在这张由 Eduardo Suazo 照明的照片上。车辆驶入阴影中，因为建筑物挡住了阳光。当你处于阴影中时，你如何塑造人物形象？在这种情况下，顶光是一个很好的解决方案。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0640_top_light_planet51_FHD-20241105171640-z81fv44.jpg" alt="" title="Top light was one of the key word on this production. It even became a running gag between lighting artists. In this shot, the sky's intensity would never affect the character this way. It had to be enhanced by a top light. 顶光是这部作品的关键词之一。它甚至成为灯光师之间的一个笑话。在这个镜头中，天空的强度永远不会以这种方式影响角色。它必须通过顶光来增强。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0650_top_light_planet51_FHD-20241105171640-7wpdml3.jpg" alt="" title="We sometimes even forced the specular on the top Light to catch a bit more detail. It really has to be soft and subtle though. 有时我们甚至会强制在顶部灯光上使用镜面反射来捕捉更多细节。不过它必须非常柔和和微妙。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0660_top_light_planet51_FHD-20241105171640-wew9r3u.jpg" alt="" title="Same thing here. Top light helps to catch some details on the characters' faces. 同样如此。顶光有助于捕捉人物面部的一些细节。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0670_top_light_planet51_FHD-20241105171640-shbjpzm.jpg" alt="" title="Is the Top Light only for exteriors ? Absolutely not ! 顶灯只适用于室外吗？绝对不是！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0680_top_light_planet51_FHD-20241105171640-f9kpkm4.jpg" alt="" title="I clearly remember that I was not very happy about putting some top light in this sequence. It did not seem logical to me. But I can now tell that it was a good choice to give shape to the characters and bring extra details. 我清楚地记得，我不太喜欢在这个场景中加入一些顶光。这对我来说似乎不合逻辑。但现在我可以说，这是一个不错的选择，可以塑造人物形象并带来额外的细节。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0690_top_light_planet51_FHD-20241105171640-ji62soz.jpg" alt="" title="Top Light is not only for characters. It can also bring details to the set and make the specular pop a little. It has to be soft though. 顶光不仅适用于角色。它还可以为场景增添细节，并使镜面反射稍微突出。不过它必须柔和。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0700_top_light_planet51_FHD-20241105171640-pubhh4k.jpg" alt="" title="You can really tell how the top light gives this extra bit of shaping to the face of the character. 你确实能看出顶光如何为角色的脸部提供额外的造型。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0710_top_light_planet51_FHD-20241105171640-4vh3oqr.jpg" alt="" title="I wondered for a long time : why this magical light is coming from the top ? Why this top direction ? My guess is that 90% of the time, we are used to see people with a light coming from the top. This direction is the most common in our every day's life. 我好奇了很久：为什么这种神奇的光芒是从顶部发出的？为什么是这个顶部方向？我的猜测是，90% 的时间里，我们都习惯于看到人们的光芒从顶部发出。这个方向是我们日常生活中最常见的。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0720_top_light_planet51_FHD-20241105171640-u6xun36.jpg" alt="" title="And this is why enhancing it makes so much sense. It can be more or less subtle or obvious. But it really does the trick ! 这就是为什么增强它如此有意义。它可能或多或少微妙或明显。但它确实有效！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0730_top_light_planet51_FHD-20241105171640-067sdcx.jpg" alt="" title="When I struggle at lighting a shot, I ask myself : 'Where should the light come from ?' I know that the top direction will often work well. 当我为拍摄场景打光而苦恼时，我会问自己：“光线应该从哪里来？”我知道顶部方向通常效果很好。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0740_top_light_planet51_FHD-20241105171640-622bebx.jpg" alt="" title="A top light can be a spot, an area or even a distant. Whatever suits you best. I personally use big area lights because I think it looks closer to what a DP would do on a set. 顶灯可以是点灯、区域灯，甚至是远光灯。只要你觉得合适就行。我个人使用大面积灯，因为我觉得它看起来更接近摄影指导在片场上所做的工作。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0750_top_light_planet51_FHD-20241105171640-glv4vzl.jpg" alt="" title="One of my favorite shots from Planet51, lit by Eduardo Suazo. Top light as the main light's direction. In this case, it does not have to be blue. 这是我最喜欢的 Planet51 镜头之一，由 Eduardo Suazo 照明。顶光作为主光的方向。在这种情况下，它不必是蓝色。" loading="lazy">​</p>
+<p>Great culture of character lighting at Ilion.</p>
+<p>Ilion 拥有优秀的特色灯光文化。</p>
+<h3 id="顶级清淡食谱-top-light-recipe">顶级清淡食谱 Top Light Recipe</h3>
+<p>The Top Light  <strong>gives a nice shape to the characters’ faces and possibly adds some extra specular in a very nice way.</strong>   To enhance the sky, you would :</p>
+<p>顶光<strong>为角色的脸部提供了漂亮的形状，并可能以非常好的方式添加了一些额外的镜面反射。</strong> 为了增强天空的效果，您需要：</p>
+<ul>
+<li>Create a light coming from the top with very soft shadows.</li>
+<li>创建一个从顶部发出的带有非常柔和阴影的光线。</li>
+<li>On the X axis, value can be around 50 to 90 degrees rotation.</li>
+<li>在 X 轴上，值可以大约旋转 50 到 90 度。</li>
+<li>Make the light blue (for example, R : 0.4 / G : 0.7 / B : 1).</li>
+<li>将灯光变为蓝色（例如，R：0.4 / G：0.7 / B：1）。</li>
+<li>The light should not be too strong, like half a stop exposure.</li>
+<li>光线不宜太强，比如半档曝光。</li>
+</ul>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_310_planet_51_topLight_HD-20241115021144-6qhal62.mp4" data-src=""></video></p>
+<blockquote>
+<p>Try to use matte painting in your Env light. In a perfect world, Digital Matte-Painting (DMP) would deliver a 360 skydome in .exr or .hdr format that we could use in our light rigs. <strong>So the reflections match the sky used in the final compositing.</strong>   The Solid Angle documentation explains pretty well the different <a href="https://support.solidangle.com/display/AFMUG/Lights">types of lights.</a></p>
+<p>尝试在 Env 灯光中使用遮罩绘画。在理想情况下，数字遮罩绘画 (DMP) 将以 .exr 或 .hdr 格式提供 360 度天空穹顶，我们可以将其用于我们的灯光装置中。<strong>因此反射与最终合成中使用的天空相匹配。</strong> Solid Angle 文档很好地解释了不同<a href="https://support.solidangle.com/display/AFMUG/Lights">类型的灯光。</a></p>
+<p>This is very personal. I know some companies do not work like that at all.</p>
+<p>这是非常个人的事情。我知道有些公司根本不是这样做的。</p>
+</blockquote>
+<p>I often wondered <em>why this top direction ? Is this arbitrary or is there a reason to it ?</em>  My personal answer is that we are used to light coming from the top 99% of the time. The sky obviously, this giant top light over our heads but it is the same in a restaurant, the subway or the street at night.</p>
+<p>我经常想知道<em>为什么这个顶部方向是这样的？这是随意的还是有原因的？</em> 我个人的答案是，我们习惯了 99% 的时间里光线都来自顶部。显然是天空，我们头顶上是巨大的顶部灯光，但在餐厅、地铁或夜晚的街道上也一样。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0760_top_light_paris_metro_FHD-20241105171640-l6g5iex.jpg" alt="" title="Most of the time light sources are attached to the ceiling. 大多数时候，光源都安装在天花板上。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0770_top_light_paris_mcdo_FHD-20241105171640-dl7yg1l.jpg" alt="" title="Interior designers generally try to diffuse the light as much as possible to avoid unpleasant sharp shadows on our faces. 室内设计师通常会尽可能地散射光线，以避免在我们的脸上留下令人不快的尖锐阴影。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0780_top_light_paris_street_FHD-20241105171640-oth7uup.jpg" alt="" title="Even in the street at night, light would be coming from above. Top, top, top. 即使是夜晚的街道，上方也会有灯光。顶部，顶部，顶部。" loading="lazy">​</p>
+<p>This is why lighting from the bottom looks so unnatural, like the Monster lighting.</p>
+<p>这就是为什么来自底部的照明看起来如此不自然，就像怪物照明一样。</p>
+<h2 id="暖边-warm-edge">暖边 Warm edge</h2>
+<p><em>Warm edge</em> is a way  <strong>to enhance the halo (or turbidity) of the sun</strong>  and to create rich and interesting shadows. I have used this trick on many different projects. It generally makes the border of the shadows more saturated and gives shape to your character when he is not in direct sunlight.</p>
+<p><em>暖边</em>是一种<strong>增强太阳光晕（或浑浊度）</strong>  并创造丰富有趣的阴影的方法。我在许多不同的项目中都使用过这个技巧。它通常会使阴影的边界更加饱和，并在角色不在阳光直射下时塑造人物形状。</p>
+<h3 id="宠物和温暖的边缘-pets-and-the-warm-edge">宠物和温暖的边缘 Pets and the Warm Edge</h3>
+<p>It has to be pretty subtle but still noticeable. You have to find the right balance on this. <em>Warm edge</em> is also called <strong>double sun</strong> or <strong>soft sun trick.</strong>  <em>Can you see the soft orange halo around the shadow border ?</em>  This is what the warm edge would do. Have a look at <a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#32-start-with-the-sun">the example in Chapter 5</a>.</p>
+<p>它必须非常微妙但仍然引人注目。你必须找到正确的平衡点。<em>暖边</em>也被称为<strong>双太阳</strong>或<strong>柔和太阳技巧</strong>。<em>你能看到阴影边界周围的柔和橙色光晕吗？</em> 这就是暖边的作用。看看<a href="https://chrisbrejon.com/cg-cinematography/chapter-5-master-lighting/#32-start-with-the-sun">第 5 章中的例子</a>。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0790_pets_warm_edge_FHD-20241105171640-gty1pd3.jpg" alt="" title="Notice that the warm edge was already present in the concept art. Neat ! 请注意，暖边在概念图上已经存在。太棒了！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0800_pets_warm_edge_FHD-20241105171640-nkogoyh.jpg" alt="" title="That's a pretty good match I'd say ! 我想说这是一场非常精彩的比赛！" loading="lazy">​</p>
+<p>Warm sun and cold shadows were the motto.</p>
+<p>温暖的阳光和寒冷的阴影是座右铭。</p>
+<p>When you create a directional key light, it represents the sun. <strong>But what about its halo ?</strong>  How can we enhance this ?</p>
+<p>当您创建定向主光时，它代表太阳。<strong>但它的光晕呢？</strong> 我们如何增强它？</p>
+<blockquote>
+<p>The halo is also called <a href="http://guerillarender.com/doc/1.4/Library_Lights_SkyLight.html">Turbidity</a> in the Hosek-Wilkie <a href="https://cgg.mff.cuni.cz/projects/SkylightModelling/">Skylight model</a> from 2012.</p>
+<p>在 2012 年的Hosek-Wilkie<a href="https://cgg.mff.cuni.cz/projects/SkylightModelling/">天窗模型</a>中，这个光晕也被称为<a href="http://guerillarender.com/doc/1.4/Library_Lights_SkyLight.html">浊度</a>。</p>
+<p>You can definitely tweak the turbidity to soften your shadows. But it will not give you a proper warm edge.</p>
+<p>您当然可以调整浊度来柔化阴影。但这不会给您带来适当的暖边。</p>
+</blockquote>
+<h3 id="暖边配方-warm-edge-recipe">暖边配方 Warm Edge Recipe</h3>
+<ul>
+<li>Duplicate your sun or key light.</li>
+<li>复制太阳光或主光。</li>
+<li>Make the color more saturated (for example, R : 1 / G : 0.4 / B : 0.1).</li>
+<li>使颜色更饱和（例如，R：1/G：0.4/B：0.1）。</li>
+<li>Decrease approximately the intensity by 1 or 2 stops.</li>
+<li>将强度降低约 1 或 2 级。</li>
+<li>Set the shadows way softer. <em>The softer the shadows, the bigger the warm edge will be.</em></li>
+<li>将阴影设置得更柔和。<em>阴影越柔和，暖边就越大。</em></li>
+<li>It will create a <em>warm edge</em> effect on your shadow.</li>
+<li>它会在你的阴影上产生<em>温暖的边缘效果。</em></li>
+</ul>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0330_pets_warmEdge_HD-20241115021218-7exk4yx.mp4" data-src="assets/070_lightingTechniques_0330_pets_warmEdge_HD-20241115021218-7exk4yx.mp4"></video></p>
+<p>The whole debate about the warm edge is : should the <em>Sun Soft</em> have the same orientation than the <em>Sun</em> ? I have seen both setups. Theoretically they should have the same orientation. But sometimes it really helps to slightly rotate the <em>Sun Soft</em> to wrap better the character.</p>
+<p>关于暖边的整个争论是：<em>Sun Soft 的</em>方向是否应该与<em>Sun</em>相同？我见过这两种设置。理论上它们应该具有相同的方向。但有时稍微旋转<em>Sun Soft</em>确实有助于更好地包裹角色。</p>
+<p>So I would say this : <strong>start with the same orientation for both lights and if needed rotate theSun Softslightly.</strong>  There is a double advantage to this technique : we help the render engine with some direct lighting and it allows to shape things that would normally be in shadow.</p>
+<p>所以我想说：<strong>首先让两盏灯的方向相同，如果需要，稍微旋转一下Sun Soft。</strong> 这种技术有双重优势：我们通过一些直接照明帮助渲染引擎，并且它允许塑造通常处于阴影中的物体。</p>
+<blockquote>
+<p>During my holidays in Spain on Planet 51, I went to this beach where during sunset the sun would disappear behind a building. I noticed that after it disappeared, <strong>there was still some soft warm light coming from its halo.</strong>   We used a lot this technique on Planet 51 and it made me feel more confident about it after experiencing it in real life.</p>
+<p>我在 Planet 51 上西班牙度假期间，去过一个海滩，那里日落时分，太阳会消失在建筑物后面。我注意到，太阳消失后，<strong>光晕中仍会发出柔和的暖光。</strong> 我们在 Planet 51 上大量使用了这种技术，在现实生活中体验后，我对此更加有信心。</p>
+</blockquote>
+<h2 id="预测-projections">预测 Projections</h2>
+<h3 id="焦散-caustics">焦散 Caustics</h3>
+<p><a href="https://en.wikipedia.org/wiki/Caustic_(optics)">Caustics</a> are a very specific type of indirect lighting. <strong>They produce patterns of light when photons are reflected or refracted by a curved surface.</strong>  They can be bounced off by a mirror or concentrated by a lens. Most famous caustics are the distortion of light at the bottom of a swimming-pool or the patterns refracted by a glass of water.</p>
+<p><a href="https://en.wikipedia.org/wiki/Caustic_(optics)">焦散</a>是一种非常特殊的间接照明。<strong>当光子被曲面反射或折射时，它们会产生光的图案。</strong> 它们可以被镜子反射或被透镜聚集。最著名的焦散是游泳池底部的光线扭曲或一杯水折射的图案。</p>
+<p>Have you heard this story about <a href="http://www.bbc.com/news/uk-england-london-23930675">a jaguar which melted in London because of a building</a> ?</p>
+<p><a href="http://www.bbc.com/news/uk-england-london-23930675">你听说过一只美洲虎因伦敦一栋建筑而融化</a>的故事吗？</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0810_caustics_building_FHD-20241105171640-2pahj53.jpg" alt="" title="Craziest story ever : the concave side wall of the 'Walkie Talkie' building has been blamed for reflecting the intense sunlight that has melted a Jaguar. Some shops have also been damaged ! 史上最疯狂的故事：有人指责“对讲机”大楼凹陷的侧壁反射了强烈的阳光，导致一辆美洲虎融化。一些商店也遭到损坏！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0820_caustics_building_FHD-20241105171640-y6d5zel.jpg" alt="" title="What you are seeing on this picture is NOT the sun. These are light rays bouncing off a building. Heat is so intense that it is not only capable to melt a jaguar but also to fry an egg ! 您在图片上看到的不是太阳。这些是从建筑物反射的光线。热量非常强烈，不仅能够融化美洲虎，还能煎鸡蛋！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0830_caustics_building_FHD-20241105171640-7iwfcww.jpg" alt="" title="The building is curved in a way that light rays bounce back in the street. Well done architect ! 该建筑采用弯曲设计，光线可以反射回街道。建筑师干得好！" loading="lazy">​</p>
+<p>Just an example to show you how strong caustics can be.</p>
+<p>仅举一个例子来向您展示焦散的强度。</p>
+<p>Caustics are a natural phenomenon and <a href="http://guerillarender.com/doc/2.0/User%20Guide_Shading_Glass.html">some render engines</a> do support them. But I have never worked on a movie where we would output caustics <a href="https://rmanwiki.pixar.com/display/REN/PxrVCM">directly in CG</a>. <strong>Reason is pretty simple : caustics are expensive.</strong>  Instead, we generally re-create them with a map. There are four good reasons for that :</p>
+<p>焦散是一种自然现象，<a href="http://guerillarender.com/doc/2.0/User%20Guide_Shading_Glass.html">一些渲染引擎</a>确实支持焦散。但我从未在电影中<a href="https://rmanwiki.pixar.com/display/REN/PxrVCM">直接在 CG 中</a>输出焦散。<strong>原因很简单：焦散很昂贵。</strong> 相反，我们通常使用贴图重新创建它们。这样做有四个很好的理由：</p>
+<ul>
+<li>It is much cheaper this way.</li>
+<li>这样就便宜多了。</li>
+<li>We also have more control on their look.</li>
+<li>我们对他们的外观也有更多的控制权。</li>
+<li>We can place them wherever we want.</li>
+<li>我们可以把它们放在任何我们想要的地方。</li>
+<li>It adds details to the shot.</li>
+<li>它为镜头添加了细节。</li>
+</ul>
+<h4 id="焦散线示例-examples-of-caustics">焦散线示例 Examples of Caustics</h4>
+<p>I personally see caustics as a tool. Sometimes when I feel my light rig is well-balanced but I want to highlight an element or guide a bit more the viewer’s eye, I know that caustics are a good way to do so.</p>
+<p>我个人认为焦散是一种工具。有时，当我觉得我的灯光装置很平衡，但我想突出某个元素或引导观众的视线时，我知道焦散是一种很好的方法。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0840_caustics_wall_FHD-20241105171640-bii0679.jpg" alt="" title="Look at this pattern. So rich ! It's crazy ! 看看这个图案。好丰富！太疯狂了！" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0850_caustics_lego_FHD-20241105171640-xnp5xly.jpg" alt="" title="As soon as the sun hits a window, a metal or some shiny plastic, there are possibly some generated caustics. Here is a test from Etienne Marc done at Animal Logic for the Lego Batman Movie. 当阳光照射到窗户、金属或一些闪亮的塑料上时，可能会产生一些焦散。这是 Etienne Marc 在 Animal Logic 为《乐高蝙蝠侠大电影》所做的测试。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0860_caustics_prman_FHD-20241105171640-bqtqzhr.jpg" alt="" title="It looks like you can achieve caustics automatically since Renderman 19… Has anyone actually used this in production ? 看起来从 Renderman 19 开始您就可以自动实现焦散……有人在生产中实际使用过它吗？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0870_caustics_guerilla_FHD-20241105171640-m5p49rg.jpg" alt="" title="Here is a very simple setup of Caustics projection using Guerilla render. You can find plenty of caustics maps on internet or even create your own. 这是使用 Guerilla 渲染的焦散投影的一个非常简单的设置。您可以在互联网上找到大量焦散图，甚至可以创建自己的焦散图。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0880_caustics_pets2_FHD-20241105171640-95l6bwu.jpg" alt="" title="It can really make the shot more interesting. I just love these patterns ! Otherwise the wall would be pretty dull. 它确实可以让照片更有趣。我就是喜欢这些图案！否则墙会很单调。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0890_caustics_sappho_et_amicae_FHD-20241105171640-untqonb.jpg" alt="" title="You can even justify crossed shadows with caustics. This is so graphic. 你甚至可以用焦散线来证明交叉阴影的合理性。这太生动了。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0900_caustics_lego_FHD-20241105171640-j50gp1c.jpg" alt="" title="On Lego Batman we would project a map through a light (like a GOBO) to simulate the caustics (based on Etienne's pictures). 在乐高蝙蝠侠上，我们会通过灯光（如 GOBO）投射地图来模拟焦散（基于 Etienne 的图片）。" loading="lazy">​</p>
+<p>You can use caustics to enhance your shots. They are very useful.</p>
+<p>你可以使用焦散来增强你的拍摄效果。它们非常有用。</p>
+<h4 id="焦散光配方-caustics-light-recipe">焦散光配方 Caustics Light Recipe</h4>
+<ul>
+<li>Duplicate your sun or key light.</li>
+<li>复制太阳光或主光。</li>
+<li>Decrease approximately the intensity by 1 or 2 stops.</li>
+<li>将强度降低约 1 或 2 级。</li>
+<li>Keep the sharp shadows ! <em>That’s very important.</em></li>
+<li>保持清晰的阴影！<em>这非常重要。</em></li>
+<li>Use a map in your light. <em>It could even be an animated sequence for a pool for example.</em></li>
+<li>在灯光中使用地图。<em>例如，它甚至可以是泳池的动画序列。</em></li>
+</ul>
+<blockquote>
+<p>If you have a look at the sequence below, you’ll notice some animated caustics on the wall of the pool.</p>
+<p>如果您看一下下面的序列，您会注意到泳池墙壁上有一些动画焦散。</p>
+<p>For some unknown reason, caustics are not present in every shot. Looks like a mistake.</p>
+<p>由于某些未知原因，焦散并非出现在每个镜头中。看起来像是一个错误。</p>
+</blockquote>
+<p><video controls="controls" src="https://qiniu.zcfly.club/siyuan-assets/Hotel Transylvania 3 2018 - Everybody in the Pool Scene  Movieclips-20241115021516-7m3ylnh.mp4" data-src="assets/Hotel Transylvania 3 2018 - Everybody in the Pool Scene  Movieclips-20241115021516-7m3ylnh.mp4"></video></p>
+<p>Caustics are a really nice effect to achieve in CG. Their textures add details, like on a wall for example, and make the render more interesting.  <strong>Most of the time we avoid flat colors on big surfaces (like a wall) using extra impacts of lights or caustics.</strong>   This is probably the biggest difference between 2D and 3D. We cannot  afford the lack of details in 3D. Otherwise it will just look visually poor and cheap.</p>
+<p>焦散是 CG 中非常不错的效果。它们的纹理可以增加细节，例如墙壁上的细节，并使渲染更有趣。<strong>大多数时候，我们会使用额外的灯光或焦散效果来避免在较大的表面（如墙壁）上使用平面颜色。</strong> 这可能是 2D 和 3D 之间最大的区别。我们不能承受 3D 中细节的缺失。否则它看起来会很差，很廉价。</p>
+<blockquote>
+<p>I thought for a very long time that caustics were only caused by refraction rays. But not at all ! In <a href="https://docs.arnoldrenderer.com/display/AFMUG/Caustics">Arnold’s website</a>, they mention the different types of caustics : reflective, refractive and glossy. Interesting !</p>
+<p>很长一段时间以来，我一直认为焦散只是由折射光线引起的。但完全不是！在<a href="https://docs.arnoldrenderer.com/display/AFMUG/Caustics">Arnold 的网站</a>上，他们提到了不同类型的焦散：反射焦散、折射焦散和光泽焦散。有趣！</p>
+</blockquote>
+<h2 id="发光表面-luminous-surfaces">发光表面 Luminous surfaces</h2>
+<p>How can we accentuate the light for windows or screens in a plausible and physical way ? One of the issue we face with interior lighting is  <strong>to get some light inside the room.</strong>  Walls tend to occlude a lot and block the light. Let’s see how we can get around this issue and <strong>force some light into interiors.</strong></p>
+<p>我们如何才能以合理且物理的方式增强窗户或屏幕的光线？我们在室内照明方面面临的问题之一是<strong>让一些光线进入房间。</strong> 墙壁往往会遮挡很多光线。让我们看看如何解决这个问题，并将<strong>一些光线引入室内。</strong></p>
+<h3 id="屏幕-screens">屏幕 Screens</h3>
+<p>Directors in Feature Animation generally like to accentuate the lighting coming from screens. It is a behavior I have seen in many animated movies. Now the question is : how would you properly simulate the light screen ?  <strong>Most of the time, the simplest solution is the best.</strong></p>
+<p>动画片的导演通常喜欢强调来自屏幕的灯光。这是我在许多动画电影中看到的一种行为。现在的问题是：如何正确模拟光幕？<strong>大多数时候，最简单的解决方案是最好的。</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0910_screens_nasa_FHD-20241105171640-ghsdvfk.jpg" alt="" title="How would you enhance the light from the screens ? We have three possible solutions : Geometry lights (or Mesh lights), incandescent shaders or some Area lights. Let's have a look at these setups. 您将如何增强屏幕的光线？我们有三种可能的解决方案：几何光（或网格光）、白炽着色器或一些区域光。让我们看看这些设置。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0920_screens_nasa_spotLight_FHD-20241105171640-m4c89mc.jpg" alt="" title="Possibly one of the weirdest setup I have seen. To enhance the screens' lighting, there was a spot light behind them. The monitors and walls were removed from the shadow casters and the spot was light-linked to the character. A bit complicated if you ask me. 这可能是我见过的最奇怪的设置之一。为了增强屏幕的照明，屏幕后面有一个聚光灯。显示器和墙壁与阴影投射器分离，聚光灯与角色灯光相连。如果你问我，这有点复杂。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0930_screens_nasa_areaLights_FHD-20241105171640-n86ucop.jpg" alt="" title="I replaced the whole setup by some area lights placed right in front of the screens. Thanks to the quadratic attenuation, it gave me a nice gradient. And I had complete flexibility over the screens' exposure. Let me explain. 我用一些区域灯替换了整个设置，这些区域灯就放在屏幕的正前方。得益于二次衰减，它给了我一个很好的渐变。而且我可以完全灵活地控制屏幕的曝光。让我解释一下。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0940_screens_guerilla_FHD-20241105171640-3h3vvfq.jpg" alt="" title="Here is a simple setup in Guerilla where the screen has an incandescent shader. No cheat. The issue here is that you have no control nor flexibility in terms of exposure. What happens if the director asks you for more light in the room without affecting the screen ? 这是 Guerilla 中的简单设置，其中屏幕有一个白炽灯着色器。没有作弊。这里的问题是，您在曝光方面没有控制权，也没有灵活性。如果导演要求您在不影响屏幕的情况下增加房间内的光线，会发生什么？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0950_screens_guerilla_FHD-20241105171640-zwrhp1l.jpg" alt="" title="I was able to easily replace the incandescent shader by an Area Light. I removed any Global Illumination bounces from the incandescent shader to avoid double influence on the sphere. I now have complete control over the screen independently from its influence in the room. 我能够轻松地用区域光替换白炽灯着色器。我从白炽灯着色器中移除了所有全局照明反射，以避免对球体产生双重影响。现在，我可以完全控制屏幕，不受其对房间的影响。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0960_screens_guerilla_FHD-20241105171640-4h5bhyq.jpg" alt="" title="If the director asks for more light in the room without changing the screen, it is easy to do so. It is not physically correct but directors do not care about PBR. They just want to put the light where it matters. 如果导演要求在不改变屏幕的情况下增加房间的光线，这很容易做到。这在物理上并不正确，但导演并不关心 PBR。他们只想把光线放在重要的地方。" loading="lazy">​</p>
+<p>I picked this example from Ninjago. It’s all about enhancing and flexibility.</p>
+<p>我从 Ninjago 中选取了这个示例。它完全是为了增强和灵活性。</p>
+<blockquote>
+<p>I am skipping here over the technical details of texture mapping the light. If the screen has an animated sequence in its shader, well it is compulsory to use the same sequence for your lights. Otherwise you may have some big discrepancies.</p>
+<p>我在这里跳过了纹理映射灯光的技术细节。如果屏幕的着色器中有动画序列，那么必须对灯光使用相同的序列。否则，您可能会遇到一些很大的差异。</p>
+</blockquote>
+<h3 id="视窗-windows">视窗 Windows</h3>
+<p>How can we increase the influence of the sky inside the room below ? Of course we would have to take in account render times, sampling, flexibility and control.</p>
+<p>我们如何才能增加天空对房间的影响？当然，我们必须考虑渲染时间、采样、灵活性和控制。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0970_windows_bay_FHD-20241105171640-mwrdxce.jpg" alt="" title="Let's take this photo as an example. How would you enhance the light coming from the windows ? 让我们以这张照片为例。你会如何增强从窗户射进来的光线？" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0980_windows_bay_FHD-20241105171640-ydfdrc3.jpg" alt="" title="We can add some area lights in front of each window. They could be portals but I have always preferred to use area lights. Reason is simple : portals just guide the sampling when what I really want is to add some light in the room. 我们可以在每个窗户前添加一些区域灯。它们可以是门户，但我一直更喜欢使用区域灯。原因很简单：门户只是引导采样，而我真正想要的是为房间添加一些光线。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_0990_windows_bay_FHD-20241105171640-qrdxapl.jpg" alt="" title="We could also add an area light in front of the window to fill the room. We'll have to test to compare the different setups. 我们还可以在窗户前添加一个区域光来照亮整个房间。我们必须进行测试以比较不同的设置。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1000_windows_bay_FHD-20241105171640-776d481.jpg" alt="" title="I have highlighted here the influence from the sun and sky. Let's see how it compares in CG. 我在这里强调了太阳和天空的影响。让我们看看它在 CG 中的表现如何。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1010_windows_bay_FHD-20241105171640-xbavdo4.jpg" alt="" title="Something I would never do is to put an area light that far. On a daylight setup like this one, it just does not make sense. I am putting this example here because I have seen this kind of setup and it really seemed weird to me. 我绝不会把区域光放在那么远的地方。在像这样的日光设置中，这根本说不通。我在这里举这个例子是因为我见过这种设置，它对我来说真的很奇怪。" loading="lazy">​</p>
+<p>Sorry about the sRGB image. Not  a great choice !</p>
+<p>抱歉，sRGB 图像不太好。不是一个好的选择！</p>
+<p><strong>There are several ways to do a proper setup for this</strong> and it depends on which look you want to achieve. In CG, quite often, it is difficult to bring light inside of a room. Most of the time there is too much occlusion and we have to force light in. I would say the two biggest challenges for this setup are the noise and the fact that directors in Feature Animation generally do not like when the sky is overexposed.  <strong>They like the sky to be blue.</strong>   Here is the solution I have come up with.</p>
+<p><strong>有几种方法可以为此进行适当的设置</strong>，这取决于您想要实现哪种效果。在 CG 中，通常很难将光线带入房间内。大多数时候，遮挡太多，我们不得不强行将光线引入。我认为这种设置面临的两个最大挑战是噪音，以及长片导演通常不喜欢天空曝光过度。<strong>他们喜欢天空是蓝色的。</strong> 这是我想到的解决方案。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1020_windows_guerilla_overexposed_FHD-20241105171640-tcjrhh6.jpg" alt="" title="First render has an overexposed SkyLight. Two issues with this : it brings lots of noise and directors generally want their sky to be blue, no matter what the exposure is. I know I could use a Digital Matte-Painting to replace the sky in the background but I personally like to have only one sky in my scene. My motto : the sky you see is the one that renders as well. 第一个渲染的 SkyLight 曝光过度。这有两个问题：它会带来很多噪音，而且导演通常希望他们的天空是蓝色的，无论曝光度如何。我知道我可以使用数字绘景来替换背景中的天空，但我个人喜欢在我的场景中只有一个天空。我的座右铭：您看到的天空也是渲染的天空。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1030_windows_guerilla_underexposed_FHD-20241105171640-sasvtev.jpg" alt="" title="I tweaked the SkyLight to get closer to the director's look. Sky is blue, sun is not too bright. Issue now is that my room is way too dark. 我调整了 SkyLight 以更接近导演的风格。天空是蓝色的，太阳不太亮。现在的问题是，我的房间太暗了。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1040_windows_guerilla_threeAreaLights_FHD-20241105171640-2getdg4.jpg" alt="" title="I start by putting an area light in front of each window. This adds a nice soft illumination coming from the windows. I did not put my area lights behind the windows because otherwise they would be refracted. 我首先在每个窗户前放置一个区域灯。这样可以增加来自窗户的柔和照明。我没有将区域灯放在窗户后面，因为否则它们会发生折射。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1050_windows_guerilla_areaLight_FHD-20241105171640-tftf3nc.jpg" alt="" title="To add more blue light in the room, I have created this big area light simulating the overall influence from the window. 为了在房间里增加更多的蓝光，我创建了这个大面积光来模拟窗户的整体影响。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1060_windows_guerilla_bounce_FHD-20241105171640-2j5tiyk.jpg" alt="" title="Finally I have added an extra bounce light to enhance the GI of the room. 最后，我添加了额外的反射光来增强房间的 GI。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1070_windows_guerilla_sunSoft_FHD-20241105171640-4jrntdn.jpg" alt="" title="I have also created a sun soft for the warm edge. The softness will drive its size and the color its saturation. 我还为暖边创建了阳光柔光。柔光度将决定其大小，颜色将决定其饱和度。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1080_windows_guerilla_beauty_FHD-20241105171640-v4oqaot.jpg" alt="" title="If I turn on all my lights, here is the final render. Overall we have succeeded with our window setup. Blue sky, little noise, one sky. 如果我打开所有灯，最终渲染效果如下。总体而言，我们的窗户设置成功了。蓝天，噪音小，一片天空。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1090_windows_guerilla_areaFar_FHD-20241105171640-ruq9wq1.jpg" alt="" title="I really want to emphasize on this : it does not make sense in a daylight setup like this to add an area light outside. That is just nonsense. 我真的想强调这一点：在这样的日光设置中，在外面添加区域光是没有意义的。那简直是胡说八道。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1100_window_pets_FHD-20241105171640-h01odco.jpg" alt="" title="We used a similar lighting technique in this sequence, even if the sky was adjusted in Matte-Painting. The exposure is not photographic, it is based on our mental image. 尽管天空是在 Matte-Painting 中调整的，但我们在这个序列中使用了类似的照明技术。曝光不是照片，而是基于我们的心理图像。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1110_mental_image_FHD-20241105171640-9v37kkn.jpg" alt="" title="We go back to this fundamental image in my opinion. What is your focus concept ? Eye or camera ? 我认为我们回到这个基本形象。你的焦点概念是什么？眼睛还是相机？" loading="lazy">​</p>
+<p>This is pretty much the setup we used on the white apartment sequence from Pets.</p>
+<p>这基本上就是我们在《宠物》中的白色公寓场景中使用的设置。</p>
+<blockquote>
+<p>I know for a fact that on <a href="https://www.technology.disneyanimation.com/islandscene">Moana</a> and the Lion King they had split skies : one for lighting and one for matte-painting. I am not against it : it is flexible and is a totally valid workflow.</p>
+<p>我知道<a href="https://www.technology.disneyanimation.com/islandscene">《海洋</a>奇缘》和《狮子王》中他们使用了两片天空：一片用于照明，一片用于绘景。我并不反对：它很灵活，是一种完全有效的工作流程。</p>
+<p>This is pretty much a personal choice.</p>
+<p>这很大程度上是一个个人选择。</p>
+</blockquote>
+<p>One interesting option supported by several render engines is the ability to convert an area light into a portal to guide skylight sampling. Once again check the Guerilla Render website about <a href="http://guerillarender.com/doc/1.4/User%20Guide_Lighting_Portals.html">portals</a>.</p>
+<p>多个渲染引擎支持的一个有趣选项是将区域光转换为门户，以引导天光采样。再次查看 Guerilla Render 网站上有关<a href="http://guerillarender.com/doc/1.4/User%20Guide_Lighting_Portals.html">门户的</a>信息。</p>
+<h4 id="卡通灯光-cartoon-lighting">卡通灯光 Cartoon lighting</h4>
+<p>I had once a debate about :<em>is there such a thing as Cartoon Lighting ?</em>  Or does the cartoon look come from mainly grading and saturation ? After having given it many thoughts and thanks to the <em>mental image</em> we have seen in the previous paragraph, I will stick to my answer : yes, there is such a thing as cartoon lighting. <strong>Mental image is cartoon lighting.</strong></p>
+<p>我曾经争论过：<em>卡通照明是否存在？</em> 或者卡通外观主要来自分级和饱和度？经过深思熟虑，并感谢我们在上一段中看到的​<em>心理形象</em>​，我坚持我的答案：是的，卡通照明存在。<strong>心理形象就是卡通照明。</strong></p>
+<p>Does it mean that I light differently based on the nature of the project ? In a way, I want to say “​<em>yes</em>​“. Each movie with its own unique art direction should require a different lighting style. But in reality, since Hollywood does not like taking risks, most PBR movies end up with the same lighting design. <strong>Which makes me light the same way on different  movies.</strong></p>
+<p>这是否意味着我会根据项目的性质采用不同的灯光？在某种程度上，我想说“​<em>是</em>​”。每部具有独特艺术指导的电影都应该采用不同的灯光风格。但实际上，由于好莱坞不喜欢冒险，大多数 PBR 电影最终都采用相同的灯光设计。<strong>这使我在不同的电影上采用相同的灯光方式。</strong></p>
+<h2 id="ies-灯光-ies-lights">IES 灯光 IES Lights</h2>
+<p>IES stands for ‘<a href="https://www.ies.org/">Illuminating Engineering Society</a>‘. It is a society that brings together lighting experts (e.g. lighting  designers, consultants, engineers, sales professionals, architects,  researchers, lighting equipment manufacturers, etc.) to better design  lighting conditions in the real world.</p>
+<p><a href="https://www.ies.org/">IES 是“照明工程学会</a>”的缩写。它是一个汇集照明专家（例如照明设计师、顾问、工程师、销售专业人员、建筑师、研究人员、照明设备制造商等）的学会，旨在更好地设计现实世界中的照明条件。</p>
+<p>IES files contain measurement data about the light distribution of a lighting fixture in an ASCII format. These files are typically used by lighting fixture manufacturers to electronically   transfer photometric data over the web. Basically <strong>an IES file is the digital profile of a real world light.</strong></p>
+<p>IES 文件包含 ASCII 格式的照明设备光分布测量数据。照明设备制造商通常使用这些文件通过网络以电子方式传输光度数据。<strong>IES文件基本上是真实世界光的数字配置文件。</strong></p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1100_ies_photometric_FHD-20241105171640-nznicyf.jpg" alt="" title="You will find plenty of IES for free on the internet. 您会在互联网上找到大量免费的 IES。" loading="lazy">​</p>
+<p>IES are downloadable for free from <a href="https://www.lighting.philips.com/main/support/support/dialux-and-other-downloads">manufacturer’s</a> and <a href="https://leomoon.com/downloads/plugins/ies-lights-pack/">some CG</a> <a href="https://renderman.pixar.com/ies-profiles">websites</a>.</p>
+<p><a href="https://www.lighting.philips.com/main/support/support/dialux-and-other-downloads">IES 可以从制造商</a>和<a href="https://leomoon.com/downloads/plugins/ies-lights-pack/">一些 CG</a> <a href="https://renderman.pixar.com/ies-profiles">网站</a>免费下载。</p>
+<h3 id="playmobil-和-ies-灯-playmobil-and-ies-lights">Playmobil 和 IES 灯 Playmobil and IES lights</h3>
+<p>We used IES lights for our vehicles in <em>Playmobil</em> (Director : ​<strong>Lino Di Salvo</strong>​, Art Director : ​<strong>Rémi Salmon</strong>​).</p>
+<p>​<em>我们在Playmobil</em>​（导演：​<strong>Lino Di Salvo</strong>​，艺术总监：​<strong>Rémi Salmon</strong>​）中为我们的车辆使用了 IES 灯。</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1110_ies_playmobil_FHD-20241105171640-pdl7yqj.jpg" alt="" title="We used ies light shaders in Guerilla for the vehicles' headlights. 我们在 Guerilla 中使用了灯光着色器来渲染车辆的前灯。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1120_ies_playmobil_FHD-20241105171640-3695a26.jpg" alt="" title="It gives a nice pattern on the floor. 它在地板上形成了美丽的图案。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1130_ies_playmobil_FHD-20241105171640-pincm28.jpg" alt="" title="It makes the image richer by adding details. 通过添加细节使图像更加丰富。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/070_lightingTechniques_1140_ies_playmobil_FHD-20241105171640-0lzueit.jpg" alt="" title="Even if technically speaking, headlights in real life do not use ies. 即使从技术上来说，现实生活中的车头灯并不使用ies。" loading="lazy">​</p>
+<p>I did most of the vehicles lighting setups on this movie.</p>
+<p>我完成了这部电影中大部分车辆的灯光设置。</p>
+<p>Headlights setups are actually pretty difficult to do. You generally need several lights with light-linking to get the proper effect. There is this huge debate in studios about lights in assets. I am a big fan of what we did <a href="https://www.expandedcinematography.com/industrialised-cinematography.html#production">on </a>​*<a href="https://www.expandedcinematography.com/industrialised-cinematography.html#production">Lego Batman</a>*. It makes so much sense to have the lights built in the asset rather than passing a rig of light from shot to shot.</p>
+<p>前照灯的设置实际上相当困难。通常需要几个带有灯光链接的灯才能获得正确的效果。工作室对资产中的灯光存在巨大争论。我非常喜欢我们<a href="https://www.expandedcinematography.com/industrialised-cinematography.html#production">在</a>​*<a href="https://www.expandedcinematography.com/industrialised-cinematography.html#production">《乐高蝙蝠侠》</a>* 中所做的。将灯光内置在资产中而不是将灯光装置从一个镜头传递到另一个镜头非常有意义。</p>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p>Here is a first pass on lighting techniques. There are much more techniques I would like in the near future such as GOBOs and Cookies.</p>
+<p>这是照明技术的第一次尝试。在不久的将来，我还想加入更多技术，例如 GOBO 和 Cookies。</p>
+<h2 id="链接-links">链接 Links</h2>
+<p>If you are interested by this topic, you can have a look at these links :</p>
+<p>如果您对此主题感兴趣，可以查看以下链接：</p>
+<ul>
+<li><a href="https://gamedev.stackexchange.com/questions/54949/what-is-volumetric-rendering">Volumetrics definition</a></li>
+<li><a href="https://gamedev.stackexchange.com/questions/54949/what-is-volumetric-rendering">体积定义</a></li>
+<li><a href="https://www.amazon.ca/Sight-Sound-Motion-Applied-Aesthetics/dp/1305578902/ref=sr_1_3?ie=UTF8&amp;qid=1508366865&amp;sr=8-3&amp;keywords=Herbert+Zettl+cinematography">Sight Sound Motion Applied Aesthetics</a></li>
+<li><a href="https://www.amazon.ca/Sight-Sound-Motion-Applied-Aesthetics/dp/1305578902/ref=sr_1_3?ie=UTF8&amp;qid=1508366865&amp;sr=8-3&amp;keywords=Herbert+Zettl+cinematography">视觉 声音 动作 应用美学</a></li>
+<li><a href="http://www.photographymad.com/pages/view/lenses">Lenses description</a></li>
+<li><a href="http://www.photographymad.com/pages/view/lenses">镜头描述</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Camera_lens">Wikipedia Camera Lens</a> and <a href="http://www.photographymad.com/pages/view/lenses">Camera Lenses</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Camera_lens">维基百科 相机镜头</a>和<a href="http://www.photographymad.com/pages/view/lenses">相机镜头</a></li>
+<li><a href="https://www.youtube.com/watch?v=eJHlVR4_dEE">Circle of Confusion</a></li>
+<li><a href="https://www.youtube.com/watch?v=eJHlVR4_dEE">混乱之圈</a></li>
+<li><a href="https://www.hdrsoft.com/resources/dri.html#depth">HDR</a></li>
+<li><a href="https://www.blenderguru.com/articles/7-ways-get-rid-fireflies">Fireflies</a></li>
+<li><a href="https://www.blenderguru.com/articles/7-ways-get-rid-fireflies">萤火虫</a></li>
+<li><a href="http://www.3drender.com/light/caustics.html">Caustics</a></li>
+<li><a href="http://www.3drender.com/light/caustics.html">焦散</a></li>
+<li><a href="http://www.renderout.es/numeros.html">Renderout</a> is a Spanish online magazine about CG.</li>
+<li><a href="http://www.renderout.es/numeros.html">Renderout</a>是一份关于 CG 的西班牙在线杂志。</li>
+<li><a href="https://www.youtube.com/watch?v=Jp4XCJmUABU">Surfacing theory – Pathtracing</a>, a french video by Jean-Michel Bihorel at <a href="https://creativeseeds.fr/">Creative Seeds</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=Jp4XCJmUABU">表面理论 – 路径追踪，由</a>​<a href="https://creativeseeds.fr/">Creative Seeds</a>的 Jean-Michel Bihorel 制作的法国视频。</li>
+<li><a href="https://www.ted.com/talks/danielle_feinberg_the_magic_ingredient_that_brings_pixar_movies_to_life#t-133889">Danielle Feinberg TED Talk</a></li>
+<li><a href="https://www.ted.com/talks/danielle_feinberg_the_magic_ingredient_that_brings_pixar_movies_to_life#t-133889">丹妮尔·范伯格 TED 演讲</a></li>
+</ul>
+<h2 id="技术论文-technical-papers">技术论文 Technical papers</h2>
+<ul>
+<li><a href="https://blog.yiningkarlli.com/">Code &amp; Visuals Blog</a></li>
+<li><a href="https://blog.yiningkarlli.com/">代码和视觉效果博客</a></li>
+<li><a href="https://www.disneyanimation.com/technology/publications">Disney Technology Publications</a></li>
+<li><a href="https://www.disneyanimation.com/technology/publications">迪士尼科技出版公司</a></li>
+<li><a href="https://studios.disneyresearch.com/">Disney Research Studios</a></li>
+<li><a href="https://studios.disneyresearch.com/">迪士尼研究工作室</a></li>
+<li><a href="https://unity.com/labs/publications">Unity Publications</a></li>
+<li><a href="https://unity.com/labs/publications">Unity 出版物</a></li>
+<li><a href="https://medium.com/blue-sky-tech-blog">Blue Sky Tech Blog</a></li>
+<li><a href="https://medium.com/blue-sky-tech-blog">蓝天科技博客</a></li>
+<li><a href="http://kesen.realtimerendering.com/sig2019.html">Real Time Rendering Siggraph 2019</a></li>
+<li><a href="http://kesen.realtimerendering.com/sig2019.html">实时渲染 Siggraph 2019</a></li>
+<li><a href="https://blog.selfshadow.com/">Self Shadow Siggraph</a></li>
+<li><a href="https://blog.selfshadow.com/">自阴影信号图</a></li>
+<li><a href="http://www.pbr-book.org/">The PBR book</a></li>
+<li><a href="http://www.pbr-book.org/">PBR 书籍</a></li>
+<li><a href="https://psychopath.io/post/2020_04_20_light_trees">Psychopath Renderer’s blog</a></li>
+<li><a href="https://psychopath.io/post/2020_04_20_light_trees">Psychopath Renderer 的博客</a></li>
+<li><a href="http://cgg.mff.cuni.cz/ART/">Advanced Rendering Toolkit</a></li>
+<li><a href="http://cgg.mff.cuni.cz/ART/">高级渲染工具包</a></li>
+<li><a href="https://shanesimmsart.wordpress.com/2018/03/29/fresnel-reflection/">Fresnel reflection</a> by Sane Simmart</li>
+<li>Sane Simmart 设计的<a href="https://shanesimmsart.wordpress.com/2018/03/29/fresnel-reflection/">菲涅尔反射</a></li>
+<li><a href="https://tom94.net/">Thomas Müller Research</a></li>
+<li><a href="https://tom94.net/">托马斯·穆勒研究</a></li>
+<li><a href="https://cs.dartmouth.edu/%7Ewjarosz/publications/novak18monte.html">Monte Carlo Method for Volumetric</a></li>
+<li><a href="https://cs.dartmouth.edu/%7Ewjarosz/publications/novak18monte.html">蒙特卡罗体积法</a></li>
+<li><a href="https://perso.telecom-paristech.fr/boubek/papers/DenoisingAtScale/">Tamy Boubekeur’s Denoise</a></li>
+<li><a href="https://perso.telecom-paristech.fr/boubek/papers/DenoisingAtScale/">Tamy Boubekeur 的降噪</a></li>
+<li><a href="https://jo.dreggn.org/home/">Johannes Hanika’s website</a></li>
+<li><a href="https://jo.dreggn.org/home/">Johannes Hanika 的网站</a></li>
+<li><a href="https://news.developer.nvidia.com/ray-tracing-essentials-part-6-the-rendering-equation/">The Rendering Equation</a></li>
+<li><a href="https://news.developer.nvidia.com/ray-tracing-essentials-part-6-the-rendering-equation/">渲染方程</a></li>
+<li>*<a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw/featured">3Blue1Brown</a>*​, by Grant Sanderson, is some combination of math and entertainment.</li>
+<li><em><a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw/featured">格兰特·桑德森 (Grant Sanderson) 创作的《3Blue1Brown》</a></em> 将数学与娱乐相结合。</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#cg%E9%97%AE%E9%A2%98-the-cg-issue">CG问题 The CG issue</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BD%9C%E5%BC%8A-what-is-cheating">什么是作弊？ What is cheating ?</a>
+<ul>
+<li><a href="#%E4%BD%9C%E5%BC%8A%E7%A4%BA%E4%BE%8B-cheating-examples">作弊示例 Cheating examples</a>
+<ul>
+<li><a href="#%E7%9D%80%E8%BF%B7-spellbound">着迷 Spellbound</a></li>
+<li><a href="#%E6%8C%87%E7%8E%AF%E7%8E%8B-lord-of-the-rings">指环王 Lord of the rings</a></li>
+<li><a href="#%E4%B8%80%E9%83%A8%E8%91%97%E5%90%8D%E7%9A%84%E8%BF%AA%E5%A3%AB%E5%B0%BC%E7%94%B5%E5%BD%B1-a-famous-disney-movie">一部著名的迪士尼电影 A famous Disney movie</a></li>
+<li><a href="#%E8%9C%98%E8%9B%9B%E4%BE%A0%E5%B9%B3%E8%A1%8C%E5%AE%87%E5%AE%99-spider-man-into-the-spider-verse">蜘蛛侠:平行宇宙 Spider-man : Into the Spider-Verse</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E7%A4%BA%E4%BE%8B-other-examples">其他示例 Other examples</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A5%BD%E6%8A%80%E5%B7%A7%E5%92%8C%E5%9D%8F%E6%8A%80%E5%B7%A7-good-and-bad-tricks">好技巧和坏技巧 Good and bad tricks</a></li>
+<li><a href="#%E4%BD%9C%E5%BC%8A%E6%80%81%E5%BA%A6-cheating-attitude">作弊态度 Cheating attitude</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%89%E8%A1%B0-light-decay">光衰 Light decay</a></li>
+<li><a href="#%E5%85%89%E9%93%BE%E6%8E%A5-light-linking">光链接 Light-linking</a>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5%E8%87%B3%E6%98%9F%E6%8A%A5-linking-on-the-star">链接至星报 Linking on The Star</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0-linking-on-lego-batman">链接乐高蝙蝠侠 Linking on Lego Batman</a></li>
+<li><a href="#planet-51-%E4%B8%8A%E7%9A%84%E6%9E%81%E9%99%90%E5%85%89%E9%93%BE%E6%8E%A5-extreme-light-linking-on-planet-51">Planet 51 上的极限光链接 Extreme light-linking on Planet 51</a></li>
+<li><a href="#%E7%81%AF%E5%85%89%E9%93%BE%E6%8E%A5%E8%A7%84%E5%88%99-light-linking-rule">灯光链接规则 Light-linking rule</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%93%E7%A7%AF%E6%B5%8B%E9%87%8F-volumetrics">体积测量 Volumetrics</a>
+<ul>
+<li><a href="#%E6%8A%80%E6%9C%AF%E6%8F%8F%E8%BF%B0-technical-description">技术描述 Technical description</a></li>
+<li><a href="#%E5%AE%B9%E7%A7%AF%E6%B3%95%E9%85%8D%E6%96%B9-volumetrics-recipe">容积法配方 Volumetrics Recipe</a></li>
+<li><a href="#%E4%BD%93%E7%A7%AF%E5%90%88%E5%B9%B6-merge-of-volumetrics">体积合并 Merge of volumetrics</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%BD%93%E7%A7%AF%E6%B3%95%E8%BF%9B%E8%A1%8C%E9%A2%9C%E8%89%B2%E5%88%86%E7%A6%BB-color-separation-with-volumetrics">使用体积法进行颜色分离 Color separation with volumetrics</a></li>
+<li><a href="#%E4%BD%93%E7%A7%AF%E6%B5%8B%E9%87%8F%E7%A4%BA%E4%BE%8B-examples-of-volumetrics">体积测量示例 Examples of volumetrics</a>
+<ul>
+<li><a href="#%E4%B9%90%E9%AB%98%E8%9D%99%E8%9D%A0%E4%BE%A0%E5%92%8C%E4%BD%93%E7%A7%AF%E6%B5%8B%E9%87%8F-lego-batman-and-volumetrics">乐高蝙蝠侠和体积测量 Lego Batman and volumetrics</a></li>
+<li><a href="#%E5%85%B0%E6%88%88%E5%92%8C%E4%BD%93%E7%A7%AF-rango-and-volumetrics">兰戈和体积 Rango and volumetrics</a></li>
+<li><a href="#%E6%8C%87%E7%8E%AF%E7%8E%8B%E5%92%8C%E4%BD%93%E7%A7%AF%E6%B5%8B%E9%87%8F-lord-of-the-rings-and-volumetrics">指环王和体积测量 Lord of the rings and volumetrics</a></li>
+<li><a href="#%E9%93%B6%E7%BF%BC%E6%9D%80%E6%89%8B%E5%92%8C%E4%BD%93%E7%A7%AF%E6%B5%8B%E9%87%8F-blade-runner-and-volumetrics">《银翼杀手》和体积测量 Blade Runner and volumetrics</a></li>
+<li><a href="#%E5%8D%B0%E7%AC%AC%E5%AE%89%E7%BA%B3%E7%90%BC%E6%96%AF%E5%92%8C%E4%BD%93%E7%A7%AF%E6%B5%8B%E9%87%8F-indiana-jones-and-volumetrics">印第安纳琼斯和体积测量 Indiana Jones and volumetrics</a></li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E4%BD%93%E7%A7%AF%E7%A4%BA%E4%BE%8B-more-volumetrics-example">更多体积示例 More volumetrics example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%A1%B6%E5%85%89-top-light">顶光 Top Light</a>
+<ul>
+<li><a href="#planet-51-%E5%92%8C-%E9%A1%B6%E5%85%89-planet-51-and-top-light">Planet 51 和 顶光 Planet 51 and Top Light</a></li>
+<li><a href="#%E9%A1%B6%E7%BA%A7%E6%B8%85%E6%B7%A1%E9%A3%9F%E8%B0%B1-top-light-recipe">顶级清淡食谱 Top Light Recipe</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9A%96%E8%BE%B9-warm-edge">暖边 Warm edge</a>
+<ul>
+<li><a href="#%E5%AE%A0%E7%89%A9%E5%92%8C%E6%B8%A9%E6%9A%96%E7%9A%84%E8%BE%B9%E7%BC%98-pets-and-the-warm-edge">宠物和温暖的边缘 Pets and the Warm Edge</a></li>
+<li><a href="#%E6%9A%96%E8%BE%B9%E9%85%8D%E6%96%B9-warm-edge-recipe">暖边配方 Warm Edge Recipe</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A2%84%E6%B5%8B-projections">预测 Projections</a>
+<ul>
+<li><a href="#%E7%84%A6%E6%95%A3-caustics">焦散 Caustics</a>
+<ul>
+<li><a href="#%E7%84%A6%E6%95%A3%E7%BA%BF%E7%A4%BA%E4%BE%8B-examples-of-caustics">焦散线示例 Examples of Caustics</a></li>
+<li><a href="#%E7%84%A6%E6%95%A3%E5%85%89%E9%85%8D%E6%96%B9-caustics-light-recipe">焦散光配方 Caustics Light Recipe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%8F%91%E5%85%89%E8%A1%A8%E9%9D%A2-luminous-surfaces">发光表面 Luminous surfaces</a>
+<ul>
+<li><a href="#%E5%B1%8F%E5%B9%95-screens">屏幕 Screens</a></li>
+<li><a href="#%E8%A7%86%E7%AA%97-windows">视窗 Windows</a>
+<ul>
+<li><a href="#%E5%8D%A1%E9%80%9A%E7%81%AF%E5%85%89-cartoon-lighting">卡通灯光 Cartoon lighting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ies-%E7%81%AF%E5%85%89-ies-lights">IES 灯光 IES Lights</a>
+<ul>
+<li><a href="#playmobil-%E5%92%8C-ies-%E7%81%AF-playmobil-and-ies-lights">Playmobil 和 IES 灯 Playmobil and IES lights</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5-links">链接 Links</a></li>
+<li><a href="#%E6%8A%80%E6%9C%AF%E8%AE%BA%E6%96%87-technical-papers">技术论文 Technical papers</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-Lighting-Principles/">
+              <h3 class="post-title">
+                CG Cinematography 第 6 章：照明原理
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

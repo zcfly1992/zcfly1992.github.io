@@ -1,0 +1,766 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> 反照率和指针色域 | 月天的空间</title>
+<link rel="shortcut icon" href="https://zcfly1992.github.io/favicon.ico?v=1733171176590">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcfly1992.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=" 反照率和指针色域 | 月天的空间 - Atom Feed" href="https://zcfly1992.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Albedo and Pointer's Gamut - Chris Brejon
+https://chrisbrejon.com/articles/albedo-and-pointers-gamut/
+This article is a..." />
+    <meta name="keywords" content="Color,CG Cinematography" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcfly1992.github.io">
+  <img class="avatar" src="https://zcfly1992.github.io/images/avatar.png?v=1733171176590" alt="">
+  </a>
+  <h1 class="site-title">
+    月天的空间
+  </h1>
+  <p class="site-description">
+    无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/toc" class="menu">
+          目录
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/UC8oB5Mlnn" class="menu">
+          CG Cinematography
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               反照率和指针色域
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-24
+              </span>
+              <span>
+                34 min read
+              </span>
+              
+                <a href="https://zcfly1992.github.io/ospYPv23vW/" class="post-tag">
+                  # Color
+                </a>
+              
+                <a href="https://zcfly1992.github.io/UC8oB5Mlnn/" class="post-tag">
+                  # CG Cinematography
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qiniu.zcfly.club/siyuan-assets/130_albedo_0040_reflectance_colors_FHD-20241105174101-gumk6k9.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <ul>
+<li>Albedo and Pointer's Gamut - Chris Brejon</li>
+<li><a href="https://chrisbrejon.com/articles/albedo-and-pointers-gamut/">https://chrisbrejon.com/articles/albedo-and-pointers-gamut/</a></li>
+<li>This article is about a possible limit for diffuse reflectance values for PBR textures used for rendering.</li>
+</ul>
+<hr>
+<h2 id="介绍-introduction">介绍 Introduction</h2>
+<p>If you set your <em>Base Color</em> (or ​<em>Diffuse Color</em>​) directly in ​<em>ACEScg</em>​, it is important to be aware that <strong>there should be some limits in terms of saturation and luminance.</strong>  One may ask : what would be a proper limit for the <em>Diffuse Color</em> ?</p>
+<p>如果您直接在<em>ACEScg</em>中设置​<em>基础颜色</em>​（或​<em>漫反射颜色</em>​） ，请务必注意<strong>饱和度和亮度方面应该有一些限制。</strong> <em>有人可能会问：漫反射颜色</em>的适当限制是多少？</p>
+<p>Here is my personal answer : <em>the</em> <em>Pointer’s gamut</em> ! Before we go deep into its definition, let’s step back a bit and have a proper look at the ​<em>albedo</em>​.</p>
+<p>这是我的个人答案：<em>指针</em> ​<em>色域</em>​！在深入探讨其定义之前，让我们先回顾一下，好好看看​<em>反照率</em>​。</p>
+<h2 id="反照率定义-albedo-definitions">反照率定义 Albedo definitions</h2>
+<p>After reading <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/">Chapter 1</a> (about Color Management) and <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">Chapter 1.5</a> (about ACES), you may ask yourself : <strong>where do I start ?</strong>  How do I set correctly all these values ? Sometimes we struggle to balance correctly the look development of our assets between texturing, lighting or grading. For example, how strong should be our lights in a turntable ? Or how bright and saturated should our textures be ?</p>
+<p>阅读完<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-color-management/">第 1 章</a>（关于色彩管理）和<a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/">第 1.5 章</a>（关于 ACES）后，您可能会问自己：<strong>我从哪里开始？</strong> 如何正确设置所有这些值？有时我们很难在纹理、照明或分级之间正确平衡资产的外观开发。例如，转盘中的灯光应该有多强？或者我们的纹理应该有多亮和饱和？</p>
+<p><strong>I personally consider the albedo color to be a “stable” reference.</strong>  Since albedo comes from “​<em>real life</em>​“, it is only natural to consider it as a proper way to balance our assets.</p>
+<p><strong>我个人认为反照率颜色是一个“稳定”的参考。</strong> 由于反照率来自“​<em>现实生活</em>​”，因此将其视为平衡我们资产的适当方式是理所当然的。</p>
+<blockquote>
+<p>From the <a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance PBR guide</a> : The visible color of a surface is due to the wavelengths emitted by the light source. These wavelengths are absorbed by the object and reflected both specularly and diffusely. The remaining reflected wavelengths are what we see as color.</p>
+<p>来自<a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance PBR 指南</a>：表面的可见颜色取决于光源发出的波长。这些波长被物体吸收，并以镜面反射和漫反射的形式反射。其余反射的波长就是我们所看到的颜色。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/130_albedo_0010_apple_wavelengths_FHD-20241105174101-uvg221n.jpg" alt="" title="The skin of an apple mostly reflects red light. Only the red wavelengths are scattered back outside the apple skin, while the others are absorbed. 苹果皮主要反射红光。只有红色波长的光会被散射回苹果皮外，其余的光都会被吸收。" loading="lazy">​</p>
+<blockquote>
+<p>From <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Jeremy Selan</a> : In a real scene, if you measure luminance values with a tool such as a spectroradiometer, one can observe a very wide range of values in a single scene. […] Very dark materials (such as charcoal) reflect a small fraction of incoming light, often in the 3-5% range. As a single number, this overall reflectivity is called “albedo”.</p>
+<p><a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Jeremy Selan</a>表示：在真实场景中，如果使用光谱辐射计等工具测量亮度值，则可以在单个场景中观察到非常广泛的值。[…] 非常暗的材料（例如木炭）会反射一小部分入射光，通常在 3-5% 范围内。作为一个单独的数字，这个整体反射率称为“反照率”。</p>
+</blockquote>
+<h2 id="反照率和反射-albedo-and-reflections">反照率和反射 Albedo and reflections</h2>
+<p>We just got two great definitions from <a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance</a> and <a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Jeremy Selan</a>. And I think it is really worth it to pause a bit and think about what the albedo really is. Because there are so many misconceptions about it.</p>
+<p><a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">我们刚刚从Substance</a>和<a href="http://github.com/jeremyselan/cinematiccolor/raw/master/ves/Cinematic_Color_VES.pdf">Jeremy Selan 那里</a>得到了两个很棒的定义。我认为值得我们停下来思考一下反照率到底是什么。因为人们对它有很多误解。</p>
+<blockquote>
+<p>From <a href="https://en.wikipedia.org/wiki/Albedo">Wikipedia</a> : Surface albedo is defined as the ratio of <a href="https://en.wikipedia.org/wiki/Radiosity_(radiometry)">radiosity</a> to the <a href="https://en.wikipedia.org/wiki/Irradiance">irradiance</a> (flux per unit area) received by a surface. […] <em>albedo is the directional integration of reflectance over all solar angles in a given period.</em></p>
+<p>摘自<a href="https://en.wikipedia.org/wiki/Albedo">维基百科</a>：表面反照率定义为<a href="https://en.wikipedia.org/wiki/Radiosity_(radiometry)">辐射度</a>与表面接收的<a href="https://en.wikipedia.org/wiki/Irradiance">辐照度（单位面积通量）之比。[…]</a>​<em>反照率是给定时间段内所有太阳角度的反射率的定向积分。</em></p>
+<p>Great article about this as well: <a href="http://filmicworlds.com/blog/everything-is-shiny/">Everything is shiny</a>.</p>
+<p>关于这一点也有很棒的文章：<a href="http://filmicworlds.com/blog/everything-is-shiny/">一切都是闪亮的</a>。</p>
+</blockquote>
+<p>What do all these definitions tell us ? <strong>That you get some specular/glossiness information embedded in the albedo value.</strong>  That is very important.</p>
+<p>所有这些定义告诉我们什么？<strong>您会获得嵌入在反照率值中的一些镜面/光泽度信息。</strong> 这非常重要。</p>
+<blockquote>
+<p>Let’s take charcoal as an example. Charcoal not being a pure <a href="https://en.wikipedia.org/wiki/Lambertian_reflectance">lambertian surface</a>, you will get some  <em>“specular” reflection</em> at grazing angles. For artistic control in CG, we generally split diffuse and specular reflections but <strong>in real life they are just really the same.</strong></p>
+<p>让我们以木炭为例。木炭不是纯<a href="https://en.wikipedia.org/wiki/Lambertian_reflectance">朗伯表面</a>，在掠射角处会出现一些​ <em>“镜面”反射</em>​。为了在 CG 中进行艺术控制，我们通常会将漫反射和镜面反射分开，但<strong>在现实生活中，它们实际上是一样的。</strong></p>
+<p>Great explanation by Thomas Mansencal.</p>
+<p>托马斯·曼森卡尔（Thomas Mansencal）的解释很精彩。</p>
+</blockquote>
+<h3 id="漫反射颜色还是反照率-aov-diffuse-color-or-albedo-aov">漫反射颜色还是反照率 AOV？ Diffuse Color or Albedo AOV ?</h3>
+<p><strong>In real life albedo includes both diffuse reflection and specular reflection.</strong>  That’s the first thing we need to clear out. But many render engines, like <em><a href="http://guerillarender.com/">Guerilla Render</a></em>, have simplified this process : the albedo AOV is simply the <em>Diffuse Color</em> (also called <em>Base Color</em> or <em>Diffuse Reflection</em>). <a href="https://docs.arnoldrenderer.com/display/A5AFMUG/AOVs+for+Image+Compositing">Arnold</a>, on the other hand, seems to have done the “real” thing :</p>
+<p><strong>在现实生活中，反照率包括漫反射和镜面反射。</strong> 这是我们需要澄清的第一件事。但许多渲染引擎，如​*<a href="http://guerillarender.com/">Guerilla Render</a><em>​，已经简化了这个过程：反照率 AOV 只是​</em>漫反射颜色<em>​（也称为</em>基色<em>或​</em>漫反射*​）。另一方面，<a href="https://docs.arnoldrenderer.com/display/A5AFMUG/AOVs+for+Image+Compositing"> Arnold似乎做了“真实”的事情：</a></p>
+<blockquote>
+<p>The fresnel in the <strong>diffuse_albedo</strong> is a result of the<em>Specular IOR</em> and how it affects the albedo of the diffuse to make it energy efficient. So with no ​<em>Specular</em>​, there would be no fresnel on the diffuse_albedo, as all the energy would be in the diffuse.</p>
+<p><strong>漫反射</strong>中的菲涅尔效应是<em>镜面反射 IOR</em>的结果，以及它如何影响漫反射的反射率以使其节能。因此，如果没有​<em>镜面反射</em>​，漫反射上就不会有菲涅尔效应，因为所有能量都会在漫反射中。</p>
+<p>From <a href="https://docs.arnoldrenderer.com/display/A5AFMUG/AOVs+for+Image+Compositing">the Arnold documentation</a>.</p>
+<p>来自<a href="https://docs.arnoldrenderer.com/display/A5AFMUG/AOVs+for+Image+Compositing">Arnold 文档</a>。</p>
+</blockquote>
+<p>I found this last part particularly interesting. The misconception about the albedo I was talking earlier may come from these different behaviors. This is particularly critical for our next paragraph.</p>
+<p>我觉得最后一部分特别有趣。我之前谈到的关于反照率的误解可能来自于这些不同的行为。这对于我们下一段来说尤其重要。</p>
+<blockquote>
+<p>Now it is important to keep in mind that “ground truth” is somehow vague : albedo in the first place is a measure bound to solar irradiance which <strong>encompasses both the diffuse and specular components</strong>  of the reflection when it is measured. Textures are pretty much never shot in direct sunlight. Ground truth would be more about spectrally measure not only the BTF (<a href="https://cg.cs.uni-bonn.de/en/projects/spectral-btf-measurement/">Bidirectional Texture Function</a>) of the surface but also measure its Polarimetric Reflectance : a Spatially Varying Polarimetric BRDF (Bidirectional Reflectance Distribution Function). This will get an almost perfect representation of the surface but by doing so you’ll also loose all your artistic controls over it. Otherwise you can check the <a href="https://www.chaosgroup.com/vrscans">vrscans</a> (the VRScans are non-spectral BTF) or <a href="https://quixel.com/megascans/library/">Quixel Megascans.</a></p>
+<p>现在，重要的是要记住“基本事实”在某种程度上是模糊的：反照率首先是与太阳辐照度相关的测量值，测量时<strong>包含反射的漫反射和镜面反射分量</strong><a href="https://cg.cs.uni-bonn.de/en/projects/spectral-btf-measurement/">。纹理几乎从来不会在阳光直射下拍摄。基本事实更多地是关于光谱测量，不仅要测量表面的 BTF（双向纹理函数</a>），还要测量其偏振反射率：空间变化的偏振 BRDF（双向反射分布函数）。这将获得几乎完美的表面表现，但这样做也会失去对它的所有艺术控制。否则，您可以检查 vrscans <a href="https://www.chaosgroup.com/vrscans">（</a> VRScans 是非光谱 BTF）或<a href="https://quixel.com/megascans/library/">Quixel Megascans。</a></p>
+<p>Thomas Mansencal is very much aware of albedo-related challenges.</p>
+<p>托马斯·曼森卡尔 (Thomas Mansencal) 非常清楚与反照率相关的挑战。</p>
+</blockquote>
+<h2 id="反照率极限是多少-which-albedo-limit">反照率极限是多少？ Which Albedo limit ?</h2>
+<p>If it was not clear enough, I clearly split the <em>Color Selection</em> in two categories :</p>
+<p>如果还不够清楚的话，我把<em>颜色选择</em>清楚地分为两类：</p>
+<ul>
+<li>Lights and emissive surfaces -&gt; <em>Rec.2020</em> or <em>ACEScg</em> gamuts.</li>
+<li>灯光和发射表面 -&gt; <em>Rec.2020</em>或<em>ACEScg</em>色域。</li>
+<li><em>Albedo</em> and <em>specular colors</em> of non-emissive surfaces -&gt; ​<em>Pointer’s gamut</em>​.</li>
+<li>非发射表面的<em>反照率</em>和<em>镜面反射颜色-&gt;指针的色域</em>​。</li>
+</ul>
+<blockquote>
+<p><strong>To have a saturated color, the spectral distribution must be narrow-band.</strong>  The laser, i.e. a line, being the most saturated in the world. It’s the opposite of surfaces that are pretty smooth.  <strong>So they cannot be extremely saturated by the very nature of their spectral distribution of reflection.</strong></p>
+<p><strong>要获得饱和的颜色，光谱分布必须是窄带的</strong> <strong>。</strong> 激光，即一条线，是世界上最饱和的。它与非常光滑的表面相反。<strong>因此，它们不能根据反射光谱分布的本质而极度饱和。</strong></p>
+<p>Another perfect explanation by ​<strong>Thomas Mansencal</strong>​.</p>
+<p><strong>托马斯·曼森卡尔 (Thomas Mansencal)</strong> 的另一个完美解释。</p>
+</blockquote>
+<p>Hence the two categories :</p>
+<p>因此有两个类别：</p>
+<ul>
+<li>With a light source, the spectrum is very changing with spikes.</li>
+<li>在光源的作用下，光谱会发生很大变化，并出现尖峰。</li>
+<li>With a natural or man made surface, the spectrum is very smooth.</li>
+<li>无论是天然还是人造表面，光谱都非常平滑。</li>
+</ul>
+<blockquote>
+<p>The problem you may face, however, is when you light a surface with a light narrow band. You find yourself in a situation where even if indeed your surface is smooth it reflects something narrow-band. So you can end up with a super saturated surface (it often happens in concert for example). And sometimes (often) it doesn’t go as we would like, e.g. <a href="https://acescentral.com/t/vfx-work-in-acescg-with-out-of-gamut-devices/2385/10">blue</a> <a href="https://acescentral.com/t/colour-artefacts-or-breakup-using-aces/520/7">highlights fix</a>.</p>
+<p>然而，当您用窄带光照亮表面时，您可能会遇到一个问题。您会发现自己处于这样一种情况：即使您的表面确实很光滑，它也会反射一些窄带光。因此，您最终会得到一个超饱和的表面（例如，这种情况经常同时发生）。有时（通常）它不会像我们希望的那样进行，例如<a href="https://acescentral.com/t/vfx-work-in-acescg-with-out-of-gamut-devices/2385/10">蓝色</a> <a href="https://acescentral.com/t/colour-artefacts-or-breakup-using-aces/520/7">高光修复</a>。</p>
+<p>I just love Thomas’ concert example. So visual !</p>
+<p>我就是喜欢托马斯的音乐会范例。太形象了！</p>
+</blockquote>
+<p>Finally I had to ask him about fluorescence :</p>
+<p>最后我不得不问他关于荧光的问题：</p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Fluorescence">Fluorescence</a> is actually considered emission. So it is not limited like a non-emissive surface would be.  <strong>Fluorescence is simply a re-emission at a different wavelength.</strong>  We even talk about Optical Brightener in laundry.</p>
+<p><a href="https://en.wikipedia.org/wiki/Fluorescence">荧光</a>实际上被认为是发射。因此它不像非发射表面那样受到限制。<strong>荧光只是不同波长的重新发射。</strong> 我们甚至谈论洗衣中的荧光增白剂。</p>
+<p>I love when all the dots start to connect like this.</p>
+<p>我喜欢所有的点都像这样开始连接起来。</p>
+</blockquote>
+<h2 id="现有解决方案-existing-solutions">现有解决方案 Existing solutions</h2>
+<p>Studios have provided different answers to this issue : <em>how do we limit the albedo range to a PBR one ?</em>  Here is a couple of solutions I have seen :</p>
+<p>工作室对这个问题给出了不同的答案：<em>我们如何将反照率范围限制在 PBR 范围内？</em> 以下是我见过的几个解决方案：</p>
+<ul>
+<li>A technical check scanning albedo textures and stopping the publish if some out-of-range values are found in them.</li>
+<li>进行技术检查扫描反照率纹理，如果发现一些超出范围的值则停止发布。</li>
+<li>A <em>soft clip</em> limit directly in the shader to fit the range of any color input.</li>
+<li><em>着色器中直接的软剪辑</em>限制可以适应任何颜色输入的范围。</li>
+<li>A visual check of the Albedo AOV for out-of-range values (meaning the Albedo AOV is correctly set).</li>
+<li>对 Albedo AOV 进行目视检查，确定其是否超出范围（即 Albedo AOV 是否设置正确）。</li>
+</ul>
+<p>All these solutions are okay. Even if most of the time they only take in account the luminance of the maps. But what about saturation ? And this is where the <em>Pointer’s Gamut</em> comes handy !</p>
+<p>所有这些解决方案都很好。即使大多数时候它们只考虑地图的亮度。但是饱和度呢？这就是<em>Pointer's Gamut</em>派上用场的地方！</p>
+<blockquote>
+<p>Interestingly enough <strong>Thomas Mansencal</strong> made a plea for <a href="https://www.colour-science.org/posts/a-plea-for-colour-analysis-tools-in-dcc-applications/">Colour Analysis tools…</a> In 2014 !</p>
+<p>有趣的是，<strong>Thomas Mansencal</strong>在 2014 年呼吁使用<a href="https://www.colour-science.org/posts/a-plea-for-colour-analysis-tools-in-dcc-applications/">色彩分析工具！</a></p>
+<p>I am only six years late.</p>
+<p>我只晚了六年。</p>
+</blockquote>
+<h2 id="指针的色域-pointers-gamut">指针的色域 Pointer’s gamut</h2>
+<p>I have been wondering for a while if there was any study on the <em>Diffuse Color/Reflection</em> and saturation. Until I found out about the <em>Pointer’s Gamut.</em>  Most of my data comes from <a href="https://www.tftcentral.co.uk/articles/pointers_gamut.htm">this great article</a>.</p>
+<p>我一直想知道是否有关于<em>漫反射颜色/反射</em>和饱和度的研究。直到我发现了<em>指针的色域。</em> 我的大部分数据都来自<a href="https://www.tftcentral.co.uk/articles/pointers_gamut.htm">这篇很棒的文章</a>。</p>
+<p>First of all, a very basic question that has bothered many people. Why is it called ​<em>Pointer</em>​‘s ? It is actually very simple ! In 1980, a scientist named Michael Pointer took over 4000 references to study their colors and came with a Gamut named after him.</p>
+<p>首先，一个非常基本的问题困扰了很多人。为什么叫<em>Pointer</em>色域？其实很简单！1980 年，一位名叫 Michael Pointer 的科学家查阅了 4000 多份参考资料，研究了它们的色彩，并得出了一个以他的名字命名的色域。</p>
+<blockquote>
+<p>The Pointer’s gamut is (an  approximation of) the gamut of real surface colors as can be seen by the human eye, based on the research by Michael R. Pointer (1980). […] <strong>What this means is that  every color that can be reflected by the surface of an object of any material is inside the Pointer’s gamut.</strong></p>
+<p>Pointer 色域是人眼可见的真实表面颜色的色域（近似值），基于 Michael R. Pointer (1980) 的研究。[…]<strong>这意味着任何材质的物体表面可以反射的每种颜色都在 Pointer 色域内。</strong></p>
+</blockquote>
+<p>This totally sounds like a legit solution. But to what should we compare the <em>Pointer’s Gamut</em> ? The answer is given to us in the <a href="https://www.tftcentral.co.uk/articles/pointers_gamut.htm">same article</a> (just read it) :</p>
+<p>这听起来完全是一个合理的解决方案。但我们应该将*Pointer 的 Gamut与什么进行比较？*​<a href="https://www.tftcentral.co.uk/articles/pointers_gamut.htm">同一篇文章</a>中给出了答案（只需阅读）：</p>
+<blockquote>
+<p><strong>Pointer’s gamut is defined for diffuse reflection (matte surface).</strong>  As opposed to diffuse reflection there is specular reflection, or mirror like reflection. <strong>By specular reflection objectscanreflect colors that are outside the Pointer’s gamut.</strong></p>
+<p><strong>Pointer 的色域是针对漫反射（无光泽表面）定义的。</strong> 与漫反射相反，还有镜面反射，或类似镜子的反射。<strong>通过镜面反射，物体可以反射 Pointer 色域之外的颜色。</strong></p>
+<p>It could not be any clearer. Really.</p>
+<p>这真是再清楚不过了。</p>
+</blockquote>
+<p>The Pointer’s Gamut is a study done for Kodak originally and the list of the 4089 samples used is not available. However, you may find the dataset on <a href="https://www.rit.edu/cos/colorscience/rc_useful_data.php">the RIT website</a>.</p>
+<p>Pointer 色域最初是为 Kodak 进行的一项研究，所使用的 4089 个样本的列表不可用。但是，您可以在<a href="https://www.rit.edu/cos/colorscience/rc_useful_data.php">RIT 网站</a>上找到数据集。</p>
+<h3 id="基于-pointers-gamut-的技术检查-a-technical-check-based-on-pointers-gamut">基于 Pointer's Gamut 的技术检查 A technical check based on Pointer’s Gamut</h3>
+<p>We could definitely think about developing an application allowing us to compare our base color textures to the Pointer’s Gamut. A few studios have already developed some solutions internally and an open-source software would be more than welcome for the community.</p>
+<p>我们绝对可以考虑开发一款应用程序，让我们能够将基础颜色纹理与 Pointer 的色域进行比较。一些工作室已经在内部开发了一些解决方案，开源软件将受到社区的热烈欢迎。</p>
+<p>A few recommendations about this <em>Pointer’s Gamut</em>check :</p>
+<p><em>关于此指针色域检查的</em>一些建议：</p>
+<ul>
+<li>What is important is to prevent the majority of cases.</li>
+<li>重要的是预防大多数病例的发生。</li>
+<li>The Pointer Gamut ​<strong>is not exhaustive</strong>​, it does not represent all the possible reflectances.</li>
+<li>指针色域​<strong>并不详尽</strong>​，它并不代表所有可能的反射率。</li>
+<li>Pointer did not measure all actual surfaces. He has a quite large representative sample.</li>
+<li>Pointer 并未测量所有实际表面。他有一个相当大的代表性样本。</li>
+<li>We have to apply all of this wisely and filter 98% of problematic cases.</li>
+<li>我们必须明智地运用所有这些并过滤掉 98％ 的问题案例。</li>
+<li>It ​<strong>shouldn’t become a brake on creativity</strong>​, on the contrary it should help it.</li>
+<li>它​<strong>不应该成为创造力的阻碍</strong>​，相反，它应该促进创造力。</li>
+<li>The system is not made to stop people from doing their job, but to help them do it better and faster.</li>
+<li>这个系统并不是为了阻止人们做他们的工作，而是为了帮助他们更好、更快地完成工作。</li>
+</ul>
+<blockquote>
+<p>MrLixm managed to develop <a href="https://gumroad.com/liam_collod#fOMCv">a free app</a> checking if your textures are within the Pointer’s Gamut or not.</p>
+<p>MrLixm 成功开发了<a href="https://gumroad.com/liam_collod#fOMCv">一款免费应用程序，</a>用于检查您的纹理是否在 Pointer 的色域范围内。</p>
+<p>Congrats Liam !</p>
+<p>恭喜 Liam！</p>
+</blockquote>
+<h3 id="指针的色域示例值-pointers-gamut-example-values">指针的色域示例值 Pointer’s Gamut example values</h3>
+<p>I’ll share here a few values here so you get a rough idea if they’re inside the Pointer’s Gamut or not. But let’s not be too dogmatic neither, since everything is “wrong” in digital RGB scene rendering…</p>
+<p>我将在这里分享一些值，以便您大致了解它们是否在指针色域内。但我们也不要太武断，因为数字 RGB 场景渲染中的一切都是“错误的”……</p>
+<table>
+<thead>
+<tr>
+<th>Colorspace</th>
+<th>Outside Pointer’s Gamut</th>
+<th>Inside Pointer’s Gamut</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear – sRGB</td>
+<td>(1, 0, 0)</td>
+<td>(0.9, 0.03, 0.03) –  (0.9042, 0.0278, 0.0098)</td>
+<td>This reminds me of the values used in<a href="https://community.acescentral.com/t/aces-output-transforms-architecture-vwg-meeting-24-august-18-2021/3912/8">my coke can render</a>. Cool !</td>
+</tr>
+<tr>
+<td>Linear – sRGB</td>
+<td>(0, 1, 0)</td>
+<td>(0.03, 0.5, 0.03) –  (0.4618, 0.8201, 0.4270)</td>
+<td>The sRGB green primary is “corrected” to enter PG.</td>
+</tr>
+<tr>
+<td>Linear – sRGB</td>
+<td>(0, 0, 1)</td>
+<td>(0, 0.06, 0.6) –  (0.0641, 0.0225, 0.5637)</td>
+<td>The sRGB blue primary is “corrected” to enter PG.</td>
+</tr>
+<tr>
+<td>Linear – sRGB</td>
+<td>(0, 0, 0.6)</td>
+<td>(0.05, 0.05, 0.6)</td>
+<td></td>
+</tr>
+<tr>
+<td>Linear – sRGB</td>
+<td>(0, 0, 0)</td>
+<td>(0.0191, 0.0186, 0.0229)</td>
+<td>It almost matches the<em><strong>charcoal</strong></em>reference (see chart below). Sweet !</td>
+</tr>
+<tr>
+<td>Linear – sRGB</td>
+<td>(1, 1, 1)</td>
+<td>(0.7624, 0.7645, 0.7494)</td>
+<td>It almost matches the<em><strong>fresh snow</strong></em>reference (see chart below). Awesome !</td>
+</tr>
+<tr>
+<td>ACEScg</td>
+<td>(1, 0, 0)</td>
+<td>(0.6552, 0.1353, 0.0494)</td>
+<td>Do not forget that ACEScg primaries are outside of the Spectral Locus !</td>
+</tr>
+<tr>
+<td>ACEScg</td>
+<td>(0, 1, 0)</td>
+<td>(0.4985, 0.7630, 0.4471)</td>
+<td>Do not forget that ACEScg primaries are outside of the Spectral Locus !</td>
+</tr>
+<tr>
+<td>ACEScg</td>
+<td>(0, 0, 1)</td>
+<td>(0.0527, 0.0246, 0.4228)</td>
+<td>Do not forget that ACEScg primaries are outside of the Spectral Locus !</td>
+</tr>
+<tr>
+<td>ACEScg</td>
+<td>(1, 1, 0)</td>
+<td>(0.8473, 0.7838, 0.0741)</td>
+<td></td>
+</tr>
+<tr>
+<td>ACEScg</td>
+<td>(0, 1, 1)</td>
+<td>(0.5891, 0.7720, 0.8745)</td>
+<td></td>
+</tr>
+<tr>
+<td>ACEScg</td>
+<td>(1,0,1)</td>
+<td>(0.5827, 0.1991, 0.6153)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>色彩空间</th>
+<th>指针色域之外</th>
+<th>在 Pointer 的色域内</th>
+<th>评论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性 – sRGB</td>
+<td>（1，0，0）</td>
+<td>(0.9, 0.03, 0.03) – (0.9042, 0.0278, 0.0098)</td>
+<td><a href="https://community.acescentral.com/t/aces-output-transforms-architecture-vwg-meeting-24-august-18-2021/3912/8">这让我想起了我在可乐罐渲染</a>中使用的值。太酷了！</td>
+</tr>
+<tr>
+<td>线性 – sRGB</td>
+<td>（0，1，0）</td>
+<td>(0.03, 0.5, 0.03) – (0.4618, 0.8201, 0.4270)</td>
+<td>sRGB 绿原色被“校正”以进入 PG。</td>
+</tr>
+<tr>
+<td>线性 – sRGB</td>
+<td>（0，0，1）</td>
+<td>(0, 0.06, 0.6) – (0.0641, 0.0225, 0.5637)</td>
+<td>sRGB 蓝原色被“校正”以进入 PG。</td>
+</tr>
+<tr>
+<td>线性 – sRGB</td>
+<td>(0, 0, 0.6)</td>
+<td>(0.05, 0.05, 0.6)</td>
+<td></td>
+</tr>
+<tr>
+<td>线性 – sRGB</td>
+<td>（0，0，0）</td>
+<td>（0.0191、0.0186、0.0229）</td>
+<td>它几乎与<em><strong>木炭</strong></em> 参考相匹配（见下表）。太棒了！</td>
+</tr>
+<tr>
+<td>线性 – sRGB</td>
+<td>（1，1，1）</td>
+<td>（0.7624、0.7645、0.7494）</td>
+<td>它几乎与<em><strong>新雪</strong></em> 参考值相符（见下表）。太棒了！</td>
+</tr>
+<tr>
+<td>血管紧张素转换酶</td>
+<td>（1，0，0）</td>
+<td>（0.6552、0.1353、0.0494）</td>
+<td>不要忘记 ACEScg 主星位于光谱轨迹之外！</td>
+</tr>
+<tr>
+<td>血管紧张素转换酶</td>
+<td>（0，1，0）</td>
+<td>（0.4985,0.7630,0.4471）</td>
+<td>不要忘记 ACEScg 主星位于光谱轨迹之外！</td>
+</tr>
+<tr>
+<td>血管紧张素转换酶</td>
+<td>（0，0，1）</td>
+<td>(0.0527, 0.0246, 0.4228)</td>
+<td>不要忘记 ACEScg 主星位于光谱轨迹之外！</td>
+</tr>
+<tr>
+<td>血管紧张素转换酶</td>
+<td>（1，1，0）</td>
+<td>（0.8473、0.7838、0.0741）</td>
+<td></td>
+</tr>
+<tr>
+<td>血管紧张素转换酶</td>
+<td>（0，1，1）</td>
+<td>（0.5891、0.7720、0.8745）</td>
+<td></td>
+</tr>
+<tr>
+<td>血管紧张素转换酶</td>
+<td>（1,0,1）</td>
+<td>（0.5827、0.1991、0.6153）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="反照率图及其限制-albedo-charts-and-their-limits">反照率图及其限制 Albedo charts and their limits</h3>
+<p>We now have a clear target for our ​<em>Diffuse Reflection</em>​. We may translate this into a technical check or even an albedo chart.</p>
+<p><em>现在，我们对漫反射</em>有了明确的目标。我们可以将其转化为技术检查，甚至是反照率图表。</p>
+<p>There are some interesting <a href="https://seblagarde.wordpress.com/2014/04/14/dontnod-physically-based-rendering-chart-for-unreal-engine-4/">albedo</a> <a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/19">charts</a> <a href="https://www.artstation.com/shinsoj/blog/Q9j6/albedo-chart">out</a> <a href="https://seblagarde.wordpress.com/2011/08/17/feeding-a-physical-based-lighting-mode/">there</a> even from different render engines, like <a href="https://docs.unity3d.com/Manual/StandardShaderMaterialCharts.html">Unity</a> and <a href="https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/PhysicallyBased/index.html">Unreal</a>. Since these values have been obtained from real-world measured values, they are pretty good guidelines. It is also interesting to notice that charcoal and snow are generally the “​<em>extreme</em>​” examples in most albedo charts.</p>
+<p>甚至不同的渲染引擎（如<a href="https://docs.unity3d.com/Manual/StandardShaderMaterialCharts.html">Unity</a>和<a href="https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/PhysicallyBased/index.html">Unreal）也</a>​<a href="https://seblagarde.wordpress.com/2011/08/17/feeding-a-physical-based-lighting-mode/">提供</a>​<a href="https://www.artstation.com/shinsoj/blog/Q9j6/albedo-chart">了</a>一些有趣的<a href="https://seblagarde.wordpress.com/2014/04/14/dontnod-physically-based-rendering-chart-for-unreal-engine-4/">反照率</a> <a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/19">图表</a> 。由于这些值是从现实世界的测量值中获得的，因此它们可以作为很好的指导。值得注意的是，木炭和雪通常是大多数反照率图表中的“<em>极端”示例。</em></p>
+<p>It seems to me that nobody has worked on them like <strong>Sebastien Lagarde</strong> from ​<em>Unity</em>​. In 2013, Sebastien was already talking <a href="https://seblagarde.wordpress.com/2013/08/22/gdceurope-2013-talk-the-art-and-rendering-of-remember-me/">about their use and their limits</a>.</p>
+<p>我觉得没有人像<em>Unity</em>的<strong>Sebastien Lagarde</strong>那样研究过它们。2013 年，Sebastien 就已经开始谈论<a href="https://seblagarde.wordpress.com/2013/08/22/gdceurope-2013-talk-the-art-and-rendering-of-remember-me/">它们的用途和局限性了</a>。</p>
+<blockquote>
+<p>I sometimes see shaders with the 0 value in albedo. I agree that the 0 value can be an optimization since there is no value nor bsdf to evaluate. But keep in mind that the 0 value would likely stop the light path in a RGB render engine.</p>
+<p>我有时会看到着色器的反照率为 0。我同意 0 值可以是一种优化，因为没有值也没有 bsdf 可以评估。但请记住，0 值可能会停止 RGB 渲染引擎中的光路。</p>
+</blockquote>
+<h3 id="cg-反照率图表-cg-albedo-charts">CG 反照率图表 CG Albedo charts</h3>
+<p>My process to generate these charts was pretty simple. I merged <a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/19">one chart posted on ACEScentral</a>, <a href="https://seblagarde.wordpress.com/2014/04/14/dontnod-physically-based-rendering-chart-for-unreal-engine-4/">one from Sebastien Lagarde</a> and <a href="https://en.wikipedia.org/wiki/ColorChecker">the macbeth color checker</a> into one. Since most of these charts have sRGB values between 0  and 255, I used <a href="http://davengrace.com/dave/cspace">this converter</a> to normalize them. I also had to dig a bit to find <a href="http://www.babelcolor.com/index_htm_files/RGB%20Coordinates%20of%20the%20Macbeth%20ColorChecker.pdf">the macbeth values in sRGB</a>.</p>
+<p>我生成这些图表的过程非常简单。我将<a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/19">ACEScentral 上发布的一张图表</a>、<a href="https://seblagarde.wordpress.com/2014/04/14/dontnod-physically-based-rendering-chart-for-unreal-engine-4/">Sebastien Lagarde 的一张图表</a>和<a href="https://en.wikipedia.org/wiki/ColorChecker">macbeth 色彩检查器</a>合并为一张。由于大多数图表的 sRGB 值都在 0 到 255 之间，因此我使用<a href="http://davengrace.com/dave/cspace">此转换器</a>对它们进行标准化。我还必须进行一些挖掘才能<a href="http://www.babelcolor.com/index_htm_files/RGB%20Coordinates%20of%20the%20Macbeth%20ColorChecker.pdf">在 sRGB 中找到 macbeth 值</a>。</p>
+<blockquote>
+<p>This whole process, similar to the asset conversion shown <a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/#color-key">here</a>, can be simplified by importing the charts into Nuke and directly pick the values in the viewer.</p>
+<p><a href="https://chrisbrejon.com/cg-cinematography/chapter-1-5-academy-color-encoding-system-aces/#color-key">整个过程与此处</a>显示的资产转换类似，可以通过将图表导入 Nuke 并直接在查看器中选择值来简化。</p>
+</blockquote>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/130_albedo_0020_albedo_chart_FHD-20241105174101-e6r94mb.png" alt="" title="If you wish to check these values in Nuke, please use the IDT : &quot;Utility - sRGB - Texture&quot;. 如果您希望在 Nuke 中检查这些值，请使用 IDT：“Utility - sRGB - Texture”。" loading="lazy">​</p>
+<p><img src="https://qiniu.zcfly.club/siyuan-assets/130_albedo_0030_albedo_chart_FHD-20241105174101-j9233r4.png" alt="" loading="lazy">​</p>
+<p>There are now two charts : one with <em>ACEScg</em> values and one with <em>Linear – sRGB</em> values. The luminance values comes from Nuke’s viewer. I have ordered the albedo values by luminance as I thought it would be more convenient. The charts themselves have been written as png files with the following “​<em>colorspace</em>​” : “Utility – sRGB – Texture”.</p>
+<p>现在有两个图表：一个包含<em>ACEScg</em>值，另一个包含<em>Linear – sRGB</em>值。亮度值来自 Nuke 的查看器。我已按亮度对反照率值进行排序，因为我认为这样更方便。图表本身已编写为 png 文件，具有以下“​<em>颜色空间</em>​”：“Utility – sRGB – Texture”。</p>
+<p>You may want to use these values with “a pinch of salt”, since we don’t know exactly if they are strictly about diffuse reflectance or albedo. From the render tests I have been doing about charcoal, here are some more accurate values (which match <a href="https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/index.html">the ones from Unreal Engine</a>) :</p>
+<p>您可能希望对这些值“持保留态度”，因为我们不知道它们是否严格地与漫反射或反照率有关。根据我对木炭进行的渲染测试，以下是一些更准确的值（与<a href="https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/index.html">虚幻引擎中的值</a>相匹配）：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Diffuse Reflectance</th>
+<th>Specular Reflectance</th>
+<th>Total Albedo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Charcoal</td>
+<td>~0.02</td>
+<td>~0.02</td>
+<td>~0.04</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>漫反射</th>
+<th>镜面反射率</th>
+<th>总反照率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>木炭</td>
+<td>~0.02</td>
+<td>~0.02</td>
+<td>~0.04</td>
+</tr>
+</tbody>
+</table>
+<p>Same thing with the “Fresh snow”. Some charts indicate an albedo value of 0.9, some 0.81. I went for the lowest value since I was more aiming at a diffuse color value chart. Which leads us to our final question…</p>
+<p>“新雪”也是一样。有些图表显示反照率为 0.9，有些为 0.81。我选择了最低值，因为我更关注的是漫反射颜色值图表。这引出了我们的最后一个问题……</p>
+<h3 id="麦克白图表值-macbeth-chart-values">麦克白图表值 Macbeth Chart Values</h3>
+<blockquote>
+<p>A<em>re the macbeth chart values diffuse albedo or total albedo ?</em>  <em>A fairly long time ago a colleague took material reference photos of items using cross-polarisation and, of course, the macbeth chart has a specular component. […] But maybe we should treat the online macbeth chart (from colour-science) as diffuse and anyone referencing a photo with a chart they would need to compensate for the specular component</em> ?</p>
+<p>关于<em>麦克白图表中漫反射或总反射的值？</em>  ​<em>很久以前，一位同事使用交叉极化拍摄了物品的材料参考照片，当然，麦克白图表有一个镜面反射分量。[…] 但也许我们应该将在线麦克白图表（来自色彩科学）视为漫反射，并且任何参考带有图表的照片的人都需要补偿镜面反射分量</em>​？</p>
+</blockquote>
+<p>I cannot answer any better than Thomas Mansencal, so I’ll just quote him.</p>
+<p>我的回答不可能比托马斯·曼森卡尔更好，因此我只能引用他的话。</p>
+<blockquote>
+<p>From a measurement and unit standpoint albedo is meant to represent diffuse reflection (of <strong>solar</strong>irradiance). The problem is as much as you can separate them when you model a BRDF, it is really hard to do so in real life when taking measurements. In a way, specular reflection is almost always a subset of diffuse reflection, it is reflection after all. When the reflectance of a chart is measured, it is done with a precise geometry, e.g. 0:45 (light aligned to the tangent, receiver/sensor at 45deg) and what is measured is the total reflection of the incident light. Because the light irradiance is known, you can then deduce the reflectance of the surface.</p>
+<p>从测量和单位的角度来看，反照率旨在表示漫反射（<strong>太阳</strong>辐照度）。问题是，虽然您可以在建模 BRDF 时将它们分开，但在现实生活中进行测量时很难做到这一点。在某种程度上，镜面反射几乎总是漫反射的一个子集，毕竟它是反射。当测量图表的反射率时，它是用精确的几何形状完成的，例如 0:45（光与切线对齐，接收器/传感器在 45 度处），并且测量的是入射光的总反射。因为光辐照度是已知的，所以您可以推断出表面的反射率。</p>
+</blockquote>
+<p>Having never done any real-life measurements myself, I’ll just sit and listen. Here’s the final part :</p>
+<p>我自己从未做过任何实际测量，所以我只是坐着听。这是最后一部分：</p>
+<blockquote>
+<p><em>What this tells you is that there is no specular vs diffuse reflection separation, it is all encompassing. It also tells you that if you are expecting to achieve a match, you should be matching the measurement geometry in the render engine because it is the only geometry where the match can be fully achieved.</em></p>
+<p><em>这说明镜面反射与漫反射没有区别，都是无所不包的。这还说明，如果您希望实现匹配，则应该在渲染引擎中匹配测量几何体，因为这是唯一可以完全实现匹配的几何体。</em></p>
+</blockquote>
+<h2 id="结论-conclusion">结论 Conclusion</h2>
+<p>Even though the Pointer’s Gamut is 40 years old, it is still a valid reference for albedo values in shaders. But we should certainly not become a slave of it and use it as <strong>a guideline to give consistency between assets.</strong>  As usual, these choices depend on your art direction and workflow. Recently, ​<strong>Björn Ottosson</strong>​, a software engineer <a href="https://twitter.com/bjornornorn/status/1347633870343200770">tweeted about the Pointer’s Gamut</a> and generated these two images.</p>
+<p>尽管 Pointer 的色域已有 40 年历史，但它仍然是着色器中反照率值的有效参考。但我们绝对不应该成为它的奴隶，而应该将其用作<strong>指导方针，以确保资产之间的一致性。</strong> 像往常一样，这些选择取决于您的艺术指导和工作流程。最近，软件工程师<strong>Björn Ottosson</strong>​<a href="https://twitter.com/bjornornorn/status/1347633870343200770">在推特上发布了关于 Pointer 的色域的信息</a>，并生成了这两张图片。</p>
+<p><img src="assets/130_albedo_0040_reflectance_colors_FHD-20241105174101-gumk6k9.jpg" alt="" loading="lazy">​</p>
+<blockquote>
+<p>Shows what the brightest and darkest natural surface reflectance colors are (using sRGB HSV). If you are making diffuse textures, you want to stay in this range most of the time. Brighter and darker reflectance colors are physically possible, but will be quite rare. This is a good sanity check rather than strict limit. Also fluorescent colors can appear brighter.</p>
+<p>显示最亮和最暗的自然表面反射颜色（使用 sRGB HSV）。如果您正在制作漫反射纹理，则大多数时候您希望保持在此范围内。更亮和更暗的反射颜色在物理上是可能的，但会非常罕见。这是一个良好的健全性检查，而不是严格的限制。荧光颜色也可以显得更亮。</p>
+</blockquote>
+<p>This concept of limiting the range of textures values can generate <a href="https://twitter.com/MyNameIs_Tucker/status/1348020571469070336">quite some debate</a>. But I think it is useful to take these decisions keeping in mind these notions. And we’ll finish with Thomas’ quote :</p>
+<p>限制纹理值范围的概念可能会引起<a href="https://twitter.com/MyNameIs_Tucker/status/1348020571469070336">很多争论</a>。但我认为在做出这些决定时牢记这些概念是有用的。我们以 Thomas 的引言作为结束：</p>
+<blockquote>
+<p>Well, everything is contextual, anchoring your values in the real world, as a starting point, is often the key to greater quality, this is to a degree the basis of PBR. Keep in mind that <strong>Pointer’s Gamut is about reflectance only</strong> […]. It is about Digital Asset authoring, specifically Look Development of shaders and textures where more often than never, one needs to strive for physical accuracy. […] This is not about image quality but physical correctness. Like any tools,  <strong>it must be used with understanding.</strong>   PBR validation tools […] arguably help improving Lookdev consistency and overall image quality.</p>
+<p>好吧，一切都是情境化的，将您的价值观锚定在现实世界中，作为起点，通常是提高质量的关键，这在某种程度上是 PBR 的基础。请记住，<strong>Pointer 的色域仅与反射有关</strong>[...]。它与数字资产创作有关，特别是着色器和纹理的外观开发，其中往往需要努力实现物理准确性。[...] 这不是关于图像质量，而是物理正确性。与任何工具一样，<strong>必须在理解的情况下使用它。</strong> PBR 验证工具 [...] 可以说有助于提高 Lookdev 一致性和整体图像质量。</p>
+</blockquote>
+<p>A possible improvement of this post could be to generate two charts : one for <em>Diffuse Reflectance</em> and one for ​<em>Specular Reflectance</em>​. Sounds like some interesting homework for the future !</p>
+<p>这篇文章的一个可能的改进是生成两个图表：一个用于​<em>漫反射</em>​，一个用于​<em>镜面反射</em>​。听起来像是未来一些有趣的家庭作业！</p>
+<h2 id="链接-links">链接 Links</h2>
+<ul>
+<li><a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance PBR guide</a>.</li>
+<li><a href="https://academy.allegorithmic.com/courses/b6377358ad36c444f45e2deaa0626e65">Substance PBR 指南</a>。</li>
+<li><a href="https://cinematiccolor.org/">Cinematic Color</a>.</li>
+<li><a href="https://cinematiccolor.org/">電影色彩</a>。</li>
+<li><a href="https://en.wikipedia.org/wiki/Albedo">Albedo definition on Wikipedia</a>.</li>
+<li><a href="https://en.wikipedia.org/wiki/Albedo">维基百科上的反照率定义</a>。</li>
+<li><a href="http://filmicworlds.com/blog/everything-is-shiny/">Everything is shiny</a>.</li>
+<li><a href="http://filmicworlds.com/blog/everything-is-shiny/">一切都闪闪发光</a>。</li>
+<li><a href="https://docs.arnoldrenderer.com/display/A5AFMUG/AOVs+for+Image+Compositing">The Arnold documentation</a>.</li>
+<li><a href="https://docs.arnoldrenderer.com/display/A5AFMUG/AOVs+for+Image+Compositing">阿诺德文档</a>。</li>
+<li><a href="https://www.colour-science.org/posts/a-plea-for-colour-analysis-tools-in-dcc-applications/">A plea for colour analysis tools in DCC applications</a>.</li>
+<li><a href="https://www.colour-science.org/posts/a-plea-for-colour-analysis-tools-in-dcc-applications/">恳求 DCC 应用程序中使用色彩分析工具</a>。</li>
+<li><a href="https://www.tftcentral.co.uk/articles/pointers_gamut.htm">Great article</a> on the Pointer’s Gamut.</li>
+<li>有关 Pointer's Gamut 的<a href="https://www.tftcentral.co.uk/articles/pointers_gamut.htm">很棒的文章。</a></li>
+<li>Useful data on <a href="https://www.rit.edu/cos/colorscience/rc_useful_data.php">the RIT website</a>.</li>
+<li><a href="https://www.rit.edu/cos/colorscience/rc_useful_data.php">RIT 网站</a>上的有用数据。</li>
+<li><a href="https://gumroad.com/liam_collod#fOMCv">Pointer’s Gamut Checker Tool</a>.</li>
+<li><a href="https://gumroad.com/liam_collod#fOMCv">Pointer 的色域检查工具</a>。</li>
+<li><a href="https://seblagarde.wordpress.com/2014/04/14/dontnod-physically-based-rendering-chart-for-unreal-engine-4/">DONTNOD Physically based rendering chart for Unreal Engine 4</a>.</li>
+<li><a href="https://seblagarde.wordpress.com/2014/04/14/dontnod-physically-based-rendering-chart-for-unreal-engine-4/">DONTNOD 基于物理的虚幻引擎 4 渲染图表</a>。</li>
+<li><a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/19">Sebastien’s Lagarde albedo chart</a>.</li>
+<li><a href="https://acescentral.com/t/preserving-the-look-of-srgb-graphics/613/19">塞巴斯蒂安的拉加德反照率图</a>。</li>
+<li><a href="https://www.artstation.com/shinsoj/blog/Q9j6/albedo-chart">Iri Shinsoj Albedo Chart</a>.</li>
+<li><a href="https://www.artstation.com/shinsoj/blog/Q9j6/albedo-chart">Iri Shinsoj 反照率图表</a>。</li>
+<li><a href="https://seblagarde.wordpress.com/2011/08/17/feeding-a-physical-based-lighting-mode/">Feeding a physically based shading model</a>.</li>
+<li><a href="https://seblagarde.wordpress.com/2011/08/17/feeding-a-physical-based-lighting-mode/">提供基于物理的着色模型</a>。</li>
+<li><a href="https://bottosson.github.io/posts/">Björn Ottosson’s posts</a>.</li>
+<li><a href="https://bottosson.github.io/posts/">Björn Ottosson 的帖子</a>。</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%8B%E7%BB%8D-introduction">介绍 Introduction</a></li>
+<li><a href="#%E5%8F%8D%E7%85%A7%E7%8E%87%E5%AE%9A%E4%B9%89-albedo-definitions">反照率定义 Albedo definitions</a></li>
+<li><a href="#%E5%8F%8D%E7%85%A7%E7%8E%87%E5%92%8C%E5%8F%8D%E5%B0%84-albedo-and-reflections">反照率和反射 Albedo and reflections</a>
+<ul>
+<li><a href="#%E6%BC%AB%E5%8F%8D%E5%B0%84%E9%A2%9C%E8%89%B2%E8%BF%98%E6%98%AF%E5%8F%8D%E7%85%A7%E7%8E%87-aov-diffuse-color-or-albedo-aov">漫反射颜色还是反照率 AOV？ Diffuse Color or Albedo AOV ?</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%8D%E7%85%A7%E7%8E%87%E6%9E%81%E9%99%90%E6%98%AF%E5%A4%9A%E5%B0%91-which-albedo-limit">反照率极限是多少？ Which Albedo limit ?</a></li>
+<li><a href="#%E7%8E%B0%E6%9C%89%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-existing-solutions">现有解决方案 Existing solutions</a></li>
+<li><a href="#%E6%8C%87%E9%92%88%E7%9A%84%E8%89%B2%E5%9F%9F-pointers-gamut">指针的色域 Pointer’s gamut</a>
+<ul>
+<li><a href="#%E5%9F%BA%E4%BA%8E-pointers-gamut-%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A3%80%E6%9F%A5-a-technical-check-based-on-pointers-gamut">基于 Pointer's Gamut 的技术检查 A technical check based on Pointer’s Gamut</a></li>
+<li><a href="#%E6%8C%87%E9%92%88%E7%9A%84%E8%89%B2%E5%9F%9F%E7%A4%BA%E4%BE%8B%E5%80%BC-pointers-gamut-example-values">指针的色域示例值 Pointer’s Gamut example values</a></li>
+<li><a href="#%E5%8F%8D%E7%85%A7%E7%8E%87%E5%9B%BE%E5%8F%8A%E5%85%B6%E9%99%90%E5%88%B6-albedo-charts-and-their-limits">反照率图及其限制 Albedo charts and their limits</a></li>
+<li><a href="#cg-%E5%8F%8D%E7%85%A7%E7%8E%87%E5%9B%BE%E8%A1%A8-cg-albedo-charts">CG 反照率图表 CG Albedo charts</a></li>
+<li><a href="#%E9%BA%A6%E5%85%8B%E7%99%BD%E5%9B%BE%E8%A1%A8%E5%80%BC-macbeth-chart-values">麦克白图表值 Macbeth Chart Values</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AE%BA-conclusion">结论 Conclusion</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5-links">链接 Links</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcfly1992.github.io/CGC-Guerilla-Render-in-production/">
+              <h3 class="post-title">
+                 Guerilla Render in production
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <div style="width: 100%; text-align: center; margin: 20px 0; font-size: 12px; color: #888;">
+    <!-- 工信部备案信息 -->
+    <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2021016029号</a> - 
+    <!-- 公安备案信息 -->
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44060602002818" rel="noreferrer" target="_blank"><img src="https://qiniu.zcfly.club/siyuan-assets/备案图标.png" alt="公安备案" style="height: 20px;"/> 粤公网安备44060602002818</a>
+</div>
+  <a class="rss" href="https://zcfly1992.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 收集页面中的所有图片
+        const images = Array.from(document.querySelectorAll("img[title]"));
+        let currentIndex = -1;
+
+        // 包装图片及其 title 内容
+        images.forEach((img) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "image-wrapper";
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+
+          const description = document.createElement("div");
+          description.className = "image-description";
+          description.textContent = img.title || "No description available.";
+          wrapper.appendChild(description);
+        });
+
+        // 创建模态框
+        const modal = document.createElement("div");
+        modal.className = "image-modal";
+        modal.innerHTML = `
+          <span class="close">&times;</span>
+          <span class="prev">&lsaquo;</span>
+          <div class="image-container">
+            <img src="" alt="">
+            <div class="description"></div>
+          </div>
+          <span class="next">&rsaquo;</span>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector("img");
+        const description = modal.querySelector(".description");
+        const closeBtn = modal.querySelector(".close");
+        const prevBtn = modal.querySelector(".prev");
+        const nextBtn = modal.querySelector(".next");
+
+        // 打开模态框
+        function openModal(index) {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modalImage.src = image.src;
+          description.textContent = image.title || "No description available.";
+          modal.style.display = "flex";
+        }
+
+        // 关闭模态框
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 切换到下一张图片
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length; // 循环到第一张
+          openModal(currentIndex);
+        }
+
+        // 切换到上一张图片
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环到最后一张
+          openModal(currentIndex);
+        }
+
+        // 添加图片点击事件
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => openModal(index));
+        });
+
+        // 添加模态框关闭事件
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // 添加切换按钮事件
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+
+        // 键盘支持
+        document.addEventListener("keydown", (e) => {
+          if (modal.style.display === "flex") {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+          }
+        });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>
